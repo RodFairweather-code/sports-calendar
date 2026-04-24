@@ -1,0 +1,592 @@
+/* Layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #1e3a5f;
+  color: white;
+  padding: 10px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.app-header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.header-range {
+  font-size: 0.85rem;
+  opacity: 0.65;
+}
+
+.header-version {
+  font-size: 0.75rem;
+  opacity: 0.45;
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Navigation tabs */
+.nav-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-tab {
+  padding: 7px 15px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-tab:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.nav-tab.active {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+/* Editorial grid view */
+.editorial-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f0f2f5;
+}
+
+.editorial-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  background: #1e3a5f;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.ed-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.ed-date-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+}
+
+.ed-date-input {
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  color-scheme: dark;
+}
+
+.ed-date-input:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.ed-date-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.ed-today-btn {
+  padding: 6px 18px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ed-today-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.ed-today-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.editorial-scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.editorial-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 0.85rem;
+}
+
+.editorial-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.editorial-table th {
+  background: #1e3a5f;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 11px 14px;
+  text-align: left;
+  font-size: 0.73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+}
+
+.editorial-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid #eef0f4;
+  vertical-align: middle;
+  color: #2c3e50;
+}
+
+.editorial-table tbody tr.ed-row {
+  cursor: pointer;
+}
+
+.editorial-table tbody tr.ed-row:hover {
+  background: #f4f6f9;
+}
+
+.editorial-table tbody tr.ed-row--today {
+  background: #fffde7;
+}
+
+.editorial-table tbody tr.ed-row--today:hover {
+  background: #fff9c4;
+}
+
+.editorial-table tbody tr.ed-row--today td:first-child {
+  border-left: 3px solid #f9a825;
+}
+
+.editorial-table tbody tr.ed-row--highlight {
+  background: #e3f2fd;
+}
+
+.editorial-table tbody tr.ed-row--highlight:hover {
+  background: #bbdefb;
+}
+
+.editorial-table tbody tr.ed-row--highlight td:first-child {
+  border-left: 3px solid #1e88e5;
+}
+
+.ed-date { white-space: nowrap; font-weight: 500; }
+.ed-time { white-space: nowrap; font-variant-numeric: tabular-nums; color: #555; }
+.ed-sport { color: #8492a6; font-size: 0.8rem; }
+.ed-comp  { white-space: nowrap; }
+.ed-event { font-weight: 600; }
+.ed-venue { color: #8492a6; }
+.ed-round { color: #8492a6; font-size: 0.8rem; }
+.ed-score { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+
+.ed-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 7px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.ed-tbc {
+  color: #b0bec5;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Placeholder view for unbuilt screens */
+.placeholder-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f0f2f5;
+  gap: 8px;
+}
+
+.placeholder-view p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e3a5f;
+}
+
+.placeholder-view span {
+  font-size: 0.9rem;
+  color: #8492a6;
+}
+
+/* Calendar */
+.calendar-container {
+  flex: 1;
+  padding: 16px 20px;
+  overflow: auto;
+  background: #f0f2f5;
+  min-width: 0;
+  min-height: 0;
+}
+
+.fc {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  padding: 16px;
+  height: 100%;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e3a5f;
+}
+
+.fc .fc-button-primary {
+  background-color: #1e3a5f !important;
+  border-color: #1e3a5f !important;
+  font-size: 0.85rem;
+}
+
+.fc .fc-button-primary:hover {
+  background-color: #2d5180 !important;
+  border-color: #2d5180 !important;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background-color: #0d2137 !important;
+  border-color: #0d2137 !important;
+}
+
+.fc .fc-daygrid-event {
+  border-radius: 3px;
+  font-size: 0.75rem;
+  padding: 1px 4px;
+  cursor: pointer;
+}
+
+.fc .fc-event:hover {
+  opacity: 0.85;
+}
+
+/* Competition toggle bar — three stacked layers */
+.competition-toggles {
+  display: flex;
+  flex-direction: column;
+  background: #1e3a5f;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.toggle-layer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  flex-wrap: wrap;
+}
+
+.toggle-layer + .toggle-layer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.toggle-layer-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.35);
+  width: 84px;
+  flex-shrink: 0;
+}
+
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 18px;
+  border: 2px solid var(--comp-color);
+  border-radius: 24px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.toggle-btn.active {
+  background: var(--comp-color);
+  color: #fff;
+}
+
+.toggle-btn:hover {
+  color: #fff;
+  opacity: 0.9;
+}
+
+.toggle-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--comp-color);
+  flex-shrink: 0;
+}
+
+.toggle-btn.active .toggle-dot {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.toggle-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.toggle-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+/* Sport layer buttons — no per-competition colour, use white */
+.toggle-btn--sport {
+  --comp-color: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.toggle-btn--sport.active {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #fff;
+}
+
+/* Governing body buttons slightly bolder */
+.toggle-btn--body {
+  padding: 7px 20px;
+  font-weight: 800;
+}
+
+/* Partial state: some but not all competitions in a body are active */
+.toggle-btn.partial {
+  background: color-mix(in srgb, var(--comp-color) 40%, transparent);
+  color: #fff;
+  opacity: 0.85;
+}
+
+/* Event detail panel (slides in from right) */
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.panel-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeInBackdrop 0.2s ease;
+}
+
+.event-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 420px;
+  max-width: 95vw;
+  background: #fff;
+  box-shadow: -6px 0 40px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.ep-accent {
+  height: 5px;
+  flex-shrink: 0;
+}
+
+.ep-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid #eef0f4;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.ep-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ep-comp-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ep-comp-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ep-sport-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #8492a6;
+  background: #f0f2f5;
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ep-close {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: #b0bec5;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.ep-close:hover {
+  background: #f0f2f5;
+  color: #e53935;
+}
+
+.ep-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 24px 32px;
+}
+
+.ep-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.ep-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fb;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.ep-team {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.ep-team-away {
+  text-align: right;
+}
+
+.ep-score-vs {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1e3a5f;
+  white-space: nowrap;
+  padding: 0 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ep-details {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px 12px;
+  font-size: 0.88rem;
+}
+
+.ep-details dt {
+  color: #8492a6;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: start;
+  padding-top: 1px;
+}
+
+.ep-details dd {
+  color: #2c3e50;
+  margin: 0;
+}
+
+.ep-result {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1e3a5f;
+  font-variant-numeric: tabular-nums;
+}

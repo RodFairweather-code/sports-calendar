@@ -1,0 +1,618 @@
+[
+  {
+    "title": "Workday Canberra Open",
+    "start": "2026-01-05",
+    "end": "2026-01-12",
+    "location": "Canberra",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "ASB Classic",
+    "start": "2026-01-05",
+    "end": "2026-01-12",
+    "location": "Auckland",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Brisbane International",
+    "start": "2026-01-05",
+    "end": "2026-01-12",
+    "location": "Brisbane",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "United Cup",
+    "start": "2026-01-05",
+    "end": "2026-01-12",
+    "location": "Perth / Sydney",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Hobart International",
+    "start": "2026-01-12",
+    "end": "2026-01-19",
+    "location": "Hobart",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Adelaide International",
+    "start": "2026-01-12",
+    "end": "2026-01-19",
+    "location": "Adelaide",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Australian Open",
+    "start": "2026-01-19",
+    "end": "2026-02-02",
+    "location": "Melbourne",
+    "competition": "Grand Slam"
+  },
+  {
+    "title": "Philippine Womens Open",
+    "start": "2026-01-26",
+    "end": "2026-02-02",
+    "location": "Manila",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "L&T Mumbai Open",
+    "start": "2026-02-02",
+    "end": "2026-02-09",
+    "location": "Mumbai",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Ostrava",
+    "start": "2026-02-02",
+    "end": "2026-02-09",
+    "location": "Ostrava",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Transylvania Open powered by Kaufland",
+    "start": "2026-02-02",
+    "end": "2026-02-09",
+    "location": "Cluj-Napoca",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Mubadala Abu Dhabi Open presented by Abu Dhabi Sports Council",
+    "start": "2026-02-02",
+    "end": "2026-02-09",
+    "location": "Abu Dhabi",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Qatar TotalEnergies Open 2026",
+    "start": "2026-02-09",
+    "end": "2026-02-16",
+    "location": "Doha",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Oeiras 1 - Jamor Indoor",
+    "start": "2026-02-09",
+    "end": "2026-02-16",
+    "location": "Oeiras",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Dubai Duty Free Tennis Championships",
+    "start": "2026-02-16",
+    "end": "2026-02-23",
+    "location": "Dubai",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Dow Tennis Classic",
+    "start": "2026-02-16",
+    "end": "2026-02-23",
+    "location": "Midland, Michigan",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Oeiras 2 - Jamor Indoor",
+    "start": "2026-02-16",
+    "end": "2026-02-23",
+    "location": "Oeiras",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Open Arena Les Sables d'Olonne",
+    "start": "2026-02-16",
+    "end": "2026-02-23",
+    "location": "Les Sables d'Olonne",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Megasaray Hotels Open",
+    "start": "2026-02-23",
+    "end": "2026-03-02",
+    "location": "Antalya",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "ATX Open",
+    "start": "2026-02-23",
+    "end": "2026-03-02",
+    "location": "Austin",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Merida Open AKRON",
+    "start": "2026-02-23",
+    "end": "2026-03-02",
+    "location": "Merida",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "BNP Paribas Open",
+    "start": "2026-03-02",
+    "end": "2026-03-16",
+    "location": "Indian Wells",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Megasaray Hotels Open",
+    "start": "2026-03-02",
+    "end": "2026-03-09",
+    "location": "Antalya",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Austin 125",
+    "start": "2026-03-09",
+    "end": "2026-03-16",
+    "location": "Austin",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Megasaray Hotels Open",
+    "start": "2026-03-09",
+    "end": "2026-03-16",
+    "location": "Antalya",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Miami Open presented by Itau",
+    "start": "2026-03-16",
+    "end": "2026-03-30",
+    "location": "Miami",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Dubrovnik Open",
+    "start": "2026-03-23",
+    "end": "2026-03-30",
+    "location": "Dubrovnik",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "2026 Colsanitas Cup",
+    "start": "2026-03-30",
+    "end": "2026-04-06",
+    "location": "Bogota",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Credit One Charleston Open",
+    "start": "2026-03-30",
+    "end": "2026-04-06",
+    "location": "Charleston",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "BJK Cup Qualifiers / Zonals",
+    "start": "2026-04-06",
+    "end": "2026-04-13",
+    "location": "Various",
+    "competition": "BJK Cup"
+  },
+  {
+    "title": "Open Villa de Madrid by Silverway Asset Management",
+    "start": "2026-04-06",
+    "end": "2026-04-13",
+    "location": "Madrid",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Upper Austria Ladies Linz",
+    "start": "2026-04-06",
+    "end": "2026-04-13",
+    "location": "Linz",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Oeiras Ladies Open",
+    "start": "2026-04-13",
+    "end": "2026-04-20",
+    "location": "Oeiras",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Open Capfinances Rouen Metropole",
+    "start": "2026-04-13",
+    "end": "2026-04-20",
+    "location": "Rouen",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Porsche Tennis Grand Prix",
+    "start": "2026-04-13",
+    "end": "2026-04-20",
+    "location": "Stuttgart",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Mutua Madrid Open",
+    "start": "2026-04-20",
+    "end": "2026-05-04",
+    "location": "Madrid",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Oeiras Open CETO",
+    "start": "2026-04-20",
+    "end": "2026-04-27",
+    "location": "Oeiras",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Catalonia Open Solgirones",
+    "start": "2026-04-27",
+    "end": "2026-05-04",
+    "location": "La Bisbal d'Emporda",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Huzhou Open",
+    "start": "2026-04-27",
+    "end": "2026-05-04",
+    "location": "Huzhou",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "L'Open 35 de Saint-Malo",
+    "start": "2026-04-27",
+    "end": "2026-05-04",
+    "location": "Saint Malo",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Internazionali BNL d'Italia",
+    "start": "2026-05-04",
+    "end": "2026-05-18",
+    "location": "Rome",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Istanbul Open",
+    "start": "2026-05-04",
+    "end": "2026-05-11",
+    "location": "Istanbul",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Jiangxi Open (WTA 125)",
+    "start": "2026-05-04",
+    "end": "2026-05-11",
+    "location": "Jiujiang",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Parma Ladies Open presented by IREN",
+    "start": "2026-05-11",
+    "end": "2026-05-18",
+    "location": "Parma",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Trophee Clarins",
+    "start": "2026-05-11",
+    "end": "2026-05-18",
+    "location": "Paris",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Grand Prix Son Altesse Royale La Princesse Lalla Meryem",
+    "start": "2026-05-18",
+    "end": "2026-05-25",
+    "location": "Rabat",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Internationaux de Strasbourg",
+    "start": "2026-05-18",
+    "end": "2026-05-25",
+    "location": "Strasbourg",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Roland-Garros",
+    "start": "2026-05-25",
+    "end": "2026-06-08",
+    "location": "Paris",
+    "competition": "Grand Slam"
+  },
+  {
+    "title": "Lexus Birmingham Open",
+    "start": "2026-06-01",
+    "end": "2026-06-08",
+    "location": "Birmingham",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Makarska Open",
+    "start": "2026-06-01",
+    "end": "2026-06-08",
+    "location": "Makarska",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Open delle Puglie Trofeo",
+    "start": "2026-06-01",
+    "end": "2026-06-08",
+    "location": "Foggia",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Lexus Ilkley Open",
+    "start": "2026-06-08",
+    "end": "2026-06-15",
+    "location": "Ilkley",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Libema Open",
+    "start": "2026-06-08",
+    "end": "2026-06-15",
+    "location": "s-Hertogenbosch",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "The HSBC Championships",
+    "start": "2026-06-08",
+    "end": "2026-06-15",
+    "location": "London",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Internazionali Femminili Di Brescia",
+    "start": "2026-06-15",
+    "end": "2026-06-22",
+    "location": "Brescia",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Lexus Nottingham Open",
+    "start": "2026-06-15",
+    "end": "2026-06-22",
+    "location": "Nottingham",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Berlin Tennis Open",
+    "start": "2026-06-15",
+    "end": "2026-06-22",
+    "location": "Berlin",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Lexus Eastbourne Open",
+    "start": "2026-06-22",
+    "end": "2026-06-29",
+    "location": "Eastbourne",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Bad Homburg Open powered by Solarwatt",
+    "start": "2026-06-22",
+    "end": "2026-06-29",
+    "location": "Bad Homburg",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "The Championships",
+    "start": "2026-06-29",
+    "end": "2026-07-13",
+    "location": "Wimbledon",
+    "competition": "Grand Slam"
+  },
+  {
+    "title": "Grand Est Open 88",
+    "start": "2026-07-06",
+    "end": "2026-07-13",
+    "location": "Contrexeville",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Hall of Fame Open presented by the Margaret Fund",
+    "start": "2026-07-06",
+    "end": "2026-07-13",
+    "location": "Newport, Rhode Island",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "Nordea Open",
+    "start": "2026-07-06",
+    "end": "2026-07-13",
+    "location": "Bastad",
+    "competition": "WTA 125"
+  },
+  {
+    "title": "UniCredit Iasi Open",
+    "start": "2026-07-13",
+    "end": "2026-07-20",
+    "location": "Iasi",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Livesport Prague Open 2026",
+    "start": "2026-07-20",
+    "end": "2026-07-27",
+    "location": "Prague",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "MSC Hamburg Ladies Open",
+    "start": "2026-07-20",
+    "end": "2026-07-27",
+    "location": "Hamburg",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "The Memphis Classic",
+    "start": "2026-07-27",
+    "end": "2026-08-03",
+    "location": "Memphis",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Mubadala DC Open",
+    "start": "2026-07-27",
+    "end": "2026-08-03",
+    "location": "Washington DC",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "National Bank Open presented by Rogers",
+    "start": "2026-08-03",
+    "end": "2026-08-17",
+    "location": "Toronto",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Cincinnati Open",
+    "start": "2026-08-10",
+    "end": "2026-08-24",
+    "location": "Cincinnati",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Abierto GNP Seguros",
+    "start": "2026-08-24",
+    "end": "2026-08-31",
+    "location": "Monterrey",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "US Open",
+    "start": "2026-08-31",
+    "end": "2026-09-14",
+    "location": "New York",
+    "competition": "Grand Slam"
+  },
+  {
+    "title": "SP Open",
+    "start": "2026-09-14",
+    "end": "2026-09-21",
+    "location": "Sao Paulo",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Guadalajara Open AKRON presented by Santander",
+    "start": "2026-09-14",
+    "end": "2026-09-21",
+    "location": "Guadalajara",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "BJK Cup Finals",
+    "start": "2026-09-21",
+    "end": "2026-09-28",
+    "location": "Various",
+    "competition": "BJK Cup"
+  },
+  {
+    "title": "Korea Open",
+    "start": "2026-09-21",
+    "end": "2026-09-28",
+    "location": "Seoul",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Singapore Tennis Open",
+    "start": "2026-09-21",
+    "end": "2026-09-28",
+    "location": "Singapore",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "China Open",
+    "start": "2026-09-28",
+    "end": "2026-10-12",
+    "location": "Beijing",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Wuhan Open",
+    "start": "2026-10-12",
+    "end": "2026-10-19",
+    "location": "Wuhan",
+    "competition": "WTA 1000"
+  },
+  {
+    "title": "Kinoshita Group Japan Open",
+    "start": "2026-10-19",
+    "end": "2026-10-26",
+    "location": "Osaka",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Ningbo Open",
+    "start": "2026-10-19",
+    "end": "2026-10-26",
+    "location": "Ningbo",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Guangzhou Open",
+    "start": "2026-10-26",
+    "end": "2026-11-02",
+    "location": "Guangzhou",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Toray Pan Pacific Open Tennis",
+    "start": "2026-10-26",
+    "end": "2026-11-02",
+    "location": "Tokyo",
+    "competition": "WTA 500"
+  },
+  {
+    "title": "Chennai Open",
+    "start": "2026-11-02",
+    "end": "2026-11-09",
+    "location": "Chennai",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Jiangxi Open",
+    "start": "2026-11-02",
+    "end": "2026-11-09",
+    "location": "Jiujiang",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "Prudential Hong Kong Tennis Open",
+    "start": "2026-11-02",
+    "end": "2026-11-09",
+    "location": "Hong Kong",
+    "competition": "WTA 250"
+  },
+  {
+    "title": "WTA Finals Riyadh presented by PIF",
+    "start": "2026-11-09",
+    "end": "2026-11-16",
+    "location": "Riyadh",
+    "competition": "WTA Finals"
+  },
+  {
+    "title": "BJK Cup Playoffs",
+    "start": "2026-11-16",
+    "end": "2026-11-23",
+    "location": "Various",
+    "competition": "BJK Cup"
+  }
+]

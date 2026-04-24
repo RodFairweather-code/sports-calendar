@@ -1,0 +1,4970 @@
+[
+  {
+    "round": "1",
+    "start": "2025-08-08T20:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T12:30",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T12:30",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T12:30",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T15:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-09T17:30",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-10T16:30",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T12:30",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T12:30",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T12:30",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T15:00",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T15:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-16T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-17T12:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-17T15:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-22T20:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T12:30",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T12:30",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T12:30",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T15:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T15:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T15:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-23T15:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-29T20:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T12:30",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T12:30",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T12:30",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T15:00",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T15:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-30T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-12T20:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T12:30",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T12:30",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T12:30",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T15:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T15:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T15:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-13T15:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-09-14T12:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-19T20:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-20T12:30",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-20T12:30",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-20T12:30",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-20T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-20T15:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-20T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-20T15:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-20T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-21T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-22T20:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-12-02T19:45",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-26T20:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T12:30",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T12:30",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T12:30",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-27T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-30T19:45",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-30T19:45",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-30T19:45",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-30T19:45",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-30T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-30T19:45",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-30T19:45",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-30T20:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-10-01T19:45",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-10-01T19:45",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-10-01T19:45",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-10-01T20:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-03T20:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T12:30",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T12:30",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T12:30",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T15:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T15:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-04T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-10-05T12:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-17T20:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T12:30",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T12:30",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T12:30",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T15:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T15:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T15:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-18T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-21T19:45",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-21T19:45",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-21T19:45",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-21T19:45",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-21T19:45",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-21T19:45",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-21T19:45",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-21T20:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-22T19:45",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-22T19:45",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-22T19:45",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-22T20:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-24T20:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T12:30",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T12:30",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T12:30",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T15:00",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T15:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-25T15:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-31T20:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T12:30",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T12:30",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T12:30",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T15:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-11-01T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-04T19:45",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-04T19:45",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-04T19:45",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-04T19:45",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-04T19:45",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-04T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-04T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-04T20:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-05T19:45",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-05T19:45",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-05T19:45",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-05T20:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-07T20:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T12:30",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T12:30",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T12:30",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-21T20:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T12:30",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T12:30",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T12:30",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-23T12:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-25T19:45",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-25T19:45",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-25T19:45",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-25T19:45",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-25T19:45",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-25T19:45",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-25T20:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-26T19:45",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-26T19:45",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-26T19:45",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-26T19:45",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-26T20:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-28T20:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T12:30",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T12:30",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T12:30",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T15:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T15:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T15:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-01T20:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-05T20:15",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-06T12:30",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-06T12:30",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-06T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-06T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-06T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-06T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-06T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-06T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-06T15:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-02-03T19:45",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-02-17T19:45",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-09T19:45",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-09T19:45",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-09T19:45",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-09T19:45",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-09T19:45",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-09T19:45",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-09T19:45",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-09T20:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-10T19:45",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-10T19:45",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-10T19:45",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-10T20:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-12T20:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T12:30",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T12:30",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T12:30",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T15:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T15:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T15:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-13T15:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-15T20:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-19T20:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T12:30",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T12:30",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T12:30",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T15:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-20T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T12:30",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T13:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T15:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T15:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T15:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-26T17:30",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T18:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T19:45",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2025-12-29T20:15",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T12:30",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-01T17:30",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-04T12:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-04T12:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-04T15:00",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-04T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-04T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-04T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-04T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-04T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-05T20:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-02-03T19:45",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-02-03T19:45",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-04-14T20:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-16T20:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T12:30",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T12:30",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T12:30",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T15:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-17T17:30",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-20T19:45",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-20T19:45",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-20T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-20T19:45",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-20T19:45",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-20T19:45",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-20T19:45",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-20T19:45",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-20T20:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-21T19:45",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-21T19:45",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-21T20:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-23T20:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-24T12:30",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-24T12:30",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-24T15:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-24T15:00",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-24T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-24T15:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-24T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-24T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-24T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-25T12:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-26T20:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-30T20:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T12:30",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T12:30",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T12:30",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T15:00",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T15:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-01-31T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-06T20:01",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-07T12:31",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-07T12:31",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-07T12:31",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-07T15:01",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-07T15:01",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-07T15:01",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-07T15:01",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-07T15:01",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-07T15:01",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-08T12:01",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-09T20:01",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-10T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-10T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-10T20:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-11T19:45",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-14T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-14T15:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-14T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-14T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-14T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-16T20:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-17T19:45",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-03-03T19:45",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-20T20:00",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T12:30",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T12:30",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T12:30",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T12:30",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-22T12:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-24T19:45",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-24T19:45",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-24T19:45",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-24T19:45",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-24T19:45",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-24T19:45",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-24T19:45",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-24T20:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-25T19:45",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-25T19:45",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-25T19:45",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-25T20:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-27T20:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T12:30",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T12:30",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T12:30",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T15:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-02-28T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-02T20:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-06T20:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-07T12:30",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-07T12:30",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-07T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-07T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-07T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-07T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-07T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-07T15:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-08T16:30",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-17T19:45",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-18T19:45",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-10T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-10T19:45",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-10T19:45",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-10T19:45",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-10T19:45",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-10T20:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-11T19:45",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-11T19:45",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-11T19:45",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-11T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-11T19:45",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-11T20:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-13T20:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T12:30",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T12:30",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T12:30",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T15:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T15:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-14T15:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-16T20:00",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-20T20:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T12:30",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T12:30",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T12:30",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T17:15",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T12:30",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T20:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-28T19:45",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T12:30",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T13:00",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T17:30",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T20:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-07T20:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-10T20:00",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T12:30",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T12:30",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-12T12:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-17T20:00",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T12:30",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T12:30",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T12:30",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-19T12:00",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-22T19:45",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-22T19:45",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-22T19:45",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-22T19:45",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-14T20:00",
+    "stadium": "St. Mary's Stadium",
+    "homeTeam": "Southampton",
+    "awayTeam": "Blackburn Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-24T20:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Millwall",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T12:30",
+    "stadium": "The Valley",
+    "homeTeam": "Charlton Athletic",
+    "awayTeam": "Hull City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T12:30",
+    "stadium": "Riverside Stadium",
+    "homeTeam": "Middlesbrough",
+    "awayTeam": "Watford",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T12:30",
+    "stadium": "The Hawthorns",
+    "homeTeam": "West Bromwich Albion",
+    "awayTeam": "Ipswich Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "St. Andrew's @ Knighthead Park",
+    "homeTeam": "Birmingham City",
+    "awayTeam": "Bristol City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "Carrow Road",
+    "homeTeam": "Norwich City",
+    "awayTeam": "Swansea City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "MATRADE Loftus Road",
+    "homeTeam": "Queens Park Rangers",
+    "awayTeam": "Derby County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "Bramall Lane",
+    "homeTeam": "Sheffield United",
+    "awayTeam": "Preston North End",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "bet365 Stadium",
+    "homeTeam": "Stoke City",
+    "awayTeam": "Portsmouth",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-26T12:00",
+    "stadium": "The Coventry Building Society Arena",
+    "homeTeam": "Coventry City",
+    "awayTeam": "Wrexham",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "Ewood Park",
+    "homeTeam": "Blackburn Rovers",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "Ashton Gate Stadium",
+    "homeTeam": "Bristol City",
+    "awayTeam": "Stoke City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "Pride Park Stadium",
+    "homeTeam": "Derby County",
+    "awayTeam": "Sheffield United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "The MKM Stadium",
+    "homeTeam": "Hull City",
+    "awayTeam": "Norwich City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "Portman Road",
+    "homeTeam": "Ipswich Town",
+    "awayTeam": "Queens Park Rangers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "The Den",
+    "homeTeam": "Millwall",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "Fratton Park",
+    "homeTeam": "Portsmouth",
+    "awayTeam": "Birmingham City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "Deepdale",
+    "homeTeam": "Preston North End",
+    "awayTeam": "Southampton",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "West Bromwich Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "Swansea.com Stadium",
+    "homeTeam": "Swansea City",
+    "awayTeam": "Charlton Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "Vicarage Road",
+    "homeTeam": "Watford",
+    "awayTeam": "Coventry City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T12:30",
+    "stadium": "SToK Cae Ras",
+    "homeTeam": "Wrexham",
+    "awayTeam": "Middlesbrough",
+    "homeScore": null,
+    "awayScore": null
+  }
+]

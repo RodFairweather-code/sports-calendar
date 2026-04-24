@@ -1,0 +1,4952 @@
+[
+  {
+    "round": "1",
+    "start": "2025-08-01T20:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T12:30",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T15:00",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T15:00",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-02T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2025-08-03T12:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-07T20:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T12:30",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T12:30",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2025-08-09T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T12:30",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T12:30",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2025-08-16T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-19T19:45",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-20T20:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2025-08-23T12:30",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T12:30",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-23T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2025-08-30T12:30",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T12:30",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-08-30T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2025-09-06T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-06T15:00",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-06T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-06T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-06T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-06T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-06T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-06T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-13T12:30",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-13T12:30",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-13T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-13T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2025-09-13T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-13T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-13T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-13T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-13T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-13T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-13T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-13T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-20T12:30",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-20T12:30",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-20T12:30",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-20T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2025-09-20T15:00",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-20T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-20T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-20T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-20T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-20T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-20T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-20T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-27T12:30",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-27T12:30",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-27T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-27T15:00",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2025-09-27T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-09-27T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-09-27T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-09-27T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-09-27T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-09-27T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-09-27T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-09-27T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-09-30T19:45",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-09-30T19:45",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-02T20:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-04T12:30",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2025-10-04T12:30",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-04T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-04T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-04T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-04T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-04T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-04T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-04T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-04T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-04T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-11T14:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-11T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-11T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-11T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-11T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2025-10-11T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-11T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-16T20:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-18T12:30",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-18T12:30",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-18T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-18T15:00",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-18T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-18T15:00",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2025-10-18T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-18T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-18T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-18T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-18T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-21T20:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-23T20:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-25T12:30",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-25T12:30",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-25T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-25T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-25T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2025-10-25T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-10-25T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-10-25T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-10-25T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-10-25T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-10-27T20:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-10-28T19:45",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-10-28T19:45",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-04T19:45",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-06T20:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-08T12:30",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-08T12:30",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-08T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2025-11-08T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-15T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-15T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-15T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-15T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2025-11-15T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-20T20:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T12:30",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2025-11-22T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-25T19:45",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-25T19:45",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T12:30",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T12:30",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T15:00",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T15:00",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T15:00",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-11-29T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2025-11-29T15:00",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-02T19:45",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-06T12:30",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-06T12:30",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-09T19:45",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-09T19:45",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-09T19:45",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-09T19:45",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-09T19:45",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-09T19:45",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2025-12-09T19:45",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-09T20:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-09T20:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-10T19:45",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-13T12:30",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-13T12:30",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-13T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-13T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-13T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-13T15:00",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-13T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-13T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-13T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-13T15:00",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-13T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2025-12-13T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-18T20:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-19T19:45",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-20T12:30",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-20T12:30",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-20T15:00",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-20T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-20T15:00",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-20T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-20T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-20T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-20T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2025-12-20T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-26T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-26T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-26T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-26T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-26T15:00",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-26T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-26T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-26T15:00",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-26T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-26T15:00",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-26T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2025-12-26T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-29T19:45",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-29T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-29T19:45",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-29T19:45",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-29T19:45",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-29T19:45",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2025-12-29T19:45",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-29T19:45",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-29T19:45",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-29T19:45",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-29T19:45",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2025-12-29T19:45",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-01T15:00",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-01T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2026-01-01T15:00",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2026-01-01T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2026-01-01T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2026-01-01T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2026-01-01T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2026-01-01T15:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2026-01-01T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2026-01-01T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2026-01-01T15:00",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-01T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-04T12:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-04T12:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-04T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-04T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-04T15:00",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-04T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-04T15:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-04T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-10T12:30",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2026-01-10T12:30",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-10T15:00",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-10T15:00",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-17T12:30",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-17T12:30",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-17T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-17T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-17T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-17T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-17T15:00",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-17T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-17T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2026-01-17T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-17T15:00",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-17T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-20T19:45",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-22T20:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-24T12:30",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-24T12:30",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-24T12:30",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-24T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-24T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-24T15:00",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-24T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-24T15:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-24T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-24T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2026-01-24T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-27T19:45",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-27T19:45",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-27T19:45",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-27T19:45",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-27T19:45",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-27T19:45",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-27T19:45",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-27T19:45",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2026-01-27T19:45",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-27T20:00",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-27T20:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-31T12:30",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-31T12:30",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-31T14:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-31T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-31T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-31T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-31T15:00",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-31T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-31T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-31T15:00",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-01-31T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2026-01-31T15:00",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-02-03T19:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-02-03T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-02-03T19:45",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-02-07T12:31",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-02-07T12:31",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-07T15:01",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-07T15:01",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-02-07T15:01",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-02-07T15:01",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-07T15:01",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-07T15:01",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-07T15:01",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-07T15:01",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-02-07T15:01",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2026-02-07T15:01",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-10T19:45",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-10T19:45",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-14T12:30",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-14T12:30",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-14T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-14T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-14T15:00",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-14T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2026-02-14T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-14T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-17T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-17T19:45",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-17T19:45",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-17T19:45",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-17T19:45",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-17T19:45",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-17T19:45",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-17T19:45",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2026-02-17T19:45",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-17T20:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-17T20:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-18T19:45",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-21T12:30",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-21T12:30",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-21T12:30",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:00",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-21T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-21T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-21T15:00",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-21T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2026-02-21T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-21T15:30",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-24T19:45",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-24T19:45",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-24T19:45",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-28T12:30",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-28T12:30",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-28T15:00",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-28T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-28T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-28T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-28T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-28T15:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2026-02-28T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-28T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-28T15:00",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-02-28T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-03-03T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-03-03T19:45",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-03-03T19:45",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-03-07T12:30",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2026-03-07T12:30",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-07T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-07T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-07T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-07T15:00",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-07T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-07T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-07T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-08T12:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-10T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-10T19:45",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-10T19:45",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-10T19:45",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2026-03-10T19:45",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-10T19:45",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-11T19:45",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-11T19:45",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-14T12:30",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-14T12:30",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-14T15:00",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-14T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-14T15:00",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-14T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-14T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-14T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-14T15:00",
+    "stadium": "Madejski Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-14T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-14T15:00",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2026-03-14T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-17T19:45",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-17T19:45",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-17T19:45",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-17T19:45",
+    "stadium": "Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-17T19:45",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-17T19:45",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-17T19:45",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-17T19:45",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-17T19:45",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-17T19:45",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2026-03-17T19:45",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-17T20:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-21T12:30",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-21T12:30",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-21T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-21T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-21T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-21T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-21T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2026-03-21T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-24T19:45",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-28T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-28T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-28T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-28T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2026-03-28T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-02T19:45",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T12:30",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-03T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2026-04-06T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-06T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T12:30",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2026-04-11T12:30",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T12:30",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-11T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-14T19:45",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-14T19:45",
+    "stadium": "John Smith's Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-14T19:45",
+    "stadium": "Gaughan Group Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-14T19:45",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2026-04-14T19:45",
+    "stadium": "DW Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-15T19:45",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-15T19:45",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-16T19:45",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T12:30",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T12:30",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-18T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2026-04-18T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-18T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-18T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-19T13:00",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-19T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-21T19:45",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-22T19:45",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-25T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "University of Bradford Stadium",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Bolton Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Exeter City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "Cardiff City Stadium",
+    "homeTeam": "Cardiff City",
+    "awayTeam": "Northampton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "The Eco-Power Stadium",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-25T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2026-04-25T15:00",
+    "stadium": "LNER Stadium",
+    "homeTeam": "Lincoln City",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "AESSEAL New York Stadium",
+    "homeTeam": "Rotherham United",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-25T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-28T19:45",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-28T19:45",
+    "stadium": "London Road Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2026-04-28T19:45",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Port Vale",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "Toughsheet Community Stadium",
+    "homeTeam": "Bolton Wanderers",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "St James Park",
+    "homeTeam": "Exeter City",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Cardiff City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "Sixfields Stadium",
+    "homeTeam": "Northampton Town",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "Vale Park",
+    "homeTeam": "Port Vale",
+    "awayTeam": "Lincoln City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "Lamex Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2026-05-02T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Rotherham United",
+    "homeScore": null,
+    "awayScore": null
+  }
+]
