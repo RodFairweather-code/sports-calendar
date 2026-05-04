@@ -3,6 +3,9 @@ import CalendarView from './components/CalendarView'
 import EditorialView from './components/EditorialView'
 import EventPanel from './components/EventPanel'
 import CompetitionToggles from './components/CompetitionToggles'
+import AdminView from './components/AdminView'
+import ProductionView from './components/ProductionView'
+import RightsView from './components/RightsView'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import './App.css'
@@ -13,6 +16,8 @@ const VIEWS = [
   { id: 'production', label: 'Production' },
   { id: 'technical',  label: 'Technical' },
   { id: 'assets',     label: 'Asset Management' },
+  { id: 'rights',     label: 'Rights' },
+  { id: 'admin',      label: 'Admin' },
 ]
 
 const GOVERNING_BODIES = Object.values(
@@ -103,6 +108,7 @@ function App() {
           {VIEWS.map(v => (
             <button
               key={v.id}
+              data-id={v.id}
               className={`nav-tab${view === v.id ? ' active' : ''}`}
               onClick={() => setView(v.id)}
             >
@@ -110,7 +116,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v1.2</span>
+        <span className="header-version">v2.2</span>
       </header>
 
       {view === 'calendar' && (
@@ -119,20 +125,27 @@ function App() {
       {view === 'editorial' && (
         <EditorialView events={visibleEvents} onEventClick={setSelectedEvent} />
       )}
-      {(view === 'production' || view === 'technical' || view === 'assets') && (
+      {view === 'production' && (
+        <ProductionView events={visibleEvents} onEventClick={setSelectedEvent} />
+      )}
+      {(view === 'technical' || view === 'assets') && (
         <div className="placeholder-view">
           <p>{VIEWS.find(v => v.id === view)?.label}</p>
           <span>Coming soon</span>
         </div>
       )}
+      {view === 'rights' && <RightsView />}
+      {view === 'admin' && <AdminView />}
 
-      <CompetitionToggles
-        competitions={COMPETITIONS}
-        governingBodies={GOVERNING_BODIES}
-        activeComps={activeComps}
-        onToggle={toggleComp}
-        onToggleBody={toggleGoverningBody}
-      />
+      {view !== 'admin' && view !== 'rights' && (
+        <CompetitionToggles
+          competitions={COMPETITIONS}
+          governingBodies={GOVERNING_BODIES}
+          activeComps={activeComps}
+          onToggle={toggleComp}
+          onToggleBody={toggleGoverningBody}
+        />
+      )}
 
       {selectedEvent && (
         <EventPanel

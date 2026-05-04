@@ -16,10 +16,68 @@ function formatDateRange(start, end) {
   return sStr === eStr ? sStr : `${sStr} – ${eStr}`
 }
 
+function loadDecisions() {
+  try { return JSON.parse(localStorage.getItem('editorial_decisions') || '{}') }
+  catch { return {} }
+}
+
+function persistDecisions(d) {
+  localStorage.setItem('editorial_decisions', JSON.stringify(d))
+}
+
+function loadPlatforms() {
+  try { return JSON.parse(localStorage.getItem('admin_platforms') || '[]') }
+  catch { return [] }
+}
+
+function loadRights() {
+  try { return JSON.parse(localStorage.getItem('rights_matrix') || '{}') }
+  catch { return {} }
+}
+
+// Cycles: empty → Y → empty. Typing P sets P.
+function DecisionCell({ value, eventId, platformId, onChange }) {
+  const state = value || ''
+
+  function handleClick(e) {
+    e.stopPropagation()
+    onChange(eventId, platformId, state === 'Y' ? '' : 'Y')
+  }
+
+  function handleKeyDown(e) {
+    e.stopPropagation()
+    const k = e.key.toUpperCase()
+    if (k === 'P') { e.preventDefault(); onChange(eventId, platformId, state === 'P' ? '' : 'P') }
+    else if (k === 'Y') { e.preventDefault(); onChange(eventId, platformId, state === 'Y' ? '' : 'Y') }
+    else if (k === 'DELETE' || k === 'BACKSPACE') { e.preventDefault(); onChange(eventId, platformId, '') }
+  }
+
+  const cls = state === 'Y' ? 'decision-cell decision-cell--yes'
+            : state === 'P' ? 'decision-cell decision-cell--plan'
+            : 'decision-cell decision-cell--empty'
+
+  return (
+    <div
+      className={cls}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="button"
+      aria-label={`Coverage ${state || 'none'}`}
+    >
+      {state}
+    </div>
+  )
+}
+
 function EditorialView({ events, onEventClick }) {
   const rowRefs = useRef({})
   const [selectedDate, setSelectedDate] = useState('')
   const [highlightedIndex, setHighlightedIndex] = useState(null)
+  const [decisions, setDecisions] = useState(loadDecisions)
+  const [platforms] = useState(loadPlatforms)
+  const [rights] = useState(loadRights)
+  const [rightsConflict, setRightsConflict] = useState(null)
   const todayStr = new Date().toISOString().slice(0, 10)
 
   const sorted = [...events].sort((a, b) => {
@@ -43,8 +101,69 @@ function EditorialView({ events, onEventClick }) {
     else setHighlightedIndex(null)
   }
 
+  function setDecision(eventId, platformId, value) {
+    setDecisions(prev => {
+      const next = { ...prev, [eventId]: { ...prev[eventId], [platformId]: value } }
+      persistDecisions(next)
+      return next
+    })
+  }
+
+  function handleDecision(eventId, platformId, value) {
+    if (value === 'Y' || value === 'P') {
+      const competitionId = eventId.split('|')[0]
+      if (rights[competitionId]?.[platformId] === 'N') {
+        setRightsConflict({ eventId, platformId, value })
+        return
+      }
+    }
+    setDecision(eventId, platformId, value)
+  }
+
+  function confirmRightsOverride() {
+    if (rightsConflict) {
+      setDecision(rightsConflict.eventId, rightsConflict.platformId, rightsConflict.value)
+    }
+    setRightsConflict(null)
+  }
+
+  function cancelRightsOverride() {
+    setRightsConflict(null)
+  }
+
+  function toggleInitProduction(eventId, e) {
+    e.stopPropagation()
+    setDecisions(prev => {
+      const next = {
+        ...prev,
+        [eventId]: { ...prev[eventId], initProduction: !prev[eventId]?.initProduction },
+      }
+      persistDecisions(next)
+      return next
+    })
+  }
+
   return (
     <div className="editorial-view">
+
+      {rightsConflict && (
+        <div className="unsaved-backdrop" onClick={cancelRightsOverride}>
+          <div className="unsaved-dialog" onClick={e => e.stopPropagation()}>
+            <p className="unsaved-dialog-msg">
+              <strong>No rights for this selection</strong>
+              You do not have the rights for this selection. Continue anyway?
+            </p>
+            <div className="unsaved-dialog-actions">
+              <button className="unsaved-btn unsaved-btn--save" onClick={confirmRightsOverride}>
+                Yes, continue and log that I have made this decision
+              </button>
+              <button className="unsaved-btn unsaved-btn--cancel" onClick={cancelRightsOverride}>
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="editorial-toolbar">
         <div className="ed-toolbar-right">
@@ -79,8 +198,10 @@ function EditorialView({ events, onEventClick }) {
               <th>Competition</th>
               <th>Event</th>
               <th>Venue</th>
-              <th>Round</th>
-              <th>Score</th>
+              {platforms.map(p => (
+                <th key={p.id} className="ed-platform-th" title={p.name}>{p.name}</th>
+              ))}
+              <th className="ed-initprod-th">Init Production</th>
             </tr>
           </thead>
           <tbody>
@@ -89,10 +210,9 @@ function EditorialView({ events, onEventClick }) {
               const isAllDay = event.allDay || !event.start || event.start.length === 10
               const dateStr = formatDateRange(event.start, isAllDay ? event.end : null)
               const timeStr = isAllDay ? '' : (event.start?.slice(11, 16) ?? '—')
-              const hasScore = ep.homeScore != null && ep.awayScore != null
-              const score = hasScore ? `${ep.homeScore} – ${ep.awayScore}` : null
               const isToday = i === todayIndex
               const isHighlighted = i === highlightedIndex
+              const eventDecisions = decisions[event.id] || {}
 
               return (
                 <tr
@@ -110,9 +230,32 @@ function EditorialView({ events, onEventClick }) {
                   </td>
                   <td className="ed-event">{event.title}</td>
                   <td className="ed-venue">{ep.venue || '—'}</td>
-                  <td className="ed-round">{ep.round || '—'}</td>
-                  <td className="ed-score">
-                    {score ?? <span className="ed-tbc">TBC</span>}
+                  {platforms.map(p => {
+                    const rightsState = rights[ep.competitionId]?.[p.id] || ''
+                    const tdClass = rightsState === 'Y' ? ' ed-platform-td--rights-yes'
+                                 : rightsState === 'N' ? ' ed-platform-td--rights-no'
+                                 : ''
+                    return (
+                      <td key={p.id} className={`ed-platform-td${tdClass}`}>
+                        {rightsState === 'N' && <span className="rights-no-cross" aria-hidden="true">✕</span>}
+                        <DecisionCell
+                          value={eventDecisions[p.id] || ''}
+                          eventId={event.id}
+                          platformId={p.id}
+                          onChange={handleDecision}
+                        />
+                      </td>
+                    )
+                  })}
+                  <td className="ed-initprod-td">
+                    <input
+                      type="checkbox"
+                      className="ed-initprod-cb"
+                      checked={!!eventDecisions.initProduction}
+                      onChange={e => toggleInitProduction(event.id, e)}
+                      onClick={e => e.stopPropagation()}
+                      title="Initialise production planning"
+                    />
                   </td>
                 </tr>
               )
