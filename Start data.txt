@@ -1,0 +1,17 @@
+Add the following platforms in the Admin / Platforms area:
+
+BBC
+ITV Ealing
+Sky MCR
+TAMS
+NBCU
+Reuters
+
+Add the following Patterns in the Admin / Patterns area with the details:
+
+2 Cam Lower League, 2 Cameramen 2 hours from start until 2 hour after end, 4 incoming lines, 2 outgoing lines offset 2 hours from start until 2 hours after finish, 6 incoming audios, 4 outgoing audios, offset 2 hours from start until 2 hours after end.
+
+4 Cam middle League, 4 Cameramen 3 hours from start until 2 hour after end, 8 incoming lines, 4 outgoing lines offset 2 hours from start until 2 hours after finish, 8 incoming audios, 6 outgoing audios, offset 2 hours from start until 2 hours after end.
+
+8 Cam Feature Match, 8 Cameramen 4 hours from start until 3 hour after end, 10 incoming lines, 4 outgoing lines offset 3 hours from start until 2 hours after finish, 12 incoming audios, 8 outgoing audios, offset 3 hours from start until 2 hours after end.
+
