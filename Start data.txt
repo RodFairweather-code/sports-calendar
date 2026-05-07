@@ -44,3 +44,35 @@ Rad
 Stan
 Vanessa
 
+In the Producers box, add:
+Abagail
+Benny
+Cammy
+Donna
+Felicity
+
+In the Commentator box, add:
+Graham
+Henry
+Indya
+Jules
+Killian
+
+In the EVS Operator box, add:
+Liam
+Mike
+Nola
+Olivia
+Peter
+Rowena
+
+
+In the Graphics Operator box, add:
+Susan
+Tabatha
+Xavier
+Aaron
+Bonnie
+Chloe
+Thalia
+
