@@ -1,18 +1,18 @@
-const SEED_VERSION = 2
+const SEED_VERSION = 4
 
 const PLATFORMS = [
-  { id: 'plat_seed_1', name: 'BBC 1',       defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_2', name: 'ITV Ealing',  defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_3', name: 'Sky MCR',     defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_4', name: 'TAMS',        defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_5', name: 'NBCU',        defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_6', name: 'Reuters',     defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_2', name: "ITV Ealing", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_3', name: "Sky MCR", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_4', name: "TAMS", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_5', name: "NBCU", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_6', name: "Reuters", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
 ]
 
 const PATTERNS = [
   {
     id: 'pat_seed_1',
-    name: '2 Cam Lower League',
+    name: "2 Cam Lower League",
     cameramen: 2, evsOperator: false,
     crewFrom: -2, crewUntil: 2,
     incomingVideoLines: 4, outgoingVideoLines: 2,
@@ -22,7 +22,7 @@ const PATTERNS = [
   },
   {
     id: 'pat_seed_2',
-    name: '4 Cam Middle League',
+    name: "4 Cam middle League",
     cameramen: 4, evsOperator: false,
     crewFrom: -3, crewUntil: 2,
     incomingVideoLines: 8, outgoingVideoLines: 4,
@@ -32,7 +32,7 @@ const PATTERNS = [
   },
   {
     id: 'pat_seed_3',
-    name: '8 Cam Feature Match',
+    name: "8 Cam Feature Match",
     cameramen: 8, evsOperator: false,
     crewFrom: -4, crewUntil: 3,
     incomingVideoLines: 10, outgoingVideoLines: 4,
@@ -43,14 +43,14 @@ const PATTERNS = [
 ]
 
 const STAFF = {
-  cameramen:               ['Arthur', 'Brian', 'Charlie', 'Denise', 'Fiona'],
-  onsiteAudio:             ['Gus', 'Helen', 'James', 'Ken'],
-  onsiteProductionManager: ['Louise', 'Max', 'Neil', 'Oscar'],
-  director:                ['Penny', 'Qudos', 'Rad', 'Stan', 'Vanessa'],
-  producer:                [],
-  commentator:             [],
-  evsOperator:             [],
-  graphicsOperator:        [],
+  cameramen: ["Arthur","Brian","Charlie","Denise","Fiona"],
+  onsiteAudio: ["Gus","Helen","James","Ken"],
+  onsiteProductionManager: ["Louise","Max","Neil","Oscar"],
+  director: ["Penny","Qudos","Rad","Stan","Vanessa"],
+  producer: ["Abagail","Benny","Cammy","Donna","Felicity"],
+  commentator: ["Graham","Henry","Indya","Jules","Killian"],
+  evsOperator: ["Liam","Mike","Nola","Olivia","Peter","Rowena"],
+  graphicsOperator: ["Susan","Tabatha","Xavier","Aaron","Bonnie","Chloe","Thalia"],
 }
 
 export function seedLocalStorage() {

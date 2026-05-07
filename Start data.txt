@@ -25,7 +25,7 @@ Charlie
 Denise
 Fiona
 
-In the Onsite Audiobox, add:
+In the Onsite Audio box, add:
 Gus
 Helen
 James
@@ -75,4 +75,49 @@ Aaron
 Bonnie
 Chloe
 Thalia
+
+In the Admin / Tech stack page, use the following data for each platform:
+
+BBC1
+Video incoming = 8
+Video Outgoing = 16
+Talkback incoming = 24
+Talkback outgoing = 16
+2110 = 120
+
+
+ITV Ealing
+Video incoming = 16
+Video Outgoing = 24
+Talkback incoming = 42
+Talkback outgoing = 24
+2110 = 80
+
+Sky MCR
+Video incoming = 12
+Video Outgoing = 12
+Talkback incoming = 36
+Talkback outgoing = 21
+2110 = 160
+
+TAMS
+Video incoming = 0
+Video Outgoing = 24
+Talkback incoming = 12
+Talkback outgoing = 12
+2110 = 56
+
+NBCU
+Video incoming = 4
+Video Outgoing = 8
+Talkback incoming = 8
+Talkback outgoing = 8
+2110 = 180
+
+Reuters
+Video incoming = 2
+Video Outgoing = 4
+Talkback incoming = 4
+Talkback outgoing = 12
+2110 = 240
 
