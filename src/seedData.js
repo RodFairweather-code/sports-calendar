@@ -1,4 +1,4 @@
-const SEED_VERSION = 6
+const SEED_VERSION = 7
 
 const PLATFORMS = [
   { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
@@ -53,6 +53,18 @@ const STAFF = {
   graphicsOperator: ["Susan","Tabatha","Xavier","Aaron","Bonnie","Chloe","Thalia"],
 }
 
+const TECH_STACK = {
+  encoders: 0, decoders: 0, frameRateConverters: 0, audioOffset: 0, outgoingIdents: 0,
+  platformLines: {
+    "plat_seed_1": {"videoIncoming":8,"videoOutgoing":16,"talkbackIncoming":24,"talkbackOutgoing":16,"smpte2110":120},
+    "plat_seed_2": {"videoIncoming":16,"videoOutgoing":24,"talkbackIncoming":42,"talkbackOutgoing":24,"smpte2110":80},
+    "plat_seed_3": {"videoIncoming":12,"videoOutgoing":12,"talkbackIncoming":36,"talkbackOutgoing":21,"smpte2110":160},
+    "plat_seed_4": {"videoIncoming":0,"videoOutgoing":24,"talkbackIncoming":12,"talkbackOutgoing":12,"smpte2110":56},
+    "plat_seed_5": {"videoIncoming":4,"videoOutgoing":8,"talkbackIncoming":8,"talkbackOutgoing":8,"smpte2110":180},
+    "plat_seed_6": {"videoIncoming":2,"videoOutgoing":4,"talkbackIncoming":4,"talkbackOutgoing":12,"smpte2110":240},
+  },
+}
+
 export function seedLocalStorage() {
   const seededVersion = parseInt(localStorage.getItem('seed_version') || '0', 10)
   if (seededVersion >= SEED_VERSION) return
@@ -60,5 +72,6 @@ export function seedLocalStorage() {
   localStorage.setItem('admin_platforms', JSON.stringify(PLATFORMS))
   localStorage.setItem('admin_patterns', JSON.stringify(PATTERNS))
   localStorage.setItem('admin_staff', JSON.stringify(STAFF))
+  localStorage.setItem('admin_tech_stack', JSON.stringify(TECH_STACK))
   localStorage.setItem('seed_version', String(SEED_VERSION))
 }
