@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-seed": "node generate-seed.js"
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.15",
