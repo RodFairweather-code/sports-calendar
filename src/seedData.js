@@ -1,4 +1,4 @@
-const SEED_VERSION = 9
+const SEED_VERSION = 10
 
 const PLATFORMS = [
   { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
@@ -54,7 +54,7 @@ const STAFF = {
 }
 
 const TECH_STACK = {
-  encoders: 0, decoders: 0, frameRateConverters: 0, audioOffset: 0, outgoingIdents: 0,
+  encoders: 24, decoders: 24, frameRateConverters: 4, audioOffset: 8, outgoingIdents: 8,
   platformLines: {
     "plat_seed_1": {"videoIncoming":8,"videoOutgoing":16,"talkbackIncoming":24,"talkbackOutgoing":16,"smpte2110":120},
     "plat_seed_2": {"videoIncoming":16,"videoOutgoing":24,"talkbackIncoming":42,"talkbackOutgoing":24,"smpte2110":80},

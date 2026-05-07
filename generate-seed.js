@@ -106,7 +106,7 @@ function parseStaff(lines) {
 }
 
 // --- Tech Stack ---
-const FIELD_MAP = {
+const LINE_FIELD_MAP = {
   'video incoming':    'videoIncoming',
   'video outgoing':   'videoOutgoing',
   'talkback incoming':'talkbackIncoming',
@@ -114,6 +114,14 @@ const FIELD_MAP = {
   'audio incoming':   'audioIncoming',
   'audio outgoing':   'audioOutgoing',
   '2110':             'smpte2110',
+}
+
+const EQUIPMENT_MAP = {
+  'encoders':              'encoders',
+  'decoders':              'decoders',
+  'frame rate converters': 'frameRateConverters',
+  'audio offset':          'audioOffset',
+  'outgoing idents':       'outgoingIdents',
 }
 
 function normaliseName(name) {
@@ -124,45 +132,51 @@ function parseTechStack(lines, platforms) {
   const start = lines.findIndex(l => /tech stack/i.test(l))
   if (start === -1) return {}
 
-  // Build a lookup from normalised platform name → platform id
   const idByName = {}
   platforms.forEach((name, i) => {
     idByName[normaliseName(name)] = `plat_seed_${i + 1}`
   })
 
   const platformLines = {}
+  const equipment = { encoders: 0, decoders: 0, frameRateConverters: 0, audioOffset: 0, outgoingIdents: 0 }
   let currentId = null
 
   for (let i = start + 1; i < lines.length; i++) {
     const l = lines[i].trim()
     if (!l) continue
 
-    // "For BBC1 box:" or "For ITV Ealing box:"
+    // "For BBC1 box:"
     const platformHeader = l.match(/^for\s+(.+?)\s*box:?$/i)
     if (platformHeader) {
       const raw = normaliseName(platformHeader[1])
-      // Try exact match first, then partial
       currentId = idByName[raw]
         ?? Object.entries(idByName).find(([k]) => k.startsWith(raw) || raw.startsWith(k))?.[1]
         ?? null
       continue
     }
 
-    // "Video incoming = 8"
+    // Skip section headers like "Encoders & Decoders box"
+    if (/box$/i.test(l) && !/=/.test(l)) { currentId = null; continue }
+
+    // "Key = value"
     const fieldLine = l.match(/^(.+?)\s*=\s*(\d+)$/)
-    if (fieldLine && currentId) {
-      const key = FIELD_MAP[fieldLine[1].toLowerCase().trim()]
-      if (key) {
+    if (!fieldLine) continue
+    const key = fieldLine[1].toLowerCase().trim()
+    const val = parseInt(fieldLine[2])
+
+    if (currentId) {
+      const mapped = LINE_FIELD_MAP[key]
+      if (mapped) {
         if (!platformLines[currentId]) platformLines[currentId] = {}
-        platformLines[currentId][key] = parseInt(fieldLine[2])
+        platformLines[currentId][mapped] = val
       }
+    } else {
+      const mapped = EQUIPMENT_MAP[key]
+      if (mapped) equipment[mapped] = val
     }
   }
 
-  return {
-    encoders: 0, decoders: 0, frameRateConverters: 0, audioOffset: 0, outgoingIdents: 0,
-    platformLines,
-  }
+  return { ...equipment, platformLines }
 }
 
 // --- Read current version and bump ---
@@ -219,7 +233,7 @@ ${staffLines}
 }
 
 const TECH_STACK = {
-  encoders: 0, decoders: 0, frameRateConverters: 0, audioOffset: 0, outgoingIdents: 0,
+  encoders: ${techStack.encoders}, decoders: ${techStack.decoders}, frameRateConverters: ${techStack.frameRateConverters}, audioOffset: ${techStack.audioOffset}, outgoingIdents: ${techStack.outgoingIdents},
   platformLines: {
 ${techStackLines}
   },
