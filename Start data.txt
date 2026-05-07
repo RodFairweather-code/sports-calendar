@@ -16,7 +16,7 @@ Add the following Patterns in the Admin / Patterns area with the details:
 8 Cam Feature Match, 8 Cameramen 4 hours from start until 3 hour after end, 10 incoming lines, 4 outgoing lines offset 3 hours from start until 2 hours after finish, 12 incoming audios, 8 outgoing audios, offset 3 hours from start until 2 hours after end.
 
 
-In the Admin / Staff page, add the following data:
+In the Admin / Staff page, add the following data to the Line by Platform part:
 
 In the cameramen box, add
 Arthur
@@ -78,7 +78,7 @@ Thalia
 
 In the Admin / Tech stack page, use the following data for each platform:
 
-BBC1
+For BBC1 box:
 Video incoming = 8
 Video Outgoing = 16
 Talkback incoming = 24
@@ -86,35 +86,35 @@ Talkback outgoing = 16
 2110 = 120
 
 
-ITV Ealing
+For ITV Ealing box:
 Video incoming = 16
 Video Outgoing = 24
 Talkback incoming = 42
 Talkback outgoing = 24
 2110 = 80
 
-Sky MCR
+For Sky MCR box:
 Video incoming = 12
 Video Outgoing = 12
 Talkback incoming = 36
 Talkback outgoing = 21
 2110 = 160
 
-TAMS
+For TAMS box:
 Video incoming = 0
 Video Outgoing = 24
 Talkback incoming = 12
 Talkback outgoing = 12
 2110 = 56
 
-NBCU
+For NBCU box:
 Video incoming = 4
 Video Outgoing = 8
 Talkback incoming = 8
 Talkback outgoing = 8
 2110 = 180
 
-Reuters
+For Reuters box:
 Video incoming = 2
 Video Outgoing = 4
 Talkback incoming = 4
