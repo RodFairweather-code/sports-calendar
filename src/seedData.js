@@ -1,4 +1,4 @@
-const SEED_VERSION = 4
+const SEED_VERSION = 6
 
 const PLATFORMS = [
   { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
@@ -43,7 +43,7 @@ const PATTERNS = [
 ]
 
 const STAFF = {
-  cameramen: ["Arthur","Brian","Charlie","Denise","Fiona"],
+  cameramen: ["Arthur D","Brian","Charlie","Denise","Fiona"],
   onsiteAudio: ["Gus","Helen","James","Ken"],
   onsiteProductionManager: ["Louise","Max","Neil","Oscar"],
   director: ["Penny","Qudos","Rad","Stan","Vanessa"],

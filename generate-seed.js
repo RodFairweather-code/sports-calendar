@@ -98,6 +98,7 @@ function parseStaff(lines) {
       currentRole = ROLE_MAP[header[1].toLowerCase().trim()] ?? null
       continue
     }
+    if (/tech stack/i.test(l)) break
     if (/^in the admin/i.test(l) || /^add the following/i.test(l)) continue
     if (currentRole) staff[currentRole].push(l)
   }
