@@ -1,4 +1,4 @@
-const SEED_VERSION = 7
+const SEED_VERSION = 8
 
 const PLATFORMS = [
   { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },

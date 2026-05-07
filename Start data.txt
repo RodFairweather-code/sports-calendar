@@ -121,3 +121,13 @@ Talkback incoming = 4
 Talkback outgoing = 12
 2110 = 240
 
+Staying in the Admin / Tech Stack space, put the following in as seed data:
+
+Encoders & Decoders box
+Encoders = 24
+Decoders = 24
+
+Frame rate converters = 4
+
+Audio Offset = 8
+Outgoing Idents = 8
