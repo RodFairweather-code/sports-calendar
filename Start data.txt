@@ -19,7 +19,7 @@ Add the following Patterns in the Admin / Patterns area with the details:
 In the Admin / Staff page, add the following data to the Line by Platform part:
 
 In the cameramen box, add
-Arthur
+Arthur D
 Brian
 Charlie
 Denise
