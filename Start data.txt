@@ -1,6 +1,6 @@
 Add the following platforms in the Admin / Platforms area:
 
-BBC
+BBC 1
 ITV Ealing
 Sky MCR
 TAMS
@@ -14,4 +14,33 @@ Add the following Patterns in the Admin / Patterns area with the details:
 4 Cam middle League, 4 Cameramen 3 hours from start until 2 hour after end, 8 incoming lines, 4 outgoing lines offset 2 hours from start until 2 hours after finish, 8 incoming audios, 6 outgoing audios, offset 2 hours from start until 2 hours after end.
 
 8 Cam Feature Match, 8 Cameramen 4 hours from start until 3 hour after end, 10 incoming lines, 4 outgoing lines offset 3 hours from start until 2 hours after finish, 12 incoming audios, 8 outgoing audios, offset 3 hours from start until 2 hours after end.
+
+
+In the Admin / Staff page, add the following data:
+
+In the cameramen box, add
+Arthur
+Brian
+Charlie
+Denise
+Fiona
+
+In the Onsite Audiobox, add:
+Gus
+Helen
+James
+Ken
+
+In the Onsite Production Manager box, add:
+Louise
+Max
+Neil
+Oscar
+
+In the Director box, add:
+Penny
+Qudos
+Rad
+Stan
+Vanessa
 

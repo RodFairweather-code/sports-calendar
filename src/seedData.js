@@ -1,10 +1,12 @@
+const SEED_VERSION = 2
+
 const PLATFORMS = [
-  { id: 'plat_seed_1', name: 'BBC',        defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_2', name: 'ITV Ealing', defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_3', name: 'Sky MCR',    defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_4', name: 'TAMS',       defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_5', name: 'NBCU',       defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
-  { id: 'plat_seed_6', name: 'Reuters',    defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_1', name: 'BBC 1',       defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_2', name: 'ITV Ealing',  defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_3', name: 'Sky MCR',     defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_4', name: 'TAMS',        defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_5', name: 'NBCU',        defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
+  { id: 'plat_seed_6', name: 'Reuters',     defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
 ]
 
 const PATTERNS = [
@@ -40,11 +42,23 @@ const PATTERNS = [
   },
 ]
 
+const STAFF = {
+  cameramen:               ['Arthur', 'Brian', 'Charlie', 'Denise', 'Fiona'],
+  onsiteAudio:             ['Gus', 'Helen', 'James', 'Ken'],
+  onsiteProductionManager: ['Louise', 'Max', 'Neil', 'Oscar'],
+  director:                ['Penny', 'Qudos', 'Rad', 'Stan', 'Vanessa'],
+  producer:                [],
+  commentator:             [],
+  evsOperator:             [],
+  graphicsOperator:        [],
+}
+
 export function seedLocalStorage() {
-  if (!localStorage.getItem('admin_platforms')) {
-    localStorage.setItem('admin_platforms', JSON.stringify(PLATFORMS))
-  }
-  if (!localStorage.getItem('admin_patterns')) {
-    localStorage.setItem('admin_patterns', JSON.stringify(PATTERNS))
-  }
+  const seededVersion = parseInt(localStorage.getItem('seed_version') || '0', 10)
+  if (seededVersion >= SEED_VERSION) return
+
+  localStorage.setItem('admin_platforms', JSON.stringify(PLATFORMS))
+  localStorage.setItem('admin_patterns', JSON.stringify(PATTERNS))
+  localStorage.setItem('admin_staff', JSON.stringify(STAFF))
+  localStorage.setItem('seed_version', String(SEED_VERSION))
 }
