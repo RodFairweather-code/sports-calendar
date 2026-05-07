@@ -279,63 +279,69 @@ function PlatformsView() {
             </div>
 
             <div className="patterns-editor-body">
-              <div className="patterns-form">
+              <div className="pf-layout">
 
-                <div className="pf-section">
-                  <div className="pf-section-label">Identity</div>
-                  <TextField label="Platform Name" value={draft.name} field="name"
-                    placeholder="e.g. Sky Sports Main Event" onChange={setField} />
-                </div>
+                <div className="patterns-form">
 
-                <div className="pf-section">
-                  <div className="pf-section-label">Lines</div>
-                  <TextField label="Default incoming line" value={draft.defaultIncomingLine}
-                    field="defaultIncomingLine" placeholder="e.g. SDI-4" onChange={setField} />
-                  <TextField label="Default outgoing line" value={draft.defaultOutgoingLine}
-                    field="defaultOutgoingLine" placeholder="e.g. SDI-7" onChange={setField} />
-                  <div className="pf-row">
-                    <label className="pf-label">Number of four wires</label>
-                    <input
-                      className="pf-number-input"
-                      type="number"
-                      min="0"
-                      max="99"
-                      value={draft.fourWires}
-                      onChange={e => setField('fourWires', Math.max(0, parseInt(e.target.value, 10) || 0))}
-                    />
+                  <div className="pf-section">
+                    <div className="pf-section-label">Identity</div>
+                    <TextField label="Platform Name" value={draft.name} field="name"
+                      placeholder="e.g. Sky Sports Main Event" onChange={setField} />
                   </div>
-                </div>
 
-                <div className="pf-section">
-                  <div className="pf-section-label">Feed Routing</div>
-                  <div className="pf-row pf-row--full">
-                    <label className="pf-label">How the feed reaches this platform</label>
-                    <textarea
-                      className="pf-textarea"
-                      value={draft.feedRouting}
-                      placeholder="Describe the signal path, handoff points, encoding format, etc."
-                      onChange={e => setField('feedRouting', e.target.value)}
-                      rows={4}
-                    />
+                  <div className="pf-section">
+                    <div className="pf-section-label">Lines</div>
+                    <TextField label="Default incoming line" value={draft.defaultIncomingLine}
+                      field="defaultIncomingLine" placeholder="e.g. SDI-4" onChange={setField} />
+                    <TextField label="Default outgoing line" value={draft.defaultOutgoingLine}
+                      field="defaultOutgoingLine" placeholder="e.g. SDI-7" onChange={setField} />
+                    <div className="pf-row">
+                      <label className="pf-label">Number of four wires</label>
+                      <input
+                        className="pf-number-input"
+                        type="number"
+                        min="0"
+                        max="99"
+                        value={draft.fourWires}
+                        onChange={e => setField('fourWires', Math.max(0, parseInt(e.target.value, 10) || 0))}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div className="pf-section">
-                  <div className="pf-section-label">Contacts</div>
-                  <PhoneField label="MCR phone number" value={draft.mcrPhone} field="mcrPhone" onChange={setField} />
-                  <PhoneField label="Editorial phone number" value={draft.editorialPhone} field="editorialPhone" onChange={setField} />
+                  <div className="pf-section">
+                    <div className="pf-section-label">Feed Routing</div>
+                    <div className="pf-row pf-row--full">
+                      <label className="pf-label">How the feed reaches this platform</label>
+                      <textarea
+                        className="pf-textarea"
+                        value={draft.feedRouting}
+                        placeholder="Describe the signal path, handoff points, encoding format, etc."
+                        onChange={e => setField('feedRouting', e.target.value)}
+                        rows={4}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pf-section">
+                    <div className="pf-section-label">Contacts</div>
+                    <PhoneField label="MCR phone number" value={draft.mcrPhone} field="mcrPhone" onChange={setField} />
+                    <PhoneField label="Editorial phone number" value={draft.editorialPhone} field="editorialPhone" onChange={setField} />
+                  </div>
+
                 </div>
 
                 {selectedId && (
-                  <div className="pf-section">
-                    <div className="pf-section-label">Line Capacity</div>
-                    <NumField label="Video incoming"    value={pl(selectedId, 'videoIncoming')}    onChange={v => setPlatLine(selectedId, 'videoIncoming',    v)} />
-                    <NumField label="Video outgoing"    value={pl(selectedId, 'videoOutgoing')}    onChange={v => setPlatLine(selectedId, 'videoOutgoing',    v)} />
-                    <NumField label="Talkback incoming" value={pl(selectedId, 'talkbackIncoming')} onChange={v => setPlatLine(selectedId, 'talkbackIncoming', v)} />
-                    <NumField label="Talkback outgoing" value={pl(selectedId, 'talkbackOutgoing')} onChange={v => setPlatLine(selectedId, 'talkbackOutgoing', v)} />
-                    <NumField label="Audio incoming"    value={pl(selectedId, 'audioIncoming')}    onChange={v => setPlatLine(selectedId, 'audioIncoming',    v)} />
-                    <NumField label="Audio outgoing"    value={pl(selectedId, 'audioOutgoing')}    onChange={v => setPlatLine(selectedId, 'audioOutgoing',    v)} />
-                    <NumField label="2110"              value={pl(selectedId, 'smpte2110')}        onChange={v => setPlatLine(selectedId, 'smpte2110',        v)} />
+                  <div className="pf-capacity-col">
+                    <div className="pf-section">
+                      <div className="pf-section-label">Line Capacity</div>
+                      <NumField label="Video incoming"    value={pl(selectedId, 'videoIncoming')}    onChange={v => setPlatLine(selectedId, 'videoIncoming',    v)} />
+                      <NumField label="Video outgoing"    value={pl(selectedId, 'videoOutgoing')}    onChange={v => setPlatLine(selectedId, 'videoOutgoing',    v)} />
+                      <NumField label="Talkback incoming" value={pl(selectedId, 'talkbackIncoming')} onChange={v => setPlatLine(selectedId, 'talkbackIncoming', v)} />
+                      <NumField label="Talkback outgoing" value={pl(selectedId, 'talkbackOutgoing')} onChange={v => setPlatLine(selectedId, 'talkbackOutgoing', v)} />
+                      <NumField label="Audio incoming"    value={pl(selectedId, 'audioIncoming')}    onChange={v => setPlatLine(selectedId, 'audioIncoming',    v)} />
+                      <NumField label="Audio outgoing"    value={pl(selectedId, 'audioOutgoing')}    onChange={v => setPlatLine(selectedId, 'audioOutgoing',    v)} />
+                      <NumField label="2110"              value={pl(selectedId, 'smpte2110')}        onChange={v => setPlatLine(selectedId, 'smpte2110',        v)} />
+                    </div>
                   </div>
                 )}
 

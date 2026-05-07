@@ -1012,7 +1012,18 @@
   padding: 24px;
 }
 
+.pf-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.pf-capacity-col {
+  flex: 0 0 280px;
+}
+
 .patterns-form {
+  flex: 1;
   max-width: 560px;
   display: flex;
   flex-direction: column;
