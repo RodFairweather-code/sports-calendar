@@ -20,7 +20,7 @@ In the Admin / Staff page, add the following data to the Line by Platform part:
 
 In the cameramen box, add
 Arthur D
-Brian
+Brian C
 Charlie
 Denise
 Fiona
