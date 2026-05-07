@@ -23,12 +23,37 @@ function persist(platforms) {
   localStorage.setItem('admin_platforms', JSON.stringify(platforms))
 }
 
+function loadTechStack() {
+  try { return JSON.parse(localStorage.getItem('admin_tech_stack') || '{}') }
+  catch { return {} }
+}
+
+function persistTechStack(data) {
+  localStorage.setItem('admin_tech_stack', JSON.stringify(data))
+}
+
 function platformSummary(p) {
   const parts = []
   if (p.defaultIncomingLine) parts.push(`In: ${p.defaultIncomingLine}`)
   if (p.defaultOutgoingLine) parts.push(`Out: ${p.defaultOutgoingLine}`)
   if (p.fourWires > 0) parts.push(`${p.fourWires} × 4W`)
   return parts.join(' · ') || 'No lines configured'
+}
+
+function NumField({ label, value, onChange }) {
+  return (
+    <div className="pf-row">
+      <label className="pf-label">{label}</label>
+      <input
+        className="pf-number-input"
+        type="number"
+        min="0"
+        max="9999"
+        value={value ?? 0}
+        onChange={e => onChange(Math.max(0, parseInt(e.target.value, 10) || 0))}
+      />
+    </div>
+  )
 }
 
 function TextField({ label, value, field, placeholder, onChange }) {
@@ -87,6 +112,25 @@ function PlatformsView() {
   const [draft, setDraft] = useState(null)
   const [isDirty, setIsDirty] = useState(false)
   const [pendingAction, setPendingAction] = useState(null)
+  const [techStack, setTechStack] = useState(loadTechStack)
+
+  function setPlatLine(platformId, field, value) {
+    setTechStack(prev => {
+      const next = {
+        ...prev,
+        platformLines: {
+          ...prev.platformLines,
+          [platformId]: { ...prev.platformLines?.[platformId], [field]: value },
+        },
+      }
+      persistTechStack(next)
+      return next
+    })
+  }
+
+  function pl(platformId, field) {
+    return techStack.platformLines?.[platformId]?.[field] ?? 0
+  }
 
   function guardDirty(action) {
     if (isDirty) {
@@ -281,6 +325,19 @@ function PlatformsView() {
                   <PhoneField label="MCR phone number" value={draft.mcrPhone} field="mcrPhone" onChange={setField} />
                   <PhoneField label="Editorial phone number" value={draft.editorialPhone} field="editorialPhone" onChange={setField} />
                 </div>
+
+                {selectedId && (
+                  <div className="pf-section">
+                    <div className="pf-section-label">Line Capacity</div>
+                    <NumField label="Video incoming"    value={pl(selectedId, 'videoIncoming')}    onChange={v => setPlatLine(selectedId, 'videoIncoming',    v)} />
+                    <NumField label="Video outgoing"    value={pl(selectedId, 'videoOutgoing')}    onChange={v => setPlatLine(selectedId, 'videoOutgoing',    v)} />
+                    <NumField label="Talkback incoming" value={pl(selectedId, 'talkbackIncoming')} onChange={v => setPlatLine(selectedId, 'talkbackIncoming', v)} />
+                    <NumField label="Talkback outgoing" value={pl(selectedId, 'talkbackOutgoing')} onChange={v => setPlatLine(selectedId, 'talkbackOutgoing', v)} />
+                    <NumField label="Audio incoming"    value={pl(selectedId, 'audioIncoming')}    onChange={v => setPlatLine(selectedId, 'audioIncoming',    v)} />
+                    <NumField label="Audio outgoing"    value={pl(selectedId, 'audioOutgoing')}    onChange={v => setPlatLine(selectedId, 'audioOutgoing',    v)} />
+                    <NumField label="2110"              value={pl(selectedId, 'smpte2110')}        onChange={v => setPlatLine(selectedId, 'smpte2110',        v)} />
+                  </div>
+                )}
 
               </div>
             </div>
