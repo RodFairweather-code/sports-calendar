@@ -138,7 +138,7 @@ Frame rate converters = 4
 Audio Offset = 8
 Outgoing Idents = 8
 
-On the Production page, set the defaults for Production Type any events that are showing:
+On the Production page, set the defaults for Production Type any events that are showing with the following Pattern:
 EFL League 1 = 4 Cam Middle League
 EFL League 2 = 2 Cam Lower League
 EL Championship = 4 Cam Middle League
