@@ -4,7 +4,8 @@ const EMPTY_DRAFT = {
   name: '',
   // Crew
   cameramen: 0,
-  evsOperator: false,
+  evsOperator: 0,
+  audioOnLocation: 0,
   crewFrom: 0,
   crewUntil: 0,
   // Video Lines
@@ -36,7 +37,8 @@ function persist(patterns) {
 function summary(p) {
   const parts = []
   if (p.cameramen > 0) parts.push(`${p.cameramen} cam`)
-  if (p.evsOperator) parts.push('EVS')
+  if (p.evsOperator > 0) parts.push(`${p.evsOperator} EVS`)
+  if (p.audioOnLocation > 0) parts.push(`${p.audioOnLocation} audio loc`)
   if (p.incomingVideoLines > 0 || p.outgoingVideoLines > 0)
     parts.push(`vid ${p.incomingVideoLines}↓ ${p.outgoingVideoLines}↑`)
   if (p.incomingAudioLines > 0) parts.push(`${p.incomingAudioLines} audio`)
@@ -237,20 +239,8 @@ function PatternsView() {
                 <div className="pf-section">
                   <div className="pf-section-label">Crew</div>
                   <NumField label="Cameramen on location" value={draft.cameramen} field="cameramen" onChange={setField} />
-                  <div className="pf-row">
-                    <label className="pf-label">EVS Operator required</label>
-                    <label className="pf-toggle">
-                      <input
-                        type="checkbox"
-                        checked={draft.evsOperator}
-                        onChange={e => setField('evsOperator', e.target.checked)}
-                      />
-                      <span className="pf-toggle-track">
-                        <span className="pf-toggle-thumb" />
-                      </span>
-                      <span className="pf-toggle-text">{draft.evsOperator ? 'Yes' : 'No'}</span>
-                    </label>
-                  </div>
+                  <NumField label="EVS Operators" value={draft.evsOperator} field="evsOperator" onChange={setField} />
+                  <NumField label="Audio on location" value={draft.audioOnLocation} field="audioOnLocation" onChange={setField} />
                   <TimingRow
                     fromField="crewFrom" untilField="crewUntil"
                     fromValue={draft.crewFrom} untilValue={draft.crewUntil}

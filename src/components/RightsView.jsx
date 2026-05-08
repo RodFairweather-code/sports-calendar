@@ -15,6 +15,20 @@ function loadPlatforms() {
   catch { return [] }
 }
 
+function loadPatterns() {
+  try { return JSON.parse(localStorage.getItem('admin_patterns') || '[]') }
+  catch { return [] }
+}
+
+function loadDefaultPatterns() {
+  try { return JSON.parse(localStorage.getItem('rights_default_patterns') || '{}') }
+  catch { return {} }
+}
+
+function persistDefaultPatterns(d) {
+  localStorage.setItem('rights_default_patterns', JSON.stringify(d))
+}
+
 function nextState(current) {
   if (!current) return 'Y'
   if (current === 'Y') return 'N'
@@ -41,7 +55,17 @@ function RightsCell({ value, onChange }) {
 
 function RightsView() {
   const [platforms] = useState(loadPlatforms)
+  const [patterns] = useState(loadPatterns)
   const [rights, setRights] = useState(loadRights)
+  const [defaultPatterns, setDefaultPatterns] = useState(loadDefaultPatterns)
+
+  function setDefaultPattern(compId, patternId) {
+    setDefaultPatterns(prev => {
+      const next = { ...prev, [compId]: patternId }
+      persistDefaultPatterns(next)
+      return next
+    })
+  }
 
   function toggleCell(compId, platId) {
     setRights(prev => {
@@ -84,6 +108,7 @@ function RightsView() {
           <thead>
             <tr>
               <th className="rights-th-comp">Competition</th>
+              <th className="rights-th-pattern">Default Pattern</th>
               {platforms.map(p => (
                 <th key={p.id} className="rights-th-plat" title={p.name}>{p.name}</th>
               ))}
@@ -97,6 +122,18 @@ function RightsView() {
                   <td className="rights-td-comp">
                     <span className="rights-comp-dot" style={{ background: comp.color }} />
                     {comp.name}
+                  </td>
+                  <td className="rights-td-pattern">
+                    <select
+                      className="rights-pattern-select"
+                      value={defaultPatterns[comp.id] || ''}
+                      onChange={e => setDefaultPattern(comp.id, e.target.value)}
+                    >
+                      <option value="">— None —</option>
+                      {patterns.map(pat => (
+                        <option key={pat.id} value={pat.id}>{pat.name}</option>
+                      ))}
+                    </select>
                   </td>
                   {platforms.map(p => (
                     <td key={p.id} className="rights-td-cell">
