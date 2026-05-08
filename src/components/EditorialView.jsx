@@ -35,13 +35,14 @@ function loadRights() {
   catch { return {} }
 }
 
-// Cycles: empty → Y → empty. Typing P sets P.
+// Cycles: empty → Y → P → empty. Keyboard Y/P also work directly.
 function DecisionCell({ value, eventId, platformId, onChange }) {
   const state = value || ''
 
   function handleClick(e) {
     e.stopPropagation()
-    onChange(eventId, platformId, state === 'Y' ? '' : 'Y')
+    const next = state === '' ? 'Y' : state === 'Y' ? 'P' : ''
+    onChange(eventId, platformId, next)
   }
 
   function handleKeyDown(e) {
@@ -213,13 +214,15 @@ function EditorialView({ events, onEventClick }) {
               const isToday = i === todayIndex
               const isHighlighted = i === highlightedIndex
               const eventDecisions = decisions[event.id] || {}
+              const platDecisions = platforms.map(p => eventDecisions[p.id] || '')
+              const isPossibleOnly = platDecisions.some(d => d === 'P') && !platDecisions.some(d => d === 'Y')
 
               return (
                 <tr
                   key={event.id}
                   ref={el => { if (el) rowRefs.current[i] = el; else delete rowRefs.current[i] }}
                   onClick={() => onEventClick(event)}
-                  className={`ed-row${isToday ? ' ed-row--today' : ''}${isHighlighted ? ' ed-row--highlight' : ''}`}
+                  className={`ed-row${isToday ? ' ed-row--today' : ''}${isHighlighted ? ' ed-row--highlight' : ''}${isPossibleOnly ? ' ed-row--possible' : ''}`}
                 >
                   <td className="ed-date">{dateStr}</td>
                   <td className="ed-time">{timeStr}</td>

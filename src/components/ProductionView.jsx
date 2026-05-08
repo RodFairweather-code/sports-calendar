@@ -32,8 +32,18 @@ function loadStaff() {
   catch { return empty }
 }
 
+function loadPlatforms() {
+  try { return JSON.parse(localStorage.getItem('admin_platforms') || '[]') }
+  catch { return [] }
+}
+
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
+  catch { return {} }
+}
+
+function loadDefaultPatterns() {
+  try { return JSON.parse(localStorage.getItem('rights_default_patterns') || '{}') }
   catch { return {} }
 }
 
@@ -61,10 +71,12 @@ function ProductionView({ events, onEventClick }) {
   const rowRefs = useRef({})
   const [selectedDate, setSelectedDate] = useState('')
   const [highlightedIndex, setHighlightedIndex] = useState(null)
-  const [decisions]   = useState(loadDecisions)
-  const [patterns]    = useState(loadPatterns)
-  const [staff]       = useState(loadStaff)
+  const [decisions]        = useState(loadDecisions)
+  const [patterns]         = useState(loadPatterns)
+  const [platforms]        = useState(loadPlatforms)
+  const [staff]            = useState(loadStaff)
   const [assignments, setAssignments] = useState(loadAssignments)
+  const [defaultPatterns]  = useState(loadDefaultPatterns)
 
   const todayStr = new Date().toISOString().slice(0, 10)
 
@@ -162,13 +174,19 @@ function ProductionView({ events, onEventClick }) {
                 const isToday = i === todayIndex
                 const isHighlighted = i === highlightedIndex
                 const asgn = assignments[event.id] || {}
+                const eventDecisions = decisions[event.id] || {}
+                const platDecisions = platforms.map(p => eventDecisions[p.id] || '')
+                const isPossibleOnly = platDecisions.some(d => d === 'P') && !platDecisions.some(d => d === 'Y')
+                const patternId = asgn.patternId !== undefined
+                  ? asgn.patternId
+                  : (defaultPatterns[ep.competitionId] || '')
 
                 return (
                   <tr
                     key={event.id}
                     ref={el => { if (el) rowRefs.current[i] = el; else delete rowRefs.current[i] }}
                     onClick={() => onEventClick(event)}
-                    className={`ed-row${isToday ? ' ed-row--today' : ''}${isHighlighted ? ' ed-row--highlight' : ''}`}
+                    className={`ed-row${isToday ? ' ed-row--today' : ''}${isHighlighted ? ' ed-row--highlight' : ''}${isPossibleOnly ? ' ed-row--possible' : ''}`}
                   >
                     <td className="ed-date">{dateStr}</td>
                     <td className="ed-time">{timeStr}</td>
@@ -181,7 +199,7 @@ function ProductionView({ events, onEventClick }) {
                     <td className="ed-venue">{ep.venue || '—'}</td>
                     <td className="prod-assign-td">
                       <AssignSelect
-                        value={asgn.patternId}
+                        value={patternId}
                         options={patternOptions}
                         emptyLabel={patternOptions.length ? '— select pattern —' : '(no patterns set up)'}
                         onChange={v => setAssignment(event.id, 'patternId', v)}

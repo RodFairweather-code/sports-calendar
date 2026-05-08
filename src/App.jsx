@@ -5,6 +5,7 @@ import EventPanel from './components/EventPanel'
 import CompetitionToggles from './components/CompetitionToggles'
 import AdminView from './components/AdminView'
 import ProductionView from './components/ProductionView'
+import TechnicalView from './components/TechnicalView'
 import RightsView from './components/RightsView'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
@@ -128,9 +129,10 @@ function App() {
       {view === 'production' && (
         <ProductionView events={visibleEvents} onEventClick={setSelectedEvent} />
       )}
-      {(view === 'technical' || view === 'assets') && (
+      {view === 'technical' && <TechnicalView events={visibleEvents} />}
+      {view === 'assets' && (
         <div className="placeholder-view">
-          <p>{VIEWS.find(v => v.id === view)?.label}</p>
+          <p>Asset Management</p>
           <span>Coming soon</span>
         </div>
       )}
