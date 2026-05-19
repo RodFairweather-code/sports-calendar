@@ -1,4 +1,4 @@
-const SEED_VERSION = 33
+const SEED_VERSION = 35
 
 const PLATFORMS = [
   { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
@@ -38,7 +38,7 @@ const PATTERNS = [
     videoFrom: -3, videoUntil: 2,
     incomingAudioLines: 12, incomingTalkbackLines: 0, outgoingTalkbackLines: 8,
     audioFrom: -3, audioUntil: 2,
-    productionBooth: true,
+    productionBooth: false,
   },
   {
     id: 'pat_seed_4', name: "250 Tennis",
@@ -76,11 +76,11 @@ const STAFF = {
   cameramen: ["Arthur D","Brian C","Charlie","Denise","Fiona"],
   onsiteAudio: ["Gus","Helen","James","Ken"],
   onsiteProductionManager: ["Louise","Max","Neil","Oscar"],
-  director: ["Penny","Qudos","Rad","Stan","Vanessa"],
+  director: ["Aurelia Thorne","Kaelen Vance","Seraphina Vex","Bastian Vance","Lyra Nightshade","Orion Vance","Isolde Moros","Dashiell Vance","Elara Fray","Talon Vance","Calliope Moon","Magnus Vance","Vespera Kross","Silas Vance","Elysia Dawnwalker","Persephone Gale","Darrow Vanc","Penny","Qudos","Rad","Stan","Vanessa"],
   producer: ["Abagail","Benny","Cammy","Donna","Felicity"],
   commentator: ["Graham","Henry","Indya","Jules","Killian"],
-  evsOperator: ["Liam","Mike","Nola","Olivia","Peter","Rowena"],
-  graphicsOperator: ["Susan","Tabatha","Xavier","Aaron","Bonnie","Chloe","Thalia"],
+  evsOperator: ["Elara Moonbrook","Kaelen Thorne","Selene Valerius","Garrick Stoneheart","Lyra Silverleaf","Theron Blackwood","Mirelle Starling","Alaric Voss","Seraphina Dawn","Zephyr Oakhaven","Isadora Nightshade","Cassian Reed","Elowen Frost","Roland Vance","Thalassa Blue","Dorian Graymalkin","Nyx Shadowstep","Soren Whitethorn","Juniper Ash","Bastian Gale","Liam","Mike","Nola","Olivia","Peter","Rowena"],
+  graphicsOperator: ["Aris Thorne","Elara Vance","Kaelen Reed","Selene Marlo","Jace Halloway","Mira Sterling","Orion Kade","Lyra Belrose","Silas Fenwick","Talia Vane","Finnian Cole","Elowen Frost","Cassian Dax","Isolda Vale","Dorian Grey","Althea Rowe","Gideon Hayes","Seraphina Blythe","Lucian Crane","Evadne Ward","Susan","Tabatha","Xavier","Aaron","Bonnie","Chloe","Thalia"],
 }
 
 const DEFAULT_STAFF_COSTS = {

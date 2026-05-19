@@ -972,6 +972,206 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* ── Booths view ────────────────────────────────────────────── */
+.booths-view {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 28px;
+  background: #f4f6f9;
+}
+
+.booths-empty {
+  text-align: center;
+  padding: 60px 24px;
+  color: #8a9bb0;
+}
+
+.booths-empty p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.booths-date-group {
+  margin-bottom: 32px;
+}
+
+.booths-date-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #1e3a5f;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+
+.booths-date-header {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  letter-spacing: 0.2px;
+}
+
+.booths-auto-btn {
+  padding: 5px 14px;
+  border: 1px solid #1e3a5f;
+  border-radius: 6px;
+  background: #fff;
+  color: #1e3a5f;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.booths-auto-btn:hover {
+  background: #1e3a5f;
+  color: #fff;
+}
+
+.booths-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.booth-card {
+  width: 190px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+
+.booth-card-header {
+  display: flex;
+  align-items: center;
+  padding: 9px 13px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.3px;
+}
+
+.booth-card-body {
+  padding: 10px 13px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.booth-comp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.booth-comp-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.booth-comp-name {
+  font-size: 0.7rem;
+  color: #8a9bb0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.booth-event-title {
+  font-size: 0.87rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  line-height: 1.3;
+}
+
+.booth-teams {
+  font-size: 0.8rem;
+  color: #2c3e50;
+  line-height: 1.3;
+}
+
+.booth-time {
+  font-size: 0.78rem;
+  color: #5a6a7a;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.booth-venue,
+.booth-round,
+.booth-sport {
+  font-size: 0.74rem;
+  color: #8a9bb0;
+  line-height: 1.3;
+}
+
+.booth-card--over-capacity {
+  background: #fecdcd;
+  border: 1px solid #f87171;
+}
+
+.booth-over-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-left: auto;
+  letter-spacing: 0.2px;
+}
+
+.booth-staff {
+  margin-top: 6px;
+  border-top: 1px solid #eef0f3;
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.booth-staff-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 0.76rem;
+}
+
+.booth-staff-role {
+  color: #8a9bb0;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.booth-staff-name {
+  color: #2c3e50;
+  font-weight: 500;
+  text-align: right;
+}
+
+.booth-staff-tba {
+  color: #b0bec5;
+  font-style: italic;
+}
+
+.booth-staff-row--freelance {
+  background: #ef4444;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: 1px -6px;
+}
+
+.booth-staff-row--freelance .booth-staff-role,
+.booth-staff-row--freelance .booth-staff-name {
+  color: #fff;
+  font-weight: 700;
+  font-style: italic;
+}
+
 /* ── Admin area ─────────────────────────────────────────────── */
 .admin-view {
   flex: 1;

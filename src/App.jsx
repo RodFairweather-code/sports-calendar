@@ -7,6 +7,7 @@ import AdminView from './components/AdminView'
 import ProductionView from './components/ProductionView'
 import TechnicalView from './components/TechnicalView'
 import RightsView from './components/RightsView'
+import BoothsView from './components/BoothsView'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import './App.css'
@@ -16,6 +17,7 @@ const VIEWS = [
   { id: 'editorial',  label: 'Editorial Decisions' },
   { id: 'production', label: 'Production' },
   { id: 'technical',  label: 'Technical' },
+  { id: 'booths',     label: 'Booths' },
   { id: 'assets',     label: 'Asset Management' },
   { id: 'rights',     label: 'Rights' },
   { id: 'admin',      label: 'Admin' },
@@ -117,7 +119,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.3</span>
+        <span className="header-version">v2.4</span>
       </header>
 
       {view === 'calendar' && (
@@ -130,6 +132,7 @@ function App() {
         <ProductionView events={visibleEvents} onEventClick={setSelectedEvent} />
       )}
       {view === 'technical' && <TechnicalView events={visibleEvents} />}
+      {view === 'booths' && <BoothsView events={visibleEvents} />}
       {view === 'assets' && (
         <div className="placeholder-view">
           <p>Asset Management</p>
