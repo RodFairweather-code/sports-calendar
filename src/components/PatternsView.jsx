@@ -19,6 +19,8 @@ const EMPTY_DRAFT = {
   outgoingTalkbackLines: 0,
   audioFrom: 0,
   audioUntil: 0,
+  // Production
+  productionBooth: false,
 }
 
 function newId() {
@@ -64,6 +66,23 @@ function NumField({ label, value, field, onChange }) {
         value={value}
         onChange={e => onChange(field, Math.max(0, parseInt(e.target.value, 10) || 0))}
       />
+    </div>
+  )
+}
+
+function ToggleField({ label, value, field, onChange }) {
+  return (
+    <div className="pf-row">
+      <label className="pf-label">{label}</label>
+      <label className="pf-toggle">
+        <input
+          type="checkbox"
+          checked={!!value}
+          onChange={e => onChange(field, e.target.checked)}
+        />
+        <span className="pf-toggle-track"><span className="pf-toggle-thumb" /></span>
+        <span className="pf-toggle-text">{value ? 'Yes' : 'No'}</span>
+      </label>
     </div>
   )
 }
@@ -269,6 +288,11 @@ function PatternsView() {
                     fromValue={draft.audioFrom} untilValue={draft.audioUntil}
                     onChange={setField}
                   />
+                </div>
+
+                <div className="pf-section">
+                  <div className="pf-section-label">Production</div>
+                  <ToggleField label="Production booth" value={draft.productionBooth} field="productionBooth" onChange={setField} />
                 </div>
 
               </div>

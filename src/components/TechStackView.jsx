@@ -20,6 +20,7 @@ const DEFAULTS = {
   frameRateConverters: 0,
   audioOffset: 0,
   outgoingIdents: 0,
+  productionBooths: 16,
   platformLines: {},
 }
 
@@ -111,6 +112,11 @@ function TechStackView() {
             <TechCard title="Outgoing Idents">
               <NumField label="Outgoing Idents" value={data.outgoingIdents}
                 onChange={v => setTop('outgoingIdents', v)} />
+            </TechCard>
+
+            <TechCard title="Production Booths">
+              <NumField label="Production Booths" value={data.productionBooths}
+                onChange={v => setTop('productionBooths', v)} />
             </TechCard>
 
           </div>

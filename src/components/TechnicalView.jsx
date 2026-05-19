@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react'
+import { useState, useRef, Fragment } from 'react'
 
 function loadDecisions() {
   try { return JSON.parse(localStorage.getItem('editorial_decisions') || '{}') }
@@ -61,6 +61,10 @@ function TechnicalView({ events }) {
   const [defaultPatterns] = useState(loadDefaultPatterns)
   const [patterns]        = useState(loadPatterns)
 
+  const dayRefs    = useRef({})
+  const [selectedDate, setSelectedDate] = useState('')
+  const todayStr = new Date().toISOString().slice(0, 10)
+
   const patternMap = Object.fromEntries(patterns.map(p => [p.id, p]))
 
   function getPattern(event) {
@@ -94,6 +98,18 @@ function TechnicalView({ events }) {
 
   const sortedDays = Object.keys(dayMap).sort()
 
+  function scrollToDate(dateStr) {
+    const target = sortedDays.find(d => d >= dateStr) || sortedDays[sortedDays.length - 1]
+    if (target) dayRefs.current[target]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  function handleDateChange(e) {
+    setSelectedDate(e.target.value)
+    if (e.target.value) scrollToDate(e.target.value)
+  }
+
+  const todayIndex = sortedDays.findIndex(d => d >= todayStr)
+
   if (sortedDays.length === 0) {
     return (
       <div className="tv-view">
@@ -107,6 +123,30 @@ function TechnicalView({ events }) {
 
   return (
     <div className="tv-view">
+
+      <div className="editorial-toolbar">
+        <div className="ed-toolbar-right">
+          <label className="ed-date-label" htmlFor="tv-date-picker">Go to date</label>
+          <input
+            id="tv-date-picker"
+            type="date"
+            className="ed-date-input"
+            value={selectedDate}
+            min="2025-01-01"
+            max="2026-12-31"
+            onChange={handleDateChange}
+          />
+          <button
+            className="ed-today-btn"
+            onClick={() => scrollToDate(todayStr)}
+            disabled={todayIndex === -1}
+            title={todayIndex === -1 ? 'No upcoming events' : 'Jump to today'}
+          >
+            Today
+          </button>
+        </div>
+      </div>
+
       <div className="tv-scroll">
         {sortedDays.map(dateStr => {
           const { confirmed, possible } = dayMap[dateStr]
@@ -121,7 +161,7 @@ function TechnicalView({ events }) {
           })
 
           return (
-            <div key={dateStr} className="tv-day">
+            <div key={dateStr} ref={el => { if (el) dayRefs.current[dateStr] = el; else delete dayRefs.current[dateStr] }} className="tv-day">
 
               <div className="tv-day-header">{dateLabel}</div>
 

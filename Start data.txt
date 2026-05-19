@@ -1,11 +1,11 @@
 
 Add the following Patterns in the Admin / Patterns area with the details:
 
-2 Cam Lower League, 2 Cameramen and 1 Audio on location and 1 EVS operator 2 hours from start until 2 hour after end, 4 incoming lines, 2 outgoing lines offset 2 hours from start until 2 hours after finish, 6 incoming audios, 4 outgoing audios, offset 2 hours from start until 2 hours after end.
+2 Cam Lower League, 2 Cameramen and 1 Audio on location and 1 EVS operator 2 hours from start until 2 hour after end, 4 incoming lines, 2 outgoing lines offset 2 hours from start until 2 hours after finish, 6 incoming audios, 4 outgoing audios, offset 2 hours from start until 2 hours after end.  Production Booth set to Yes.
 
-4 Cam middle League, 4 Cameramen and 2 Audio on location and 2 EVS operator 3 hours from start until 2 hour after end, 8 incoming lines, 4 outgoing lines offset 2 hours from start until 2 hours after finish, 8 incoming audios, 6 outgoing audios, offset 2 hours from start until 2 hours after end.
+4 Cam middle League, 4 Cameramen and 2 Audio on location and 2 EVS operator 3 hours from start until 2 hour after end, 8 incoming lines, 4 outgoing lines offset 2 hours from start until 2 hours after finish, 8 incoming audios, 6 outgoing audios, offset 2 hours from start until 2 hours after end.  Production Booth set to Yes.
 
-8 Cam Feature Match, 8 Cameramen and 3 Audio on location and 4 EVS operator 4 hours from start until 3 hour after end, 10 incoming lines, 4 outgoing lines offset 3 hours from start until 2 hours after finish, 12 incoming audios, 8 outgoing audios, offset 3 hours from start until 2 hours after end.
+8 Cam Feature Match, 8 Cameramen and 3 Audio on location and 4 EVS operator 4 hours from start until 3 hour after end, 10 incoming lines, 4 outgoing lines offset 3 hours from start until 2 hours after finish, 12 incoming audios, 8 outgoing audios, offset 3 hours from start until 2 hours after end.  Production Booth set to Yes.
 
 250 Tennis, 0 Cameramen and 0 Audio on location and 1 EVS operator 0 hours from start until 0 hour after end, 4 incoming lines, 2 outgoing lines offset 2 hours from start until 2 hours after finish, 6 incoming audios, 4 outgoing audios, offset 2 hours from start until 2 hours after end.
 
