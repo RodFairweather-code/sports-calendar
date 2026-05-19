@@ -861,6 +861,117 @@
   background: #fff;
 }
 
+/* ── View toggle ───────────────────────────────────────────── */
+.ep-view-toggle {
+  display: flex;
+  gap: 4px;
+  margin: 12px 0 4px;
+  background: #f0f2f5;
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.ep-view-btn {
+  flex: 1;
+  padding: 6px 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #6b7a8d;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.ep-view-btn--active {
+  background: #fff;
+  color: #1e3a5f;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+/* ── Cost view ─────────────────────────────────────────────── */
+.ep-cost-view {
+  margin-top: 8px;
+}
+
+.ep-cost-section {
+  margin-bottom: 12px;
+}
+
+.ep-cost-section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: #8a9bb0;
+  padding: 6px 0 4px;
+  border-bottom: 1px solid #e8ecf0;
+  margin-bottom: 4px;
+}
+
+.ep-cost-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 4px 0;
+  font-size: 0.84rem;
+  color: #2c3e50;
+}
+
+.ep-cost-label {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ep-cost-note {
+  font-size: 0.74rem;
+  color: #8a9bb0;
+}
+
+.ep-cost-calc {
+  color: #6b7a8d;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.ep-cost-total {
+  font-weight: 600;
+  color: #1e3a5f;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  min-width: 56px;
+}
+
+.ep-cost-empty {
+  font-size: 0.84rem;
+  color: #8a9bb0;
+  padding: 12px 0;
+  text-align: center;
+}
+
+.ep-cost-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #1e3a5f;
+  margin-top: 8px;
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1e3a5f;
+}
+
+.ep-cost-summary-value {
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ── Admin area ─────────────────────────────────────────────── */
 .admin-view {
   flex: 1;
