@@ -24,34 +24,50 @@ function parsePlatforms(lines) {
 
 // --- Patterns ---
 function parsePatternLine(line) {
-  line = line.replace(/\.\s*$/, '')
+  line = line.replace(/\.\s*$/, '').trim()
   const firstComma = line.indexOf(',')
   if (firstComma === -1) return null
   const name = line.substring(0, firstComma).trim()
   const rest = line.substring(firstComma + 1)
 
-  const cam    = rest.match(/(\d+)\s+cameramen?\s+(\d+)\s+hours?\s+from\s+start\s+until\s+(\d+)\s+hours?\s+after\s+end/i)
-  const inVid  = rest.match(/(\d+)\s+incoming\s+lines/i)
-  const outVid = rest.match(/(\d+)\s+outgoing\s+lines?\s+offset\s+(\d+)\s+hours?\s+from\s+start\s+until\s+(\d+)\s+hours?\s+after\s+finish/i)
-  const inAud  = rest.match(/(\d+)\s+incoming\s+audios/i)
-  const outAud = rest.match(/(\d+)\s+outgoing\s+audios?,?\s+offset\s+(\d+)\s+hours?\s+from\s+start\s+until\s+(\d+)\s+hours?\s+after\s+end/i)
+  // Crew counts
+  const camMatch   = rest.match(/(\d+)\s+cameramen?/i)
+  const audioMatch = rest.match(/(\d+)\s+audio\s+on\s+location/i)
+  const evsMatch   = rest.match(/(\d+)\s+evs\s+operator/i)
 
-  if (!cam) return null
+  // Crew timing — appears as "N hours from start until N hour(s) after end" in crew section
+  // Use a non-greedy search anchored to the crew portion (before the first comma after it)
+  const crewSection = rest.split(',')[0]
+  const crewTiming  = crewSection.match(/(\d+)\s+hours?\s+from\s+start\s+until\s+(\d+)\s+hours?\s+after\s+end/i)
+
+  // Video lines
+  const inVidMatch  = rest.match(/(\d+)\s+incoming\s+lines/i)
+  const outVidMatch = rest.match(/(\d+)\s+outgoing\s+lines?\s+offset\s+(\d+)\s+hours?\s+from\s+start\s+until\s+(\d+)\s+hours?\s+after\s+finish/i)
+
+  // Audio lines
+  const inAudMatch  = rest.match(/(\d+)\s+incoming\s+audios?/i)
+  const outAudMatch = rest.match(/(\d+)\s+outgoing\s+audios?,?\s+offset\s+(\d+)\s+hours?\s+from\s+start\s+until\s+(\d+)\s+hours?\s+after\s+end/i)
+
+  // Production booth
+  const boothMatch  = rest.match(/production\s+booth\s+set\s+to\s+(yes|no)/i)
+
   return {
     name,
-    cameramen: parseInt(cam[1]),
-    evsOperator: false,
-    crewFrom: -parseInt(cam[2]),
-    crewUntil: parseInt(cam[3]),
-    incomingVideoLines:    inVid  ? parseInt(inVid[1])   : 0,
-    outgoingVideoLines:    outVid ? parseInt(outVid[1])  : 0,
-    videoFrom:             outVid ? -parseInt(outVid[2]) : 0,
-    videoUntil:            outVid ? parseInt(outVid[3])  : 0,
-    incomingAudioLines:    inAud  ? parseInt(inAud[1])   : 0,
+    cameramen:             camMatch    ? parseInt(camMatch[1])             : 0,
+    audioOnLocation:       audioMatch  ? parseInt(audioMatch[1])           : 0,
+    evsOperator:           evsMatch    ? parseInt(evsMatch[1])             : 0,
+    crewFrom:              crewTiming  ? -parseInt(crewTiming[1])          : 0,
+    crewUntil:             crewTiming  ? parseInt(crewTiming[2])           : 0,
+    incomingVideoLines:    inVidMatch  ? parseInt(inVidMatch[1])           : 0,
+    outgoingVideoLines:    outVidMatch ? parseInt(outVidMatch[1])          : 0,
+    videoFrom:             outVidMatch ? -parseInt(outVidMatch[2])         : 0,
+    videoUntil:            outVidMatch ? parseInt(outVidMatch[3])          : 0,
+    incomingAudioLines:    inAudMatch  ? parseInt(inAudMatch[1])           : 0,
     incomingTalkbackLines: 0,
-    outgoingTalkbackLines: outAud ? parseInt(outAud[1])  : 0,
-    audioFrom:             outAud ? -parseInt(outAud[2]) : 0,
-    audioUntil:            outAud ? parseInt(outAud[3])  : 0,
+    outgoingTalkbackLines: outAudMatch ? parseInt(outAudMatch[1])          : 0,
+    audioFrom:             outAudMatch ? -parseInt(outAudMatch[2])         : 0,
+    audioUntil:            outAudMatch ? parseInt(outAudMatch[3])          : 0,
+    productionBooth:       boothMatch  ? boothMatch[1].toLowerCase() === 'yes' : false,
   }
 }
 
@@ -65,6 +81,38 @@ function parsePatterns(lines) {
     if (l && !/^add the following/i.test(l)) result.push(l)
   }
   return result.map(parsePatternLine).filter(Boolean)
+}
+
+// --- Default patterns (Production page) ---
+const COMP_NAME_TO_ID = {
+  'efl league 1':          'league_one',
+  'efl league 2':          'league_two',
+  'el championship':       'championship',
+  'gallaher premiership':  'gallagher_premiership',
+  'gallagher premiership': 'gallagher_premiership',
+  'wta tour':              'wta_tour',
+  'atp tour':              'atp_tour',
+  'premier league':        'premier_league',
+}
+
+function parseDefaultPatterns(lines, patterns) {
+  const start = lines.findIndex(l => /production page/i.test(l) && /pattern/i.test(l))
+  if (start === -1) return {}
+  const patternByName = {}
+  patterns.forEach((p, i) => { patternByName[p.name.toLowerCase()] = `pat_seed_${i + 1}` })
+  const result = {}
+  for (let i = start + 1; i < lines.length; i++) {
+    const l = lines[i].trim()
+    if (!l) continue
+    const m = l.match(/^(.+?)\s*=\s*(.+)$/)
+    if (!m) break
+    const compId = COMP_NAME_TO_ID[m[1].trim().toLowerCase()]
+    const patName = m[2].trim().toLowerCase()
+    const patId   = patternByName[patName]
+      ?? Object.entries(patternByName).find(([k]) => k.includes(patName) || patName.includes(k))?.[1]
+    if (compId && patId) result[compId] = patId
+  }
+  return result
 }
 
 // --- Staff ---
@@ -107,13 +155,13 @@ function parseStaff(lines) {
 
 // --- Tech Stack ---
 const LINE_FIELD_MAP = {
-  'video incoming':    'videoIncoming',
-  'video outgoing':   'videoOutgoing',
-  'talkback incoming':'talkbackIncoming',
-  'talkback outgoing':'talkbackOutgoing',
-  'audio incoming':   'audioIncoming',
-  'audio outgoing':   'audioOutgoing',
-  '2110':             'smpte2110',
+  'video incoming':     'videoIncoming',
+  'video outgoing':     'videoOutgoing',
+  'talkback incoming':  'talkbackIncoming',
+  'talkback outgoing':  'talkbackOutgoing',
+  'audio incoming':     'audioIncoming',
+  'audio outgoing':     'audioOutgoing',
+  '2110':               'smpte2110',
 }
 
 const EQUIPMENT_MAP = {
@@ -122,6 +170,7 @@ const EQUIPMENT_MAP = {
   'frame rate converters': 'frameRateConverters',
   'audio offset':          'audioOffset',
   'outgoing idents':       'outgoingIdents',
+  'production booths':     'productionBooths',
 }
 
 function normaliseName(name) {
@@ -138,14 +187,14 @@ function parseTechStack(lines, platforms) {
   })
 
   const platformLines = {}
-  const equipment = { encoders: 0, decoders: 0, frameRateConverters: 0, audioOffset: 0, outgoingIdents: 0 }
+  const equipment = { encoders: 0, decoders: 0, frameRateConverters: 0, audioOffset: 0, outgoingIdents: 0, productionBooths: 16 }
   let currentId = null
 
   for (let i = start + 1; i < lines.length; i++) {
     const l = lines[i].trim()
     if (!l) continue
+    if (/production page/i.test(l)) break
 
-    // "For BBC1 box:"
     const platformHeader = l.match(/^for\s+(.+?)\s*box:?$/i)
     if (platformHeader) {
       const raw = normaliseName(platformHeader[1])
@@ -155,10 +204,8 @@ function parseTechStack(lines, platforms) {
       continue
     }
 
-    // Skip section headers like "Encoders & Decoders box"
     if (/box$/i.test(l) && !/=/.test(l)) { currentId = null; continue }
 
-    // "Key = value"
     const fieldLine = l.match(/^(.+?)\s*=\s*(\d+)$/)
     if (!fieldLine) continue
     const key = fieldLine[1].toLowerCase().trim()
@@ -189,10 +236,11 @@ try {
 const newVersion = currentVersion + 1
 
 // --- Build data ---
-const platforms  = parsePlatforms(lines)
-const patterns   = parsePatterns(lines)
-const staff      = parseStaff(lines)
-const techStack  = parseTechStack(lines, platforms)
+const platforms       = parsePlatforms(lines)
+const patterns        = parsePatterns(lines)
+const defaultPatterns = parseDefaultPatterns(lines, patterns)
+const staff           = parseStaff(lines)
+const techStack       = parseTechStack(lines, platforms)
 
 // --- Generate seedData.js ---
 const platformObjs = platforms.map((name, i) =>
@@ -200,15 +248,19 @@ const platformObjs = platforms.map((name, i) =>
 ).join('\n')
 
 const patternObjs = patterns.map((p, i) => `  {
-    id: 'pat_seed_${i + 1}',
-    name: ${JSON.stringify(p.name)},
-    cameramen: ${p.cameramen}, evsOperator: false,
+    id: 'pat_seed_${i + 1}', name: ${JSON.stringify(p.name)},
+    cameramen: ${p.cameramen}, evsOperator: ${p.evsOperator}, audioOnLocation: ${p.audioOnLocation},
     crewFrom: ${p.crewFrom}, crewUntil: ${p.crewUntil},
     incomingVideoLines: ${p.incomingVideoLines}, outgoingVideoLines: ${p.outgoingVideoLines},
     videoFrom: ${p.videoFrom}, videoUntil: ${p.videoUntil},
     incomingAudioLines: ${p.incomingAudioLines}, incomingTalkbackLines: 0, outgoingTalkbackLines: ${p.outgoingTalkbackLines},
     audioFrom: ${p.audioFrom}, audioUntil: ${p.audioUntil},
+    productionBooth: ${p.productionBooth},
   },`).join('\n')
+
+const defaultPatternLines = Object.entries(defaultPatterns)
+  .map(([k, v]) => `  ${k}: ${JSON.stringify(v)},`)
+  .join('\n')
 
 const staffLines = Object.entries(staff)
   .map(([k, v]) => `  ${k}: ${JSON.stringify(v)},`)
@@ -228,12 +280,16 @@ const PATTERNS = [
 ${patternObjs}
 ]
 
+const DEFAULT_PATTERNS = {
+${defaultPatternLines}
+}
+
 const STAFF = {
 ${staffLines}
 }
 
 const TECH_STACK = {
-  encoders: ${techStack.encoders}, decoders: ${techStack.decoders}, frameRateConverters: ${techStack.frameRateConverters}, audioOffset: ${techStack.audioOffset}, outgoingIdents: ${techStack.outgoingIdents},
+  encoders: ${techStack.encoders}, decoders: ${techStack.decoders}, frameRateConverters: ${techStack.frameRateConverters}, audioOffset: ${techStack.audioOffset}, outgoingIdents: ${techStack.outgoingIdents}, productionBooths: ${techStack.productionBooths},
   platformLines: {
 ${techStackLines}
   },
@@ -247,6 +303,7 @@ export function seedLocalStorage() {
   localStorage.setItem('admin_patterns', JSON.stringify(PATTERNS))
   localStorage.setItem('admin_staff', JSON.stringify(STAFF))
   localStorage.setItem('admin_tech_stack', JSON.stringify(TECH_STACK))
+  localStorage.setItem('rights_default_patterns', JSON.stringify(DEFAULT_PATTERNS))
   localStorage.setItem('seed_version', String(SEED_VERSION))
 }
 `
