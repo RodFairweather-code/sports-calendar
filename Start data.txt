@@ -1,4 +1,5 @@
 
+
 Add the following Patterns in the Admin / Patterns area with the details:
 
 2 Cam Lower League, 2 Cameramen and 1 Audio on location and 1 EVS operator 2 hours from start until 2 hour after end, 4 incoming lines, 2 outgoing lines offset 2 hours from start until 2 hours after finish, 6 incoming audios, 4 outgoing audios, offset 2 hours from start until 2 hours after end.  Production Booth set to Yes.

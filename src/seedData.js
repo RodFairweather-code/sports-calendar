@@ -1,4 +1,4 @@
-const SEED_VERSION = 16
+const SEED_VERSION = 19
 
 const PLATFORMS = [
   { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
@@ -10,72 +10,8 @@ const PLATFORMS = [
 ]
 
 const PATTERNS = [
-  {
-    id: 'pat_seed_1',
-    name: '2 Cam Lower League',
-    cameramen: 2, evsOperator: 1, audioOnLocation: 1,
-    crewFrom: -2, crewUntil: 2,
-    incomingVideoLines: 4, outgoingVideoLines: 2,
-    videoFrom: -2, videoUntil: 2,
-    incomingAudioLines: 6, incomingTalkbackLines: 0, outgoingTalkbackLines: 4,
-    audioFrom: -2, audioUntil: 2,
-    productionBooth: false,
-  },
-  {
-    id: 'pat_seed_2',
-    name: '4 Cam Middle League',
-    cameramen: 4, evsOperator: 2, audioOnLocation: 2,
-    crewFrom: -3, crewUntil: 2,
-    incomingVideoLines: 8, outgoingVideoLines: 4,
-    videoFrom: -2, videoUntil: 2,
-    incomingAudioLines: 8, incomingTalkbackLines: 0, outgoingTalkbackLines: 6,
-    audioFrom: -2, audioUntil: 2,
-    productionBooth: false,
-  },
-  {
-    id: 'pat_seed_3',
-    name: '8 Cam Feature Match',
-    cameramen: 8, evsOperator: 4, audioOnLocation: 3,
-    crewFrom: -4, crewUntil: 3,
-    incomingVideoLines: 10, outgoingVideoLines: 4,
-    videoFrom: -3, videoUntil: 2,
-    incomingAudioLines: 12, incomingTalkbackLines: 0, outgoingTalkbackLines: 8,
-    audioFrom: -3, audioUntil: 2,
-    productionBooth: false,
-  },
-  {
-    id: 'pat_seed_4',
-    name: '250 Tennis',
-    cameramen: 0, evsOperator: 1, audioOnLocation: 0,
-    crewFrom: 0, crewUntil: 0,
-    incomingVideoLines: 4, outgoingVideoLines: 2,
-    videoFrom: -2, videoUntil: 2,
-    incomingAudioLines: 6, incomingTalkbackLines: 0, outgoingTalkbackLines: 4,
-    audioFrom: -2, audioUntil: 2,
-    productionBooth: false,
-  },
-  {
-    id: 'pat_seed_5',
-    name: 'Grand Slam Tennis',
-    cameramen: 1, evsOperator: 1, audioOnLocation: 1,
-    crewFrom: -2, crewUntil: 2,
-    incomingVideoLines: 8, outgoingVideoLines: 4,
-    videoFrom: -2, videoUntil: 2,
-    incomingAudioLines: 12, incomingTalkbackLines: 0, outgoingTalkbackLines: 8,
-    audioFrom: -2, audioUntil: 2,
-    productionBooth: false,
-  },
-]
 
-const DEFAULT_PATTERNS = {
-  premier_league:        'pat_seed_3',
-  championship:          'pat_seed_2',
-  league_one:            'pat_seed_2',
-  league_two:            'pat_seed_1',
-  gallagher_premiership: 'pat_seed_2',
-  atp_tour:              'pat_seed_4',
-  wta_tour:              'pat_seed_4',
-}
+]
 
 const STAFF = {
   cameramen: ["Arthur D","Brian C","Charlie","Denise","Fiona"],
@@ -108,6 +44,5 @@ export function seedLocalStorage() {
   localStorage.setItem('admin_patterns', JSON.stringify(PATTERNS))
   localStorage.setItem('admin_staff', JSON.stringify(STAFF))
   localStorage.setItem('admin_tech_stack', JSON.stringify(TECH_STACK))
-  localStorage.setItem('rights_default_patterns', JSON.stringify(DEFAULT_PATTERNS))
   localStorage.setItem('seed_version', String(SEED_VERSION))
 }

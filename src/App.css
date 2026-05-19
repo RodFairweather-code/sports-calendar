@@ -753,6 +753,114 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* ── Event panel — production & resources ───────────────────── */
+.ep-section {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 24px 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0f2f5;
+}
+
+.ep-section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #1e3a5f;
+}
+
+.ep-section-hint {
+  font-size: 0.75rem;
+  color: #8492a6;
+  font-style: italic;
+}
+
+.ep-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ep-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ep-field-label {
+  width: 90px;
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #8492a6;
+}
+
+.ep-select {
+  flex: 1;
+  height: 30px;
+  border: 1px solid #e2e6ec;
+  border-radius: 6px;
+  background: #f8f9fb;
+  font-size: 0.84rem;
+  color: #9aabbc;
+  padding: 0 6px;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.ep-select--set {
+  background: #fff;
+  color: #2c3e50;
+  border-color: #b8c4d0;
+}
+
+.ep-select:focus {
+  outline: none;
+  border-color: #1e3a5f;
+  box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.1);
+  background: #fff;
+}
+
+.ep-field--overridden {
+  background: #edf7ee;
+  border-radius: 5px;
+  margin: 0 -6px;
+  padding: 2px 6px;
+}
+
+.ep-field-group-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #b0bec5;
+  margin-top: 6px;
+}
+
+.ep-num-input {
+  width: 64px;
+  height: 30px;
+  border: 1px solid #e2e6ec;
+  border-radius: 6px;
+  background: #f8f9fb;
+  font-size: 0.84rem;
+  color: #2c3e50;
+  padding: 0 8px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.ep-num-input:focus {
+  outline: none;
+  border-color: #1e3a5f;
+  box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.1);
+  background: #fff;
+}
+
 /* ── Admin area ─────────────────────────────────────────────── */
 .admin-view {
   flex: 1;
