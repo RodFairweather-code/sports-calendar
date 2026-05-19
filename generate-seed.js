@@ -132,11 +132,12 @@ const ROLE_MAP = {
 
 function parseStaff(lines) {
   const start = lines.findIndex(l => /staff page/i.test(l))
-  if (start === -1) return {}
-  const staff = {
+  if (start === -1) return { names: {}, defaultCosts: {} }
+  const names = {
     cameramen: [], onsiteAudio: [], onsiteProductionManager: [],
     director: [], producer: [], commentator: [], evsOperator: [], graphicsOperator: [],
   }
+  const defaultCosts = {}
   let currentRole = null
   for (let i = start + 1; i < lines.length; i++) {
     const l = lines[i].trim()
@@ -148,9 +149,14 @@ function parseStaff(lines) {
       continue
     }
     if (/^in the admin/i.test(l) || /^add the following/i.test(l)) continue
-    if (currentRole) staff[currentRole].push(l)
+    const costLine = l.match(/set\s+the\s+default\s+cost\s+to\s+£?(\d+)/i)
+    if (costLine) {
+      if (currentRole) defaultCosts[currentRole] = parseInt(costLine[1])
+      continue
+    }
+    if (currentRole) names[currentRole].push(l)
   }
-  return staff
+  return { names, defaultCosts }
 }
 
 // --- Tech Stack ---
@@ -171,6 +177,13 @@ const EQUIPMENT_MAP = {
   'audio offset':          'audioOffset',
   'outgoing idents':       'outgoingIdents',
   'production booths':     'productionBooths',
+  'production boots':      'productionBooths',
+  'video incoming':        'videoIncoming',
+  'video outgoing':        'videoOutgoing',
+  'audio incoming':        'audioIncoming',
+  'audio outgoing':        'audioOutgoing',
+  'talkback incoming':     'talkbackIncoming',
+  'talkback outgoing':     'talkbackOutgoing',
 }
 
 function normaliseName(name) {
@@ -187,8 +200,30 @@ function parseTechStack(lines, platforms) {
   })
 
   const platformLines = {}
-  const equipment = { encoders: 0, decoders: 0, frameRateConverters: 0, audioOffset: 0, outgoingIdents: 0, productionBooths: 16 }
+  const equipment = {
+    encoders: 0,            encodersCost: 0,
+    decoders: 0,            decodersCost: 0,
+    frameRateConverters: 0, frameRateConvertersCost: 0,
+    audioOffset: 0,         audioOffsetCost: 0,
+    outgoingIdents: 0,      outgoingIdentsCost: 0,
+    productionBooths: 16,   productionBoothsCost: 0,
+    videoIncoming: 0,       videoIncomingCost: 0,
+    videoOutgoing: 0,       videoOutgoingCost: 0,
+    audioIncoming: 0,       audioIncomingCost: 0,
+    audioOutgoing: 0,       audioOutgoingCost: 0,
+    talkbackIncoming: 0,    talkbackIncomingCost: 0,
+    talkbackOutgoing: 0,    talkbackOutgoingCost: 0,
+  }
   let currentId = null
+
+  function equipCostKey(mapped) { return `${mapped}Cost` }
+
+  function resolveEquipKey(rawKey) {
+    const k = rawKey.toLowerCase().replace(/^set\s+/, '').trim()
+    return EQUIPMENT_MAP[k]
+      ?? Object.entries(EQUIPMENT_MAP).find(([mk]) => k.includes(mk) || mk.includes(k))?.[1]
+      ?? null
+  }
 
   for (let i = start + 1; i < lines.length; i++) {
     const l = lines[i].trim()
@@ -204,22 +239,35 @@ function parseTechStack(lines, platforms) {
       continue
     }
 
-    if (/box$/i.test(l) && !/=/.test(l)) { currentId = null; continue }
+    if (/box$/i.test(l) && !/=/.test(l) && !/£/.test(l)) { currentId = null; continue }
 
-    const fieldLine = l.match(/^(.+?)\s*=\s*(\d+)$/)
+    // Standalone cost-only line: "On the Production Booths, set the Default cost to £500"
+    const standaloneCost = l.match(/^(?:on\s+the\s+|for\s+the\s+)?(.+?),?\s+set\s+the\s+default\s+cost\s+to\s+£(\d+)/i)
+    if (standaloneCost && !/=/.test(l)) {
+      const mapped = resolveEquipKey(standaloneCost[1].trim())
+      if (mapped) equipment[equipCostKey(mapped)] = parseInt(standaloneCost[2])
+      continue
+    }
+
+    // "Key = N [and set the Default cost to £M]" or "Set Key = N, and set the Default cost to £M"
+    const fieldLine = l.match(/^(.+?)\s*=\s*(\d+)(?:[^£]*£(\d+))?/)
     if (!fieldLine) continue
-    const key = fieldLine[1].toLowerCase().trim()
+    const rawKey = fieldLine[1].toLowerCase().trim()
     const val = parseInt(fieldLine[2])
+    const cost = fieldLine[3] !== undefined ? parseInt(fieldLine[3]) : undefined
 
     if (currentId) {
-      const mapped = LINE_FIELD_MAP[key]
+      const mapped = LINE_FIELD_MAP[rawKey]
       if (mapped) {
         if (!platformLines[currentId]) platformLines[currentId] = {}
         platformLines[currentId][mapped] = val
       }
     } else {
-      const mapped = EQUIPMENT_MAP[key]
-      if (mapped) equipment[mapped] = val
+      const mapped = resolveEquipKey(rawKey)
+      if (mapped) {
+        equipment[mapped] = val
+        if (cost !== undefined) equipment[equipCostKey(mapped)] = cost
+      }
     }
   }
 
@@ -239,7 +287,7 @@ const newVersion = currentVersion + 1
 const platforms       = parsePlatforms(lines)
 const patterns        = parsePatterns(lines)
 const defaultPatterns = parseDefaultPatterns(lines, patterns)
-const staff           = parseStaff(lines)
+const { names: staff, defaultCosts: staffDefaultCosts } = parseStaff(lines)
 const techStack       = parseTechStack(lines, platforms)
 
 // --- Generate seedData.js ---
@@ -266,6 +314,10 @@ const staffLines = Object.entries(staff)
   .map(([k, v]) => `  ${k}: ${JSON.stringify(v)},`)
   .join('\n')
 
+const staffDefaultCostLines = Object.entries(staffDefaultCosts)
+  .map(([k, v]) => `  ${k}: ${v},`)
+  .join('\n')
+
 const techStackLines = Object.entries(techStack.platformLines)
   .map(([id, fields]) => `    ${JSON.stringify(id)}: ${JSON.stringify(fields)},`)
   .join('\n')
@@ -288,8 +340,26 @@ const STAFF = {
 ${staffLines}
 }
 
+const DEFAULT_STAFF_COSTS = {
+  defaults: {
+${staffDefaultCostLines}
+  },
+  overrides: {},
+}
+
 const TECH_STACK = {
-  encoders: ${techStack.encoders}, decoders: ${techStack.decoders}, frameRateConverters: ${techStack.frameRateConverters}, audioOffset: ${techStack.audioOffset}, outgoingIdents: ${techStack.outgoingIdents}, productionBooths: ${techStack.productionBooths},
+  encoders: ${techStack.encoders}, encodersCost: ${techStack.encodersCost},
+  decoders: ${techStack.decoders}, decodersCost: ${techStack.decodersCost},
+  frameRateConverters: ${techStack.frameRateConverters}, frameRateConvertersCost: ${techStack.frameRateConvertersCost},
+  audioOffset: ${techStack.audioOffset}, audioOffsetCost: ${techStack.audioOffsetCost},
+  outgoingIdents: ${techStack.outgoingIdents}, outgoingIdentsCost: ${techStack.outgoingIdentsCost},
+  productionBooths: ${techStack.productionBooths}, productionBoothsCost: ${techStack.productionBoothsCost},
+  videoIncoming: ${techStack.videoIncoming}, videoIncomingCost: ${techStack.videoIncomingCost},
+  videoOutgoing: ${techStack.videoOutgoing}, videoOutgoingCost: ${techStack.videoOutgoingCost},
+  audioIncoming: ${techStack.audioIncoming}, audioIncomingCost: ${techStack.audioIncomingCost},
+  audioOutgoing: ${techStack.audioOutgoing}, audioOutgoingCost: ${techStack.audioOutgoingCost},
+  talkbackIncoming: ${techStack.talkbackIncoming}, talkbackIncomingCost: ${techStack.talkbackIncomingCost},
+  talkbackOutgoing: ${techStack.talkbackOutgoing}, talkbackOutgoingCost: ${techStack.talkbackOutgoingCost},
   platformLines: {
 ${techStackLines}
   },
@@ -304,6 +374,7 @@ export function seedLocalStorage() {
   localStorage.setItem('admin_staff', JSON.stringify(STAFF))
   localStorage.setItem('admin_tech_stack', JSON.stringify(TECH_STACK))
   localStorage.setItem('rights_default_patterns', JSON.stringify(DEFAULT_PATTERNS))
+  localStorage.setItem('admin_staff_costs', JSON.stringify(DEFAULT_STAFF_COSTS))
   localStorage.setItem('seed_version', String(SEED_VERSION))
 }
 `

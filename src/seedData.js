@@ -1,4 +1,4 @@
-const SEED_VERSION = 21
+const SEED_VERSION = 33
 
 const PLATFORMS = [
   { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
@@ -69,6 +69,7 @@ const DEFAULT_PATTERNS = {
   gallagher_premiership: "pat_seed_2",
   wta_tour: "pat_seed_4",
   atp_tour: "pat_seed_4",
+  premier_league: "pat_seed_3",
 }
 
 const STAFF = {
@@ -82,8 +83,33 @@ const STAFF = {
   graphicsOperator: ["Susan","Tabatha","Xavier","Aaron","Bonnie","Chloe","Thalia"],
 }
 
+const DEFAULT_STAFF_COSTS = {
+  defaults: {
+  cameramen: 250,
+  onsiteAudio: 230,
+  onsiteProductionManager: 350,
+  director: 400,
+  producer: 375,
+  commentator: 250,
+  evsOperator: 200,
+  graphicsOperator: 150,
+  },
+  overrides: {},
+}
+
 const TECH_STACK = {
-  encoders: 24, decoders: 24, frameRateConverters: 4, audioOffset: 8, outgoingIdents: 8, productionBooths: 16,
+  encoders: 24, encodersCost: 100,
+  decoders: 24, decodersCost: 120,
+  frameRateConverters: 4, frameRateConvertersCost: 500,
+  audioOffset: 8, audioOffsetCost: 50,
+  outgoingIdents: 8, outgoingIdentsCost: 10,
+  productionBooths: 16, productionBoothsCost: 500,
+  videoIncoming: 200, videoIncomingCost: 20,
+  videoOutgoing: 150, videoOutgoingCost: 25,
+  audioIncoming: 50, audioIncomingCost: 10,
+  audioOutgoing: 75, audioOutgoingCost: 15,
+  talkbackIncoming: 125, talkbackIncomingCost: 20,
+  talkbackOutgoing: 125, talkbackOutgoingCost: 22,
   platformLines: {
     "plat_seed_1": {"videoIncoming":8,"videoOutgoing":16,"talkbackIncoming":24,"talkbackOutgoing":16,"smpte2110":120},
     "plat_seed_2": {"videoIncoming":16,"videoOutgoing":24,"talkbackIncoming":42,"talkbackOutgoing":24,"smpte2110":80},
@@ -103,5 +129,6 @@ export function seedLocalStorage() {
   localStorage.setItem('admin_staff', JSON.stringify(STAFF))
   localStorage.setItem('admin_tech_stack', JSON.stringify(TECH_STACK))
   localStorage.setItem('rights_default_patterns', JSON.stringify(DEFAULT_PATTERNS))
+  localStorage.setItem('admin_staff_costs', JSON.stringify(DEFAULT_STAFF_COSTS))
   localStorage.setItem('seed_version', String(SEED_VERSION))
 }
