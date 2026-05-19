@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -121,9 +121,22 @@ function BoothsView({ events }) {
   const [defaultPatterns] = useState(loadDefaultPatterns)
   const [techStack]       = useState(loadTechStack)
   const [staff]           = useState(loadStaff)
+  const [selectedDate, setSelectedDate] = useState('')
+  const groupRefs = useRef({})
 
   const patternMap = Object.fromEntries(patterns.map(p => [p.id, p]))
   const maxBooths  = techStack.productionBooths ?? 0
+  const todayStr   = new Date().toISOString().slice(0, 10)
+
+  function scrollToDate(dateStr) {
+    const target = sortedDates.find(d => d >= dateStr)
+    if (target) groupRefs.current[target]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  function handleDateChange(e) {
+    setSelectedDate(e.target.value)
+    if (e.target.value) scrollToDate(e.target.value)
+  }
 
   function saveAssignments(next) {
     localStorage.setItem('production_assignments', JSON.stringify(next))
@@ -146,23 +159,50 @@ function BoothsView({ events }) {
 
   if (sortedDates.length === 0) {
     return (
-      <div className="booths-view">
-        <div className="booths-empty">
-          <p>No booth events found.</p>
-          <span>Events get a booth when their production pattern has "Production Booth" set to Yes, or when it is manually enabled in the Event Inspector.</span>
+      <div className="booths-container">
+        <div className="booths-toolbar"><div className="ed-toolbar-right" /></div>
+        <div className="booths-view">
+          <div className="booths-empty">
+            <p>No booth events found.</p>
+            <span>Events get a booth when their production pattern has "Production Booth" set to Yes, or when it is manually enabled in the Event Inspector.</span>
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="booths-view">
+    <div className="booths-container">
+      <div className="booths-toolbar">
+        <div className="ed-toolbar-right">
+          <label className="ed-date-label" htmlFor="booths-date-picker">Go to date</label>
+          <input
+            id="booths-date-picker"
+            type="date"
+            className="ed-date-input"
+            value={selectedDate}
+            min="2025-01-01"
+            max="2026-12-31"
+            onChange={handleDateChange}
+          />
+          <button
+            className="ed-today-btn"
+            onClick={() => scrollToDate(todayStr)}
+            disabled={!sortedDates.some(d => d >= todayStr)}
+            title="Jump to today"
+          >
+            Today
+          </button>
+        </div>
+      </div>
+
+      <div className="booths-view">
       {sortedDates.map(date => {
         const dateLabel = new Date(date + 'T12:00:00').toLocaleDateString('en-GB', {
           weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
         })
         return (
-          <div key={date} className="booths-date-group">
+          <div key={date} ref={el => { groupRefs.current[date] = el }} className="booths-date-group">
             <div className="booths-date-header-row">
               <h2 className="booths-date-header">{dateLabel}</h2>
               <button
@@ -231,6 +271,7 @@ function BoothsView({ events }) {
           </div>
         )
       })}
+      </div>
     </div>
   )
 }
