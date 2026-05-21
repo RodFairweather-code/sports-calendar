@@ -71,7 +71,7 @@ function downloadText(filename, content) {
   URL.revokeObjectURL(url)
 }
 
-function AdminView({ snapshotUnlocked }) {
+function AdminView({ snapshotUnlocked, allEvents }) {
   const [adminTab, setAdminTab] = useState('patterns')
 
   function handleSnapshot() {
@@ -82,7 +82,7 @@ function AdminView({ snapshotUnlocked }) {
     <div className="admin-view">
       <div className="admin-content">
         {adminTab === 'patterns'   && <PatternsView />}
-        {adminTab === 'staff'      && <StaffView />}
+        {adminTab === 'staff'      && <StaffView allEvents={allEvents} />}
         {adminTab === 'platforms'  && <PlatformsView />}
         {adminTab === 'techstack'  && <TechStackView />}
       </div>

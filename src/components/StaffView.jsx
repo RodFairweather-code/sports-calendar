@@ -82,8 +82,36 @@ function nameToEmail(name) {
     : `${parts[0]}@fakeemail.com`
 }
 
-function StaffRoleDetail({ role, names, allProfiles, onUpdate, onBack }) {
+const ASSIGN_ROLES = [
+  { field: 'director',         label: 'Director' },
+  { field: 'evsOperator',      label: 'EVS Operator' },
+  { field: 'graphicsOperator', label: 'Graphics Operator' },
+  { field: 'productionManager',label: 'Production Manager' },
+]
+
+function getPersonSchedule(name, allEvents) {
+  try {
+    const assignments = JSON.parse(localStorage.getItem('production_assignments') || '{}')
+    const results = []
+    for (const [eventId, asgn] of Object.entries(assignments)) {
+      const roles = ASSIGN_ROLES.filter(r => asgn[r.field] === name).map(r => r.label)
+      if (!roles.length) continue
+      const event = allEvents.find(e => e.id === eventId)
+      if (event) results.push({ event, roles })
+    }
+    return results.sort((a, b) => (a.event.start || '').localeCompare(b.event.start || ''))
+  } catch { return [] }
+}
+
+function formatDate(start) {
+  if (!start) return '—'
+  const d = new Date(start.slice(0, 10) + 'T12:00:00')
+  return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
+}
+
+function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack }) {
   const roleProfiles = allProfiles[role.key] || {}
+  const [selectedPerson, setSelectedPerson] = useState(null)
 
   function getProfile(name) {
     return mergedProfile(roleProfiles[name])
@@ -96,6 +124,15 @@ function StaffRoleDetail({ role, names, allProfiles, onUpdate, onBack }) {
       }
     })
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const schedule = selectedPerson ? getPersonSchedule(selectedPerson, allEvents) : []
+
+  const sortedNames = [...names].sort((a, b) => {
+    const aStaff = mergedProfile(roleProfiles[a]).isStaff !== false ? 1 : 0
+    const bStaff = mergedProfile(roleProfiles[b]).isStaff !== false ? 1 : 0
+    if (bStaff !== aStaff) return bStaff - aStaff
+    return a.localeCompare(b)
+  })
 
   return (
     <div className="staff-role-detail">
@@ -110,7 +147,8 @@ function StaffRoleDetail({ role, names, allProfiles, onUpdate, onBack }) {
           No staff added to this role yet. Add names from the main Staff page first.
         </p>
       ) : (
-        <div className="staff-role-table-wrap">
+        <div className="srt-body">
+          <div className="staff-role-table-wrap">
           <table className="staff-role-table">
             <thead>
               <tr>
@@ -124,13 +162,19 @@ function StaffRoleDetail({ role, names, allProfiles, onUpdate, onBack }) {
               </tr>
             </thead>
             <tbody>
-              {names.map((name, i) => {
+              {sortedNames.map((name, i) => {
                 const p = getProfile(name)
+                const isSelected = name === selectedPerson
                 return (
-                  <tr key={name} className={i % 2 === 0 ? 'srt-row-even' : 'srt-row-odd'}>
+                  <tr
+                    key={name}
+                    className={`${i % 2 === 0 ? 'srt-row-even' : 'srt-row-odd'}${isSelected ? ' srt-row-selected' : ''}`}
+                    onClick={() => setSelectedPerson(isSelected ? null : name)}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <td className="srt-td srt-name">{name}</td>
 
-                    <td className="srt-td srt-stafffl">
+                    <td className="srt-td srt-stafffl" onClick={e => e.stopPropagation()}>
                       <span
                         className={p.isStaff ? 'srt-staff-tag srt-tag-btn' : 'srt-fl-tag srt-tag-btn'}
                         role="button"
@@ -143,7 +187,7 @@ function StaffRoleDetail({ role, names, allProfiles, onUpdate, onBack }) {
                       </span>
                     </td>
 
-                    <td className="srt-td srt-email">
+                    <td className="srt-td srt-email" onClick={e => e.stopPropagation()}>
                       <input
                         type="email"
                         className="srt-email-input"
@@ -154,7 +198,7 @@ function StaffRoleDetail({ role, names, allProfiles, onUpdate, onBack }) {
                     </td>
 
                     {CAPS.map(c => (
-                      <td key={c.key} className="srt-td srt-cap">
+                      <td key={c.key} className="srt-td srt-cap" onClick={e => e.stopPropagation()}>
                         <input
                           type="checkbox"
                           className="srt-cap-check"
@@ -164,7 +208,7 @@ function StaffRoleDetail({ role, names, allProfiles, onUpdate, onBack }) {
                       </td>
                     ))}
 
-                    <td className="srt-td srt-seniority">
+                    <td className="srt-td srt-seniority" onClick={e => e.stopPropagation()}>
                       <input
                         type="number"
                         className="srt-seniority-input"
@@ -182,6 +226,29 @@ function StaffRoleDetail({ role, names, allProfiles, onUpdate, onBack }) {
               })}
             </tbody>
           </table>
+          </div>
+
+          {selectedPerson && (
+            <div className="srt-sidebar">
+              <div className="srt-sidebar-header">
+                <span className="srt-sidebar-title">{selectedPerson}</span>
+                <button className="srt-sidebar-close" onClick={() => setSelectedPerson(null)}>✕</button>
+              </div>
+              <div className="srt-sidebar-body">
+                {schedule.length === 0 ? (
+                  <p className="srt-sidebar-empty">No allocations found in the schedule.</p>
+                ) : (
+                  schedule.map(({ event, roles }, i) => (
+                    <div key={i} className="srt-sidebar-item">
+                      <div className="srt-sidebar-date">{formatDate(event.start)}</div>
+                      <div className="srt-sidebar-event">{event.title}</div>
+                      <div className="srt-sidebar-roles">{roles.join(', ')}</div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -190,7 +257,7 @@ function StaffRoleDetail({ role, names, allProfiles, onUpdate, onBack }) {
 
 // ── Main Staff view (cards grid) ─────────────────────────────────────────────
 
-function StaffView() {
+function StaffView({ allEvents = [] }) {
   const [staff, setStaff]           = useState(loadStaff)
   const [costs, setCosts]           = useState(loadStaffCosts)
   const [inputs, setInputs]         = useState(Object.fromEntries(ROLES.map(r => [r.key, ''])))
@@ -281,6 +348,7 @@ function StaffView() {
         role={role}
         names={staff[selectedRole]}
         allProfiles={allProfiles}
+        allEvents={allEvents}
         onUpdate={updateProfile}
         onBack={() => setSelectedRole(null)}
       />

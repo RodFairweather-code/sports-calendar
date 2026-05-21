@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 const EMPTY_DRAFT = {
   name: '',
+  requiredCapability: '',
   // Crew
   cameramen: 0,
   evsOperator: 0,
@@ -22,6 +23,16 @@ const EMPTY_DRAFT = {
   // Production
   productionBooth: false,
 }
+
+const CAP_OPTIONS = [
+  { value: '',         label: '— none —' },
+  { value: 'cam2',     label: '2 Cam' },
+  { value: 'cam4',     label: '4 Cam' },
+  { value: 'cam8plus', label: '8 Cam+' },
+  { value: 'studio',   label: 'Studio' },
+  { value: 'tennis',   label: 'Tennis' },
+  { value: 'rugby',    label: 'Rugby' },
+]
 
 function newId() {
   return `pat_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`
@@ -252,6 +263,18 @@ function PatternsView() {
                       placeholder="e.g. Standard Match Coverage"
                       autoFocus
                     />
+                  </div>
+                  <div className="pf-row">
+                    <label className="pf-label">Required Capability</label>
+                    <select
+                      className="pf-select"
+                      value={draft.requiredCapability || ''}
+                      onChange={e => setField('requiredCapability', e.target.value)}
+                    >
+                      {CAP_OPTIONS.map(o => (
+                        <option key={o.value} value={o.value}>{o.label}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 

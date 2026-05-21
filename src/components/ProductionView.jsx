@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { deriveRequiredCap, capable, staffFirst } from '../services/staffCapabilities'
 
 function formatDateRange(start, end) {
   if (!start) return '—'
@@ -42,6 +43,12 @@ function loadAssignments() {
   catch { return {} }
 }
 
+function loadProfiles() {
+  try { return JSON.parse(localStorage.getItem('admin_staff_profiles') || '{}') }
+  catch { return {} }
+}
+
+
 function loadDefaultPatterns() {
   try { return JSON.parse(localStorage.getItem('rights_default_patterns') || '{}') }
   catch { return {} }
@@ -77,6 +84,7 @@ function ProductionView({ events, onEventClick }) {
   const [staff]            = useState(loadStaff)
   const [assignments, setAssignments] = useState(loadAssignments)
   const [defaultPatterns]  = useState(loadDefaultPatterns)
+  const [profiles]         = useState(loadProfiles)
 
   const todayStr = new Date().toISOString().slice(0, 10)
 
@@ -112,7 +120,7 @@ function ProductionView({ events, onEventClick }) {
   }
 
   const patternOptions = patterns.map(p => ({ value: p.id, label: p.name }))
-  const directorOptions = (staff.director || []).map(n => ({ value: n, label: n }))
+  const allDirectors = staff.director || []
   const pmOptions = (staff.onsiteProductionManager || []).map(n => ({ value: n, label: n }))
 
   return (
@@ -180,6 +188,20 @@ function ProductionView({ events, onEventClick }) {
                 const patternId = asgn.patternId !== undefined
                   ? asgn.patternId
                   : (defaultPatterns[ep.competitionId] || '')
+                const selectedPattern = patterns.find(p => p.id === patternId)
+                const requiredCap = deriveRequiredCap(selectedPattern)
+                const eventDate = event.start ? event.start.slice(0, 10) : null
+                const directorsBusyToday = new Set(
+                  sorted
+                    .filter(e => e.id !== event.id && eventDate && e.start?.slice(0, 10) === eventDate)
+                    .map(e => assignments[e.id]?.director)
+                    .filter(Boolean)
+                )
+                const filteredDirectors = staffFirst(
+                  capable(allDirectors, profiles, 'director', requiredCap).filter(n => !directorsBusyToday.has(n)),
+                  profiles, 'director'
+                )
+                const freelanceRequired = allDirectors.length > 0 && filteredDirectors.length === 0 && !!patternId
 
                 return (
                   <tr
@@ -206,12 +228,16 @@ function ProductionView({ events, onEventClick }) {
                       />
                     </td>
                     <td className="prod-assign-td">
-                      <AssignSelect
-                        value={asgn.director}
-                        options={directorOptions}
-                        emptyLabel={directorOptions.length ? '— select director —' : '(no directors set up)'}
-                        onChange={v => setAssignment(event.id, 'director', v)}
-                      />
+                      {freelanceRequired ? (
+                        <span className="prod-freelance-required">Freelance Required</span>
+                      ) : (
+                        <AssignSelect
+                          value={asgn.director}
+                          options={filteredDirectors.map(n => ({ value: n, label: n }))}
+                          emptyLabel={filteredDirectors.length ? '— select director —' : '(no directors set up)'}
+                          onChange={v => setAssignment(event.id, 'director', v)}
+                        />
+                      )}
                     </td>
                     <td className="prod-assign-td">
                       <AssignSelect

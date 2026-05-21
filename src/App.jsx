@@ -8,6 +8,7 @@ import ProductionView from './components/ProductionView'
 import TechnicalView from './components/TechnicalView'
 import RightsView from './components/RightsView'
 import BoothsView from './components/BoothsView'
+import ResourceGapsView from './components/ResourceGapsView'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
@@ -26,8 +27,9 @@ const VIEWS = [
   { id: 'technical',  label: 'Technical' },
   { id: 'booths',     label: 'Booths' },
   { id: 'assets',     label: 'Asset Management' },
-  { id: 'rights',     label: 'Rights' },
-  { id: 'admin',      label: 'Admin' },
+  { id: 'rights',         label: 'Rights' },
+  { id: 'resource-gaps', label: 'Resource Gaps' },
+  { id: 'admin',          label: 'Admin' },
 ]
 
 const GOVERNING_BODIES = Object.values(
@@ -132,7 +134,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.11</span>
+        <span className="header-version">v2.26</span>
       </header>
 
       {view === 'calendar' && (
@@ -153,9 +155,10 @@ function App() {
         </div>
       )}
       {view === 'rights' && <RightsView />}
-      {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} />}
+      {view === 'resource-gaps' && <ResourceGapsView allEvents={ALL_EVENTS} onEventClick={setSelectedEvent} />}
+      {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={ALL_EVENTS} />}
 
-      {view !== 'admin' && view !== 'rights' && (
+      {view !== 'admin' && view !== 'rights' && view !== 'resource-gaps' && (
         <CompetitionToggles
           competitions={COMPETITIONS}
           governingBodies={GOVERNING_BODIES}

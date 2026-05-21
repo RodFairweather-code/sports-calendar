@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { deriveRequiredCap, capable, staffFirst } from '../services/staffCapabilities'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -29,6 +30,12 @@ function loadStaff() {
   catch { return empty }
 }
 
+function loadProfiles() {
+  try { return JSON.parse(localStorage.getItem('admin_staff_profiles') || '{}') }
+  catch { return {} }
+}
+
+
 function needsBooth(event, assignments, patternMap, defaultPatterns) {
   const asgn = assignments[event.id] || {}
   if (asgn.techProductionBooth !== undefined) return asgn.techProductionBooth
@@ -49,57 +56,55 @@ function tv(asgn, pattern, techKey, patternKey) {
 }
 
 // Allocate TBA director/EVS/graphics across a single day's booth events.
-// No person is assigned to two events at the same start time.
-// Falls back to 'Freelance required' when the pool is exhausted.
-function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatterns) {
+// One person = one job per day, and they must have the pattern's required capability.
+// Falls back to 'Freelance required' when the qualified pool is exhausted.
+function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatterns, profiles) {
   const next = { ...assignments }
 
-  // slot → role → Set<name> — tracks who is already committed per time slot
-  const slotAllocated = {}
-  function ensureSlot(slot) {
-    if (!slotAllocated[slot]) slotAllocated[slot] = {
-      director: new Set(), evsOperator: new Set(), graphicsOperator: new Set(),
-    }
-    return slotAllocated[slot]
+  // Track everyone committed for the whole day across all roles
+  const dayUsed = {
+    director:         new Set(),
+    evsOperator:      new Set(),
+    graphicsOperator: new Set(),
   }
 
   // First pass: register existing (non-TBA, non-freelance) assignments
   dateEvents.forEach(event => {
-    const slot = event.allDay ? 'allDay' : event.start
-    const sl = ensureSlot(slot)
     const asgn = next[event.id] || {}
-    if (asgn.director        && asgn.director        !== 'Freelance required') sl.director.add(asgn.director)
-    if (asgn.evsOperator     && asgn.evsOperator     !== 'Freelance required') sl.evsOperator.add(asgn.evsOperator)
-    if (asgn.graphicsOperator && asgn.graphicsOperator !== 'Freelance required') sl.graphicsOperator.add(asgn.graphicsOperator)
+    if (asgn.director         && asgn.director         !== 'Freelance required') dayUsed.director.add(asgn.director)
+    if (asgn.evsOperator      && asgn.evsOperator      !== 'Freelance required') dayUsed.evsOperator.add(asgn.evsOperator)
+    if (asgn.graphicsOperator && asgn.graphicsOperator !== 'Freelance required') dayUsed.graphicsOperator.add(asgn.graphicsOperator)
   })
 
   // Second pass: fill TBA slots
   dateEvents.forEach(event => {
-    const slot = event.allDay ? 'allDay' : event.start
-    const sl = ensureSlot(slot)
-    const asgn = { ...(next[event.id] || {}) }
-    const pattern = getPatternFor(event, next, patternMap, defaultPatterns)
+    const asgn     = { ...(next[event.id] || {}) }
+    const pattern  = getPatternFor(event, next, patternMap, defaultPatterns)
     const evsCount = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
+    const reqCap   = deriveRequiredCap(pattern)
     let changed = false
 
     if (!asgn.director) {
-      const person = staff.director.find(n => !sl.director.has(n))
+      const pool   = staffFirst(capable(staff.director, profiles, 'director', reqCap), profiles, 'director')
+      const person = pool.find(n => !dayUsed.director.has(n))
       asgn.director = person ?? 'Freelance required'
-      if (person) sl.director.add(person)
+      if (person) dayUsed.director.add(person)
       changed = true
     }
 
     if (evsCount > 0 && !asgn.evsOperator) {
-      const person = staff.evsOperator.find(n => !sl.evsOperator.has(n))
+      const pool   = staffFirst(capable(staff.evsOperator, profiles, 'evsOperator', reqCap), profiles, 'evsOperator')
+      const person = pool.find(n => !dayUsed.evsOperator.has(n))
       asgn.evsOperator = person ?? 'Freelance required'
-      if (person) sl.evsOperator.add(person)
+      if (person) dayUsed.evsOperator.add(person)
       changed = true
     }
 
     if (!asgn.graphicsOperator) {
-      const person = staff.graphicsOperator.find(n => !sl.graphicsOperator.has(n))
+      const pool   = staffFirst(capable(staff.graphicsOperator, profiles, 'graphicsOperator', reqCap), profiles, 'graphicsOperator')
+      const person = pool.find(n => !dayUsed.graphicsOperator.has(n))
       asgn.graphicsOperator = person ?? 'Freelance required'
-      if (person) sl.graphicsOperator.add(person)
+      if (person) dayUsed.graphicsOperator.add(person)
       changed = true
     }
 
@@ -121,6 +126,7 @@ function BoothsView({ events }) {
   const [defaultPatterns] = useState(loadDefaultPatterns)
   const [techStack]       = useState(loadTechStack)
   const [staff]           = useState(loadStaff)
+  const [profiles]        = useState(loadProfiles)
   const [selectedDate, setSelectedDate] = useState('')
   const groupRefs = useRef({})
 
@@ -175,6 +181,33 @@ function BoothsView({ events }) {
     <div className="booths-container">
       <div className="booths-toolbar">
         <div className="ed-toolbar-right">
+          <button
+            className="booths-clear-btn"
+            onClick={() => {
+              if (!window.confirm('Clear all allocated staff from every booth? This cannot be undone.')) return
+              const next = Object.fromEntries(
+                Object.entries(assignments).map(([id, asgn]) => {
+                  const { director, evsOperator, graphicsOperator, ...rest } = asgn
+                  return [id, rest]
+                })
+              )
+              saveAssignments(next)
+            }}
+          >
+            Clear all staff
+          </button>
+          <button
+            className="booths-allocate-all-btn"
+            onClick={() => {
+              let next = { ...assignments }
+              for (const date of sortedDates) {
+                next = autoAllocateDay(byDate[date], next, staff, patternMap, defaultPatterns, profiles)
+              }
+              saveAssignments(next)
+            }}
+          >
+            Allocate Everything
+          </button>
           <label className="ed-date-label" htmlFor="booths-date-picker">Go to date</label>
           <input
             id="booths-date-picker"
@@ -208,10 +241,26 @@ function BoothsView({ events }) {
               <button
                 className="booths-auto-btn"
                 onClick={() => saveAssignments(
-                  autoAllocateDay(byDate[date], assignments, staff, patternMap, defaultPatterns)
+                  autoAllocateDay(byDate[date], assignments, staff, patternMap, defaultPatterns, profiles)
                 )}
               >
                 Auto allocate
+              </button>
+              <button
+                className="booths-clear-day-btn"
+                onClick={() => {
+                  const dayIds = new Set(byDate[date].map(e => e.id))
+                  const next = Object.fromEntries(
+                    Object.entries(assignments).map(([id, asgn]) => {
+                      if (!dayIds.has(id)) return [id, asgn]
+                      const { director, evsOperator, graphicsOperator, ...rest } = asgn
+                      return [id, rest]
+                    })
+                  )
+                  saveAssignments(next)
+                }}
+              >
+                Clear Staffing
               </button>
             </div>
 
@@ -247,6 +296,7 @@ function BoothsView({ events }) {
                       {timePart && <div className="booth-time">{timePart}</div>}
                       {p.venue  && <div className="booth-venue">{p.venue}</div>}
                       {p.sport  && <div className="booth-sport">{p.sport}</div>}
+                      {pattern  && <div className="booth-pattern">{pattern.name}</div>}
                       <div className="booth-staff">
                         <div className={`booth-staff-row ${dir.rowCls}`}>
                           <span className="booth-staff-role">Director</span>
