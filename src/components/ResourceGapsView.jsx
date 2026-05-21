@@ -130,30 +130,9 @@ function ResourceGapsView({ allEvents, onEventClick }) {
                 </div>
 
                 {allClear ? (
-                  <>
-                    <div className="rg-all-clear">
-                      All required resources are available
-                    </div>
-                    {covered.map(({ event, patternName }) => (
-                      <div
-                        key={event.id}
-                        className="rg-gap-row rg-gap-row--clear"
-                        onClick={() => onEventClick?.(event)}
-                        style={{ cursor: 'pointer' }}
-                      >
-                        <div className="rg-event-info">
-                          <span className="rg-event-dot" style={{ background: event.backgroundColor }} />
-                          <span className="rg-event-name">{event.title}</span>
-                          {event.start?.length > 10 && (
-                            <span className="rg-event-time">{event.start.slice(11, 16)}</span>
-                          )}
-                          {patternName && (
-                            <span className="rg-pattern-name">{patternName}</span>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </>
+                  <div className="rg-all-clear">
+                    All required resources are available
+                  </div>
                 ) : (
                   gaps.map(({ event, missingRoles, patternName }) => (
                     <div
