@@ -73,9 +73,7 @@ const ALL_EVENTS = COMPETITIONS.flatMap(comp => {
 
 function App() {
   const [view, setView] = useState('calendar')
-  const [activeComps, setActiveComps] = useState(
-    () => new Set(COMPETITIONS.map(c => c.id))
-  )
+  const [activeComps, setActiveComps] = useState(() => new Set())
   const [selectedEvent, setSelectedEvent] = useState(null)
   const [snapshotUnlocked, setSnapshotUnlocked] = useState(false)
 
@@ -134,7 +132,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.26</span>
+        <span className="header-version">v2.27</span>
       </header>
 
       {view === 'calendar' && (
