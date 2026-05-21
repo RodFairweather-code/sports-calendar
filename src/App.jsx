@@ -10,7 +10,14 @@ import RightsView from './components/RightsView'
 import BoothsView from './components/BoothsView'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
+import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
 import './App.css'
+
+// Populate localStorage from seed on first load (skipped if data already exists)
+if (!localStorage.getItem('admin_staff'))
+  localStorage.setItem('admin_staff', JSON.stringify(SEED_STAFF))
+if (!localStorage.getItem('admin_staff_profiles'))
+  localStorage.setItem('admin_staff_profiles', JSON.stringify(SEED_STAFF_PROFILES))
 
 const VIEWS = [
   { id: 'calendar',   label: 'Calendar' },
@@ -68,6 +75,7 @@ function App() {
     () => new Set(COMPETITIONS.map(c => c.id))
   )
   const [selectedEvent, setSelectedEvent] = useState(null)
+  const [snapshotUnlocked, setSnapshotUnlocked] = useState(false)
 
   const visibleEvents = useMemo(
     () => ALL_EVENTS.filter(e => activeComps.has(e.extendedProps.competitionId)),
@@ -113,13 +121,18 @@ function App() {
               key={v.id}
               data-id={v.id}
               className={`nav-tab${view === v.id ? ' active' : ''}`}
-              onClick={() => setView(v.id)}
+              onClick={e => {
+                if (v.id === 'admin' && e.ctrlKey) {
+                  setSnapshotUnlocked(prev => !prev)
+                }
+                setView(v.id)
+              }}
             >
               {v.label}
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.4</span>
+        <span className="header-version">v2.11</span>
       </header>
 
       {view === 'calendar' && (
@@ -140,7 +153,7 @@ function App() {
         </div>
       )}
       {view === 'rights' && <RightsView />}
-      {view === 'admin' && <AdminView />}
+      {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} />}
 
       {view !== 'admin' && view !== 'rights' && (
         <CompetitionToggles

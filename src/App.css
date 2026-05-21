@@ -1239,6 +1239,30 @@
   color: #fff;
 }
 
+.admin-snapshot-btn {
+  margin-left: auto;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, visibility 0.2s;
+  border-color: rgba(255, 200, 80, 0.5);
+  color: rgba(255, 200, 80, 0.6);
+}
+
+.admin-snapshot-btn.visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  border-color: rgba(255, 200, 80, 0.8);
+  color: #ffc850;
+}
+
+.admin-snapshot-btn.visible:hover {
+  background: rgba(255, 200, 80, 0.15);
+  border-color: #ffc850;
+  color: #ffc850;
+}
+
 /* ── Admin nav tab — visual distinction ─────────────────────── */
 .nav-tab[data-id='admin'] {
   border-left: 1px solid rgba(255, 255, 255, 0.15);
@@ -1871,6 +1895,216 @@
 .staff-add-btn:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+}
+
+/* clickable card header */
+.staff-card-header--link {
+  cursor: pointer;
+  user-select: none;
+}
+
+.staff-card-header--link:hover {
+  background: #2d5180;
+}
+
+.staff-card-chevron {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 6px;
+  line-height: 1;
+}
+
+/* ── Staff role detail page ──────────────────────────────────── */
+.staff-role-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 16px 20px;
+  background: #f0f2f5;
+}
+
+.staff-role-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.staff-role-back-btn {
+  padding: 6px 14px;
+  background: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.staff-role-back-btn:hover {
+  background: #2d5180;
+}
+
+.staff-role-detail-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin: 0;
+}
+
+.staff-role-detail-count {
+  font-size: 0.78rem;
+  color: #8492a6;
+  font-weight: 500;
+}
+
+.staff-role-table-wrap {
+  flex: 1;
+  overflow: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.staff-role-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.84rem;
+}
+
+.srt-th {
+  padding: 10px 12px;
+  background: #1e3a5f;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.srt-th.srt-name {
+  text-align: left;
+  min-width: 140px;
+}
+
+.srt-th.srt-email {
+  text-align: left;
+  min-width: 180px;
+}
+
+.srt-th.srt-stafffl {
+  min-width: 110px;
+}
+
+.srt-th.srt-cap {
+  width: 56px;
+}
+
+.srt-th.srt-seniority {
+  width: 78px;
+}
+
+.srt-td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eef0f3;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.srt-td.srt-name {
+  text-align: left;
+  font-weight: 600;
+  color: #2c3e50;
+  white-space: nowrap;
+}
+
+.srt-td.srt-email {
+  text-align: left;
+}
+
+.srt-row-even { background: #fff; }
+.srt-row-odd  { background: #f8f9fb; }
+
+.srt-row-even:hover,
+.srt-row-odd:hover {
+  background: #eef3fa;
+}
+
+.srt-tag-btn {
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+}
+
+.srt-tag-btn:hover {
+  filter: brightness(0.88);
+}
+
+.srt-staff-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1e7a3f;
+  background: #e6f4ec;
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+.srt-fl-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #c0392b;
+  background: #fdecea;
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+.srt-email-input {
+  width: 100%;
+  min-width: 150px;
+  padding: 5px 8px;
+  border: 1px solid #dde1e8;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  color: #2c3e50;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.srt-email-input:focus {
+  outline: none;
+  border-color: #1e3a5f;
+  background: #fff;
+}
+
+.srt-cap-check {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #1e3a5f;
+}
+
+.srt-seniority-input {
+  width: 52px;
+  padding: 5px 6px;
+  border: 1px solid #dde1e8;
+  border-radius: 5px;
+  font-size: 0.84rem;
+  text-align: center;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.srt-seniority-input:focus {
+  outline: none;
+  border-color: #1e3a5f;
 }
 
 /* ── Tech Stack page ─────────────────────────────────────────── */
