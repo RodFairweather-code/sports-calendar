@@ -13,6 +13,7 @@ export const SEED_STAFF = {
   commentator: ['Graham', 'Henry', 'Indya', 'Jules', 'Killian'],
   evsOperator: ['Elara Moonbrook', 'Kaelen Thorne', 'Selene Valerius', 'Garrick Stoneheart', 'Lyra Silverleaf', 'Theron Blackwood', 'Mirelle Starling', 'Alaric Voss', 'Seraphina Dawn', 'Zephyr Oakhaven', 'Isadora Nightshade', 'Cassian Reed', 'Elowen Frost', 'Roland Vance', 'Thalassa Blue', 'Dorian Graymalkin', 'Nyx Shadowstep', 'Soren Whitethorn', 'Juniper Ash', 'Bastian Gale', 'Liam', 'Mike', 'Nola', 'Olivia', 'Peter', 'Rowena'],
   graphicsOperator: ['Aris Thorne', 'Elara Vance', 'Kaelen Reed', 'Selene Marlo', 'Jace Halloway', 'Mira Sterling', 'Orion Kade', 'Lyra Belrose', 'Silas Fenwick', 'Talia Vane', 'Finnian Cole', 'Elowen Frost', 'Cassian Dax', 'Isolda Vale', 'Dorian Grey', 'Althea Rowe', 'Gideon Hayes', 'Seraphina Blythe', 'Lucian Crane', 'Evadne Ward', 'Susan', 'Tabatha', 'Xavier', 'Aaron', 'Bonnie', 'Chloe', 'Thalia'],
+  mamCheckers: ['Yes (CS)', 'Yes (JS)', 'Yes (RF)'],
 }
 
 export const SEED_STAFF_PROFILES = {
@@ -129,5 +130,10 @@ export const SEED_STAFF_PROFILES = {
     'Bonnie': { isStaff: true, email: 'Bonnie@fakeemail.com', seniority: 1, caps: { cam2: false, cam4: false, cam8plus: false, studio: false, tennis: false, rugby: false } },
     'Chloe': { isStaff: true, email: 'Chloe@fakeemail.com', seniority: 1, caps: { cam2: false, cam4: false, cam8plus: false, studio: false, tennis: false, rugby: false } },
     'Thalia': { isStaff: true, email: 'Thalia@fakeemail.com', seniority: 1, caps: { cam2: false, cam4: false, cam8plus: false, studio: false, tennis: false, rugby: false } },
+  },
+  mamCheckers: {
+    'Yes (CS)': { isStaff: true, email: '', seniority: 1, caps: { cam2: false, cam4: false, cam8plus: false, studio: false, tennis: false, rugby: false } },
+    'Yes (JS)': { isStaff: true, email: '', seniority: 1, caps: { cam2: false, cam4: false, cam8plus: false, studio: false, tennis: false, rugby: false } },
+    'Yes (RF)': { isStaff: true, email: '', seniority: 1, caps: { cam2: false, cam4: false, cam8plus: false, studio: false, tennis: false, rugby: false } },
   },
 }

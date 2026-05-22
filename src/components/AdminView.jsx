@@ -14,6 +14,7 @@ const ROLE_KEYS = [
   { key: 'commentator',             label: 'Commentator' },
   { key: 'evsOperator',             label: 'EVS Operator' },
   { key: 'graphicsOperator',        label: 'Graphics Operator' },
+  { key: 'mamCheckers',             label: 'MAM Checkers' },
 ]
 
 const CAP_KEYS = ['cam2', 'cam4', 'cam8plus', 'studio', 'tennis', 'rugby']
