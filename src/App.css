@@ -1313,8 +1313,13 @@
   color: #fff;
 }
 
-.admin-snapshot-btn {
+.admin-snapshot-group {
   margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.admin-snapshot-btn {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;

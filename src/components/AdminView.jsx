@@ -3,6 +3,7 @@ import PatternsView from './PatternsView'
 import StaffView from './StaffView'
 import PlatformsView from './PlatformsView'
 import TechStackView from './TechStackView'
+import RightsView from './RightsView'
 
 const ROLE_KEYS = [
   { key: 'cameramen',               label: 'Cameramen' },
@@ -99,28 +100,32 @@ function AdminView({ snapshotUnlocked, allEvents }) {
         {adminTab === 'staff'      && <StaffView allEvents={allEvents} />}
         {adminTab === 'platforms'  && <PlatformsView />}
         {adminTab === 'techstack'  && <TechStackView />}
+        {adminTab === 'rights'     && <RightsView />}
       </div>
       <div className="admin-bottom-bar">
         <button className={`admin-tab-btn${adminTab === 'patterns'  ? ' active' : ''}`} onClick={() => setAdminTab('patterns')}>Patterns</button>
         <button className={`admin-tab-btn${adminTab === 'staff'     ? ' active' : ''}`} onClick={() => setAdminTab('staff')}>Staff</button>
         <button className={`admin-tab-btn${adminTab === 'platforms' ? ' active' : ''}`} onClick={() => setAdminTab('platforms')}>Platforms</button>
         <button className={`admin-tab-btn${adminTab === 'techstack' ? ' active' : ''}`} onClick={() => setAdminTab('techstack')}>Tech Stack</button>
-        <button
-          className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
-          disabled={!snapshotUnlocked}
-          tabIndex={snapshotUnlocked ? 0 : -1}
-          onClick={handleSnapshot}
-        >
-          Snapshot
-        </button>
-        <button
-          className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
-          disabled={!snapshotUnlocked}
-          tabIndex={snapshotUnlocked ? 0 : -1}
-          onClick={handleTamsAll}
-        >
-          TAMS All
-        </button>
+        <button className={`admin-tab-btn${adminTab === 'rights'    ? ' active' : ''}`} onClick={() => setAdminTab('rights')}>Rights</button>
+        <div className="admin-snapshot-group">
+          <button
+            className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
+            disabled={!snapshotUnlocked}
+            tabIndex={snapshotUnlocked ? 0 : -1}
+            onClick={handleSnapshot}
+          >
+            Snapshot
+          </button>
+          <button
+            className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
+            disabled={!snapshotUnlocked}
+            tabIndex={snapshotUnlocked ? 0 : -1}
+            onClick={handleTamsAll}
+          >
+            TAMS All
+          </button>
+        </div>
       </div>
     </div>
   )

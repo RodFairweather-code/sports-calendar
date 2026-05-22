@@ -6,7 +6,6 @@ import CompetitionToggles from './components/CompetitionToggles'
 import AdminView from './components/AdminView'
 import ProductionView from './components/ProductionView'
 import TechnicalView from './components/TechnicalView'
-import RightsView from './components/RightsView'
 import BoothsView from './components/BoothsView'
 import ResourceGapsView from './components/ResourceGapsView'
 import AssetsView from './components/AssetsView'
@@ -27,9 +26,8 @@ const VIEWS = [
   { id: 'production', label: 'Production' },
   { id: 'technical',  label: 'Technical' },
   { id: 'booths',     label: 'Booths' },
-  { id: 'assets',     label: 'Asset Management' },
-  { id: 'rights',         label: 'Rights' },
-  { id: 'resource-gaps', label: 'Resource Gaps' },
+  { id: 'assets',          label: 'Asset Management' },
+  { id: 'resource-gaps',  label: 'Resource Gaps' },
   { id: 'admin',          label: 'Admin' },
 ]
 
@@ -133,7 +131,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.32</span>
+        <span className="header-version">v2.34</span>
       </header>
 
       {view === 'calendar' && (
@@ -148,11 +146,10 @@ function App() {
       {view === 'technical' && <TechnicalView events={visibleEvents} />}
       {view === 'booths' && <BoothsView events={visibleEvents} />}
       {view === 'assets' && <AssetsView events={ALL_EVENTS} />}
-      {view === 'rights' && <RightsView />}
       {view === 'resource-gaps' && <ResourceGapsView allEvents={ALL_EVENTS} onEventClick={setSelectedEvent} />}
       {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={ALL_EVENTS} />}
 
-      {view !== 'admin' && view !== 'rights' && view !== 'resource-gaps' && (
+      {view !== 'admin' && view !== 'resource-gaps' && (
         <CompetitionToggles
           competitions={COMPETITIONS}
           governingBodies={GOVERNING_BODIES}
