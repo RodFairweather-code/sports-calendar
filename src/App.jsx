@@ -9,6 +9,7 @@ import TechnicalView from './components/TechnicalView'
 import RightsView from './components/RightsView'
 import BoothsView from './components/BoothsView'
 import ResourceGapsView from './components/ResourceGapsView'
+import AssetsView from './components/AssetsView'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
@@ -132,7 +133,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.27</span>
+        <span className="header-version">v2.31</span>
       </header>
 
       {view === 'calendar' && (
@@ -146,12 +147,7 @@ function App() {
       )}
       {view === 'technical' && <TechnicalView events={visibleEvents} />}
       {view === 'booths' && <BoothsView events={visibleEvents} />}
-      {view === 'assets' && (
-        <div className="placeholder-view">
-          <p>Asset Management</p>
-          <span>Coming soon</span>
-        </div>
-      )}
+      {view === 'assets' && <AssetsView events={ALL_EVENTS} />}
       {view === 'rights' && <RightsView />}
       {view === 'resource-gaps' && <ResourceGapsView allEvents={ALL_EVENTS} onEventClick={setSelectedEvent} />}
       {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={ALL_EVENTS} />}

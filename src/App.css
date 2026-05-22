@@ -3101,3 +3101,103 @@
 .tv-td-val--possible  { color: #e65100; }
 .tv-td-val--combined  { color: #1565c0; font-size: 1.05rem; }
 
+/* ── Asset Management view ──────────────────────────────────────────────────── */
+
+.assets-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f5f7fa;
+}
+
+.assets-empty {
+  padding: 40px 32px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.assets-scroll {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+}
+
+.assets-table {
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: 0.82rem;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.at-th {
+  background: #1e3a5f;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 10px;
+  text-align: left;
+  border-right: 1px solid #2c4e7a;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.at-th:last-child { border-right: none; }
+
+.at-td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #eef0f4;
+  border-right: 1px solid #eef0f4;
+  vertical-align: middle;
+}
+
+.at-td:last-child { border-right: none; }
+
+.at-row-even { background: #fff; }
+.at-row-odd  { background: #f8f9fb; }
+
+.at-th.at-date,  .at-td.at-date  { min-width: 100px; }
+.at-th.at-time,  .at-td.at-time  { min-width: 52px; }
+.at-th.at-comp,  .at-td.at-comp  { min-width: 120px; }
+.at-th.at-event, .at-td.at-event { min-width: 180px; white-space: normal; }
+.at-th.at-venue, .at-td.at-venue { min-width: 120px; }
+.at-th.at-filename, .at-td.at-filename { min-width: 200px; }
+.at-th.at-check, .at-td.at-check { min-width: 68px; text-align: center; }
+.at-th.at-drop,  .at-td.at-drop  { min-width: 110px; }
+.at-th.at-notes, .at-td.at-notes { min-width: 180px; }
+
+.at-filename-text {
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: #1e3a5f;
+  letter-spacing: 0.3px;
+}
+
+.at-td.at-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.at-td.at-drop select {
+  width: 100%;
+  padding: 3px 5px;
+  border: 1px solid #cdd2da;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  background: #fff;
+}
+
+.at-notes-input {
+  width: 100%;
+  padding: 3px 6px;
+  border: 1px solid #cdd2da;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
+
+.at-th.at-port, .at-td.at-port { min-width: 90px; text-align: center; font-weight: 600; }
+.at-port--over { background: #c62828 !important; color: #fff; font-weight: 700; }
+

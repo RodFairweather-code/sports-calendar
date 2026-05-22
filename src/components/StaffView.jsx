@@ -9,7 +9,10 @@ const ROLES = [
   { key: 'commentator',             label: 'Commentator' },
   { key: 'evsOperator',             label: 'EVS Operator' },
   { key: 'graphicsOperator',        label: 'Graphics Operator' },
+  { key: 'mamCheckers',             label: 'MAM Checkers' },
 ]
+
+const MAM_CHECKER_DEFAULTS = ['Yes (CS)', 'Yes (JS)', 'Yes (RF)']
 
 const CAPS = [
   { key: 'cam2',     label: '2 Cam' },
@@ -38,8 +41,14 @@ function mergedProfile(stored) {
 }
 
 function loadStaff() {
-  try { return { ...EMPTY_STAFF, ...JSON.parse(localStorage.getItem('admin_staff') || '{}') } }
-  catch { return { ...EMPTY_STAFF } }
+  try {
+    const stored = { ...EMPTY_STAFF, ...JSON.parse(localStorage.getItem('admin_staff') || '{}') }
+    if (!stored.mamCheckers || stored.mamCheckers.length === 0) {
+      stored.mamCheckers = [...MAM_CHECKER_DEFAULTS]
+      localStorage.setItem('admin_staff', JSON.stringify(stored))
+    }
+    return stored
+  } catch { return { ...EMPTY_STAFF } }
 }
 
 function persist(staff) {
@@ -48,9 +57,15 @@ function persist(staff) {
 
 function loadStaffCosts() {
   try {
-    const stored = JSON.parse(localStorage.getItem('admin_staff_costs') || '{}')
-    return { defaults: stored.defaults || {}, overrides: stored.overrides || {} }
-  } catch { return { defaults: {}, overrides: {} } }
+    const raw = localStorage.getItem('admin_staff_costs')
+    const stored = JSON.parse(raw || '{}')
+    const defaults = { ...(stored.defaults || {}) }
+    if (defaults.mamCheckers === undefined) {
+      defaults.mamCheckers = 50
+      localStorage.setItem('admin_staff_costs', JSON.stringify({ ...stored, defaults }))
+    }
+    return { defaults, overrides: stored.overrides || {} }
+  } catch { return { defaults: { mamCheckers: 50 }, overrides: {} } }
 }
 
 function persistCosts(costs) {

@@ -21,6 +21,7 @@ const DEFAULTS = {
   audioOffset: 0,           audioOffsetCost: 0,
   outgoingIdents: 0,        outgoingIdentsCost: 0,
   productionBooths: 16,     productionBoothsCost: 0,
+  recordPorts: 25,          recordPortsCost: 100,
   videoIncoming: 0,         videoIncomingCost: 0,
   videoOutgoing: 0,         videoOutgoingCost: 0,
   audioIncoming: 0,         audioIncomingCost: 0,
@@ -151,6 +152,11 @@ function TechStackView() {
             <TechCard title="Production Booths">
               <EquipField label="Production Booths" value={data.productionBooths} costValue={data.productionBoothsCost}
                 onChange={v => setTop('productionBooths', v)} onCostChange={v => setTop('productionBoothsCost', v)} />
+            </TechCard>
+
+            <TechCard title="Record Ports">
+              <EquipField label="Record Ports" value={data.recordPorts} costValue={data.recordPortsCost}
+                onChange={v => setTop('recordPorts', v)} onCostChange={v => setTop('recordPortsCost', v)} />
             </TechCard>
 
             <TechCard title="Lines">
