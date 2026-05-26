@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 function formatDateRange(start, end) {
   if (!start) return '—'
@@ -88,6 +88,10 @@ function EditorialView({ events, onEventClick }) {
   })
 
   const todayIndex = sorted.findIndex(e => e.start >= todayStr)
+
+  useEffect(() => {
+    if (sorted.length > 0) scrollToIndex(0)
+  }, [])
 
   function scrollToIndex(index) {
     rowRefs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'center' })
