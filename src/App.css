@@ -3206,3 +3206,152 @@
 .at-th.at-port, .at-td.at-port { min-width: 90px; text-align: center; font-weight: 600; }
 .at-port--over { background: #c62828 !important; color: #fff; font-weight: 700; }
 
+/* ── Book Staff ──────────────────────────────────────────────────────────── */
+.book-staff-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f0f2f5;
+}
+
+.book-staff-scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.book-staff-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.book-staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.83rem;
+  color: #000;
+  background: #fff;
+}
+
+.book-staff-table th {
+  background: #1e3a5f;
+  color: #e8edf4;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: none;
+  white-space: nowrap;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.book-staff-table tbody tr:nth-child(odd) { background: #fff; }
+.book-staff-table tbody tr:nth-child(even) { background: #f0f6ff; }
+.book-staff-table tbody tr:hover { background: #ddeaf6; }
+
+.book-staff-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #a8bdd8;
+  vertical-align: middle;
+  font-weight: 500;
+  color: #000;
+}
+
+.bs-row--past td { color: #555; }
+
+.bs-date  { white-space: nowrap; font-size: 0.8rem; color: #000; min-width: 140px; }
+.bs-event { font-weight: 700; color: #000; }
+.bs-comp  { white-space: nowrap; color: #000; font-weight: 600; }
+.bs-role  { font-weight: 700; color: #000; white-space: nowrap; }
+.bs-name  { font-weight: 700; color: #000; }
+.bs-actions { white-space: nowrap; }
+
+.bs-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.bs-badge--staff      { background: #1e40af; color: #fff; }
+.bs-badge--freelance  { background: #b45309; color: #fff; }
+.bs-badge--confirmed  { background: #065f46; color: #fff; }
+.bs-badge--offered    { background: #d97706; color: #fff; }
+.bs-badge--unbooked   { background: #94a3b8; color: #fff; }
+
+.bs-action-btn {
+  padding: 5px 13px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.bs-action-btn--offer  { background: #2563eb; color: #fff; }
+.bs-action-btn--offer:hover  { background: #1d4ed8; }
+.bs-action-btn--accept { background: #059669; color: #fff; }
+.bs-action-btn--accept:hover { background: #047857; }
+
+/* Bottom banner */
+.book-staff-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e3a5f;
+  padding: 8px 16px;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.bs-role-tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.bs-role-tab {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.bs-role-tab:hover { background: rgba(255, 255, 255, 0.16); color: #fff; }
+.bs-role-tab.active { background: rgba(255, 255, 255, 0.25); color: #fff; }
+
+.bs-filters {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.bs-filter-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.bs-filter-btn:hover { background: rgba(255, 255, 255, 0.16); color: #fff; }
+.bs-filter-btn.active { background: #e97c17; color: #fff; }
+

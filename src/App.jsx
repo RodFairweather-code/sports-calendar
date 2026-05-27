@@ -7,6 +7,7 @@ import AdminView from './components/AdminView'
 import ProductionView from './components/ProductionView'
 import TechnicalView from './components/TechnicalView'
 import BoothsView from './components/BoothsView'
+import BookStaffView from './components/BookStaffView'
 import ResourceGapsView from './components/ResourceGapsView'
 import AssetsView from './components/AssetsView'
 import { COMPETITIONS } from './data/competitions'
@@ -25,7 +26,8 @@ const VIEWS = [
   { id: 'editorial',  label: 'Editorial Decisions' },
   { id: 'production', label: 'Production' },
   { id: 'technical',  label: 'Technical' },
-  { id: 'booths',     label: 'Booths' },
+  { id: 'booths',      label: 'Booths' },
+  { id: 'book-staff', label: 'Book Staff' },
   { id: 'assets',          label: 'Asset Management' },
   { id: 'resource-gaps',  label: 'Resource Gaps' },
   { id: 'admin',          label: 'Admin' },
@@ -145,11 +147,12 @@ function App() {
       )}
       {view === 'technical' && <TechnicalView events={visibleEvents} />}
       {view === 'booths' && <BoothsView events={visibleEvents} />}
+      {view === 'book-staff' && <BookStaffView events={visibleEvents} />}
       {view === 'assets' && <AssetsView events={ALL_EVENTS} />}
       {view === 'resource-gaps' && <ResourceGapsView allEvents={ALL_EVENTS} onEventClick={setSelectedEvent} />}
       {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={ALL_EVENTS} />}
 
-      {view !== 'admin' && view !== 'resource-gaps' && (
+      {view !== 'admin' && view !== 'resource-gaps' && view !== 'book-staff' && (
         <CompetitionToggles
           competitions={COMPETITIONS}
           governingBodies={GOVERNING_BODIES}
