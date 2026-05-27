@@ -36,21 +36,21 @@ function loadRights() {
 }
 
 // Cycles: empty → Y → P → empty. Keyboard Y/P also work directly.
-function DecisionCell({ value, eventId, platformId, onChange }) {
+function DecisionCell({ value, eventId, platformId, onChange, eventIndex }) {
   const state = value || ''
 
   function handleClick(e) {
     e.stopPropagation()
     const next = state === '' ? 'Y' : state === 'Y' ? 'P' : ''
-    onChange(eventId, platformId, next)
+    onChange(eventId, platformId, next, eventIndex, e.shiftKey)
   }
 
   function handleKeyDown(e) {
     e.stopPropagation()
     const k = e.key.toUpperCase()
-    if (k === 'P') { e.preventDefault(); onChange(eventId, platformId, state === 'P' ? '' : 'P') }
-    else if (k === 'Y') { e.preventDefault(); onChange(eventId, platformId, state === 'Y' ? '' : 'Y') }
-    else if (k === 'DELETE' || k === 'BACKSPACE') { e.preventDefault(); onChange(eventId, platformId, '') }
+    if (k === 'P') { e.preventDefault(); onChange(eventId, platformId, state === 'P' ? '' : 'P', eventIndex, false) }
+    else if (k === 'Y') { e.preventDefault(); onChange(eventId, platformId, state === 'Y' ? '' : 'Y', eventIndex, false) }
+    else if (k === 'DELETE' || k === 'BACKSPACE') { e.preventDefault(); onChange(eventId, platformId, '', eventIndex, false) }
   }
 
   const cls = state === 'Y' ? 'decision-cell decision-cell--yes'
@@ -73,6 +73,7 @@ function DecisionCell({ value, eventId, platformId, onChange }) {
 
 function EditorialView({ events, onEventClick }) {
   const rowRefs = useRef({})
+  const lastClickRef = useRef(null)
   const [selectedDate, setSelectedDate] = useState('')
   const [highlightedIndex, setHighlightedIndex] = useState(null)
   const [decisions, setDecisions] = useState(loadDecisions)
@@ -114,20 +115,43 @@ function EditorialView({ events, onEventClick }) {
     })
   }
 
-  function handleDecision(eventId, platformId, value) {
+  function applyDecision(eventId, platformId, value, eventIndex, shiftKey) {
+    const anchor = lastClickRef.current
+    if (shiftKey && anchor && anchor.platformId === platformId) {
+      const from = Math.min(anchor.index, eventIndex)
+      const to   = Math.max(anchor.index, eventIndex)
+      const fill = anchor.value
+      setDecisions(prev => {
+        const next = { ...prev }
+        for (let i = from; i <= to; i++) {
+          const ev = sorted[i]
+          next[ev.id] = { ...next[ev.id], [platformId]: fill }
+        }
+        persistDecisions(next)
+        return next
+      })
+      lastClickRef.current = { index: eventIndex, platformId, value: fill }
+    } else {
+      setDecision(eventId, platformId, value)
+      lastClickRef.current = { index: eventIndex, platformId, value }
+    }
+  }
+
+  function handleDecision(eventId, platformId, value, eventIndex, shiftKey) {
     if (value === 'Y' || value === 'P') {
       const competitionId = eventId.split('|')[0]
       if (rights[competitionId]?.[platformId] === 'N') {
-        setRightsConflict({ eventId, platformId, value })
+        setRightsConflict({ eventId, platformId, value, eventIndex, shiftKey })
         return
       }
     }
-    setDecision(eventId, platformId, value)
+    applyDecision(eventId, platformId, value, eventIndex, shiftKey)
   }
 
   function confirmRightsOverride() {
     if (rightsConflict) {
-      setDecision(rightsConflict.eventId, rightsConflict.platformId, rightsConflict.value)
+      const { eventId, platformId, value, eventIndex, shiftKey } = rightsConflict
+      applyDecision(eventId, platformId, value, eventIndex, shiftKey)
     }
     setRightsConflict(null)
   }
@@ -136,16 +160,32 @@ function EditorialView({ events, onEventClick }) {
     setRightsConflict(null)
   }
 
-  function toggleInitProduction(eventId, e) {
+  function toggleInitProduction(eventId, eventIndex, e) {
     e.stopPropagation()
-    setDecisions(prev => {
-      const next = {
-        ...prev,
-        [eventId]: { ...prev[eventId], initProduction: !prev[eventId]?.initProduction },
-      }
-      persistDecisions(next)
-      return next
-    })
+    const anchor = lastClickRef.current
+    if (e.shiftKey && anchor && anchor.platformId === '__initProd__') {
+      const from = Math.min(anchor.index, eventIndex)
+      const to   = Math.max(anchor.index, eventIndex)
+      const fill = anchor.value
+      setDecisions(prev => {
+        const next = { ...prev }
+        for (let i = from; i <= to; i++) {
+          const ev = sorted[i]
+          next[ev.id] = { ...next[ev.id], initProduction: fill }
+        }
+        persistDecisions(next)
+        return next
+      })
+      lastClickRef.current = { index: eventIndex, platformId: '__initProd__', value: fill }
+    } else {
+      const newValue = !decisions[eventId]?.initProduction
+      setDecisions(prev => {
+        const next = { ...prev, [eventId]: { ...prev[eventId], initProduction: newValue } }
+        persistDecisions(next)
+        return next
+      })
+      lastClickRef.current = { index: eventIndex, platformId: '__initProd__', value: newValue }
+    }
   }
 
   return (
@@ -250,6 +290,7 @@ function EditorialView({ events, onEventClick }) {
                           eventId={event.id}
                           platformId={p.id}
                           onChange={handleDecision}
+                          eventIndex={i}
                         />
                       </td>
                     )
@@ -259,8 +300,8 @@ function EditorialView({ events, onEventClick }) {
                       type="checkbox"
                       className="ed-initprod-cb"
                       checked={!!eventDecisions.initProduction}
-                      onChange={e => toggleInitProduction(event.id, e)}
-                      onClick={e => e.stopPropagation()}
+                      onChange={() => {}}
+                      onClick={e => { e.stopPropagation(); toggleInitProduction(event.id, i, e) }}
                       title="Initialise production planning"
                     />
                   </td>
