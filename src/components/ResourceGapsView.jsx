@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { deriveRequiredCap, capable } from '../services/staffCapabilities'
 
 const FREELANCE_STORED = 'Freelance required'
@@ -126,12 +126,17 @@ function computeDayStatus(allEvents, assignments, decisions, patterns, staff, pr
   return dayStatus
 }
 
-function EventRow({ event, patternName, missingRoles, assignments, profiles, bookings, onEventClick, incomplete }) {
+function EventRow({ event, patternName, missingRoles, assignments, profiles, bookings, onEventClick, incomplete, allConfirmed }) {
   const { confirmed, offered, notOffered } = computeBookingCounts(event.id, assignments, profiles, bookings)
   const hasAny = confirmed + offered + notOffered > 0
+  const allOffered = !allConfirmed && notOffered === 0 && offered > 0
+  const cls = allConfirmed ? ' rg-gap-row--all-confirmed'
+            : allOffered   ? ' rg-gap-row--all-offered'
+            : incomplete   ? ' rg-gap-row--incomplete'
+            : ''
   return (
     <div
-      className={`rg-gap-row${incomplete ? ' rg-gap-row--incomplete' : ''}`}
+      className={`rg-gap-row${cls}`}
       onClick={() => onEventClick?.(event)}
       style={{ cursor: 'pointer' }}
     >
@@ -168,8 +173,14 @@ function ResourceGapsView({ allEvents, onEventClick }) {
   const [staff]           = useState(() => load('admin_staff',              {}))
   const [profiles]        = useState(() => load('admin_staff_profiles',     {}))
   const [defaultPatterns] = useState(() => load('rights_default_patterns',  {}))
-  const [bookings]        = useState(() => load('staff_bookings',           {}))
+  const [bookings, setBookings] = useState(() => load('staff_bookings',     {}))
   const [filter, setFilter] = useState('unavailable')
+
+  useEffect(() => {
+    function onUpdate() { setBookings(load('staff_bookings', {})) }
+    window.addEventListener('bookings-updated', onUpdate)
+    return () => window.removeEventListener('bookings-updated', onUpdate)
+  }, [])
 
   const dayStatus   = computeDayStatus(allEvents, assignments, decisions, patterns, staff, profiles, defaultPatterns)
   const sortedDates = Object.keys(dayStatus).sort()
@@ -197,10 +208,13 @@ function ResourceGapsView({ allEvents, onEventClick }) {
         ) : (
           sortedDates.map(date => {
             const { gaps, covered } = dayStatus[date]
-            const incompleteRows = filter === 'incomplete'
+            const incompleteRows = (filter === 'incomplete' || filter === 'all')
               ? covered.filter(({ event }) => hasIncompleteBookings(event.id, assignments, profiles, bookings))
               : []
-            const allClear = gaps.length === 0 && incompleteRows.length === 0
+            const confirmedRows = filter === 'all'
+              ? covered.filter(({ event }) => !hasIncompleteBookings(event.id, assignments, profiles, bookings))
+              : []
+            const allClear = filter !== 'all' && gaps.length === 0 && incompleteRows.length === 0
 
             return (
               <div key={date} className="rg-date-group">
@@ -240,6 +254,19 @@ function ResourceGapsView({ allEvents, onEventClick }) {
                         incomplete={true}
                       />
                     ))}
+                    {confirmedRows.map(({ event, patternName }) => (
+                      <EventRow
+                        key={event.id}
+                        event={event}
+                        patternName={patternName}
+                        missingRoles={[]}
+                        assignments={assignments}
+                        profiles={profiles}
+                        bookings={bookings}
+                        onEventClick={onEventClick}
+                        allConfirmed={true}
+                      />
+                    ))}
                   </>
                 )}
               </div>
@@ -250,6 +277,12 @@ function ResourceGapsView({ allEvents, onEventClick }) {
 
       <div className="rg-banner">
         <div className="rg-filter-btns">
+          <button
+            className={`rg-filter-btn${filter === 'all' ? ' active' : ''}`}
+            onClick={() => setFilter('all')}
+          >
+            All
+          </button>
           <button
             className={`rg-filter-btn${filter === 'incomplete' ? ' active' : ''}`}
             onClick={() => setFilter('incomplete')}

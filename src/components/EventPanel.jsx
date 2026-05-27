@@ -46,6 +46,10 @@ function loadBookings() {
   catch { return {} }
 }
 
+function persistBookings(b) {
+  localStorage.setItem('staff_bookings', JSON.stringify(b))
+}
+
 const STAFF_KEY_MAP = {
   director:          'director',
   productionManager: 'onsiteProductionManager',
@@ -180,7 +184,7 @@ function CostView({ asgn, tv, techBooth, staffCosts, techStack }) {
 
 // ── Resource view sub-components ─────────────────────────────────────────────
 
-function StaffSelect({ label, value, options, field, onChange, status }) {
+function StaffSelect({ label, value, options, field, onChange, status, onStatusChange }) {
   const statusCls = status === 'confirmed' ? ' ep-field--confirmed'
                   : status === 'offered'   ? ' ep-field--offered'
                   : status === 'unbooked'  ? ' ep-field--unbooked'
@@ -196,6 +200,16 @@ function StaffSelect({ label, value, options, field, onChange, status }) {
         <option value="">—</option>
         {options.map(o => <option key={o} value={o}>{o}</option>)}
       </select>
+      {status === 'unbooked' && (
+        <button className="ep-booking-btn ep-booking-btn--offer" onClick={() => onStatusChange('offered')}>
+          Offer job
+        </button>
+      )}
+      {status === 'offered' && (
+        <button className="ep-booking-btn ep-booking-btn--accept" onClick={() => onStatusChange('confirmed')}>
+          Confirm
+        </button>
+      )}
     </div>
   )
 }
@@ -245,7 +259,7 @@ function EventPanel({ event, onClose }) {
   const [staffCosts]      = useState(loadStaffCosts)
   const [techStack]       = useState(loadTechStack)
   const [profiles]        = useState(loadProfiles)
-  const [bookings]        = useState(loadBookings)
+  const [bookings, setBookings] = useState(loadBookings)
   const [view, setView]   = useState('resources')
 
   useEffect(() => {
@@ -276,6 +290,15 @@ function EventPanel({ event, onClose }) {
   }
   const boothOverridden = asgn.techProductionBooth !== undefined &&
     asgn.techProductionBooth !== (pattern?.productionBooth ?? false)
+
+  function setBookingStatus(field, newStatus) {
+    setBookings(prev => {
+      const next = { ...prev, [event.id]: { ...prev[event.id], [field]: newStatus } }
+      persistBookings(next)
+      window.dispatchEvent(new CustomEvent('bookings-updated'))
+      return next
+    })
+  }
 
   function setField(field, value) {
     setAssignmentsState(prev => {
@@ -410,14 +433,14 @@ function EventPanel({ event, onClose }) {
                     {patterns.map(pat => <option key={pat.id} value={pat.id}>{pat.name}</option>)}
                   </select>
                 </div>
-                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} status={bookingStatus(asgn.director,          'director',          event.id, profiles, bookings)} />
-                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} />
-                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} />
-                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} />
-                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} />
-                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} status={bookingStatus(asgn.evsOperator,       'evsOperator',       event.id, profiles, bookings)} />
-                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} />
-                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} />
+                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} status={bookingStatus(asgn.director,          'director',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('director',          s)} />
+                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('productionManager',  s)} />
+                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('producer',          s)} />
+                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('commentator',       s)} />
+                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('cameraman',         s)} />
+                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} status={bookingStatus(asgn.evsOperator,       'evsOperator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('evsOperator',       s)} />
+                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s)} />
+                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('graphicsOperator',  s)} />
               </div>
 
               {/* ── Technical Resources ── */}
