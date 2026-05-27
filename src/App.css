@@ -844,6 +844,27 @@
   padding: 2px 6px;
 }
 
+.ep-field--confirmed {
+  background: #bbf7d0;
+  border-radius: 5px;
+  margin: 0 -6px;
+  padding: 2px 6px;
+}
+
+.ep-field--offered {
+  background: #fef08a;
+  border-radius: 5px;
+  margin: 0 -6px;
+  padding: 2px 6px;
+}
+
+.ep-field--unbooked {
+  background: #fecaca;
+  border-radius: 5px;
+  margin: 0 -6px;
+  padding: 2px 6px;
+}
+
 .ep-field-group-label {
   font-size: 0.68rem;
   font-weight: 700;
@@ -2386,9 +2407,9 @@
 }
 
 .rg-gap-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 376px 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
   padding: 10px 14px;
   background: #fff;
@@ -2439,9 +2460,9 @@
 .rg-missing-roles {
   display: flex;
   gap: 6px;
-  flex-shrink: 0;
   flex-wrap: wrap;
   justify-content: flex-end;
+  min-width: 0;
 }
 
 .rg-role-badge {
@@ -2463,6 +2484,26 @@
   background: rgba(255,255,255,0.04);
   border-radius: 4px;
 }
+
+.rg-booking-status {
+  display: grid;
+  grid-template-columns: 115px 86px 155px;
+  gap: 5px;
+  align-items: center;
+}
+
+.rg-bs-item {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.rg-bs-confirmed { background: #bbf7d0; color: #14532d; }
+.rg-bs-offered   { background: #fef08a; color: #713f12; }
+.rg-bs-unbooked  { background: #fecaca; color: #7f1d1d; }
 
 .rg-all-clear {
   font-size: 0.83rem;

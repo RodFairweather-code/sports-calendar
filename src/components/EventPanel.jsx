@@ -36,6 +36,36 @@ function loadTechStack() {
   catch { return {} }
 }
 
+function loadProfiles() {
+  try { return JSON.parse(localStorage.getItem('admin_staff_profiles') || '{}') }
+  catch { return {} }
+}
+
+function loadBookings() {
+  try { return JSON.parse(localStorage.getItem('staff_bookings') || '{}') }
+  catch { return {} }
+}
+
+const STAFF_KEY_MAP = {
+  director:          'director',
+  productionManager: 'onsiteProductionManager',
+  producer:          'producer',
+  commentator:       'commentator',
+  cameraman:         'cameramen',
+  evsOperator:       'evsOperator',
+  onsiteAudio:       'onsiteAudio',
+  graphicsOperator:  'graphicsOperator',
+}
+
+function bookingStatus(name, field, eventId, profiles, bookings) {
+  if (!name) return null
+  const staffKey = STAFF_KEY_MAP[field]
+  const isStaff = profiles[staffKey]?.[name]?.isStaff ?? false
+  if (isStaff) return 'confirmed'
+  const status = bookings[eventId]?.[field] || ''
+  return status === 'confirmed' ? 'confirmed' : status === 'offered' ? 'offered' : 'unbooked'
+}
+
 function persistAssignments(a) {
   localStorage.setItem('production_assignments', JSON.stringify(a))
 }
@@ -150,9 +180,13 @@ function CostView({ asgn, tv, techBooth, staffCosts, techStack }) {
 
 // ── Resource view sub-components ─────────────────────────────────────────────
 
-function StaffSelect({ label, value, options, field, onChange }) {
+function StaffSelect({ label, value, options, field, onChange, status }) {
+  const statusCls = status === 'confirmed' ? ' ep-field--confirmed'
+                  : status === 'offered'   ? ' ep-field--offered'
+                  : status === 'unbooked'  ? ' ep-field--unbooked'
+                  : ''
   return (
-    <div className="ep-field">
+    <div className={`ep-field${statusCls}`}>
       <span className="ep-field-label">{label}</span>
       <select
         className={`ep-select${value ? ' ep-select--set' : ''}`}
@@ -210,6 +244,8 @@ function EventPanel({ event, onClose }) {
   const [defaultPatterns] = useState(loadDefaultPatterns)
   const [staffCosts]      = useState(loadStaffCosts)
   const [techStack]       = useState(loadTechStack)
+  const [profiles]        = useState(loadProfiles)
+  const [bookings]        = useState(loadBookings)
   const [view, setView]   = useState('resources')
 
   useEffect(() => {
@@ -374,14 +410,14 @@ function EventPanel({ event, onClose }) {
                     {patterns.map(pat => <option key={pat.id} value={pat.id}>{pat.name}</option>)}
                   </select>
                 </div>
-                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} />
-                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} />
-                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} />
-                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} />
-                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} />
-                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} />
-                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} />
-                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} />
+                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} status={bookingStatus(asgn.director,          'director',          event.id, profiles, bookings)} />
+                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} />
+                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} />
+                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} />
+                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} />
+                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} status={bookingStatus(asgn.evsOperator,       'evsOperator',       event.id, profiles, bookings)} />
+                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} />
+                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} />
               </div>
 
               {/* ── Technical Resources ── */}

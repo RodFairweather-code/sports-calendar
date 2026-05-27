@@ -9,9 +9,40 @@ const BOOTH_ROLES = [
   { field: 'graphicsOperator', label: 'Graphics Operator' },
 ]
 
+const ASSIGNED_ROLES = [
+  { field: 'director',          staffKey: 'director' },
+  { field: 'productionManager', staffKey: 'onsiteProductionManager' },
+  { field: 'evsOperator',       staffKey: 'evsOperator' },
+  { field: 'graphicsOperator',  staffKey: 'graphicsOperator' },
+  { field: 'cameraman',         staffKey: 'cameramen' },
+  { field: 'onsiteAudio',       staffKey: 'onsiteAudio' },
+  { field: 'producer',          staffKey: 'producer' },
+  { field: 'commentator',       staffKey: 'commentator' },
+  { field: 'mamChecker',        staffKey: 'mamCheckers' },
+]
+
 function load(key, fallback) {
   try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)) }
   catch { return fallback }
+}
+
+function computeBookingCounts(eventId, assignments, profiles, bookings) {
+  const asgn = assignments[eventId] || {}
+  let confirmed = 0, offered = 0, notOffered = 0
+  for (const { field, staffKey } of ASSIGNED_ROLES) {
+    const name = asgn[field]
+    if (!name || name === FREELANCE_STORED) continue
+    const isStaff = profiles[staffKey]?.[name]?.isStaff ?? false
+    if (isStaff) {
+      confirmed++
+    } else {
+      const status = bookings[eventId]?.[field] || ''
+      if (status === 'confirmed') confirmed++
+      else if (status === 'offered') offered++
+      else notOffered++
+    }
+  }
+  return { confirmed, offered, notOffered }
 }
 
 function formatDate(dateStr) {
@@ -95,6 +126,7 @@ function ResourceGapsView({ allEvents, onEventClick }) {
   const [staff]           = useState(() => load('admin_staff',              {}))
   const [profiles]        = useState(() => load('admin_staff_profiles',     {}))
   const [defaultPatterns] = useState(() => load('rights_default_patterns',  {}))
+  const [bookings]        = useState(() => load('staff_bookings',           {}))
 
   const dayStatus   = computeDayStatus(allEvents, assignments, decisions, patterns, staff, profiles, defaultPatterns)
   const sortedDates = Object.keys(dayStatus).sort()
@@ -134,30 +166,41 @@ function ResourceGapsView({ allEvents, onEventClick }) {
                     All required resources are available
                   </div>
                 ) : (
-                  gaps.map(({ event, missingRoles, patternName }) => (
-                    <div
-                      key={event.id}
-                      className="rg-gap-row"
-                      onClick={() => onEventClick?.(event)}
-                      style={{ cursor: 'pointer' }}
-                    >
-                      <div className="rg-event-info">
-                        <span className="rg-event-dot" style={{ background: event.backgroundColor }} />
-                        <span className="rg-event-name">{event.title}</span>
-                        {event.start?.length > 10 && (
-                          <span className="rg-event-time">{event.start.slice(11, 16)}</span>
-                        )}
-                        {patternName && (
-                          <span className="rg-pattern-name">{patternName}</span>
-                        )}
+                  gaps.map(({ event, missingRoles, patternName }) => {
+                    const { confirmed, offered, notOffered } = computeBookingCounts(event.id, assignments, profiles, bookings)
+                    const hasAny = confirmed + offered + notOffered > 0
+                    return (
+                      <div
+                        key={event.id}
+                        className="rg-gap-row"
+                        onClick={() => onEventClick?.(event)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <div className="rg-event-info">
+                          <span className="rg-event-dot" style={{ background: event.backgroundColor }} />
+                          <span className="rg-event-name">{event.title}</span>
+                          {event.start?.length > 10 && (
+                            <span className="rg-event-time">{event.start.slice(11, 16)}</span>
+                          )}
+                          {patternName && (
+                            <span className="rg-pattern-name">{patternName}</span>
+                          )}
+                        </div>
+                        <div className="rg-booking-status">
+                          {hasAny && <>
+                            <span className="rg-bs-item rg-bs-confirmed">Confirmed = {confirmed}</span>
+                            <span className="rg-bs-item rg-bs-offered">Offered = {offered}</span>
+                            <span className="rg-bs-item rg-bs-unbooked">Not offered yet = {notOffered}</span>
+                          </>}
+                        </div>
+                        <div className="rg-missing-roles">
+                          {missingRoles.map(role => (
+                            <span key={role} className="rg-role-badge">{role}</span>
+                          ))}
+                        </div>
                       </div>
-                      <div className="rg-missing-roles">
-                        {missingRoles.map(role => (
-                          <span key={role} className="rg-role-badge">{role}</span>
-                        ))}
-                      </div>
-                    </div>
-                  ))
+                    )
+                  })
                 )}
               </div>
             )
