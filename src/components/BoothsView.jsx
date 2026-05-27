@@ -35,6 +35,11 @@ function loadProfiles() {
   catch { return {} }
 }
 
+function loadBookings() {
+  try { return JSON.parse(localStorage.getItem('staff_bookings') || '{}') }
+  catch { return {} }
+}
+
 
 function needsBooth(event, assignments, patternMap, defaultPatterns) {
   const asgn = assignments[event.id] || {}
@@ -114,10 +119,16 @@ function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatt
   return next
 }
 
-function staffDisplay(name) {
+function staffDisplay(name, eventId, roleKey, staffKey, profiles, bookings) {
   if (!name)                         return { text: 'TBA',               cls: 'booth-staff-tba',      rowCls: '' }
   if (name === 'Freelance required') return { text: 'Freelance required', cls: 'booth-staff-freelance', rowCls: 'booth-staff-row--freelance' }
-  return { text: name, cls: '', rowCls: '' }
+  const isStaff = profiles[staffKey]?.[name]?.isStaff ?? false
+  const storedStatus = bookings[eventId]?.[roleKey] || ''
+  const effectiveStatus = isStaff ? 'confirmed' : storedStatus
+  const cls = effectiveStatus === 'confirmed' ? 'booth-staff-name--confirmed'
+            : effectiveStatus === 'offered'   ? 'booth-staff-name--offered'
+            :                                   'booth-staff-name--unbooked'
+  return { text: name, cls, rowCls: '' }
 }
 
 function BoothsView({ events }) {
@@ -127,6 +138,7 @@ function BoothsView({ events }) {
   const [techStack]       = useState(loadTechStack)
   const [staff]           = useState(loadStaff)
   const [profiles]        = useState(loadProfiles)
+  const [bookings]        = useState(loadBookings)
   const [selectedDate, setSelectedDate] = useState('')
   const groupRefs = useRef({})
 
@@ -274,9 +286,9 @@ function BoothsView({ events }) {
                 const evsCount     = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
                 const overCapacity = maxBooths > 0 && (idx + 1) > maxBooths
 
-                const dir = staffDisplay(asgn.director)
-                const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator) : null
-                const gfx = staffDisplay(asgn.graphicsOperator)
+                const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings)
+                const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings) : null
+                const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings)
 
                 return (
                   <div

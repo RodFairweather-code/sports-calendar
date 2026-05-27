@@ -1264,6 +1264,30 @@
   font-style: italic;
 }
 
+.booth-staff-name--confirmed {
+  background: #bbf7d0;
+  color: #14532d;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.booth-staff-name--offered {
+  background: #fef08a;
+  color: #713f12;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.booth-staff-name--unbooked {
+  background: #fecaca;
+  color: #7f1d1d;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
 /* ── Admin area ─────────────────────────────────────────────── */
 .admin-view {
   flex: 1;
