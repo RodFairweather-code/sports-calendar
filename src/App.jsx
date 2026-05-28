@@ -26,10 +26,10 @@ const VIEWS = [
   { id: 'editorial',  label: 'Editorial Decisions' },
   { id: 'production', label: 'Production' },
   { id: 'technical',  label: 'Technical' },
-  { id: 'booths',      label: 'Booths' },
+  { id: 'booths',      label: 'Operations' },
   { id: 'book-staff', label: 'Book Staff' },
-  { id: 'assets',          label: 'Asset Management' },
   { id: 'resource-gaps',  label: 'Resource Gaps' },
+  { id: 'assets',          label: 'Asset Management' },
   { id: 'admin',          label: 'Admin' },
 ]
 
