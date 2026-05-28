@@ -250,30 +250,66 @@ function BoothsView({ events }) {
           <div key={date} ref={el => { groupRefs.current[date] = el }} className="booths-date-group">
             <div className="booths-date-header-row">
               <h2 className="booths-date-header">{dateLabel}</h2>
-              <button
-                className="booths-auto-btn"
-                onClick={() => saveAssignments(
-                  autoAllocateDay(byDate[date], assignments, staff, patternMap, defaultPatterns, profiles)
-                )}
-              >
-                Auto allocate
-              </button>
-              <button
-                className="booths-clear-day-btn"
-                onClick={() => {
-                  const dayIds = new Set(byDate[date].map(e => e.id))
-                  const next = Object.fromEntries(
-                    Object.entries(assignments).map(([id, asgn]) => {
-                      if (!dayIds.has(id)) return [id, asgn]
-                      const { director, evsOperator, graphicsOperator, ...rest } = asgn
-                      return [id, rest]
-                    })
-                  )
-                  saveAssignments(next)
-                }}
-              >
-                Clear Staffing
-              </button>
+              <div className="booths-header-buttons">
+                <div className="booths-btn-group">
+                  <button
+                    className="booths-clear-day-btn"
+                    onClick={() => {
+                      const dayIds = new Set(byDate[date].map(e => e.id))
+                      const next = Object.fromEntries(
+                        Object.entries(assignments).map(([id, asgn]) => {
+                          if (!dayIds.has(id)) return [id, asgn]
+                          const { director, evsOperator, graphicsOperator, ...rest } = asgn
+                          return [id, rest]
+                        })
+                      )
+                      saveAssignments(next)
+                    }}
+                  >
+                    Clear this day
+                  </button>
+                  <button
+                    className="booths-auto-btn"
+                    onClick={() => saveAssignments(
+                      autoAllocateDay(byDate[date], assignments, staff, patternMap, defaultPatterns, profiles)
+                    )}
+                  >
+                    Auto allocate this day
+                  </button>
+                </div>
+                <div className="booths-btn-group">
+                  <button
+                    className="booths-clear-forward-btn"
+                    onClick={() => {
+                      const forwardDates = sortedDates.filter(d => d >= date)
+                      const forwardIds = new Set(forwardDates.flatMap(d => byDate[d].map(e => e.id)))
+                      const next = Object.fromEntries(
+                        Object.entries(assignments).map(([id, asgn]) => {
+                          if (!forwardIds.has(id)) return [id, asgn]
+                          const { director, evsOperator, graphicsOperator, ...rest } = asgn
+                          return [id, rest]
+                        })
+                      )
+                      saveAssignments(next)
+                    }}
+                  >
+                    Clear allocation forward
+                  </button>
+                  <button
+                    className="booths-allocate-forward-btn"
+                    onClick={() => {
+                      const forwardDates = sortedDates.filter(d => d >= date)
+                      let next = { ...assignments }
+                      for (const d of forwardDates) {
+                        next = autoAllocateDay(byDate[d], next, staff, patternMap, defaultPatterns, profiles)
+                      }
+                      saveAssignments(next)
+                    }}
+                  >
+                    Allocate forward
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div className="booths-row">

@@ -1080,10 +1080,23 @@
 .booths-date-header-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
   border-bottom: 2px solid #1e3a5f;
   padding-bottom: 8px;
   margin-bottom: 14px;
+}
+
+.booths-header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+}
+
+.booths-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .booths-date-header {
@@ -1158,6 +1171,38 @@
 
 .booths-auto-btn:hover {
   background: #1e3a5f;
+  color: #fff;
+}
+
+.booths-clear-forward-btn {
+  padding: 5px 14px;
+  border: 1px solid #7b3500;
+  border-radius: 6px;
+  background: transparent;
+  color: #7b3500;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.booths-clear-forward-btn:hover {
+  background: #7b3500;
+  color: #fff;
+}
+
+.booths-allocate-forward-btn {
+  padding: 5px 14px;
+  border: 1px solid #1a5c3a;
+  border-radius: 6px;
+  background: transparent;
+  color: #1a5c3a;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.booths-allocate-forward-btn:hover {
+  background: #1a5c3a;
   color: #fff;
 }
 
