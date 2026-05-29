@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { deriveRequiredCap, capable, staffFirst } from '../services/staffCapabilities'
 
 function formatDateRange(start, end) {
@@ -85,6 +85,12 @@ function ProductionView({ events, onEventClick }) {
   const [assignments, setAssignments] = useState(loadAssignments)
   const [defaultPatterns]  = useState(loadDefaultPatterns)
   const [profiles]         = useState(loadProfiles)
+
+  useEffect(() => {
+    function onUpdate() { setAssignments(loadAssignments()) }
+    window.addEventListener('assignments-updated', onUpdate)
+    return () => window.removeEventListener('assignments-updated', onUpdate)
+  }, [])
 
   const todayStr = new Date().toISOString().slice(0, 10)
 

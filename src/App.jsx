@@ -146,7 +146,7 @@ function App() {
         <ProductionView events={visibleEvents} onEventClick={setSelectedEvent} />
       )}
       {view === 'technical' && <TechnicalView events={visibleEvents} />}
-      {view === 'booths' && <BoothsView events={visibleEvents} />}
+      {view === 'booths' && <BoothsView events={visibleEvents} onEventClick={setSelectedEvent} />}
       {view === 'book-staff' && <BookStaffView events={visibleEvents} />}
       {view === 'assets' && <AssetsView events={ALL_EVENTS} />}
       {view === 'resource-gaps' && <ResourceGapsView allEvents={ALL_EVENTS} onEventClick={setSelectedEvent} />}

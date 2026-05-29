@@ -72,6 +72,7 @@ function bookingStatus(name, field, eventId, profiles, bookings) {
 
 function persistAssignments(a) {
   localStorage.setItem('production_assignments', JSON.stringify(a))
+  window.dispatchEvent(new CustomEvent('assignments-updated'))
 }
 
 function personCost(costs, roleKey, name) {

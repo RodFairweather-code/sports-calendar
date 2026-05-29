@@ -1,4 +1,4 @@
-import { useState, useRef, Fragment } from 'react'
+import { useEffect, useState, useRef, Fragment } from 'react'
 
 function loadDecisions() {
   try { return JSON.parse(localStorage.getItem('editorial_decisions') || '{}') }
@@ -57,9 +57,15 @@ const RESOURCE_ROWS = [
 
 function TechnicalView({ events }) {
   const [decisions]       = useState(loadDecisions)
-  const [assignments]     = useState(loadAssignments)
+  const [assignments, setAssignments] = useState(loadAssignments)
   const [defaultPatterns] = useState(loadDefaultPatterns)
   const [patterns]        = useState(loadPatterns)
+
+  useEffect(() => {
+    function onUpdate() { setAssignments(loadAssignments()) }
+    window.addEventListener('assignments-updated', onUpdate)
+    return () => window.removeEventListener('assignments-updated', onUpdate)
+  }, [])
 
   const dayRefs    = useRef({})
   const [selectedDate, setSelectedDate] = useState('')

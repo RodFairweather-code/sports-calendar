@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { deriveRequiredCap, capable, staffFirst } from '../services/staffCapabilities'
 
 function loadAssignments() {
@@ -40,6 +40,55 @@ function loadBookings() {
   catch { return {} }
 }
 
+function loadDecisions() {
+  try { return JSON.parse(localStorage.getItem('editorial_decisions') || '{}') }
+  catch { return {} }
+}
+
+// 'definite' = any platform Y, 'possible' = no Y but some P, otherwise 'unscheduled'
+function eventStatus(eventId, decisions) {
+  const vals = Object.values(decisions[eventId] || {})
+  if (vals.includes('Y')) return 'definite'
+  if (vals.includes('P')) return 'possible'
+  return 'unscheduled'
+}
+
+
+const BOOTH_ROLES = [
+  { asgnKey: 'director',         staffKey: 'director' },
+  { asgnKey: 'evsOperator',      staffKey: 'evsOperator' },
+  { asgnKey: 'graphicsOperator', staffKey: 'graphicsOperator' },
+]
+
+// For the given event IDs, counts accepted/offered freelancers being cleared
+// and returns updated bookings with those statuses wiped.
+function computeClear(eventIds, assignments, profiles, bookings) {
+  let accepted = 0
+  let offered  = 0
+  const nextBookings = { ...bookings }
+
+  for (const id of eventIds) {
+    const asgn       = assignments[id] || {}
+    const evtBookings = { ...(nextBookings[id] || {}) }
+    let changed = false
+
+    for (const { asgnKey, staffKey } of BOOTH_ROLES) {
+      const name = asgn[asgnKey]
+      if (!name || name === 'Freelance required') continue
+      if (profiles[staffKey]?.[name]?.isStaff ?? false) continue
+
+      const status = evtBookings[asgnKey] || ''
+      if (status === 'confirmed') accepted++
+      else if (status === 'offered') offered++
+
+      if (evtBookings[asgnKey]) { delete evtBookings[asgnKey]; changed = true }
+    }
+
+    if (changed) nextBookings[id] = evtBookings
+  }
+
+  return { accepted, offered, nextBookings }
+}
 
 function needsBooth(event, assignments, patternMap, defaultPatterns) {
   const asgn = assignments[event.id] || {}
@@ -63,58 +112,65 @@ function tv(asgn, pattern, techKey, patternKey) {
 // Allocate TBA director/EVS/graphics across a single day's booth events.
 // One person = one job per day, and they must have the pattern's required capability.
 // Falls back to 'Freelance required' when the qualified pool is exhausted.
-function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatterns, profiles) {
+// Events are processed in priority tiers: definite (Y) → possible (P) → unscheduled.
+// Each tier's existing assignments are locked in before that tier's TBA slots are filled,
+// so possible-event staff never block definite events from getting first pick.
+function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatterns, profiles, decisions = {}) {
   const next = { ...assignments }
-
-  // Track everyone committed for the whole day across all roles
   const dayUsed = {
     director:         new Set(),
     evsOperator:      new Set(),
     graphicsOperator: new Set(),
   }
 
-  // First pass: register existing (non-TBA, non-freelance) assignments
-  dateEvents.forEach(event => {
-    const asgn = next[event.id] || {}
-    if (asgn.director         && asgn.director         !== 'Freelance required') dayUsed.director.add(asgn.director)
-    if (asgn.evsOperator      && asgn.evsOperator      !== 'Freelance required') dayUsed.evsOperator.add(asgn.evsOperator)
-    if (asgn.graphicsOperator && asgn.graphicsOperator !== 'Freelance required') dayUsed.graphicsOperator.add(asgn.graphicsOperator)
-  })
+  const tiers = ['definite', 'possible', 'unscheduled'].map(status =>
+    dateEvents.filter(e => eventStatus(e.id, decisions) === status)
+  )
 
-  // Second pass: fill TBA slots
-  dateEvents.forEach(event => {
-    const asgn     = { ...(next[event.id] || {}) }
-    const pattern  = getPatternFor(event, next, patternMap, defaultPatterns)
-    const evsCount = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
-    const reqCap   = deriveRequiredCap(pattern)
-    let changed = false
+  for (const tier of tiers) {
+    // Lock existing assignments for this tier before filling any TBA in it
+    tier.forEach(event => {
+      const asgn = next[event.id] || {}
+      if (asgn.director         && asgn.director         !== 'Freelance required') dayUsed.director.add(asgn.director)
+      if (asgn.evsOperator      && asgn.evsOperator      !== 'Freelance required') dayUsed.evsOperator.add(asgn.evsOperator)
+      if (asgn.graphicsOperator && asgn.graphicsOperator !== 'Freelance required') dayUsed.graphicsOperator.add(asgn.graphicsOperator)
+    })
 
-    if (!asgn.director) {
-      const pool   = staffFirst(capable(staff.director, profiles, 'director', reqCap), profiles, 'director')
-      const person = pool.find(n => !dayUsed.director.has(n))
-      asgn.director = person ?? 'Freelance required'
-      if (person) dayUsed.director.add(person)
-      changed = true
-    }
+    // Fill TBA slots for this tier
+    tier.forEach(event => {
+      const asgn     = { ...(next[event.id] || {}) }
+      const pattern  = getPatternFor(event, next, patternMap, defaultPatterns)
+      const evsCount = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
+      const reqCap   = deriveRequiredCap(pattern)
+      let changed = false
 
-    if (evsCount > 0 && !asgn.evsOperator) {
-      const pool   = staffFirst(capable(staff.evsOperator, profiles, 'evsOperator', reqCap), profiles, 'evsOperator')
-      const person = pool.find(n => !dayUsed.evsOperator.has(n))
-      asgn.evsOperator = person ?? 'Freelance required'
-      if (person) dayUsed.evsOperator.add(person)
-      changed = true
-    }
+      if (!asgn.director) {
+        const pool   = staffFirst(capable(staff.director, profiles, 'director', reqCap), profiles, 'director')
+        const person = pool.find(n => !dayUsed.director.has(n))
+        asgn.director = person ?? 'Freelance required'
+        if (person) dayUsed.director.add(person)
+        changed = true
+      }
 
-    if (!asgn.graphicsOperator) {
-      const pool   = staffFirst(capable(staff.graphicsOperator, profiles, 'graphicsOperator', reqCap), profiles, 'graphicsOperator')
-      const person = pool.find(n => !dayUsed.graphicsOperator.has(n))
-      asgn.graphicsOperator = person ?? 'Freelance required'
-      if (person) dayUsed.graphicsOperator.add(person)
-      changed = true
-    }
+      if (evsCount > 0 && !asgn.evsOperator) {
+        const pool   = staffFirst(capable(staff.evsOperator, profiles, 'evsOperator', reqCap), profiles, 'evsOperator')
+        const person = pool.find(n => !dayUsed.evsOperator.has(n))
+        asgn.evsOperator = person ?? 'Freelance required'
+        if (person) dayUsed.evsOperator.add(person)
+        changed = true
+      }
 
-    if (changed) next[event.id] = asgn
-  })
+      if (!asgn.graphicsOperator) {
+        const pool   = staffFirst(capable(staff.graphicsOperator, profiles, 'graphicsOperator', reqCap), profiles, 'graphicsOperator')
+        const person = pool.find(n => !dayUsed.graphicsOperator.has(n))
+        asgn.graphicsOperator = person ?? 'Freelance required'
+        if (person) dayUsed.graphicsOperator.add(person)
+        changed = true
+      }
+
+      if (changed) next[event.id] = asgn
+    })
+  }
 
   return next
 }
@@ -131,16 +187,31 @@ function staffDisplay(name, eventId, roleKey, staffKey, profiles, bookings) {
   return { text: name, cls, rowCls: '' }
 }
 
-function BoothsView({ events }) {
+function BoothsView({ events, onEventClick }) {
   const [assignments, setAssignmentsRaw] = useState(loadAssignments)
   const [patterns]        = useState(loadPatterns)
   const [defaultPatterns] = useState(loadDefaultPatterns)
   const [techStack]       = useState(loadTechStack)
   const [staff]           = useState(loadStaff)
   const [profiles]        = useState(loadProfiles)
-  const [bookings]        = useState(loadBookings)
+  const [bookings, setBookings] = useState(loadBookings)
+  const [decisions]       = useState(loadDecisions)
   const [selectedDate, setSelectedDate] = useState('')
-  const groupRefs = useRef({})
+  const [clearNotice, setClearNotice]   = useState(null)
+  const groupRefs    = useRef({})
+  const clearTimerRef = useRef(null)
+
+  useEffect(() => {
+    function onUpdate() { setAssignmentsRaw(loadAssignments()) }
+    window.addEventListener('assignments-updated', onUpdate)
+    return () => window.removeEventListener('assignments-updated', onUpdate)
+  }, [])
+
+  useEffect(() => {
+    function onUpdate() { setBookings(loadBookings()) }
+    window.addEventListener('bookings-updated', onUpdate)
+    return () => window.removeEventListener('bookings-updated', onUpdate)
+  }, [])
 
   const patternMap = Object.fromEntries(patterns.map(p => [p.id, p]))
   const maxBooths  = techStack.productionBooths ?? 0
@@ -159,6 +230,19 @@ function BoothsView({ events }) {
   function saveAssignments(next) {
     localStorage.setItem('production_assignments', JSON.stringify(next))
     setAssignmentsRaw(next)
+  }
+
+  function saveBookings(next) {
+    localStorage.setItem('staff_bookings', JSON.stringify(next))
+    setBookings(next)
+    window.dispatchEvent(new CustomEvent('bookings-updated'))
+  }
+
+  function showClearNotice(accepted, offered) {
+    if (accepted === 0 && offered === 0) return
+    if (clearTimerRef.current) clearTimeout(clearTimerRef.current)
+    setClearNotice({ accepted, offered })
+    clearTimerRef.current = setTimeout(() => setClearNotice(null), 5000)
   }
 
   const boothEvents = events.filter(e => needsBooth(e, assignments, patternMap, defaultPatterns))
@@ -197,13 +281,17 @@ function BoothsView({ events }) {
             className="booths-clear-btn"
             onClick={() => {
               if (!window.confirm('Clear all allocated staff from every booth? This cannot be undone.')) return
-              const next = Object.fromEntries(
+              const allIds = Object.keys(assignments)
+              const { accepted, offered, nextBookings } = computeClear(allIds, assignments, profiles, bookings)
+              const nextAssignments = Object.fromEntries(
                 Object.entries(assignments).map(([id, asgn]) => {
                   const { director, evsOperator, graphicsOperator, ...rest } = asgn
                   return [id, rest]
                 })
               )
-              saveAssignments(next)
+              saveAssignments(nextAssignments)
+              saveBookings(nextBookings)
+              showClearNotice(accepted, offered)
             }}
           >
             Clear all staff
@@ -213,7 +301,7 @@ function BoothsView({ events }) {
             onClick={() => {
               let next = { ...assignments }
               for (const date of sortedDates) {
-                next = autoAllocateDay(byDate[date], next, staff, patternMap, defaultPatterns, profiles)
+                next = autoAllocateDay(byDate[date], next, staff, patternMap, defaultPatterns, profiles, decisions)
               }
               saveAssignments(next)
             }}
@@ -256,14 +344,17 @@ function BoothsView({ events }) {
                     className="booths-clear-day-btn"
                     onClick={() => {
                       const dayIds = new Set(byDate[date].map(e => e.id))
-                      const next = Object.fromEntries(
+                      const { accepted, offered, nextBookings } = computeClear([...dayIds], assignments, profiles, bookings)
+                      const nextAssignments = Object.fromEntries(
                         Object.entries(assignments).map(([id, asgn]) => {
                           if (!dayIds.has(id)) return [id, asgn]
                           const { director, evsOperator, graphicsOperator, ...rest } = asgn
                           return [id, rest]
                         })
                       )
-                      saveAssignments(next)
+                      saveAssignments(nextAssignments)
+                      saveBookings(nextBookings)
+                      showClearNotice(accepted, offered)
                     }}
                   >
                     Clear this day
@@ -271,7 +362,7 @@ function BoothsView({ events }) {
                   <button
                     className="booths-auto-btn"
                     onClick={() => saveAssignments(
-                      autoAllocateDay(byDate[date], assignments, staff, patternMap, defaultPatterns, profiles)
+                      autoAllocateDay(byDate[date], assignments, staff, patternMap, defaultPatterns, profiles, decisions)
                     )}
                   >
                     Auto allocate this day
@@ -283,14 +374,17 @@ function BoothsView({ events }) {
                     onClick={() => {
                       const forwardDates = sortedDates.filter(d => d >= date)
                       const forwardIds = new Set(forwardDates.flatMap(d => byDate[d].map(e => e.id)))
-                      const next = Object.fromEntries(
+                      const { accepted, offered, nextBookings } = computeClear([...forwardIds], assignments, profiles, bookings)
+                      const nextAssignments = Object.fromEntries(
                         Object.entries(assignments).map(([id, asgn]) => {
                           if (!forwardIds.has(id)) return [id, asgn]
                           const { director, evsOperator, graphicsOperator, ...rest } = asgn
                           return [id, rest]
                         })
                       )
-                      saveAssignments(next)
+                      saveAssignments(nextAssignments)
+                      saveBookings(nextBookings)
+                      showClearNotice(accepted, offered)
                     }}
                   >
                     Clear allocation forward
@@ -301,7 +395,7 @@ function BoothsView({ events }) {
                       const forwardDates = sortedDates.filter(d => d >= date)
                       let next = { ...assignments }
                       for (const d of forwardDates) {
-                        next = autoAllocateDay(byDate[d], next, staff, patternMap, defaultPatterns, profiles)
+                        next = autoAllocateDay(byDate[d], next, staff, patternMap, defaultPatterns, profiles, decisions)
                       }
                       saveAssignments(next)
                     }}
@@ -321,6 +415,7 @@ function BoothsView({ events }) {
                   ? event.start.slice(11, 16) : null
                 const evsCount     = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
                 const overCapacity = maxBooths > 0 && (idx + 1) > maxBooths
+                const isPossible   = eventStatus(event.id, decisions) === 'possible'
 
                 const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings)
                 const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings) : null
@@ -330,11 +425,14 @@ function BoothsView({ events }) {
                   <div
                     key={event.id}
                     className={`booth-card${overCapacity ? ' booth-card--over-capacity' : ''}`}
+                    onClick={() => onEventClick?.(event)}
+                    style={{ cursor: 'pointer' }}
                   >
                     <div className="booth-card-header" style={{ background: event.backgroundColor }}>
                       <span className="booth-number">Booth {idx + 1}</span>
                       {overCapacity && <span className="booth-over-label">Over capacity</span>}
                     </div>
+                    {isPossible && <div className="booth-possible-label">Possible event</div>}
                     <div className="booth-card-body">
                       <div className="booth-comp">
                         <span className="booth-comp-dot" style={{ background: event.backgroundColor }} />
@@ -370,6 +468,18 @@ function BoothsView({ events }) {
         )
       })}
       </div>
+
+      {clearNotice && (
+        <div className="booths-clear-notice">
+          <span className="booths-clear-notice-title">Staff cleared</span>
+          {clearNotice.accepted > 0 && (
+            <span>{clearNotice.accepted} accepted freelancer{clearNotice.accepted !== 1 ? 's' : ''} reset to not offered</span>
+          )}
+          {clearNotice.offered > 0 && (
+            <span>{clearNotice.offered} offered freelancer{clearNotice.offered !== 1 ? 's' : ''} reset to not offered</span>
+          )}
+        </div>
+      )}
     </div>
   )
 }

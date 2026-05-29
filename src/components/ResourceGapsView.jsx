@@ -126,7 +126,7 @@ function computeDayStatus(allEvents, assignments, decisions, patterns, staff, pr
   return dayStatus
 }
 
-function EventRow({ event, patternName, missingRoles, assignments, profiles, bookings, onEventClick, incomplete, allConfirmed }) {
+function EventRow({ event, patternName, missingRoles, assignments, profiles, bookings, onEventClick, incomplete, allConfirmed, decisions }) {
   const { confirmed, offered, notOffered } = computeBookingCounts(event.id, assignments, profiles, bookings)
   const hasAny = confirmed + offered + notOffered > 0
   const allOffered = !allConfirmed && notOffered === 0 && offered > 0
@@ -134,6 +134,8 @@ function EventRow({ event, patternName, missingRoles, assignments, profiles, boo
             : allOffered   ? ' rg-gap-row--all-offered'
             : incomplete   ? ' rg-gap-row--incomplete'
             : ''
+  const decisionVals = Object.values(decisions?.[event.id] || {})
+  const isPossible   = !decisionVals.includes('Y') && decisionVals.includes('P')
   return (
     <div
       className={`rg-gap-row${cls}`}
@@ -148,6 +150,9 @@ function EventRow({ event, patternName, missingRoles, assignments, profiles, boo
         )}
         {patternName && (
           <span className="rg-pattern-name">{patternName}</span>
+        )}
+        {isPossible && (
+          <span className="rg-possible-badge">Possible event</span>
         )}
       </div>
       <div className="rg-booking-status">
@@ -239,6 +244,7 @@ function ResourceGapsView({ allEvents, onEventClick }) {
                         bookings={bookings}
                         onEventClick={onEventClick}
                         incomplete={false}
+                        decisions={decisions}
                       />
                     ))}
                     {incompleteRows.map(({ event, patternName }) => (
@@ -252,6 +258,7 @@ function ResourceGapsView({ allEvents, onEventClick }) {
                         bookings={bookings}
                         onEventClick={onEventClick}
                         incomplete={true}
+                        decisions={decisions}
                       />
                     ))}
                     {confirmedRows.map(({ event, patternName }) => (
@@ -265,6 +272,7 @@ function ResourceGapsView({ allEvents, onEventClick }) {
                         bookings={bookings}
                         onEventClick={onEventClick}
                         allConfirmed={true}
+                        decisions={decisions}
                       />
                     ))}
                   </>
