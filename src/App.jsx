@@ -48,6 +48,16 @@ const GOVERNING_BODIES = Object.values(
   }, {})
 )
 
+const FIRST_EVENT_DATE = (() => {
+  let min = null
+  for (const comp of COMPETITIONS) {
+    for (const f of getLocalFixtures(comp.dataKey)) {
+      if (f.start && (!min || f.start < min)) min = f.start
+    }
+  }
+  return min ? min.slice(0, 10) : undefined
+})()
+
 const ALL_EVENTS = COMPETITIONS.flatMap(comp => {
   return getLocalFixtures(comp.dataKey).map((f, i) => ({
     id: `${comp.id}|${i}|${f.start}`,
@@ -137,7 +147,7 @@ function App() {
       </header>
 
       {view === 'calendar' && (
-        <CalendarView events={visibleEvents} onEventClick={handleCalendarEventClick} />
+        <CalendarView events={visibleEvents} onEventClick={handleCalendarEventClick} initialDate={FIRST_EVENT_DATE} />
       )}
       {view === 'editorial' && (
         <EditorialView events={visibleEvents} onEventClick={setSelectedEvent} />
