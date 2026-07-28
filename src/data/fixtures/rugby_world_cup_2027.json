@@ -1,0 +1,470 @@
+[
+  {
+    "round": "1",
+    "start": "2027-10-01T11:45",
+    "stadium": "Perth Stadium",
+    "homeTeam": "Australia",
+    "awayTeam": "Hong Kong China",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-02T03:45",
+    "stadium": "Adelaide Oval",
+    "homeTeam": "Wales",
+    "awayTeam": "Zimbabwe",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-02T06:15",
+    "stadium": "Perth Stadium",
+    "homeTeam": "New Zealand",
+    "awayTeam": "Chile",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-02T08:45",
+    "stadium": "Docklands Stadium",
+    "homeTeam": "France",
+    "awayTeam": "USA",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-02T11:15",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "England",
+    "awayTeam": "Tonga",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-03T02:15",
+    "stadium": "Newcastle Stadium",
+    "homeTeam": "Japan",
+    "awayTeam": "Samoa",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-03T04:45",
+    "stadium": "Adelaide Oval",
+    "homeTeam": "South Africa",
+    "awayTeam": "Italy",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-03T07:15",
+    "stadium": "Docklands Stadium",
+    "homeTeam": "Scotland",
+    "awayTeam": "Uruguay",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-03T11:15",
+    "stadium": "North Queensland Stadium",
+    "homeTeam": "Georgia",
+    "awayTeam": "Romania",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-04T04:15",
+    "stadium": "Newcastle Stadium",
+    "homeTeam": "Fiji",
+    "awayTeam": "Spain",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-04T07:15",
+    "stadium": "Sydney Football Stadium",
+    "homeTeam": "Ireland",
+    "awayTeam": "Portugal",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2027-10-04T09:45",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "Argentina",
+    "awayTeam": "Canada",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-08T08:15",
+    "stadium": "Docklands Stadium",
+    "homeTeam": "Wales",
+    "awayTeam": "Tonga",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-08T10:45",
+    "stadium": "Adelaide Oval",
+    "homeTeam": "England",
+    "awayTeam": "Zimbabwe",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-09T05:15",
+    "stadium": "Perth Stadium",
+    "homeTeam": "USA",
+    "awayTeam": "Samoa",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-09T07:10",
+    "stadium": "Stadium Australia",
+    "homeTeam": "New Zealand",
+    "awayTeam": "Australia",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-09T09:45",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "France",
+    "awayTeam": "Japan",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-09T11:15",
+    "stadium": "North Queensland Stadium",
+    "homeTeam": "Chile",
+    "awayTeam": "Hong Kong China",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-10T02:45",
+    "stadium": "Adelaide Oval",
+    "homeTeam": "Fiji",
+    "awayTeam": "Canada",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-10T05:15",
+    "stadium": "Docklands Stadium",
+    "homeTeam": "Argentina",
+    "awayTeam": "Spain",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-10T07:45",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "South Africa",
+    "awayTeam": "Georgia",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-10T10:45",
+    "stadium": "Perth Stadium",
+    "homeTeam": "Ireland",
+    "awayTeam": "Scotland",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-11T07:15",
+    "stadium": "Newcastle Stadium",
+    "homeTeam": "Uruguay",
+    "awayTeam": "Portugal",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2027-10-11T09:45",
+    "stadium": "Sydney Football Stadium",
+    "homeTeam": "Italy",
+    "awayTeam": "Romania",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-15T07:15",
+    "stadium": "Docklands Stadium",
+    "homeTeam": "New Zealand",
+    "awayTeam": "Hong Kong China",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-15T10:30",
+    "stadium": "Adelaide Oval",
+    "homeTeam": "Japan",
+    "awayTeam": "USA",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-15T11:15",
+    "stadium": "North Queensland Stadium",
+    "homeTeam": "Tonga",
+    "awayTeam": "Zimbabwe",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-16T03:45",
+    "stadium": "Adelaide Oval",
+    "homeTeam": "Argentina",
+    "awayTeam": "Fiji",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-16T06:10",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "Australia",
+    "awayTeam": "Chile",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-16T09:45",
+    "stadium": "Stadium Australia",
+    "homeTeam": "England",
+    "awayTeam": "Wales",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-16T11:15",
+    "stadium": "North Queensland Stadium",
+    "homeTeam": "Spain",
+    "awayTeam": "Canada",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-17T02:15",
+    "stadium": "Newcastle Stadium",
+    "homeTeam": "Italy",
+    "awayTeam": "Georgia",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-17T04:45",
+    "stadium": "Docklands Stadium",
+    "homeTeam": "Ireland",
+    "awayTeam": "Uruguay",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-17T07:15",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "Scotland",
+    "awayTeam": "Portugal",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-17T09:45",
+    "stadium": "Sydney Football Stadium",
+    "homeTeam": "France",
+    "awayTeam": "Samoa",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2027-10-17T12:15",
+    "stadium": "Perth Stadium",
+    "homeTeam": "South Africa",
+    "awayTeam": "Romania",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Round of 16",
+    "start": "2027-10-23T04:15",
+    "stadium": "Sydney Football Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Round of 16",
+    "start": "2027-10-23T06:45",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Round of 16",
+    "start": "2027-10-23T09:15",
+    "stadium": "Docklands Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Round of 16",
+    "start": "2027-10-23T11:45",
+    "stadium": "Perth Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Round of 16",
+    "start": "2027-10-24T04:15",
+    "stadium": "Sydney Football Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Round of 16",
+    "start": "2027-10-24T06:45",
+    "stadium": "Docklands Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Round of 16",
+    "start": "2027-10-24T09:15",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Round of 16",
+    "start": "2027-10-24T11:45",
+    "stadium": "Perth Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Quarter Finals",
+    "start": "2027-10-30T06:45",
+    "stadium": "Stadium Australia",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Quarter Finals",
+    "start": "2027-10-30T09:45",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Quarter Finals",
+    "start": "2027-10-31T06:00",
+    "stadium": "Brisbane Stadium",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Quarter Finals",
+    "start": "2027-10-31T09:00",
+    "stadium": "Stadium Australia",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Semi Finals",
+    "start": "2027-11-05T09:00",
+    "stadium": "Stadium Australia",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Semi Finals",
+    "start": "2027-11-06T09:00",
+    "stadium": "Stadium Australia",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Finals",
+    "start": "2027-11-12T08:45",
+    "stadium": "Stadium Australia",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "Finals",
+    "start": "2027-11-13T09:00",
+    "stadium": "Stadium Australia",
+    "homeTeam": "To be announced",
+    "awayTeam": "To be announced",
+    "homeScore": null,
+    "awayScore": null
+  }
+]

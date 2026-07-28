@@ -33,8 +33,10 @@ const VIEWS = [
   { id: 'admin',          label: 'Admin' },
 ]
 
+const VISIBLE_COMPETITIONS = COMPETITIONS.filter(comp => !comp.hidden)
+
 const GOVERNING_BODIES = Object.values(
-  COMPETITIONS.reduce((acc, comp) => {
+  VISIBLE_COMPETITIONS.reduce((acc, comp) => {
     if (!acc[comp.governingBody]) {
       acc[comp.governingBody] = {
         id: comp.governingBody,
@@ -48,17 +50,7 @@ const GOVERNING_BODIES = Object.values(
   }, {})
 )
 
-const FIRST_EVENT_DATE = (() => {
-  let min = null
-  for (const comp of COMPETITIONS) {
-    for (const f of getLocalFixtures(comp.dataKey)) {
-      if (f.start && (!min || f.start < min)) min = f.start
-    }
-  }
-  return min ? min.slice(0, 10) : undefined
-})()
-
-const ALL_EVENTS = COMPETITIONS.flatMap(comp => {
+const ALL_EVENTS = VISIBLE_COMPETITIONS.flatMap(comp => {
   return getLocalFixtures(comp.dataKey).map((f, i) => ({
     id: `${comp.id}|${i}|${f.start}`,
     title: f.title || `${f.homeTeam} v ${f.awayTeam}`,
@@ -143,11 +135,11 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.35</span>
+        <span className="header-version">v2.38</span>
       </header>
 
       {view === 'calendar' && (
-        <CalendarView events={visibleEvents} onEventClick={handleCalendarEventClick} initialDate={FIRST_EVENT_DATE} />
+        <CalendarView events={visibleEvents} onEventClick={handleCalendarEventClick} />
       )}
       {view === 'editorial' && (
         <EditorialView events={visibleEvents} onEventClick={setSelectedEvent} />
@@ -164,7 +156,7 @@ function App() {
 
       {view !== 'admin' && view !== 'resource-gaps' && view !== 'book-staff' && (
         <CompetitionToggles
-          competitions={COMPETITIONS}
+          competitions={VISIBLE_COMPETITIONS}
           governingBodies={GOVERNING_BODIES}
           activeComps={activeComps}
           onToggle={toggleComp}

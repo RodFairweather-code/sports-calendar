@@ -3,13 +3,12 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 
-function CalendarView({ events, onEventClick, initialDate }) {
+function CalendarView({ events, onEventClick }) {
   return (
     <main className="calendar-container">
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
-        initialDate={initialDate}
         headerToolbar={{
           left: 'prev,next today',
           center: 'title',
@@ -21,7 +20,7 @@ function CalendarView({ events, onEventClick, initialDate }) {
           week: 'Week',
           day: 'Day',
         }}
-        validRange={{ end: '2027-01-01' }}
+        validRange={{ end: '2027-12-31' }}
         events={events}
         eventClick={(info) => onEventClick(info.event.id)}
         eventDisplay="block"

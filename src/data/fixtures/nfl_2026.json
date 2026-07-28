@@ -1,0 +1,2450 @@
+[
+  {
+    "round": "1",
+    "start": "2026-09-10T01:20",
+    "stadium": "Lumen Field",
+    "homeTeam": "Seattle Seahawks",
+    "awayTeam": "New England Patriots",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-11T01:35",
+    "stadium": "Melbourne Cricket Ground",
+    "homeTeam": "Los Angeles Rams",
+    "awayTeam": "San Francisco 49ers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T18:00",
+    "stadium": "Bank of America Stadium",
+    "homeTeam": "Carolina Panthers",
+    "awayTeam": "Chicago Bears",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T18:00",
+    "stadium": "Paycor Stadium",
+    "homeTeam": "Cincinnati Bengals",
+    "awayTeam": "Tampa Bay Buccaneers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T18:00",
+    "stadium": "Ford Field",
+    "homeTeam": "Detroit Lions",
+    "awayTeam": "New Orleans Saints",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T18:00",
+    "stadium": "Reliant Stadium",
+    "homeTeam": "Houston Texans",
+    "awayTeam": "Buffalo Bills",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T18:00",
+    "stadium": "Lucas Oil Stadium",
+    "homeTeam": "Indianapolis Colts",
+    "awayTeam": "Baltimore Ravens",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T18:00",
+    "stadium": "EverBank Stadium",
+    "homeTeam": "Jacksonville Jaguars",
+    "awayTeam": "Cleveland Browns",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T18:00",
+    "stadium": "Acrisure Stadium",
+    "homeTeam": "Pittsburgh Steelers",
+    "awayTeam": "Atlanta Falcons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T18:00",
+    "stadium": "Nissan Stadium",
+    "homeTeam": "Tennessee Titans",
+    "awayTeam": "New York Jets",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T21:25",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Chargers",
+    "awayTeam": "Arizona Cardinals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T21:25",
+    "stadium": "Allegiant Stadium",
+    "homeTeam": "Las Vegas Raiders",
+    "awayTeam": "Miami Dolphins",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T21:25",
+    "stadium": "U.S. Bank Stadium",
+    "homeTeam": "Minnesota Vikings",
+    "awayTeam": "Green Bay Packers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-13T21:25",
+    "stadium": "Lincoln Financial Field",
+    "homeTeam": "Philadelphia Eagles",
+    "awayTeam": "Washington Commanders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-14T01:20",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Giants",
+    "awayTeam": "Dallas Cowboys",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-09-15T01:15",
+    "stadium": "GEHA Field at Arrowhead Stadium",
+    "homeTeam": "Kansas City Chiefs",
+    "awayTeam": "Denver Broncos",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-18T01:15",
+    "stadium": "Highmark Stadium",
+    "homeTeam": "Buffalo Bills",
+    "awayTeam": "Detroit Lions",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T18:00",
+    "stadium": "Mercedes-Benz Stadium",
+    "homeTeam": "Atlanta Falcons",
+    "awayTeam": "Carolina Panthers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T18:00",
+    "stadium": "M&T Bank Stadium",
+    "homeTeam": "Baltimore Ravens",
+    "awayTeam": "New Orleans Saints",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T18:00",
+    "stadium": "Soldier Field",
+    "homeTeam": "Chicago Bears",
+    "awayTeam": "Minnesota Vikings",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T18:00",
+    "stadium": "Reliant Stadium",
+    "homeTeam": "Houston Texans",
+    "awayTeam": "Cincinnati Bengals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T18:00",
+    "stadium": "Gillette Stadium",
+    "homeTeam": "New England Patriots",
+    "awayTeam": "Pittsburgh Steelers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Jets",
+    "awayTeam": "Green Bay Packers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T18:00",
+    "stadium": "Raymond James Stadium",
+    "homeTeam": "Tampa Bay Buccaneers",
+    "awayTeam": "Cleveland Browns",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T18:00",
+    "stadium": "Nissan Stadium",
+    "homeTeam": "Tennessee Titans",
+    "awayTeam": "Philadelphia Eagles",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T21:05",
+    "stadium": "Empower Field at Mile High",
+    "homeTeam": "Denver Broncos",
+    "awayTeam": "Jacksonville Jaguars",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T21:05",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Chargers",
+    "awayTeam": "Las Vegas Raiders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T21:25",
+    "stadium": "State Farm Stadium",
+    "homeTeam": "Arizona Cardinals",
+    "awayTeam": "Seattle Seahawks",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T21:25",
+    "stadium": "AT&T Stadium",
+    "homeTeam": "Dallas Cowboys",
+    "awayTeam": "Washington Commanders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-20T21:25",
+    "stadium": "Levi's\u00ae Stadium",
+    "homeTeam": "San Francisco 49ers",
+    "awayTeam": "Miami Dolphins",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-21T01:20",
+    "stadium": "GEHA Field at Arrowhead Stadium",
+    "homeTeam": "Kansas City Chiefs",
+    "awayTeam": "Indianapolis Colts",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-09-22T01:15",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Rams",
+    "awayTeam": "New York Giants",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-25T01:15",
+    "stadium": "Lambeau Field",
+    "homeTeam": "Green Bay Packers",
+    "awayTeam": "Atlanta Falcons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T18:00",
+    "stadium": "Highmark Stadium",
+    "homeTeam": "Buffalo Bills",
+    "awayTeam": "Los Angeles Chargers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T18:00",
+    "stadium": "Huntington Bank Field",
+    "homeTeam": "Cleveland Browns",
+    "awayTeam": "Carolina Panthers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T18:00",
+    "stadium": "Ford Field",
+    "homeTeam": "Detroit Lions",
+    "awayTeam": "New York Jets",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T18:00",
+    "stadium": "Lucas Oil Stadium",
+    "homeTeam": "Indianapolis Colts",
+    "awayTeam": "Houston Texans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T18:00",
+    "stadium": "EverBank Stadium",
+    "homeTeam": "Jacksonville Jaguars",
+    "awayTeam": "New England Patriots",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T18:00",
+    "stadium": "Hard Rock Stadium",
+    "homeTeam": "Miami Dolphins",
+    "awayTeam": "Kansas City Chiefs",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Giants",
+    "awayTeam": "Tennessee Titans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T18:00",
+    "stadium": "Acrisure Stadium",
+    "homeTeam": "Pittsburgh Steelers",
+    "awayTeam": "Cincinnati Bengals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T18:00",
+    "stadium": "Northwest Stadium",
+    "homeTeam": "Washington Commanders",
+    "awayTeam": "Seattle Seahawks",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T21:05",
+    "stadium": "Levi's\u00ae Stadium",
+    "homeTeam": "San Francisco 49ers",
+    "awayTeam": "Arizona Cardinals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T21:05",
+    "stadium": "Raymond James Stadium",
+    "homeTeam": "Tampa Bay Buccaneers",
+    "awayTeam": "Minnesota Vikings",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T21:25",
+    "stadium": "Maracana Stadium",
+    "homeTeam": "Dallas Cowboys",
+    "awayTeam": "Baltimore Ravens",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-27T21:25",
+    "stadium": "Caesars Superdome",
+    "homeTeam": "New Orleans Saints",
+    "awayTeam": "Las Vegas Raiders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-28T01:20",
+    "stadium": "Empower Field at Mile High",
+    "homeTeam": "Denver Broncos",
+    "awayTeam": "Los Angeles Rams",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-29T01:15",
+    "stadium": "Soldier Field",
+    "homeTeam": "Chicago Bears",
+    "awayTeam": "Philadelphia Eagles",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-02T01:15",
+    "stadium": "Huntington Bank Field",
+    "homeTeam": "Cleveland Browns",
+    "awayTeam": "Pittsburgh Steelers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T14:30",
+    "stadium": "Tottenham Hotspur Stadium",
+    "homeTeam": "Washington Commanders",
+    "awayTeam": "Indianapolis Colts",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T18:00",
+    "stadium": "M&T Bank Stadium",
+    "homeTeam": "Baltimore Ravens",
+    "awayTeam": "Tennessee Titans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T18:00",
+    "stadium": "Highmark Stadium",
+    "homeTeam": "Buffalo Bills",
+    "awayTeam": "New England Patriots",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T18:00",
+    "stadium": "Soldier Field",
+    "homeTeam": "Chicago Bears",
+    "awayTeam": "New York Jets",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T18:00",
+    "stadium": "Paycor Stadium",
+    "homeTeam": "Cincinnati Bengals",
+    "awayTeam": "Jacksonville Jaguars",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T18:00",
+    "stadium": "Reliant Stadium",
+    "homeTeam": "Houston Texans",
+    "awayTeam": "Dallas Cowboys",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Giants",
+    "awayTeam": "Arizona Cardinals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T18:00",
+    "stadium": "Lincoln Financial Field",
+    "homeTeam": "Philadelphia Eagles",
+    "awayTeam": "Los Angeles Rams",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T18:00",
+    "stadium": "Raymond James Stadium",
+    "homeTeam": "Tampa Bay Buccaneers",
+    "awayTeam": "Green Bay Packers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T21:05",
+    "stadium": "U.S. Bank Stadium",
+    "homeTeam": "Minnesota Vikings",
+    "awayTeam": "Miami Dolphins",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T21:25",
+    "stadium": "Allegiant Stadium",
+    "homeTeam": "Las Vegas Raiders",
+    "awayTeam": "Kansas City Chiefs",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T21:25",
+    "stadium": "Lumen Field",
+    "homeTeam": "Seattle Seahawks",
+    "awayTeam": "Los Angeles Chargers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-04T21:25",
+    "stadium": "Levi's\u00ae Stadium",
+    "homeTeam": "San Francisco 49ers",
+    "awayTeam": "Denver Broncos",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-05T01:20",
+    "stadium": "Bank of America Stadium",
+    "homeTeam": "Carolina Panthers",
+    "awayTeam": "Detroit Lions",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-10-06T01:15",
+    "stadium": "Caesars Superdome",
+    "homeTeam": "New Orleans Saints",
+    "awayTeam": "Atlanta Falcons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-09T01:15",
+    "stadium": "AT&T Stadium",
+    "homeTeam": "Dallas Cowboys",
+    "awayTeam": "Tampa Bay Buccaneers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T14:30",
+    "stadium": "Tottenham Hotspur Stadium",
+    "homeTeam": "Jacksonville Jaguars",
+    "awayTeam": "Philadelphia Eagles",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T18:00",
+    "stadium": "Hard Rock Stadium",
+    "homeTeam": "Miami Dolphins",
+    "awayTeam": "Cincinnati Bengals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T18:00",
+    "stadium": "Gillette Stadium",
+    "homeTeam": "New England Patriots",
+    "awayTeam": "Las Vegas Raiders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T18:00",
+    "stadium": "Caesars Superdome",
+    "homeTeam": "New Orleans Saints",
+    "awayTeam": "Minnesota Vikings",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Jets",
+    "awayTeam": "Cleveland Browns",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T18:00",
+    "stadium": "Acrisure Stadium",
+    "homeTeam": "Pittsburgh Steelers",
+    "awayTeam": "Indianapolis Colts",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T18:00",
+    "stadium": "Nissan Stadium",
+    "homeTeam": "Tennessee Titans",
+    "awayTeam": "Houston Texans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T18:00",
+    "stadium": "Northwest Stadium",
+    "homeTeam": "Washington Commanders",
+    "awayTeam": "New York Giants",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T21:05",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Chargers",
+    "awayTeam": "Denver Broncos",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T21:25",
+    "stadium": "State Farm Stadium",
+    "homeTeam": "Arizona Cardinals",
+    "awayTeam": "Detroit Lions",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T21:25",
+    "stadium": "Lambeau Field",
+    "homeTeam": "Green Bay Packers",
+    "awayTeam": "Chicago Bears",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-11T21:25",
+    "stadium": "Lumen Field",
+    "homeTeam": "Seattle Seahawks",
+    "awayTeam": "San Francisco 49ers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-12T01:20",
+    "stadium": "Mercedes-Benz Stadium",
+    "homeTeam": "Atlanta Falcons",
+    "awayTeam": "Baltimore Ravens",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-10-13T01:15",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Rams",
+    "awayTeam": "Buffalo Bills",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-16T01:15",
+    "stadium": "Empower Field at Mile High",
+    "homeTeam": "Denver Broncos",
+    "awayTeam": "Seattle Seahawks",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T14:30",
+    "stadium": "Wembley Stadium",
+    "homeTeam": "Jacksonville Jaguars",
+    "awayTeam": "Houston Texans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T18:00",
+    "stadium": "Mercedes-Benz Stadium",
+    "homeTeam": "Atlanta Falcons",
+    "awayTeam": "Chicago Bears",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T18:00",
+    "stadium": "Huntington Bank Field",
+    "homeTeam": "Cleveland Browns",
+    "awayTeam": "Baltimore Ravens",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T18:00",
+    "stadium": "Lucas Oil Stadium",
+    "homeTeam": "Indianapolis Colts",
+    "awayTeam": "Tennessee Titans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T18:00",
+    "stadium": "Gillette Stadium",
+    "homeTeam": "New England Patriots",
+    "awayTeam": "New York Jets",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Giants",
+    "awayTeam": "New Orleans Saints",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T18:00",
+    "stadium": "Lincoln Financial Field",
+    "homeTeam": "Philadelphia Eagles",
+    "awayTeam": "Carolina Panthers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T18:00",
+    "stadium": "Raymond James Stadium",
+    "homeTeam": "Tampa Bay Buccaneers",
+    "awayTeam": "Pittsburgh Steelers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T21:05",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Rams",
+    "awayTeam": "Arizona Cardinals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T21:25",
+    "stadium": "GEHA Field at Arrowhead Stadium",
+    "homeTeam": "Kansas City Chiefs",
+    "awayTeam": "Los Angeles Chargers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-18T21:25",
+    "stadium": "Allegiant Stadium",
+    "homeTeam": "Las Vegas Raiders",
+    "awayTeam": "Buffalo Bills",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-19T01:20",
+    "stadium": "Lambeau Field",
+    "homeTeam": "Green Bay Packers",
+    "awayTeam": "Dallas Cowboys",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-10-20T01:15",
+    "stadium": "Levi's\u00ae Stadium",
+    "homeTeam": "San Francisco 49ers",
+    "awayTeam": "Washington Commanders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-23T01:15",
+    "stadium": "Soldier Field",
+    "homeTeam": "Chicago Bears",
+    "awayTeam": "New England Patriots",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T13:30",
+    "stadium": "Stade de France",
+    "homeTeam": "New Orleans Saints",
+    "awayTeam": "Pittsburgh Steelers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T17:00",
+    "stadium": "Mercedes-Benz Stadium",
+    "homeTeam": "Atlanta Falcons",
+    "awayTeam": "San Francisco 49ers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T17:00",
+    "stadium": "M&T Bank Stadium",
+    "homeTeam": "Baltimore Ravens",
+    "awayTeam": "Cincinnati Bengals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T17:00",
+    "stadium": "Bank of America Stadium",
+    "homeTeam": "Carolina Panthers",
+    "awayTeam": "Tampa Bay Buccaneers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T17:00",
+    "stadium": "Reliant Stadium",
+    "homeTeam": "Houston Texans",
+    "awayTeam": "New York Giants",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T17:00",
+    "stadium": "U.S. Bank Stadium",
+    "homeTeam": "Minnesota Vikings",
+    "awayTeam": "Indianapolis Colts",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T17:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Jets",
+    "awayTeam": "Miami Dolphins",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T17:00",
+    "stadium": "Nissan Stadium",
+    "homeTeam": "Tennessee Titans",
+    "awayTeam": "Cleveland Browns",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T20:05",
+    "stadium": "State Farm Stadium",
+    "homeTeam": "Arizona Cardinals",
+    "awayTeam": "Denver Broncos",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T20:25",
+    "stadium": "Ford Field",
+    "homeTeam": "Detroit Lions",
+    "awayTeam": "Green Bay Packers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-25T20:25",
+    "stadium": "Allegiant Stadium",
+    "homeTeam": "Las Vegas Raiders",
+    "awayTeam": "Los Angeles Rams",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-26T00:20",
+    "stadium": "Lumen Field",
+    "homeTeam": "Seattle Seahawks",
+    "awayTeam": "Kansas City Chiefs",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-10-27T00:15",
+    "stadium": "Lincoln Financial Field",
+    "homeTeam": "Philadelphia Eagles",
+    "awayTeam": "Dallas Cowboys",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-10-30T00:15",
+    "stadium": "Lambeau Field",
+    "homeTeam": "Green Bay Packers",
+    "awayTeam": "Carolina Panthers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T18:00",
+    "stadium": "Highmark Stadium",
+    "homeTeam": "Buffalo Bills",
+    "awayTeam": "Baltimore Ravens",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T18:00",
+    "stadium": "Paycor Stadium",
+    "homeTeam": "Cincinnati Bengals",
+    "awayTeam": "Tennessee Titans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T18:00",
+    "stadium": "AT&T Stadium",
+    "homeTeam": "Dallas Cowboys",
+    "awayTeam": "Arizona Cardinals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T18:00",
+    "stadium": "Ford Field",
+    "homeTeam": "Detroit Lions",
+    "awayTeam": "Minnesota Vikings",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T18:00",
+    "stadium": "EverBank Stadium",
+    "homeTeam": "Jacksonville Jaguars",
+    "awayTeam": "Indianapolis Colts",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Jets",
+    "awayTeam": "Las Vegas Raiders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T18:00",
+    "stadium": "Acrisure Stadium",
+    "homeTeam": "Pittsburgh Steelers",
+    "awayTeam": "Cleveland Browns",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T18:00",
+    "stadium": "Raymond James Stadium",
+    "homeTeam": "Tampa Bay Buccaneers",
+    "awayTeam": "Atlanta Falcons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T21:05",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Rams",
+    "awayTeam": "Los Angeles Chargers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T21:25",
+    "stadium": "Empower Field at Mile High",
+    "homeTeam": "Denver Broncos",
+    "awayTeam": "Kansas City Chiefs",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-01T21:25",
+    "stadium": "Hard Rock Stadium",
+    "homeTeam": "Miami Dolphins",
+    "awayTeam": "New England Patriots",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-02T01:20",
+    "stadium": "Northwest Stadium",
+    "homeTeam": "Washington Commanders",
+    "awayTeam": "Philadelphia Eagles",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-11-03T01:15",
+    "stadium": "Lumen Field",
+    "homeTeam": "Seattle Seahawks",
+    "awayTeam": "Chicago Bears",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-06T01:15",
+    "stadium": "M&T Bank Stadium",
+    "homeTeam": "Baltimore Ravens",
+    "awayTeam": "Jacksonville Jaguars",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T14:30",
+    "stadium": "Bernabeu",
+    "homeTeam": "Atlanta Falcons",
+    "awayTeam": "Cincinnati Bengals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T18:00",
+    "stadium": "Bank of America Stadium",
+    "homeTeam": "Carolina Panthers",
+    "awayTeam": "Denver Broncos",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T18:00",
+    "stadium": "Lucas Oil Stadium",
+    "homeTeam": "Indianapolis Colts",
+    "awayTeam": "Dallas Cowboys",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T18:00",
+    "stadium": "GEHA Field at Arrowhead Stadium",
+    "homeTeam": "Kansas City Chiefs",
+    "awayTeam": "New York Jets",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T18:00",
+    "stadium": "Hard Rock Stadium",
+    "homeTeam": "Miami Dolphins",
+    "awayTeam": "Detroit Lions",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T18:00",
+    "stadium": "Caesars Superdome",
+    "homeTeam": "New Orleans Saints",
+    "awayTeam": "Cleveland Browns",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T18:00",
+    "stadium": "Lincoln Financial Field",
+    "homeTeam": "Philadelphia Eagles",
+    "awayTeam": "New York Giants",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T18:00",
+    "stadium": "Northwest Stadium",
+    "homeTeam": "Washington Commanders",
+    "awayTeam": "Los Angeles Rams",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T21:05",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Chargers",
+    "awayTeam": "Houston Texans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T21:05",
+    "stadium": "Levi's\u00ae Stadium",
+    "homeTeam": "San Francisco 49ers",
+    "awayTeam": "Las Vegas Raiders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T21:25",
+    "stadium": "Gillette Stadium",
+    "homeTeam": "New England Patriots",
+    "awayTeam": "Green Bay Packers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-08T21:25",
+    "stadium": "Lumen Field",
+    "homeTeam": "Seattle Seahawks",
+    "awayTeam": "Arizona Cardinals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-09T01:20",
+    "stadium": "Soldier Field",
+    "homeTeam": "Chicago Bears",
+    "awayTeam": "Tampa Bay Buccaneers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-11-10T01:15",
+    "stadium": "U.S. Bank Stadium",
+    "homeTeam": "Minnesota Vikings",
+    "awayTeam": "Buffalo Bills",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-13T01:15",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Giants",
+    "awayTeam": "Washington Commanders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T14:30",
+    "stadium": "FC Bayern Munich Stadium",
+    "homeTeam": "Detroit Lions",
+    "awayTeam": "New England Patriots",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T18:00",
+    "stadium": "Mercedes-Benz Stadium",
+    "homeTeam": "Atlanta Falcons",
+    "awayTeam": "Kansas City Chiefs",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T18:00",
+    "stadium": "Huntington Bank Field",
+    "homeTeam": "Cleveland Browns",
+    "awayTeam": "Houston Texans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T18:00",
+    "stadium": "Lambeau Field",
+    "homeTeam": "Green Bay Packers",
+    "awayTeam": "Minnesota Vikings",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T18:00",
+    "stadium": "Lucas Oil Stadium",
+    "homeTeam": "Indianapolis Colts",
+    "awayTeam": "Miami Dolphins",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T18:00",
+    "stadium": "Caesars Superdome",
+    "homeTeam": "New Orleans Saints",
+    "awayTeam": "Carolina Panthers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Jets",
+    "awayTeam": "Buffalo Bills",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T18:00",
+    "stadium": "Nissan Stadium",
+    "homeTeam": "Tennessee Titans",
+    "awayTeam": "Jacksonville Jaguars",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T21:05",
+    "stadium": "State Farm Stadium",
+    "homeTeam": "Arizona Cardinals",
+    "awayTeam": "Los Angeles Rams",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T21:05",
+    "stadium": "Allegiant Stadium",
+    "homeTeam": "Las Vegas Raiders",
+    "awayTeam": "Seattle Seahawks",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-15T21:25",
+    "stadium": "AT&T Stadium",
+    "homeTeam": "Dallas Cowboys",
+    "awayTeam": "San Francisco 49ers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-16T01:20",
+    "stadium": "Paycor Stadium",
+    "homeTeam": "Cincinnati Bengals",
+    "awayTeam": "Pittsburgh Steelers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-11-17T01:15",
+    "stadium": "M&T Bank Stadium",
+    "homeTeam": "Baltimore Ravens",
+    "awayTeam": "Los Angeles Chargers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-20T01:15",
+    "stadium": "Reliant Stadium",
+    "homeTeam": "Houston Texans",
+    "awayTeam": "Indianapolis Colts",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T18:00",
+    "stadium": "Highmark Stadium",
+    "homeTeam": "Buffalo Bills",
+    "awayTeam": "Miami Dolphins",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T18:00",
+    "stadium": "Bank of America Stadium",
+    "homeTeam": "Carolina Panthers",
+    "awayTeam": "Baltimore Ravens",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T18:00",
+    "stadium": "Soldier Field",
+    "homeTeam": "Chicago Bears",
+    "awayTeam": "New Orleans Saints",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T18:00",
+    "stadium": "AT&T Stadium",
+    "homeTeam": "Dallas Cowboys",
+    "awayTeam": "Tennessee Titans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T18:00",
+    "stadium": "Ford Field",
+    "homeTeam": "Detroit Lions",
+    "awayTeam": "Tampa Bay Buccaneers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T18:00",
+    "stadium": "GEHA Field at Arrowhead Stadium",
+    "homeTeam": "Kansas City Chiefs",
+    "awayTeam": "Arizona Cardinals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Giants",
+    "awayTeam": "Jacksonville Jaguars",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T21:05",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Chargers",
+    "awayTeam": "New York Jets",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T21:25",
+    "stadium": "Empower Field at Mile High",
+    "homeTeam": "Denver Broncos",
+    "awayTeam": "Las Vegas Raiders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-22T21:25",
+    "stadium": "Lincoln Financial Field",
+    "homeTeam": "Philadelphia Eagles",
+    "awayTeam": "Pittsburgh Steelers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-23T01:20",
+    "stadium": "Estadio Banorte",
+    "homeTeam": "San Francisco 49ers",
+    "awayTeam": "Minnesota Vikings",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-11-24T01:15",
+    "stadium": "Northwest Stadium",
+    "homeTeam": "Washington Commanders",
+    "awayTeam": "Cincinnati Bengals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-26T01:00",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Rams",
+    "awayTeam": "Green Bay Packers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-26T18:00",
+    "stadium": "Ford Field",
+    "homeTeam": "Detroit Lions",
+    "awayTeam": "Chicago Bears",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-26T21:30",
+    "stadium": "AT&T Stadium",
+    "homeTeam": "Dallas Cowboys",
+    "awayTeam": "Philadelphia Eagles",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-27T01:20",
+    "stadium": "Highmark Stadium",
+    "homeTeam": "Buffalo Bills",
+    "awayTeam": "Kansas City Chiefs",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-27T20:00",
+    "stadium": "Acrisure Stadium",
+    "homeTeam": "Pittsburgh Steelers",
+    "awayTeam": "Denver Broncos",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-29T18:00",
+    "stadium": "Paycor Stadium",
+    "homeTeam": "Cincinnati Bengals",
+    "awayTeam": "New Orleans Saints",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-29T18:00",
+    "stadium": "Huntington Bank Field",
+    "homeTeam": "Cleveland Browns",
+    "awayTeam": "Las Vegas Raiders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-29T18:00",
+    "stadium": "Reliant Stadium",
+    "homeTeam": "Houston Texans",
+    "awayTeam": "Baltimore Ravens",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-29T18:00",
+    "stadium": "Lucas Oil Stadium",
+    "homeTeam": "Indianapolis Colts",
+    "awayTeam": "New York Giants",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-29T18:00",
+    "stadium": "Hard Rock Stadium",
+    "homeTeam": "Miami Dolphins",
+    "awayTeam": "New York Jets",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-29T18:00",
+    "stadium": "U.S. Bank Stadium",
+    "homeTeam": "Minnesota Vikings",
+    "awayTeam": "Atlanta Falcons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-29T21:05",
+    "stadium": "EverBank Stadium",
+    "homeTeam": "Jacksonville Jaguars",
+    "awayTeam": "Tennessee Titans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-29T21:25",
+    "stadium": "State Farm Stadium",
+    "homeTeam": "Arizona Cardinals",
+    "awayTeam": "Washington Commanders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-29T21:25",
+    "stadium": "Levi's\u00ae Stadium",
+    "homeTeam": "San Francisco 49ers",
+    "awayTeam": "Seattle Seahawks",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-11-30T01:20",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Chargers",
+    "awayTeam": "New England Patriots",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-12-01T01:15",
+    "stadium": "Raymond James Stadium",
+    "homeTeam": "Tampa Bay Buccaneers",
+    "awayTeam": "Carolina Panthers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-04T01:15",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Rams",
+    "awayTeam": "Kansas City Chiefs",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T18:00",
+    "stadium": "Mercedes-Benz Stadium",
+    "homeTeam": "Atlanta Falcons",
+    "awayTeam": "Detroit Lions",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T18:00",
+    "stadium": "Soldier Field",
+    "homeTeam": "Chicago Bears",
+    "awayTeam": "Jacksonville Jaguars",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T18:00",
+    "stadium": "Huntington Bank Field",
+    "homeTeam": "Cleveland Browns",
+    "awayTeam": "Cincinnati Bengals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T18:00",
+    "stadium": "Caesars Superdome",
+    "homeTeam": "New Orleans Saints",
+    "awayTeam": "Green Bay Packers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Giants",
+    "awayTeam": "San Francisco 49ers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T18:00",
+    "stadium": "Raymond James Stadium",
+    "homeTeam": "Tampa Bay Buccaneers",
+    "awayTeam": "Los Angeles Chargers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T18:00",
+    "stadium": "Nissan Stadium",
+    "homeTeam": "Tennessee Titans",
+    "awayTeam": "Washington Commanders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T21:05",
+    "stadium": "State Farm Stadium",
+    "homeTeam": "Arizona Cardinals",
+    "awayTeam": "Philadelphia Eagles",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T21:05",
+    "stadium": "Empower Field at Mile High",
+    "homeTeam": "Denver Broncos",
+    "awayTeam": "Miami Dolphins",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T21:25",
+    "stadium": "U.S. Bank Stadium",
+    "homeTeam": "Minnesota Vikings",
+    "awayTeam": "Carolina Panthers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-06T21:25",
+    "stadium": "Gillette Stadium",
+    "homeTeam": "New England Patriots",
+    "awayTeam": "Buffalo Bills",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-07T01:20",
+    "stadium": "Acrisure Stadium",
+    "homeTeam": "Pittsburgh Steelers",
+    "awayTeam": "Houston Texans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-12-08T01:15",
+    "stadium": "Lumen Field",
+    "homeTeam": "Seattle Seahawks",
+    "awayTeam": "Dallas Cowboys",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-11T01:15",
+    "stadium": "Gillette Stadium",
+    "homeTeam": "New England Patriots",
+    "awayTeam": "Minnesota Vikings",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T18:00",
+    "stadium": "M&T Bank Stadium",
+    "homeTeam": "Baltimore Ravens",
+    "awayTeam": "Tampa Bay Buccaneers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T18:00",
+    "stadium": "Bank of America Stadium",
+    "homeTeam": "Carolina Panthers",
+    "awayTeam": "New Orleans Saints",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T18:00",
+    "stadium": "Huntington Bank Field",
+    "homeTeam": "Cleveland Browns",
+    "awayTeam": "Atlanta Falcons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T18:00",
+    "stadium": "Ford Field",
+    "homeTeam": "Detroit Lions",
+    "awayTeam": "Tennessee Titans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T18:00",
+    "stadium": "Hard Rock Stadium",
+    "homeTeam": "Miami Dolphins",
+    "awayTeam": "Chicago Bears",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Jets",
+    "awayTeam": "Denver Broncos",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T18:00",
+    "stadium": "Lincoln Financial Field",
+    "homeTeam": "Philadelphia Eagles",
+    "awayTeam": "Indianapolis Colts",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T18:00",
+    "stadium": "Northwest Stadium",
+    "homeTeam": "Washington Commanders",
+    "awayTeam": "Houston Texans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T21:05",
+    "stadium": "Allegiant Stadium",
+    "homeTeam": "Las Vegas Raiders",
+    "awayTeam": "Los Angeles Chargers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T21:25",
+    "stadium": "Paycor Stadium",
+    "homeTeam": "Cincinnati Bengals",
+    "awayTeam": "Kansas City Chiefs",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T21:25",
+    "stadium": "Lumen Field",
+    "homeTeam": "Seattle Seahawks",
+    "awayTeam": "New York Giants",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-13T21:25",
+    "stadium": "Levi's\u00ae Stadium",
+    "homeTeam": "San Francisco 49ers",
+    "awayTeam": "Los Angeles Rams",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-14T01:20",
+    "stadium": "Lambeau Field",
+    "homeTeam": "Green Bay Packers",
+    "awayTeam": "Buffalo Bills",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-12-15T01:15",
+    "stadium": "EverBank Stadium",
+    "homeTeam": "Jacksonville Jaguars",
+    "awayTeam": "Pittsburgh Steelers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-18T01:15",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Chargers",
+    "awayTeam": "San Francisco 49ers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-19T22:00",
+    "stadium": "Lincoln Financial Field",
+    "homeTeam": "Philadelphia Eagles",
+    "awayTeam": "Seattle Seahawks",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T01:20",
+    "stadium": "Highmark Stadium",
+    "homeTeam": "Buffalo Bills",
+    "awayTeam": "Chicago Bears",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T18:00",
+    "stadium": "Bank of America Stadium",
+    "homeTeam": "Carolina Panthers",
+    "awayTeam": "Cincinnati Bengals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T18:00",
+    "stadium": "Lambeau Field",
+    "homeTeam": "Green Bay Packers",
+    "awayTeam": "Miami Dolphins",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T18:00",
+    "stadium": "Reliant Stadium",
+    "homeTeam": "Houston Texans",
+    "awayTeam": "Jacksonville Jaguars",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Giants",
+    "awayTeam": "Cleveland Browns",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T18:00",
+    "stadium": "Acrisure Stadium",
+    "homeTeam": "Pittsburgh Steelers",
+    "awayTeam": "Baltimore Ravens",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T18:00",
+    "stadium": "Raymond James Stadium",
+    "homeTeam": "Tampa Bay Buccaneers",
+    "awayTeam": "New Orleans Saints",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T18:00",
+    "stadium": "Nissan Stadium",
+    "homeTeam": "Tennessee Titans",
+    "awayTeam": "Indianapolis Colts",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T18:00",
+    "stadium": "Northwest Stadium",
+    "homeTeam": "Washington Commanders",
+    "awayTeam": "Atlanta Falcons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T21:05",
+    "stadium": "State Farm Stadium",
+    "homeTeam": "Arizona Cardinals",
+    "awayTeam": "New York Jets",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T21:25",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Rams",
+    "awayTeam": "Dallas Cowboys",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-20T21:25",
+    "stadium": "Allegiant Stadium",
+    "homeTeam": "Las Vegas Raiders",
+    "awayTeam": "Denver Broncos",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-21T01:20",
+    "stadium": "U.S. Bank Stadium",
+    "homeTeam": "Minnesota Vikings",
+    "awayTeam": "Detroit Lions",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-12-22T01:15",
+    "stadium": "GEHA Field at Arrowhead Stadium",
+    "homeTeam": "Kansas City Chiefs",
+    "awayTeam": "New England Patriots",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-25T01:15",
+    "stadium": "Lincoln Financial Field",
+    "homeTeam": "Philadelphia Eagles",
+    "awayTeam": "Houston Texans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-25T18:00",
+    "stadium": "Soldier Field",
+    "homeTeam": "Chicago Bears",
+    "awayTeam": "Green Bay Packers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-25T21:30",
+    "stadium": "Empower Field at Mile High",
+    "homeTeam": "Denver Broncos",
+    "awayTeam": "Buffalo Bills",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-26T01:15",
+    "stadium": "Lumen Field",
+    "homeTeam": "Seattle Seahawks",
+    "awayTeam": "Los Angeles Rams",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-27T18:00",
+    "stadium": "M&T Bank Stadium",
+    "homeTeam": "Baltimore Ravens",
+    "awayTeam": "Cleveland Browns",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-27T18:00",
+    "stadium": "Hard Rock Stadium",
+    "homeTeam": "Miami Dolphins",
+    "awayTeam": "Los Angeles Chargers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-27T18:00",
+    "stadium": "Caesars Superdome",
+    "homeTeam": "New Orleans Saints",
+    "awayTeam": "Arizona Cardinals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-27T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Jets",
+    "awayTeam": "New England Patriots",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-27T21:05",
+    "stadium": "Allegiant Stadium",
+    "homeTeam": "Las Vegas Raiders",
+    "awayTeam": "Tennessee Titans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-27T21:25",
+    "stadium": "GEHA Field at Arrowhead Stadium",
+    "homeTeam": "Kansas City Chiefs",
+    "awayTeam": "San Francisco 49ers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-28T01:20",
+    "stadium": "AT&T Stadium",
+    "homeTeam": "Dallas Cowboys",
+    "awayTeam": "Jacksonville Jaguars",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-29T00:00",
+    "stadium": "Mercedes-Benz Stadium",
+    "homeTeam": "Atlanta Falcons",
+    "awayTeam": "Tampa Bay Buccaneers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-29T00:00",
+    "stadium": "Lucas Oil Stadium",
+    "homeTeam": "Indianapolis Colts",
+    "awayTeam": "Cincinnati Bengals",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-29T00:00",
+    "stadium": "U.S. Bank Stadium",
+    "homeTeam": "Minnesota Vikings",
+    "awayTeam": "Washington Commanders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-29T00:00",
+    "stadium": "Acrisure Stadium",
+    "homeTeam": "Pittsburgh Steelers",
+    "awayTeam": "Carolina Panthers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-12-29T01:15",
+    "stadium": "Ford Field",
+    "homeTeam": "Detroit Lions",
+    "awayTeam": "New York Giants",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-01T01:15",
+    "stadium": "Paycor Stadium",
+    "homeTeam": "Cincinnati Bengals",
+    "awayTeam": "Baltimore Ravens",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-03T18:00",
+    "stadium": "Mercedes-Benz Stadium",
+    "homeTeam": "Atlanta Falcons",
+    "awayTeam": "New Orleans Saints",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-03T18:00",
+    "stadium": "Bank of America Stadium",
+    "homeTeam": "Carolina Panthers",
+    "awayTeam": "Seattle Seahawks",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-03T18:00",
+    "stadium": "Huntington Bank Field",
+    "homeTeam": "Cleveland Browns",
+    "awayTeam": "Indianapolis Colts",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-03T18:00",
+    "stadium": "AT&T Stadium",
+    "homeTeam": "Dallas Cowboys",
+    "awayTeam": "New York Giants",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-03T18:00",
+    "stadium": "Hard Rock Stadium",
+    "homeTeam": "Miami Dolphins",
+    "awayTeam": "Buffalo Bills",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-03T18:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Jets",
+    "awayTeam": "Minnesota Vikings",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-03T18:00",
+    "stadium": "Nissan Stadium",
+    "homeTeam": "Tennessee Titans",
+    "awayTeam": "Pittsburgh Steelers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-03T21:05",
+    "stadium": "State Farm Stadium",
+    "homeTeam": "Arizona Cardinals",
+    "awayTeam": "Las Vegas Raiders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-03T21:25",
+    "stadium": "Soldier Field",
+    "homeTeam": "Chicago Bears",
+    "awayTeam": "Detroit Lions",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-04T01:20",
+    "stadium": "Levi's\u00ae Stadium",
+    "homeTeam": "San Francisco 49ers",
+    "awayTeam": "Philadelphia Eagles",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-05T00:00",
+    "stadium": "EverBank Stadium",
+    "homeTeam": "Jacksonville Jaguars",
+    "awayTeam": "Washington Commanders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-05T00:00",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Chargers",
+    "awayTeam": "Kansas City Chiefs",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-05T00:00",
+    "stadium": "Gillette Stadium",
+    "homeTeam": "New England Patriots",
+    "awayTeam": "Denver Broncos",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-05T00:00",
+    "stadium": "Raymond James Stadium",
+    "homeTeam": "Tampa Bay Buccaneers",
+    "awayTeam": "Los Angeles Rams",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2027-01-05T01:15",
+    "stadium": "Lambeau Field",
+    "homeTeam": "Green Bay Packers",
+    "awayTeam": "Houston Texans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "State Farm Stadium",
+    "homeTeam": "Arizona Cardinals",
+    "awayTeam": "San Francisco 49ers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "M&T Bank Stadium",
+    "homeTeam": "Baltimore Ravens",
+    "awayTeam": "Pittsburgh Steelers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Highmark Stadium",
+    "homeTeam": "Buffalo Bills",
+    "awayTeam": "New York Jets",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Bank of America Stadium",
+    "homeTeam": "Carolina Panthers",
+    "awayTeam": "Atlanta Falcons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Paycor Stadium",
+    "homeTeam": "Cincinnati Bengals",
+    "awayTeam": "Cleveland Browns",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Empower Field at Mile High",
+    "homeTeam": "Denver Broncos",
+    "awayTeam": "Los Angeles Chargers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Lambeau Field",
+    "homeTeam": "Green Bay Packers",
+    "awayTeam": "Detroit Lions",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Reliant Stadium",
+    "homeTeam": "Houston Texans",
+    "awayTeam": "Tennessee Titans",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Lucas Oil Stadium",
+    "homeTeam": "Indianapolis Colts",
+    "awayTeam": "Jacksonville Jaguars",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "GEHA Field at Arrowhead Stadium",
+    "homeTeam": "Kansas City Chiefs",
+    "awayTeam": "Las Vegas Raiders",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "SoFi Stadium",
+    "homeTeam": "Los Angeles Rams",
+    "awayTeam": "Seattle Seahawks",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "U.S. Bank Stadium",
+    "homeTeam": "Minnesota Vikings",
+    "awayTeam": "Chicago Bears",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Gillette Stadium",
+    "homeTeam": "New England Patriots",
+    "awayTeam": "Miami Dolphins",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Caesars Superdome",
+    "homeTeam": "New Orleans Saints",
+    "awayTeam": "Tampa Bay Buccaneers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "MetLife Stadium",
+    "homeTeam": "New York Giants",
+    "awayTeam": "Philadelphia Eagles",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2027-01-10T00:00",
+    "stadium": "Northwest Stadium",
+    "homeTeam": "Washington Commanders",
+    "awayTeam": "Dallas Cowboys",
+    "homeScore": null,
+    "awayScore": null
+  }
+]

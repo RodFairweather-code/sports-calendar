@@ -1,0 +1,4970 @@
+[
+  {
+    "round": "1",
+    "start": "2026-08-15T12:30",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T12:30",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T12:30",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "1",
+    "start": "2026-08-15T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-20T20:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T12:30",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T12:30",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "2",
+    "start": "2026-08-22T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T12:30",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T12:30",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-08-29T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T19:45",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "4",
+    "start": "2026-09-01T20:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T12:30",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T12:30",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-05T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "5",
+    "start": "2026-09-07T20:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "3",
+    "start": "2026-09-08T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-10T20:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T12:30",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T12:30",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "6",
+    "start": "2026-09-12T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-17T20:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T12:30",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T12:30",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "7",
+    "start": "2026-09-19T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "8",
+    "start": "2026-09-26T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "9",
+    "start": "2026-10-03T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "10",
+    "start": "2026-10-10T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "11",
+    "start": "2026-10-17T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T19:45",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "12",
+    "start": "2026-10-20T20:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "13",
+    "start": "2026-10-24T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-10-31T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "14",
+    "start": "2026-11-01T14:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "15",
+    "start": "2026-11-14T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "16",
+    "start": "2026-11-21T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "17",
+    "start": "2026-11-28T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T19:45",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "18",
+    "start": "2026-12-01T20:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "19",
+    "start": "2026-12-12T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "20",
+    "start": "2026-12-19T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "21",
+    "start": "2026-12-26T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T19:45",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "22",
+    "start": "2026-12-29T20:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "23",
+    "start": "2027-01-01T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "24",
+    "start": "2027-01-09T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "25",
+    "start": "2027-01-16T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "26",
+    "start": "2027-01-19T19:45",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "27",
+    "start": "2027-01-23T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "28",
+    "start": "2027-01-30T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "29",
+    "start": "2027-02-06T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "30",
+    "start": "2027-02-09T19:45",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "31",
+    "start": "2027-02-13T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "32",
+    "start": "2027-02-20T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "33",
+    "start": "2027-02-27T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "34",
+    "start": "2027-03-06T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "35",
+    "start": "2027-03-13T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "36",
+    "start": "2027-03-20T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "37",
+    "start": "2027-03-26T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "38",
+    "start": "2027-03-29T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "39",
+    "start": "2027-04-03T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "40",
+    "start": "2027-04-10T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T19:45",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "41",
+    "start": "2027-04-13T20:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "42",
+    "start": "2027-04-17T15:00",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "43",
+    "start": "2027-04-24T15:00",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "44",
+    "start": "2027-04-27T19:45",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "Oakwell",
+    "homeTeam": "Barnsley",
+    "awayTeam": "AFC Wimbledon",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "Bloomfield Road",
+    "homeTeam": "Blackpool",
+    "awayTeam": "Stevenage",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "Mbanq Valley Parade",
+    "homeTeam": "Bradford City",
+    "awayTeam": "Wycombe Wanderers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "Pirelli Stadium",
+    "homeTeam": "Burton Albion",
+    "awayTeam": "Bromley",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "Cledara Abbey Stadium",
+    "homeTeam": "Cambridge United",
+    "awayTeam": "Luton Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "Accu Stadium",
+    "homeTeam": "Huddersfield Town",
+    "awayTeam": "Doncaster Rovers",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "BetWright Stadium",
+    "homeTeam": "Leyton Orient",
+    "awayTeam": "Stockport County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "One Call Stadium",
+    "homeTeam": "Mansfield Town",
+    "awayTeam": "Leicester City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "Meadow Lane",
+    "homeTeam": "Notts County",
+    "awayTeam": "MK Dons",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "The Kassam Stadium",
+    "homeTeam": "Oxford United",
+    "awayTeam": "Peterborough United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "Home Park",
+    "homeTeam": "Plymouth Argyle",
+    "awayTeam": "Wigan Athletic",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "45",
+    "start": "2027-05-01T15:00",
+    "stadium": "Select Car Leasing Stadium",
+    "homeTeam": "Reading",
+    "awayTeam": "Sheffield Wednesday",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "The Cherry Red Records Stadium",
+    "homeTeam": "AFC Wimbledon",
+    "awayTeam": "Notts County",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "Copperjax Community Stadium",
+    "homeTeam": "Bromley",
+    "awayTeam": "Plymouth Argyle",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "Club Doncaster Sports Village",
+    "homeTeam": "Doncaster Rovers",
+    "awayTeam": "Reading",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "King Power Stadium",
+    "homeTeam": "Leicester City",
+    "awayTeam": "Cambridge United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "Kenilworth Road",
+    "homeTeam": "Luton Town",
+    "awayTeam": "Blackpool",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "Stadium MK",
+    "homeTeam": "MK Dons",
+    "awayTeam": "Bradford City",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "Weston Homes Stadium",
+    "homeTeam": "Peterborough United",
+    "awayTeam": "Leyton Orient",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "Hillsborough",
+    "homeTeam": "Sheffield Wednesday",
+    "awayTeam": "Oxford United",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "Stevenage FC Stadium",
+    "homeTeam": "Stevenage",
+    "awayTeam": "Huddersfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "Edgeley Park",
+    "homeTeam": "Stockport County",
+    "awayTeam": "Mansfield Town",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "The Brick Community Stadium",
+    "homeTeam": "Wigan Athletic",
+    "awayTeam": "Burton Albion",
+    "homeScore": null,
+    "awayScore": null
+  },
+  {
+    "round": "46",
+    "start": "2027-05-08T12:30",
+    "stadium": "Adams Park",
+    "homeTeam": "Wycombe Wanderers",
+    "awayTeam": "Barnsley",
+    "homeScore": null,
+    "awayScore": null
+  }
+]
