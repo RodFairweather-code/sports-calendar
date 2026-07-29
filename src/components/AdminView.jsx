@@ -94,6 +94,19 @@ function AdminView({ snapshotUnlocked, allEvents }) {
     alert(`TAMS set to Y for all ${allEvents.length} events.`)
   }
 
+  function handleClearTams() {
+    const platforms = JSON.parse(localStorage.getItem('admin_platforms') || '[]')
+    const tams = platforms.find(p => p.name?.toLowerCase() === 'tams')
+    if (!tams) { alert('No platform named "TAMS" found. Add it in Admin → Platforms first.'); return }
+
+    const decisions = JSON.parse(localStorage.getItem('editorial_decisions') || '{}')
+    for (const event of allEvents) {
+      if (decisions[event.id]) decisions[event.id][tams.id] = ''
+    }
+    localStorage.setItem('editorial_decisions', JSON.stringify(decisions))
+    alert(`TAMS cleared for all ${allEvents.length} events.`)
+  }
+
   return (
     <div className="admin-view">
       <div className="admin-content">
@@ -125,6 +138,14 @@ function AdminView({ snapshotUnlocked, allEvents }) {
             onClick={handleTamsAll}
           >
             TAMS All
+          </button>
+          <button
+            className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
+            disabled={!snapshotUnlocked}
+            tabIndex={snapshotUnlocked ? 0 : -1}
+            onClick={handleClearTams}
+          >
+            Clear TAMS
           </button>
         </div>
       </div>
