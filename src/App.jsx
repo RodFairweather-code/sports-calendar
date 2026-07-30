@@ -85,6 +85,10 @@ function App() {
     [activeComps]
   )
 
+  function activateComps(ids) {
+    setActiveComps(prev => new Set([...prev, ...ids]))
+  }
+
   function toggleComp(id) {
     setActiveComps(prev => {
       const next = new Set(prev)
@@ -135,7 +139,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.39</span>
+        <span className="header-version">v2.42</span>
       </header>
 
       {view === 'calendar' && (
@@ -152,7 +156,7 @@ function App() {
       {view === 'book-staff' && <BookStaffView events={visibleEvents} />}
       {view === 'assets' && <AssetsView events={ALL_EVENTS} />}
       {view === 'resource-gaps' && <ResourceGapsView allEvents={ALL_EVENTS} onEventClick={setSelectedEvent} />}
-      {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={ALL_EVENTS} />}
+      {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={ALL_EVENTS} onNavigate={setView} onActivateComps={activateComps} />}
 
       {view !== 'admin' && view !== 'resource-gaps' && view !== 'book-staff' && (
         <CompetitionToggles

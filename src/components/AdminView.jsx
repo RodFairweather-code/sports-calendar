@@ -73,7 +73,7 @@ function downloadText(filename, content) {
   URL.revokeObjectURL(url)
 }
 
-function AdminView({ snapshotUnlocked, allEvents }) {
+function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps }) {
   const [adminTab, setAdminTab] = useState('patterns')
 
   function handleSnapshot() {
@@ -105,6 +105,63 @@ function AdminView({ snapshotUnlocked, allEvents }) {
     }
     localStorage.setItem('editorial_decisions', JSON.stringify(decisions))
     alert(`TAMS cleared for all ${allEvents.length} events.`)
+  }
+
+  function handleSelectMany() {
+    const platforms = JSON.parse(localStorage.getItem('admin_platforms') || '[]')
+    const findPlatform = name => platforms.find(p => p.name?.toLowerCase() === name.toLowerCase())
+    const skyMcr = findPlatform('Sky MCR')
+    const tams = findPlatform('TAMS')
+    const itvEaling = findPlatform('ITV Ealing')
+    const bbc1 = findPlatform('BBC 1')
+
+    const missing = [
+      !skyMcr && 'Sky MCR',
+      !tams && 'TAMS',
+      !itvEaling && 'ITV Ealing',
+      !bbc1 && 'BBC 1',
+    ].filter(Boolean)
+    if (missing.length) {
+      alert(`Missing platform(s): ${missing.join(', ')}. Add them in Admin → Platforms first.`)
+      return
+    }
+
+    const decisions = JSON.parse(localStorage.getItem('editorial_decisions') || '{}')
+    const setDecision = (eventId, platformId, value) => {
+      if (!decisions[eventId]) decisions[eventId] = {}
+      decisions[eventId][platformId] = value
+    }
+    const eventsFor = competitionId => allEvents.filter(e => e.extendedProps?.competitionId === competitionId)
+    const sample = (events, fraction) => events.filter(() => Math.random() < fraction)
+
+    for (const event of eventsFor('championship_2627')) {
+      setDecision(event.id, skyMcr.id, 'Y')
+      setDecision(event.id, tams.id, 'Y')
+    }
+    for (const event of sample(eventsFor('league_one_2627'), 0.5)) {
+      setDecision(event.id, skyMcr.id, 'Y')
+    }
+    for (const event of sample(eventsFor('league_two_2627'), 0.25)) {
+      setDecision(event.id, skyMcr.id, 'Y')
+    }
+    for (const event of sample(eventsFor('atp_tour'), 0.5)) {
+      setDecision(event.id, itvEaling.id, 'Y')
+    }
+    for (const event of eventsFor('atp_tour')) {
+      setDecision(event.id, bbc1.id, 'Y')
+    }
+    for (const event of eventsFor('scottish_premiership')) {
+      setDecision(event.id, bbc1.id, 'Y')
+    }
+
+    localStorage.setItem('editorial_decisions', JSON.stringify(decisions))
+    onActivateComps?.(['championship_2627', 'league_one_2627', 'league_two_2627', 'atp_tour', 'scottish_premiership'])
+    onNavigate?.('editorial')
+  }
+
+  function handleClearMany() {
+    localStorage.setItem('editorial_decisions', '{}')
+    alert('All editorial decisions cleared for every platform.')
   }
 
   return (
@@ -146,6 +203,22 @@ function AdminView({ snapshotUnlocked, allEvents }) {
             onClick={handleClearTams}
           >
             Clear TAMS
+          </button>
+          <button
+            className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
+            disabled={!snapshotUnlocked}
+            tabIndex={snapshotUnlocked ? 0 : -1}
+            onClick={handleSelectMany}
+          >
+            Select Many Events
+          </button>
+          <button
+            className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
+            disabled={!snapshotUnlocked}
+            tabIndex={snapshotUnlocked ? 0 : -1}
+            onClick={handleClearMany}
+          >
+            Clear Many Events
           </button>
         </div>
       </div>
