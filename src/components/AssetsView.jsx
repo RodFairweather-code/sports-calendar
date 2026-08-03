@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getStaffForRole } from './StaffView'
 
 function loadData() {
@@ -134,6 +134,14 @@ function AssetsView({ events = [] }) {
 
   const portMap = assignPortNumbers(tamsEvents)
 
+  const rowRefs = useRef({})
+  const todayStr = new Date().toISOString().slice(0, 10)
+
+  useEffect(() => {
+    const target = tamsEvents.find(e => (e.start || '').slice(0, 10) >= todayStr) || tamsEvents[tamsEvents.length - 1]
+    if (target) rowRefs.current[target.id]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
+
   function update(id, field, value) {
     setData(prev => {
       const row = { ...EMPTY_ROW, ...(prev[id] || {}) }
@@ -197,7 +205,11 @@ function AssetsView({ events = [] }) {
               const portOver   = portNum > totalRecordPorts
               const upd    = (field, val) => update(event.id, field, val)
               return (
-                <tr key={event.id} className={i % 2 === 0 ? 'at-row-even' : 'at-row-odd'}>
+                <tr
+                  key={event.id}
+                  ref={el => { if (el) rowRefs.current[event.id] = el; else delete rowRefs.current[event.id] }}
+                  className={i % 2 === 0 ? 'at-row-even' : 'at-row-odd'}
+                >
                   <td className="at-td at-date">{formatDate(event.start)}</td>
                   <td className="at-td at-time">{formatTime(event.start)}</td>
                   <td className="at-td at-comp">{event.extendedProps.competitionName}</td>

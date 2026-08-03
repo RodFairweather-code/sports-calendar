@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { deriveRequiredCap, capable } from '../services/staffCapabilities'
 
 const FREELANCE_STORED = 'Freelance required'
@@ -187,6 +187,14 @@ function ResourceGapsView({ allEvents, onEventClick }) {
     return () => window.removeEventListener('bookings-updated', onUpdate)
   }, [])
 
+  const dayRefs = useRef({})
+  const todayStr = new Date().toISOString().slice(0, 10)
+
+  useEffect(() => {
+    const target = sortedDates.find(d => d >= todayStr) || sortedDates[sortedDates.length - 1]
+    if (target) dayRefs.current[target]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
+
   const dayStatus   = computeDayStatus(allEvents, assignments, decisions, patterns, staff, profiles, defaultPatterns)
   const sortedDates = Object.keys(dayStatus).sort()
 
@@ -222,7 +230,11 @@ function ResourceGapsView({ allEvents, onEventClick }) {
             const allClear = filter !== 'all' && gaps.length === 0 && incompleteRows.length === 0
 
             return (
-              <div key={date} className="rg-date-group">
+              <div
+                key={date}
+                ref={el => { if (el) dayRefs.current[date] = el; else delete dayRefs.current[date] }}
+                className="rg-date-group"
+              >
                 <div className={`rg-date-header${allClear ? ' rg-date-header--clear' : ''}`}>
                   {formatDate(date)}
                 </div>

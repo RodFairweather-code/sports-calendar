@@ -142,7 +142,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.45</span>
+        <span className="header-version">v2.46</span>
       </header>
 
       {view === 'calendar' && (
