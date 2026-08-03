@@ -22,6 +22,7 @@ const EMPTY_DRAFT = {
   audioUntil: 0,
   // Production
   productionBooth: false,
+  studio: false,
 }
 
 const CAP_OPTIONS = [
@@ -316,6 +317,7 @@ function PatternsView() {
                 <div className="pf-section">
                   <div className="pf-section-label">Production</div>
                   <ToggleField label="Production booth" value={draft.productionBooth} field="productionBooth" onChange={setField} />
+                  <ToggleField label="Studio" value={draft.studio} field="studio" onChange={setField} />
                 </div>
 
               </div>
