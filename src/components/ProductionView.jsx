@@ -92,6 +92,10 @@ function ProductionView({ events, onEventClick }) {
     return () => window.removeEventListener('assignments-updated', onUpdate)
   }, [])
 
+  useEffect(() => {
+    if (todayIndex !== -1) scrollToIndex(todayIndex)
+  }, [])
+
   const todayStr = new Date().toISOString().slice(0, 10)
 
   const sorted = [...events]

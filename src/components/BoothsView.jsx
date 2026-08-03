@@ -213,6 +213,10 @@ function BoothsView({ events, onEventClick }) {
     return () => window.removeEventListener('bookings-updated', onUpdate)
   }, [])
 
+  useEffect(() => {
+    if (sortedDates.some(d => d >= todayStr)) scrollToDate(todayStr)
+  }, [])
+
   const patternMap = Object.fromEntries(patterns.map(p => [p.id, p]))
   const maxBooths  = techStack.productionBooths ?? 0
   const todayStr   = new Date().toISOString().slice(0, 10)

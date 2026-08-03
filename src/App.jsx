@@ -13,6 +13,7 @@ import AssetsView from './components/AssetsView'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
+import { SEED_RIGHTS_MATRIX } from './data/seedRights'
 import './App.css'
 
 // Populate localStorage from seed on first load (skipped if data already exists)
@@ -20,6 +21,8 @@ if (!localStorage.getItem('admin_staff'))
   localStorage.setItem('admin_staff', JSON.stringify(SEED_STAFF))
 if (!localStorage.getItem('admin_staff_profiles'))
   localStorage.setItem('admin_staff_profiles', JSON.stringify(SEED_STAFF_PROFILES))
+if (!localStorage.getItem('rights_matrix'))
+  localStorage.setItem('rights_matrix', JSON.stringify(SEED_RIGHTS_MATRIX))
 
 const VIEWS = [
   { id: 'calendar',   label: 'Calendar' },
@@ -139,7 +142,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.42</span>
+        <span className="header-version">v2.44</span>
       </header>
 
       {view === 'calendar' && (

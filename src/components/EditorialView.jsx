@@ -91,7 +91,8 @@ function EditorialView({ events, onEventClick }) {
   const todayIndex = sorted.findIndex(e => e.start >= todayStr)
 
   useEffect(() => {
-    if (sorted.length > 0) scrollToIndex(0)
+    if (todayIndex !== -1) scrollToIndex(todayIndex)
+    else if (sorted.length > 0) scrollToIndex(0)
   }, [])
 
   function scrollToIndex(index) {

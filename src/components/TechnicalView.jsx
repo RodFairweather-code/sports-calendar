@@ -67,6 +67,10 @@ function TechnicalView({ events }) {
     return () => window.removeEventListener('assignments-updated', onUpdate)
   }, [])
 
+  useEffect(() => {
+    if (todayIndex !== -1) scrollToDate(todayStr)
+  }, [])
+
   const dayRefs    = useRef({})
   const [selectedDate, setSelectedDate] = useState('')
   const todayStr = new Date().toISOString().slice(0, 10)
