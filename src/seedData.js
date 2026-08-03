@@ -1,4 +1,4 @@
-const SEED_VERSION = 36
+const SEED_VERSION = 37
 
 const PLATFORMS = [
   { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
@@ -71,6 +71,11 @@ const DEFAULT_PATTERNS = {
   wta_tour: "pat_seed_4",
   atp_tour: "pat_seed_4",
   premier_league: "pat_seed_3",
+  scottish_premiership: "pat_seed_3",
+  championship_2627: "pat_seed_2",
+  league_one_2627: "pat_seed_1",
+  league_two_2627: "pat_seed_1",
+  rugby_world_cup_2027: "pat_seed_3",
 }
 
 const STAFF = {
