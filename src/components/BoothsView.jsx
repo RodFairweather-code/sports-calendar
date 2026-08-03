@@ -279,6 +279,15 @@ function BoothsView({ events, onEventClick }) {
     if (byDateStudio[date]) byDateStudio[date].sort((a, b) => a.start.localeCompare(b.start))
   })
 
+  // Booth + studio events share the same director/EVS/graphics staff pool per day,
+  // so allocation and clearing must operate on the combined, deduplicated set.
+  const byDateAll = {}
+  sortedDates.forEach(date => {
+    const seen = new Set()
+    byDateAll[date] = [...(byDate[date] || []), ...(byDateStudio[date] || [])]
+      .filter(e => (seen.has(e.id) ? false : (seen.add(e.id), true)))
+  })
+
   if (sortedDates.length === 0) {
     return (
       <div className="booths-container">
@@ -321,7 +330,7 @@ function BoothsView({ events, onEventClick }) {
             onClick={() => {
               let next = { ...assignments }
               for (const date of sortedDates) {
-                next = autoAllocateDay(byDate[date], next, staff, patternMap, defaultPatterns, profiles, decisions)
+                next = autoAllocateDay(byDateAll[date], next, staff, patternMap, defaultPatterns, profiles, decisions)
               }
               saveAssignments(next)
             }}
@@ -358,74 +367,72 @@ function BoothsView({ events, onEventClick }) {
           <div key={date} ref={el => { groupRefs.current[date] = el }} className="booths-date-group">
             <div className="booths-date-header-row">
               <h2 className="booths-date-header">{dateLabel}</h2>
-              {byDate[date] && (
-                <div className="booths-header-buttons">
-                  <div className="booths-btn-group">
-                    <button
-                      className="booths-clear-day-btn"
-                      onClick={() => {
-                        const dayIds = new Set(byDate[date].map(e => e.id))
-                        const { accepted, offered, nextBookings } = computeClear([...dayIds], assignments, profiles, bookings)
-                        const nextAssignments = Object.fromEntries(
-                          Object.entries(assignments).map(([id, asgn]) => {
-                            if (!dayIds.has(id)) return [id, asgn]
-                            const { director, evsOperator, graphicsOperator, ...rest } = asgn
-                            return [id, rest]
-                          })
-                        )
-                        saveAssignments(nextAssignments)
-                        saveBookings(nextBookings)
-                        showClearNotice(accepted, offered)
-                      }}
-                    >
-                      Clear this day
-                    </button>
-                    <button
-                      className="booths-auto-btn"
-                      onClick={() => saveAssignments(
-                        autoAllocateDay(byDate[date], assignments, staff, patternMap, defaultPatterns, profiles, decisions)
-                      )}
-                    >
-                      Auto allocate this day
-                    </button>
-                  </div>
-                  <div className="booths-btn-group">
-                    <button
-                      className="booths-clear-forward-btn"
-                      onClick={() => {
-                        const forwardDates = sortedDates.filter(d => d >= date && byDate[d])
-                        const forwardIds = new Set(forwardDates.flatMap(d => byDate[d].map(e => e.id)))
-                        const { accepted, offered, nextBookings } = computeClear([...forwardIds], assignments, profiles, bookings)
-                        const nextAssignments = Object.fromEntries(
-                          Object.entries(assignments).map(([id, asgn]) => {
-                            if (!forwardIds.has(id)) return [id, asgn]
-                            const { director, evsOperator, graphicsOperator, ...rest } = asgn
-                            return [id, rest]
-                          })
-                        )
-                        saveAssignments(nextAssignments)
-                        saveBookings(nextBookings)
-                        showClearNotice(accepted, offered)
-                      }}
-                    >
-                      Clear allocation forward
-                    </button>
-                    <button
-                      className="booths-allocate-forward-btn"
-                      onClick={() => {
-                        const forwardDates = sortedDates.filter(d => d >= date && byDate[d])
-                        let next = { ...assignments }
-                        for (const d of forwardDates) {
-                          next = autoAllocateDay(byDate[d], next, staff, patternMap, defaultPatterns, profiles, decisions)
-                        }
-                        saveAssignments(next)
-                      }}
-                    >
-                      Allocate forward
-                    </button>
-                  </div>
+              <div className="booths-header-buttons">
+                <div className="booths-btn-group">
+                  <button
+                    className="booths-clear-day-btn"
+                    onClick={() => {
+                      const dayIds = new Set(byDateAll[date].map(e => e.id))
+                      const { accepted, offered, nextBookings } = computeClear([...dayIds], assignments, profiles, bookings)
+                      const nextAssignments = Object.fromEntries(
+                        Object.entries(assignments).map(([id, asgn]) => {
+                          if (!dayIds.has(id)) return [id, asgn]
+                          const { director, evsOperator, graphicsOperator, ...rest } = asgn
+                          return [id, rest]
+                        })
+                      )
+                      saveAssignments(nextAssignments)
+                      saveBookings(nextBookings)
+                      showClearNotice(accepted, offered)
+                    }}
+                  >
+                    Clear this day
+                  </button>
+                  <button
+                    className="booths-auto-btn"
+                    onClick={() => saveAssignments(
+                      autoAllocateDay(byDateAll[date], assignments, staff, patternMap, defaultPatterns, profiles, decisions)
+                    )}
+                  >
+                    Auto allocate this day
+                  </button>
                 </div>
-              )}
+                <div className="booths-btn-group">
+                  <button
+                    className="booths-clear-forward-btn"
+                    onClick={() => {
+                      const forwardDates = sortedDates.filter(d => d >= date)
+                      const forwardIds = new Set(forwardDates.flatMap(d => byDateAll[d].map(e => e.id)))
+                      const { accepted, offered, nextBookings } = computeClear([...forwardIds], assignments, profiles, bookings)
+                      const nextAssignments = Object.fromEntries(
+                        Object.entries(assignments).map(([id, asgn]) => {
+                          if (!forwardIds.has(id)) return [id, asgn]
+                          const { director, evsOperator, graphicsOperator, ...rest } = asgn
+                          return [id, rest]
+                        })
+                      )
+                      saveAssignments(nextAssignments)
+                      saveBookings(nextBookings)
+                      showClearNotice(accepted, offered)
+                    }}
+                  >
+                    Clear allocation forward
+                  </button>
+                  <button
+                    className="booths-allocate-forward-btn"
+                    onClick={() => {
+                      const forwardDates = sortedDates.filter(d => d >= date)
+                      let next = { ...assignments }
+                      for (const d of forwardDates) {
+                        next = autoAllocateDay(byDateAll[d], next, staff, patternMap, defaultPatterns, profiles, decisions)
+                      }
+                      saveAssignments(next)
+                    }}
+                  >
+                    Allocate forward
+                  </button>
+                </div>
+              </div>
             </div>
 
             {byDate[date] && (
