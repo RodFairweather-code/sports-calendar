@@ -1212,6 +1212,19 @@
   gap: 14px;
 }
 
+.studios-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #8492a6;
+  margin: 18px 0 10px;
+}
+
+.studios-row {
+  margin-bottom: 0;
+}
+
 .booth-card {
   width: 190px;
   border-radius: 10px;

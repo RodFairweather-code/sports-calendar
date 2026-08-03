@@ -98,6 +98,13 @@ function needsBooth(event, assignments, patternMap, defaultPatterns) {
   return patternMap[patternId]?.productionBooth ?? false
 }
 
+function needsStudio(event, assignments, patternMap, defaultPatterns) {
+  const asgn = assignments[event.id] || {}
+  const patternId = asgn.patternId ?? defaultPatterns[event.extendedProps.competitionId]
+  if (!patternId) return false
+  return patternMap[patternId]?.studio ?? false
+}
+
 function getPatternFor(event, assignments, patternMap, defaultPatterns) {
   const asgn = assignments[event.id] || {}
   const patternId = asgn.patternId ?? defaultPatterns[event.extendedProps.competitionId]
@@ -249,7 +256,8 @@ function BoothsView({ events, onEventClick }) {
     clearTimerRef.current = setTimeout(() => setClearNotice(null), 5000)
   }
 
-  const boothEvents = events.filter(e => needsBooth(e, assignments, patternMap, defaultPatterns))
+  const boothEvents  = events.filter(e => needsBooth(e, assignments, patternMap, defaultPatterns))
+  const studioEvents = events.filter(e => needsStudio(e, assignments, patternMap, defaultPatterns))
 
   const byDate = {}
   boothEvents.forEach(event => {
@@ -258,9 +266,17 @@ function BoothsView({ events, onEventClick }) {
     byDate[date].push(event)
   })
 
-  const sortedDates = Object.keys(byDate).sort()
+  const byDateStudio = {}
+  studioEvents.forEach(event => {
+    const date = event.start.slice(0, 10)
+    if (!byDateStudio[date]) byDateStudio[date] = []
+    byDateStudio[date].push(event)
+  })
+
+  const sortedDates = Array.from(new Set([...Object.keys(byDate), ...Object.keys(byDateStudio)])).sort()
   sortedDates.forEach(date => {
-    byDate[date].sort((a, b) => a.start.localeCompare(b.start))
+    if (byDate[date])       byDate[date].sort((a, b) => a.start.localeCompare(b.start))
+    if (byDateStudio[date]) byDateStudio[date].sort((a, b) => a.start.localeCompare(b.start))
   })
 
   if (sortedDates.length === 0) {
@@ -269,8 +285,8 @@ function BoothsView({ events, onEventClick }) {
         <div className="booths-toolbar"><div className="ed-toolbar-right" /></div>
         <div className="booths-view">
           <div className="booths-empty">
-            <p>No booth events found.</p>
-            <span>Events get a booth when their production pattern has "Production Booth" set to Yes, or when it is manually enabled in the Event Inspector.</span>
+            <p>No booth or studio events found.</p>
+            <span>Events get a booth or studio when their production pattern has "Production Booth" or "Studio" set to Yes, or when it is manually enabled in the Event Inspector.</span>
           </div>
         </div>
       </div>
@@ -342,74 +358,77 @@ function BoothsView({ events, onEventClick }) {
           <div key={date} ref={el => { groupRefs.current[date] = el }} className="booths-date-group">
             <div className="booths-date-header-row">
               <h2 className="booths-date-header">{dateLabel}</h2>
-              <div className="booths-header-buttons">
-                <div className="booths-btn-group">
-                  <button
-                    className="booths-clear-day-btn"
-                    onClick={() => {
-                      const dayIds = new Set(byDate[date].map(e => e.id))
-                      const { accepted, offered, nextBookings } = computeClear([...dayIds], assignments, profiles, bookings)
-                      const nextAssignments = Object.fromEntries(
-                        Object.entries(assignments).map(([id, asgn]) => {
-                          if (!dayIds.has(id)) return [id, asgn]
-                          const { director, evsOperator, graphicsOperator, ...rest } = asgn
-                          return [id, rest]
-                        })
-                      )
-                      saveAssignments(nextAssignments)
-                      saveBookings(nextBookings)
-                      showClearNotice(accepted, offered)
-                    }}
-                  >
-                    Clear this day
-                  </button>
-                  <button
-                    className="booths-auto-btn"
-                    onClick={() => saveAssignments(
-                      autoAllocateDay(byDate[date], assignments, staff, patternMap, defaultPatterns, profiles, decisions)
-                    )}
-                  >
-                    Auto allocate this day
-                  </button>
+              {byDate[date] && (
+                <div className="booths-header-buttons">
+                  <div className="booths-btn-group">
+                    <button
+                      className="booths-clear-day-btn"
+                      onClick={() => {
+                        const dayIds = new Set(byDate[date].map(e => e.id))
+                        const { accepted, offered, nextBookings } = computeClear([...dayIds], assignments, profiles, bookings)
+                        const nextAssignments = Object.fromEntries(
+                          Object.entries(assignments).map(([id, asgn]) => {
+                            if (!dayIds.has(id)) return [id, asgn]
+                            const { director, evsOperator, graphicsOperator, ...rest } = asgn
+                            return [id, rest]
+                          })
+                        )
+                        saveAssignments(nextAssignments)
+                        saveBookings(nextBookings)
+                        showClearNotice(accepted, offered)
+                      }}
+                    >
+                      Clear this day
+                    </button>
+                    <button
+                      className="booths-auto-btn"
+                      onClick={() => saveAssignments(
+                        autoAllocateDay(byDate[date], assignments, staff, patternMap, defaultPatterns, profiles, decisions)
+                      )}
+                    >
+                      Auto allocate this day
+                    </button>
+                  </div>
+                  <div className="booths-btn-group">
+                    <button
+                      className="booths-clear-forward-btn"
+                      onClick={() => {
+                        const forwardDates = sortedDates.filter(d => d >= date && byDate[d])
+                        const forwardIds = new Set(forwardDates.flatMap(d => byDate[d].map(e => e.id)))
+                        const { accepted, offered, nextBookings } = computeClear([...forwardIds], assignments, profiles, bookings)
+                        const nextAssignments = Object.fromEntries(
+                          Object.entries(assignments).map(([id, asgn]) => {
+                            if (!forwardIds.has(id)) return [id, asgn]
+                            const { director, evsOperator, graphicsOperator, ...rest } = asgn
+                            return [id, rest]
+                          })
+                        )
+                        saveAssignments(nextAssignments)
+                        saveBookings(nextBookings)
+                        showClearNotice(accepted, offered)
+                      }}
+                    >
+                      Clear allocation forward
+                    </button>
+                    <button
+                      className="booths-allocate-forward-btn"
+                      onClick={() => {
+                        const forwardDates = sortedDates.filter(d => d >= date && byDate[d])
+                        let next = { ...assignments }
+                        for (const d of forwardDates) {
+                          next = autoAllocateDay(byDate[d], next, staff, patternMap, defaultPatterns, profiles, decisions)
+                        }
+                        saveAssignments(next)
+                      }}
+                    >
+                      Allocate forward
+                    </button>
+                  </div>
                 </div>
-                <div className="booths-btn-group">
-                  <button
-                    className="booths-clear-forward-btn"
-                    onClick={() => {
-                      const forwardDates = sortedDates.filter(d => d >= date)
-                      const forwardIds = new Set(forwardDates.flatMap(d => byDate[d].map(e => e.id)))
-                      const { accepted, offered, nextBookings } = computeClear([...forwardIds], assignments, profiles, bookings)
-                      const nextAssignments = Object.fromEntries(
-                        Object.entries(assignments).map(([id, asgn]) => {
-                          if (!forwardIds.has(id)) return [id, asgn]
-                          const { director, evsOperator, graphicsOperator, ...rest } = asgn
-                          return [id, rest]
-                        })
-                      )
-                      saveAssignments(nextAssignments)
-                      saveBookings(nextBookings)
-                      showClearNotice(accepted, offered)
-                    }}
-                  >
-                    Clear allocation forward
-                  </button>
-                  <button
-                    className="booths-allocate-forward-btn"
-                    onClick={() => {
-                      const forwardDates = sortedDates.filter(d => d >= date)
-                      let next = { ...assignments }
-                      for (const d of forwardDates) {
-                        next = autoAllocateDay(byDate[d], next, staff, patternMap, defaultPatterns, profiles, decisions)
-                      }
-                      saveAssignments(next)
-                    }}
-                  >
-                    Allocate forward
-                  </button>
-                </div>
-              </div>
+              )}
             </div>
 
+            {byDate[date] && (
             <div className="booths-row">
               {byDate[date].map((event, idx) => {
                 const p            = event.extendedProps
@@ -468,6 +487,69 @@ function BoothsView({ events, onEventClick }) {
                 )
               })}
             </div>
+            )}
+
+            {byDateStudio[date] && (
+            <>
+              <div className="studios-section-label">Studios</div>
+              <div className="booths-row studios-row">
+                {byDateStudio[date].map((event, idx) => {
+                  const p          = event.extendedProps
+                  const asgn       = assignments[event.id] || {}
+                  const pattern    = getPatternFor(event, assignments, patternMap, defaultPatterns)
+                  const timePart   = !event.allDay && event.start.length > 10
+                    ? event.start.slice(11, 16) : null
+                  const evsCount   = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
+                  const isPossible = eventStatus(event.id, decisions) === 'possible'
+
+                  const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings)
+                  const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings) : null
+                  const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings)
+
+                  return (
+                    <div
+                      key={event.id}
+                      className="booth-card"
+                      onClick={() => onEventClick?.(event)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div className="booth-card-header" style={{ background: event.backgroundColor }}>
+                        <span className="booth-number">Studio {idx + 1}</span>
+                      </div>
+                      {isPossible && <div className="booth-possible-label">Possible event</div>}
+                      <div className="booth-card-body">
+                        <div className="booth-comp">
+                          <span className="booth-comp-dot" style={{ background: event.backgroundColor }} />
+                          <span className="booth-comp-name">{p.competitionName}</span>
+                        </div>
+                        <div className="booth-event-title">{event.title}</div>
+                        {timePart && <div className="booth-time">{timePart}</div>}
+                        {p.venue  && <div className="booth-venue">{p.venue}</div>}
+                        {p.sport  && <div className="booth-sport">{p.sport}</div>}
+                        {pattern  && <div className="booth-pattern">{pattern.name}</div>}
+                        <div className="booth-staff">
+                          <div className={`booth-staff-row ${dir.rowCls}`}>
+                            <span className="booth-staff-role">Director</span>
+                            <span className={`booth-staff-name ${dir.cls}`}>{dir.text}</span>
+                          </div>
+                          {evs && (
+                            <div className={`booth-staff-row ${evs.rowCls}`}>
+                              <span className="booth-staff-role">EVS</span>
+                              <span className={`booth-staff-name ${evs.cls}`}>{evs.text}</span>
+                            </div>
+                          )}
+                          <div className={`booth-staff-row ${gfx.rowCls}`}>
+                            <span className="booth-staff-role">Graphics</span>
+                            <span className={`booth-staff-name ${gfx.cls}`}>{gfx.text}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </>
+            )}
           </div>
         )
       })}
