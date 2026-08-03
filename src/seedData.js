@@ -1,4 +1,4 @@
-const SEED_VERSION = 35
+const SEED_VERSION = 36
 
 const PLATFORMS = [
   { id: 'plat_seed_1', name: "BBC 1", defaultIncomingLine: '', defaultOutgoingLine: '', fourWires: 0, feedRouting: '', mcrPhone: '', editorialPhone: '' },
@@ -39,6 +39,7 @@ const PATTERNS = [
     incomingAudioLines: 12, incomingTalkbackLines: 0, outgoingTalkbackLines: 8,
     audioFrom: -3, audioUntil: 2,
     productionBooth: false,
+    studio: true,
   },
   {
     id: 'pat_seed_4', name: "250 Tennis",
