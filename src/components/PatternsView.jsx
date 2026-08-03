@@ -23,6 +23,7 @@ const EMPTY_DRAFT = {
   // Production
   productionBooth: false,
   studio: false,
+  passthrough: false,
 }
 
 const CAP_OPTIONS = [
@@ -318,6 +319,7 @@ function PatternsView() {
                   <div className="pf-section-label">Production</div>
                   <ToggleField label="Production booth" value={draft.productionBooth} field="productionBooth" onChange={setField} />
                   <ToggleField label="Studio" value={draft.studio} field="studio" onChange={setField} />
+                  <ToggleField label="Passthrough" value={draft.passthrough} field="passthrough" onChange={setField} />
                 </div>
 
               </div>
