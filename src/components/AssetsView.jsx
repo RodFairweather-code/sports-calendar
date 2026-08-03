@@ -56,13 +56,25 @@ const COMP_PREFIX = {
   league_two:     'LG2_',
 }
 
+const FIXED_SEASON_PREFIX = {
+  scottish_premiership: 'SPL_26_27',
+  championship_2627:    'EFL_26_27',
+  league_one_2627:      'LG1_26_27',
+  league_two_2627:      'LG2_26_27',
+}
+
 function buildFilename(event) {
   const { competitionId, homeTeam, awayTeam } = event.extendedProps
-  const prefix = COMP_PREFIX[competitionId]
-  if (!prefix || !homeTeam || !awayTeam) return '—'
-  const season = getSeason(event.start)
+  if (!homeTeam || !awayTeam) return '—'
   const home = homeTeam.slice(0, 3).toUpperCase()
   const away = awayTeam.slice(0, 3).toUpperCase()
+
+  const fixedPrefix = FIXED_SEASON_PREFIX[competitionId]
+  if (fixedPrefix) return `${fixedPrefix}_${home}_${away}_CLEAN`
+
+  const prefix = COMP_PREFIX[competitionId]
+  if (!prefix) return '—'
+  const season = getSeason(event.start)
   return `${prefix}${season}_${home}_${away}_CLEAN`
 }
 
