@@ -294,6 +294,9 @@ function EventPanel({ event, onClose }) {
   const techObUnit = asgn.techObUnit !== undefined
     ? asgn.techObUnit
     : (pattern?.obUnit ?? false)
+  const techPassthrough = asgn.techPassthrough !== undefined
+    ? asgn.techPassthrough
+    : (pattern?.passthrough ?? false)
 
   function isOverridden(techKey, patternKey) {
     const saved = asgn[techKey]
@@ -306,6 +309,8 @@ function EventPanel({ event, onClose }) {
     asgn.techStudio !== (pattern?.studio ?? false)
   const obUnitOverridden = asgn.techObUnit !== undefined &&
     asgn.techObUnit !== (pattern?.obUnit ?? false)
+  const passthroughOverridden = asgn.techPassthrough !== undefined &&
+    asgn.techPassthrough !== (pattern?.passthrough ?? false)
 
   function setBookingStatus(field, newStatus) {
     setBookings(prev => {
@@ -340,6 +345,7 @@ function EventPanel({ event, onClose }) {
         update.techProductionBooth       = newPat.productionBooth       ?? false
         update.techStudio                = newPat.studio                ?? false
         update.techObUnit                = newPat.obUnit                ?? false
+        update.techPassthrough           = newPat.passthrough           ?? false
       }
       const next = { ...prev, [event.id]: { ...prev[event.id], ...update } }
       persistAssignments(next)
@@ -484,6 +490,7 @@ function EventPanel({ event, onClose }) {
                 <TechToggleField label="Prod. Booth" value={techBooth} field="techProductionBooth" onChange={setField} overridden={boothOverridden} />
                 <TechToggleField label="Studio" value={techStudio} field="techStudio" onChange={setField} overridden={studioOverridden} />
                 <TechToggleField label="OB Unit" value={techObUnit} field="techObUnit" onChange={setField} overridden={obUnitOverridden} />
+                <TechToggleField label="Passthrough" value={techPassthrough} field="techPassthrough" onChange={setField} overridden={passthroughOverridden} />
               </div>
             </>
           )}
