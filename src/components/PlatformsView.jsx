@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { saveToStorage } from '../services/storage'
 
 const EMPTY_DRAFT = {
   name: '',
@@ -20,7 +21,7 @@ function load() {
 }
 
 function persist(platforms) {
-  localStorage.setItem('admin_platforms', JSON.stringify(platforms))
+  saveToStorage('admin_platforms', platforms)
 }
 
 function loadTechStack() {
@@ -29,7 +30,7 @@ function loadTechStack() {
 }
 
 function persistTechStack(data) {
-  localStorage.setItem('admin_tech_stack', JSON.stringify(data))
+  saveToStorage('admin_tech_stack', data)
 }
 
 function platformSummary(p) {

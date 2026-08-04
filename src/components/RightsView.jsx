@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { COMPETITIONS } from '../data/competitions'
+import { saveToStorage } from '../services/storage'
 
 function loadRights() {
   try { return JSON.parse(localStorage.getItem('rights_matrix') || '{}') }
@@ -7,7 +8,7 @@ function loadRights() {
 }
 
 function persistRights(r) {
-  localStorage.setItem('rights_matrix', JSON.stringify(r))
+  saveToStorage('rights_matrix', r)
 }
 
 function loadPlatforms() {
@@ -26,7 +27,7 @@ function loadDefaultPatterns() {
 }
 
 function persistDefaultPatterns(d) {
-  localStorage.setItem('rights_default_patterns', JSON.stringify(d))
+  saveToStorage('rights_default_patterns', d)
 }
 
 function nextState(current) {

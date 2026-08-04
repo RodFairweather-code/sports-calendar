@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { getStaffForRole } from './StaffView'
+import { saveToStorage } from '../services/storage'
 
 function loadData() {
   try { return JSON.parse(localStorage.getItem('asset_management') || '{}') }
@@ -7,7 +8,7 @@ function loadData() {
 }
 
 function persistData(d) {
-  localStorage.setItem('asset_management', JSON.stringify(d))
+  saveToStorage('asset_management', d)
 }
 
 function loadPlatforms() {

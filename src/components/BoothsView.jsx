@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { deriveRequiredCap, capable, staffFirst } from '../services/staffCapabilities'
+import { saveToStorage } from '../services/storage'
+import { loadTechStack } from '../services/techStack'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -13,11 +15,6 @@ function loadPatterns() {
 
 function loadDefaultPatterns() {
   try { return JSON.parse(localStorage.getItem('rights_default_patterns') || '{}') }
-  catch { return {} }
-}
-
-function loadTechStack() {
-  try { return JSON.parse(localStorage.getItem('admin_tech_stack') || '{}') }
   catch { return {} }
 }
 
@@ -100,9 +97,18 @@ function needsBooth(event, assignments, patternMap, defaultPatterns) {
 
 function needsStudio(event, assignments, patternMap, defaultPatterns) {
   const asgn = assignments[event.id] || {}
+  if (asgn.techStudio !== undefined) return asgn.techStudio
   const patternId = asgn.patternId ?? defaultPatterns[event.extendedProps.competitionId]
   if (!patternId) return false
   return patternMap[patternId]?.studio ?? false
+}
+
+function needsObUnit(event, assignments, patternMap, defaultPatterns) {
+  const asgn = assignments[event.id] || {}
+  if (asgn.techObUnit !== undefined) return asgn.techObUnit
+  const patternId = asgn.patternId ?? defaultPatterns[event.extendedProps.competitionId]
+  if (!patternId) return false
+  return patternMap[patternId]?.obUnit ?? false
 }
 
 function getPatternFor(event, assignments, patternMap, defaultPatterns) {
@@ -239,12 +245,12 @@ function BoothsView({ events, onEventClick }) {
   }
 
   function saveAssignments(next) {
-    localStorage.setItem('production_assignments', JSON.stringify(next))
+    if (!saveToStorage('production_assignments', next)) return
     setAssignmentsRaw(next)
   }
 
   function saveBookings(next) {
-    localStorage.setItem('staff_bookings', JSON.stringify(next))
+    if (!saveToStorage('staff_bookings', next)) return
     setBookings(next)
     window.dispatchEvent(new CustomEvent('bookings-updated'))
   }
@@ -258,6 +264,7 @@ function BoothsView({ events, onEventClick }) {
 
   const boothEvents  = events.filter(e => needsBooth(e, assignments, patternMap, defaultPatterns))
   const studioEvents = events.filter(e => needsStudio(e, assignments, patternMap, defaultPatterns))
+  const obUnitEvents = events.filter(e => needsObUnit(e, assignments, patternMap, defaultPatterns))
 
   const byDate = {}
   boothEvents.forEach(event => {
@@ -273,18 +280,27 @@ function BoothsView({ events, onEventClick }) {
     byDateStudio[date].push(event)
   })
 
-  const sortedDates = Array.from(new Set([...Object.keys(byDate), ...Object.keys(byDateStudio)])).sort()
+  const byDateObUnit = {}
+  obUnitEvents.forEach(event => {
+    const date = event.start.slice(0, 10)
+    if (!byDateObUnit[date]) byDateObUnit[date] = []
+    byDateObUnit[date].push(event)
+  })
+
+  const sortedDates = Array.from(new Set([...Object.keys(byDate), ...Object.keys(byDateStudio), ...Object.keys(byDateObUnit)])).sort()
   sortedDates.forEach(date => {
     if (byDate[date])       byDate[date].sort((a, b) => a.start.localeCompare(b.start))
     if (byDateStudio[date]) byDateStudio[date].sort((a, b) => a.start.localeCompare(b.start))
+    if (byDateObUnit[date]) byDateObUnit[date].sort((a, b) => a.start.localeCompare(b.start))
   })
 
-  // Booth + studio events share the same director/EVS/graphics staff pool per day,
-  // so allocation and clearing must operate on the combined, deduplicated set.
+  // Booth + studio + OB unit events share the same director/EVS/graphics staff
+  // pool per day, so allocation and clearing must operate on the combined,
+  // deduplicated set.
   const byDateAll = {}
   sortedDates.forEach(date => {
     const seen = new Set()
-    byDateAll[date] = [...(byDate[date] || []), ...(byDateStudio[date] || [])]
+    byDateAll[date] = [...(byDate[date] || []), ...(byDateStudio[date] || []), ...(byDateObUnit[date] || [])]
       .filter(e => (seen.has(e.id) ? false : (seen.add(e.id), true)))
   })
 
@@ -294,8 +310,8 @@ function BoothsView({ events, onEventClick }) {
         <div className="booths-toolbar"><div className="ed-toolbar-right" /></div>
         <div className="booths-view">
           <div className="booths-empty">
-            <p>No booth or studio events found.</p>
-            <span>Events get a booth or studio when their production pattern has "Production Booth" or "Studio" set to Yes, or when it is manually enabled in the Event Inspector.</span>
+            <p>No booth, studio or OB unit events found.</p>
+            <span>Events get a booth, studio or OB unit when their production pattern has that resource set to Yes, or when it is manually enabled in the Event Inspector.</span>
           </div>
         </div>
       </div>
@@ -522,6 +538,68 @@ function BoothsView({ events, onEventClick }) {
                     >
                       <div className="booth-card-header" style={{ background: event.backgroundColor }}>
                         <span className="booth-number">Studio {idx + 1}</span>
+                      </div>
+                      {isPossible && <div className="booth-possible-label">Possible event</div>}
+                      <div className="booth-card-body">
+                        <div className="booth-comp">
+                          <span className="booth-comp-dot" style={{ background: event.backgroundColor }} />
+                          <span className="booth-comp-name">{p.competitionName}</span>
+                        </div>
+                        <div className="booth-event-title">{event.title}</div>
+                        {timePart && <div className="booth-time">{timePart}</div>}
+                        {p.venue  && <div className="booth-venue">{p.venue}</div>}
+                        {p.sport  && <div className="booth-sport">{p.sport}</div>}
+                        {pattern  && <div className="booth-pattern">{pattern.name}</div>}
+                        <div className="booth-staff">
+                          <div className={`booth-staff-row ${dir.rowCls}`}>
+                            <span className="booth-staff-role">Director</span>
+                            <span className={`booth-staff-name ${dir.cls}`}>{dir.text}</span>
+                          </div>
+                          {evs && (
+                            <div className={`booth-staff-row ${evs.rowCls}`}>
+                              <span className="booth-staff-role">EVS</span>
+                              <span className={`booth-staff-name ${evs.cls}`}>{evs.text}</span>
+                            </div>
+                          )}
+                          <div className={`booth-staff-row ${gfx.rowCls}`}>
+                            <span className="booth-staff-role">Graphics</span>
+                            <span className={`booth-staff-name ${gfx.cls}`}>{gfx.text}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </>
+            )}
+
+            {byDateObUnit[date] && (
+            <>
+              <div className="studios-section-label">OB Units</div>
+              <div className="booths-row studios-row">
+                {byDateObUnit[date].map((event, idx) => {
+                  const p          = event.extendedProps
+                  const asgn       = assignments[event.id] || {}
+                  const pattern    = getPatternFor(event, assignments, patternMap, defaultPatterns)
+                  const timePart   = !event.allDay && event.start.length > 10
+                    ? event.start.slice(11, 16) : null
+                  const evsCount   = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
+                  const isPossible = eventStatus(event.id, decisions) === 'possible'
+
+                  const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings)
+                  const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings) : null
+                  const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings)
+
+                  return (
+                    <div
+                      key={event.id}
+                      className="booth-card"
+                      onClick={() => onEventClick?.(event)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div className="booth-card-header" style={{ background: event.backgroundColor }}>
+                        <span className="booth-number">OB Unit {idx + 1}</span>
                       </div>
                       {isPossible && <div className="booth-possible-label">Possible event</div>}
                       <div className="booth-card-body">

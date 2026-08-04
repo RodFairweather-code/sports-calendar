@@ -4,6 +4,7 @@ import StaffView from './StaffView'
 import PlatformsView from './PlatformsView'
 import TechStackView from './TechStackView'
 import RightsView from './RightsView'
+import { saveToStorage } from '../services/storage'
 
 const ROLE_KEYS = [
   { key: 'cameramen',               label: 'Cameramen' },
@@ -105,7 +106,7 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
       if (!decisions[event.id]) decisions[event.id] = {}
       decisions[event.id].initProduction = true
     }
-    localStorage.setItem('editorial_decisions', JSON.stringify(decisions))
+    if (!saveToStorage('editorial_decisions', decisions)) return
     alert(`Init Production set for all ${allEvents.length} events.`)
   }
 
@@ -114,7 +115,7 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
     for (const event of allEvents) {
       if (decisions[event.id]) decisions[event.id].initProduction = false
     }
-    localStorage.setItem('editorial_decisions', JSON.stringify(decisions))
+    if (!saveToStorage('editorial_decisions', decisions)) return
     alert(`Init Production cleared for all ${allEvents.length} events.`)
   }
 
@@ -128,7 +129,7 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
       if (!decisions[event.id]) decisions[event.id] = {}
       decisions[event.id][tams.id] = 'Y'
     }
-    localStorage.setItem('editorial_decisions', JSON.stringify(decisions))
+    if (!saveToStorage('editorial_decisions', decisions)) return
     alert(`TAMS set to Y for all ${allEvents.length} events.`)
   }
 
@@ -141,7 +142,7 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
     for (const event of allEvents) {
       if (decisions[event.id]) decisions[event.id][tams.id] = ''
     }
-    localStorage.setItem('editorial_decisions', JSON.stringify(decisions))
+    if (!saveToStorage('editorial_decisions', decisions)) return
     alert(`TAMS cleared for all ${allEvents.length} events.`)
   }
 
@@ -192,13 +193,13 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
       setDecision(event.id, bbc1.id, 'Y')
     }
 
-    localStorage.setItem('editorial_decisions', JSON.stringify(decisions))
+    if (!saveToStorage('editorial_decisions', decisions)) return
     onActivateComps?.(['championship_2627', 'league_one_2627', 'league_two_2627', 'atp_tour', 'scottish_premiership'])
     onNavigate?.('editorial')
   }
 
   function handleClearMany() {
-    localStorage.setItem('editorial_decisions', '{}')
+    if (!saveToStorage('editorial_decisions', {})) return
     alert('All editorial decisions cleared for every platform.')
   }
 

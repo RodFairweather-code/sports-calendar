@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { saveToStorage } from '../services/storage'
+import { loadTechStack } from '../services/techStack'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -31,11 +33,6 @@ function loadStaffCosts() {
   } catch { return { defaults: {}, overrides: {} } }
 }
 
-function loadTechStack() {
-  try { return JSON.parse(localStorage.getItem('admin_tech_stack') || '{}') }
-  catch { return {} }
-}
-
 function loadProfiles() {
   try { return JSON.parse(localStorage.getItem('admin_staff_profiles') || '{}') }
   catch { return {} }
@@ -47,7 +44,7 @@ function loadBookings() {
 }
 
 function persistBookings(b) {
-  localStorage.setItem('staff_bookings', JSON.stringify(b))
+  saveToStorage('staff_bookings', b)
 }
 
 const STAFF_KEY_MAP = {
@@ -71,7 +68,7 @@ function bookingStatus(name, field, eventId, profiles, bookings) {
 }
 
 function persistAssignments(a) {
-  localStorage.setItem('production_assignments', JSON.stringify(a))
+  saveToStorage('production_assignments', a)
   window.dispatchEvent(new CustomEvent('assignments-updated'))
 }
 
@@ -87,7 +84,7 @@ function fmt(n) {
 
 // ── Cost line builder ────────────────────────────────────────────────────────
 
-function buildCostLines(asgn, tv, techBooth, staffCosts, techStack) {
+function buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack) {
   const lines = []
 
   // Individual named staff (single-person roles)
@@ -136,14 +133,22 @@ function buildCostLines(asgn, tv, techBooth, staffCosts, techStack) {
     const uc = techStack.productionBoothsCost ?? 0
     lines.push({ section: 'Equipment', label: 'Production Booth', qty: 1, unitCost: uc, total: uc })
   }
+  if (techStudio) {
+    const uc = techStack.studiosCost ?? 0
+    lines.push({ section: 'Equipment', label: 'Studio', qty: 1, unitCost: uc, total: uc })
+  }
+  if (techObUnit) {
+    const uc = techStack.obUnitsCost ?? 0
+    lines.push({ section: 'Equipment', label: 'OB Unit', qty: 1, unitCost: uc, total: uc })
+  }
 
   return lines
 }
 
 // ── Cost view ────────────────────────────────────────────────────────────────
 
-function CostView({ asgn, tv, techBooth, staffCosts, techStack }) {
-  const lines = buildCostLines(asgn, tv, techBooth, staffCosts, techStack)
+function CostView({ asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack }) {
+  const lines = buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack)
   const sections = ['Operational', 'Lines', 'Equipment']
   const grandTotal = lines.reduce((s, l) => s + l.total, 0)
 
@@ -283,6 +288,12 @@ function EventPanel({ event, onClose }) {
   const techBooth = asgn.techProductionBooth !== undefined
     ? asgn.techProductionBooth
     : (pattern?.productionBooth ?? false)
+  const techStudio = asgn.techStudio !== undefined
+    ? asgn.techStudio
+    : (pattern?.studio ?? false)
+  const techObUnit = asgn.techObUnit !== undefined
+    ? asgn.techObUnit
+    : (pattern?.obUnit ?? false)
 
   function isOverridden(techKey, patternKey) {
     const saved = asgn[techKey]
@@ -291,6 +302,10 @@ function EventPanel({ event, onClose }) {
   }
   const boothOverridden = asgn.techProductionBooth !== undefined &&
     asgn.techProductionBooth !== (pattern?.productionBooth ?? false)
+  const studioOverridden = asgn.techStudio !== undefined &&
+    asgn.techStudio !== (pattern?.studio ?? false)
+  const obUnitOverridden = asgn.techObUnit !== undefined &&
+    asgn.techObUnit !== (pattern?.obUnit ?? false)
 
   function setBookingStatus(field, newStatus) {
     setBookings(prev => {
@@ -323,6 +338,8 @@ function EventPanel({ event, onClose }) {
         update.techIncomingTalkbackLines = newPat.incomingTalkbackLines ?? 0
         update.techOutgoingTalkbackLines = newPat.outgoingTalkbackLines ?? 0
         update.techProductionBooth       = newPat.productionBooth       ?? false
+        update.techStudio                = newPat.studio                ?? false
+        update.techObUnit                = newPat.obUnit                ?? false
       }
       const next = { ...prev, [event.id]: { ...prev[event.id], ...update } }
       persistAssignments(next)
@@ -413,6 +430,8 @@ function EventPanel({ event, onClose }) {
               asgn={asgn}
               tv={tv}
               techBooth={techBooth}
+              techStudio={techStudio}
+              techObUnit={techObUnit}
               staffCosts={staffCosts}
               techStack={techStack}
             />
@@ -463,6 +482,8 @@ function EventPanel({ event, onClose }) {
                 <TechNumField label="Talkback out"  value={tv('techOutgoingTalkbackLines', 'outgoingTalkbackLines')} field="techOutgoingTalkbackLines" onChange={setField} overridden={isOverridden('techOutgoingTalkbackLines', 'outgoingTalkbackLines')} />
                 <span className="ep-field-group-label">Production</span>
                 <TechToggleField label="Prod. Booth" value={techBooth} field="techProductionBooth" onChange={setField} overridden={boothOverridden} />
+                <TechToggleField label="Studio" value={techStudio} field="techStudio" onChange={setField} overridden={studioOverridden} />
+                <TechToggleField label="OB Unit" value={techObUnit} field="techObUnit" onChange={setField} overridden={obUnitOverridden} />
               </div>
             </>
           )}

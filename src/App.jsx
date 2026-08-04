@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import CalendarView from './components/CalendarView'
 import EditorialView from './components/EditorialView'
 import EventPanel from './components/EventPanel'
@@ -14,15 +14,16 @@ import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
 import { SEED_RIGHTS_MATRIX } from './data/seedRights'
+import { saveToStorage } from './services/storage'
 import './App.css'
 
 // Populate localStorage from seed on first load (skipped if data already exists)
 if (!localStorage.getItem('admin_staff'))
-  localStorage.setItem('admin_staff', JSON.stringify(SEED_STAFF))
+  saveToStorage('admin_staff', SEED_STAFF)
 if (!localStorage.getItem('admin_staff_profiles'))
-  localStorage.setItem('admin_staff_profiles', JSON.stringify(SEED_STAFF_PROFILES))
+  saveToStorage('admin_staff_profiles', SEED_STAFF_PROFILES)
 if (!localStorage.getItem('rights_matrix'))
-  localStorage.setItem('rights_matrix', JSON.stringify(SEED_RIGHTS_MATRIX))
+  saveToStorage('rights_matrix', SEED_RIGHTS_MATRIX)
 
 const VIEWS = [
   { id: 'calendar',   label: 'Calendar' },
@@ -82,6 +83,15 @@ function App() {
   const [activeComps, setActiveComps] = useState(() => new Set())
   const [selectedEvent, setSelectedEvent] = useState(null)
   const [snapshotUnlocked, setSnapshotUnlocked] = useState(false)
+  const [storageWarning, setStorageWarning] = useState(null)
+
+  useEffect(() => {
+    function onQuotaExceeded(e) {
+      setStorageWarning(e.detail.key)
+    }
+    window.addEventListener('storage-quota-exceeded', onQuotaExceeded)
+    return () => window.removeEventListener('storage-quota-exceeded', onQuotaExceeded)
+  }, [])
 
   const visibleEvents = useMemo(
     () => ALL_EVENTS.filter(e => activeComps.has(e.extendedProps.competitionId)),
@@ -142,8 +152,19 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.55</span>
+        <span className="header-version">v2.64</span>
       </header>
+
+      {storageWarning && (
+        <div className="storage-quota-banner">
+          <span>
+            Storage is full — your last change was <strong>not saved</strong>.
+            Free up browser storage (localhost origin) and try again.
+            {' '}(failed key: <code>{storageWarning}</code>)
+          </span>
+          <button onClick={() => setStorageWarning(null)}>Dismiss</button>
+        </div>
+      )}
 
       {view === 'calendar' && (
         <CalendarView events={visibleEvents} onEventClick={handleCalendarEventClick} />

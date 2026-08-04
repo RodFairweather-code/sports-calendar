@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { saveToStorage } from '../services/storage'
 
 function formatDate(start) {
   if (!start) return '—'
@@ -22,7 +23,7 @@ function loadBookings() {
 }
 
 function persistBookings(b) {
-  localStorage.setItem('staff_bookings', JSON.stringify(b))
+  saveToStorage('staff_bookings', b)
 }
 
 const ROLE_TABS = [

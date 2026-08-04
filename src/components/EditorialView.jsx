@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { saveToStorage } from '../services/storage'
 
 function formatDateRange(start, end) {
   if (!start) return '—'
@@ -22,7 +23,7 @@ function loadDecisions() {
 }
 
 function persistDecisions(d) {
-  localStorage.setItem('editorial_decisions', JSON.stringify(d))
+  saveToStorage('editorial_decisions', d)
 }
 
 function loadPlatforms() {

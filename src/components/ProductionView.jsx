@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { deriveRequiredCap, capable, staffFirst } from '../services/staffCapabilities'
+import { saveToStorage } from '../services/storage'
 
 function formatDateRange(start, end) {
   if (!start) return '—'
@@ -55,7 +56,7 @@ function loadDefaultPatterns() {
 }
 
 function persistAssignments(a) {
-  localStorage.setItem('production_assignments', JSON.stringify(a))
+  saveToStorage('production_assignments', a)
 }
 
 function AssignSelect({ value, options, emptyLabel, onChange }) {

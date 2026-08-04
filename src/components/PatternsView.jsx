@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { saveToStorage } from '../services/storage'
 
 const EMPTY_DRAFT = {
   name: '',
@@ -23,6 +24,7 @@ const EMPTY_DRAFT = {
   // Production
   productionBooth: false,
   studio: false,
+  obUnit: false,
   passthrough: false,
 }
 
@@ -46,7 +48,7 @@ function load() {
 }
 
 function persist(patterns) {
-  localStorage.setItem('admin_patterns', JSON.stringify(patterns))
+  saveToStorage('admin_patterns', patterns)
 }
 
 function summary(p) {
@@ -319,6 +321,7 @@ function PatternsView() {
                   <div className="pf-section-label">Production</div>
                   <ToggleField label="Production booth" value={draft.productionBooth} field="productionBooth" onChange={setField} />
                   <ToggleField label="Studio" value={draft.studio} field="studio" onChange={setField} />
+                  <ToggleField label="OB Unit" value={draft.obUnit} field="obUnit" onChange={setField} />
                   <ToggleField label="Passthrough" value={draft.passthrough} field="passthrough" onChange={setField} />
                 </div>
 

@@ -1,3 +1,5 @@
+import { saveToStorage } from './services/storage'
+
 const SEED_VERSION = 37
 
 const PLATFORMS = [
@@ -130,11 +132,11 @@ export function seedLocalStorage() {
   const seededVersion = parseInt(localStorage.getItem('seed_version') || '0', 10)
   if (seededVersion >= SEED_VERSION) return
 
-  localStorage.setItem('admin_platforms', JSON.stringify(PLATFORMS))
-  localStorage.setItem('admin_patterns', JSON.stringify(PATTERNS))
-  localStorage.setItem('admin_staff', JSON.stringify(STAFF))
-  localStorage.setItem('admin_tech_stack', JSON.stringify(TECH_STACK))
-  localStorage.setItem('rights_default_patterns', JSON.stringify(DEFAULT_PATTERNS))
-  localStorage.setItem('admin_staff_costs', JSON.stringify(DEFAULT_STAFF_COSTS))
+  saveToStorage('admin_platforms', PLATFORMS)
+  saveToStorage('admin_patterns', PATTERNS)
+  saveToStorage('admin_staff', STAFF)
+  saveToStorage('admin_tech_stack', TECH_STACK)
+  saveToStorage('rights_default_patterns', DEFAULT_PATTERNS)
+  saveToStorage('admin_staff_costs', DEFAULT_STAFF_COSTS)
   localStorage.setItem('seed_version', String(SEED_VERSION))
 }

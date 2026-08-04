@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { saveToStorage } from '../services/storage'
 
 const ROLES = [
   { key: 'cameramen',               label: 'Cameramen' },
@@ -52,7 +53,7 @@ function loadStaff() {
 }
 
 function persist(staff) {
-  localStorage.setItem('admin_staff', JSON.stringify(staff))
+  saveToStorage('admin_staff', staff)
 }
 
 function loadStaffCosts() {
@@ -69,7 +70,7 @@ function loadStaffCosts() {
 }
 
 function persistCosts(costs) {
-  localStorage.setItem('admin_staff_costs', JSON.stringify(costs))
+  saveToStorage('admin_staff_costs', costs)
 }
 
 function loadAllProfiles() {
@@ -78,7 +79,7 @@ function loadAllProfiles() {
 }
 
 function persistProfiles(all) {
-  localStorage.setItem('admin_staff_profiles', JSON.stringify(all))
+  saveToStorage('admin_staff_profiles', all)
 }
 
 function overrideKey(roleKey, name) { return `${roleKey}|${name}` }

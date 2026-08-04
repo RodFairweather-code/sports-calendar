@@ -1,34 +1,14 @@
 import { useState } from 'react'
-
-function loadTechStack() {
-  try { return JSON.parse(localStorage.getItem('admin_tech_stack') || '{}') }
-  catch { return {} }
-}
+import { saveToStorage } from '../services/storage'
+import { loadTechStack } from '../services/techStack'
 
 function persistTechStack(data) {
-  localStorage.setItem('admin_tech_stack', JSON.stringify(data))
+  saveToStorage('admin_tech_stack', data)
 }
 
 function loadPlatforms() {
   try { return JSON.parse(localStorage.getItem('admin_platforms') || '[]') }
   catch { return [] }
-}
-
-const DEFAULTS = {
-  encoders: 0,              encodersCost: 0,
-  decoders: 0,              decodersCost: 0,
-  frameRateConverters: 0,   frameRateConvertersCost: 0,
-  audioOffset: 0,           audioOffsetCost: 0,
-  outgoingIdents: 0,        outgoingIdentsCost: 0,
-  productionBooths: 16,     productionBoothsCost: 0,
-  recordPorts: 25,          recordPortsCost: 100,
-  videoIncoming: 0,         videoIncomingCost: 0,
-  videoOutgoing: 0,         videoOutgoingCost: 0,
-  audioIncoming: 0,         audioIncomingCost: 0,
-  audioOutgoing: 0,         audioOutgoingCost: 0,
-  talkbackIncoming: 0,      talkbackIncomingCost: 0,
-  talkbackOutgoing: 0,      talkbackOutgoingCost: 0,
-  platformLines: {},
 }
 
 // Equipment field: qty + cost side by side
@@ -85,7 +65,7 @@ function TechCard({ title, children }) {
 
 function TechStackView() {
   const [platforms] = useState(loadPlatforms)
-  const [data, setData] = useState(() => ({ ...DEFAULTS, ...loadTechStack() }))
+  const [data, setData] = useState(loadTechStack)
 
   function setTop(field, value) {
     setData(prev => {
@@ -149,9 +129,13 @@ function TechStackView() {
                 onChange={v => setTop('outgoingIdents', v)} onCostChange={v => setTop('outgoingIdentsCost', v)} />
             </TechCard>
 
-            <TechCard title="Production Booths">
+            <TechCard title="OB Units, Booths and Studios">
+              <EquipField label="OB Units" value={data.obUnits} costValue={data.obUnitsCost}
+                onChange={v => setTop('obUnits', v)} onCostChange={v => setTop('obUnitsCost', v)} />
               <EquipField label="Production Booths" value={data.productionBooths} costValue={data.productionBoothsCost}
                 onChange={v => setTop('productionBooths', v)} onCostChange={v => setTop('productionBoothsCost', v)} />
+              <EquipField label="Studios" value={data.studios} costValue={data.studiosCost}
+                onChange={v => setTop('studios', v)} onCostChange={v => setTop('studiosCost', v)} />
             </TechCard>
 
             <TechCard title="Record Ports">
