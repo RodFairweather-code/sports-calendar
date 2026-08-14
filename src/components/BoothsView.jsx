@@ -262,9 +262,11 @@ function BoothsView({ events, onEventClick }) {
     clearTimerRef.current = setTimeout(() => setClearNotice(null), 5000)
   }
 
-  const boothEvents  = events.filter(e => needsBooth(e, assignments, patternMap, defaultPatterns))
-  const studioEvents = events.filter(e => needsStudio(e, assignments, patternMap, defaultPatterns))
-  const obUnitEvents = events.filter(e => needsObUnit(e, assignments, patternMap, defaultPatterns))
+  const initEvents = events.filter(e => decisions[e.id]?.initProduction)
+
+  const boothEvents  = initEvents.filter(e => needsBooth(e, assignments, patternMap, defaultPatterns))
+  const studioEvents = initEvents.filter(e => needsStudio(e, assignments, patternMap, defaultPatterns))
+  const obUnitEvents = initEvents.filter(e => needsObUnit(e, assignments, patternMap, defaultPatterns))
 
   const byDate = {}
   boothEvents.forEach(event => {

@@ -110,6 +110,23 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
     alert(`Init Production set for all ${allEvents.length} events.`)
   }
 
+  function handleInitSelected() {
+    const platforms = JSON.parse(localStorage.getItem('admin_platforms') || '[]')
+    const platformIds = platforms.map(p => p.id)
+    const decisions = JSON.parse(localStorage.getItem('editorial_decisions') || '{}')
+
+    let selectedCount = 0
+    for (const event of allEvents) {
+      const eventDecisions = decisions[event.id] || {}
+      const hasSelection = platformIds.some(id => eventDecisions[id] === 'Y' || eventDecisions[id] === 'P')
+      if (!decisions[event.id]) decisions[event.id] = {}
+      decisions[event.id].initProduction = hasSelection
+      if (hasSelection) selectedCount++
+    }
+    if (!saveToStorage('editorial_decisions', decisions)) return
+    alert(`Init Production cleared, then set for ${selectedCount} event(s) selected on at least one platform.`)
+  }
+
   function handleClearAllInit() {
     const decisions = JSON.parse(localStorage.getItem('editorial_decisions') || '{}')
     for (const event of allEvents) {
@@ -131,6 +148,26 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
     }
     if (!saveToStorage('editorial_decisions', decisions)) return
     alert(`TAMS set to Y for all ${allEvents.length} events.`)
+  }
+
+  function handleTamsSelected() {
+    const platforms = JSON.parse(localStorage.getItem('admin_platforms') || '[]')
+    const tams = platforms.find(p => p.name?.toLowerCase() === 'tams')
+    if (!tams) { alert('No platform named "TAMS" found. Add it in Admin → Platforms first.'); return }
+
+    const otherPlatformIds = platforms.filter(p => p.id !== tams.id).map(p => p.id)
+    const decisions = JSON.parse(localStorage.getItem('editorial_decisions') || '{}')
+
+    let selectedCount = 0
+    for (const event of allEvents) {
+      const eventDecisions = decisions[event.id] || {}
+      const hasSelection = otherPlatformIds.some(id => eventDecisions[id] === 'Y' || eventDecisions[id] === 'P')
+      if (!decisions[event.id]) decisions[event.id] = {}
+      decisions[event.id][tams.id] = hasSelection ? 'Y' : ''
+      if (hasSelection) selectedCount++
+    }
+    if (!saveToStorage('editorial_decisions', decisions)) return
+    alert(`TAMS cleared, then set to Y for ${selectedCount} event(s) selected on at least one other platform.`)
   }
 
   function handleClearTams() {
@@ -247,6 +284,14 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
             className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
             disabled={!snapshotUnlocked}
             tabIndex={snapshotUnlocked ? 0 : -1}
+            onClick={handleTamsSelected}
+          >
+            TAMS selected
+          </button>
+          <button
+            className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
+            disabled={!snapshotUnlocked}
+            tabIndex={snapshotUnlocked ? 0 : -1}
             onClick={handleClearTams}
           >
             Clear TAMS
@@ -258,6 +303,14 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
             onClick={handleInitAll}
           >
             Init All
+          </button>
+          <button
+            className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
+            disabled={!snapshotUnlocked}
+            tabIndex={snapshotUnlocked ? 0 : -1}
+            onClick={handleInitSelected}
+          >
+            Init selected
           </button>
           <button
             className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
