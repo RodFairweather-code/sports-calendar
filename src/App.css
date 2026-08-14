@@ -463,10 +463,43 @@
 /* Calendar */
 .calendar-container {
   flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 16px 20px;
-  overflow: auto;
+  overflow: hidden;
   background: #f0f2f5;
   min-width: 0;
+  min-height: 0;
+}
+
+.calendar-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.calendar-img-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  cursor: pointer;
+  user-select: none;
+}
+
+.calendar-img-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #1e3a5f;
+}
+
+.calendar-fc-wrapper {
+  flex: 1;
   min-height: 0;
 }
 
@@ -597,6 +630,17 @@
 .toggle-btn--sport {
   --comp-color: rgba(255, 255, 255, 0.55);
   border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* "Show All" action button — distinct amber accent so it reads separately from the sport filters */
+.toggle-btn--show-all {
+  --comp-color: #f5a623;
+  color: #f5c869;
+  font-weight: 800;
+}
+
+.toggle-btn--show-all:hover {
+  color: #fff;
 }
 
 .toggle-btn--sport.active {
@@ -3644,4 +3688,184 @@
 }
 .bs-filter-btn:hover { background: rgba(255, 255, 255, 0.16); color: #fff; }
 .bs-filter-btn.active { background: #e97c17; color: #fff; }
+
+/* Import Events form */
+.import-view {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  background: #f0f2f5;
+  padding: 40px 20px;
+}
+
+.import-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 32px 40px;
+  width: 100%;
+  max-width: 1080px;
+}
+
+.import-card h2 {
+  font-size: 1.3rem;
+  color: #1e3a5f;
+  margin-bottom: 4px;
+}
+
+.import-hint {
+  font-size: 0.85rem;
+  color: #8492a6;
+  margin-bottom: 20px;
+}
+
+.import-success {
+  background: #edf7ee;
+  color: #2e7d32;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.import-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 20px;
+}
+
+.import-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.import-field label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.import-field input,
+.import-field select {
+  padding: 8px 10px;
+  border: 1px solid #d7dce3;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #1a202c;
+  background: #fff;
+}
+
+.import-field input:focus,
+.import-field select:focus {
+  outline: none;
+  border-color: #1e3a5f;
+}
+
+.import-field--error input,
+.import-field--error select {
+  border-color: #c0392b;
+}
+
+.import-field-error-msg {
+  font-size: 0.75rem;
+  color: #c0392b;
+}
+
+.import-field-hint {
+  font-size: 0.72rem;
+  color: #8492a6;
+}
+
+.import-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  grid-column: 1 / -1;
+}
+
+.import-checkbox-row label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.import-checkbox-row input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #1e3a5f;
+}
+
+.import-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.import-save-btn {
+  background: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 28px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.import-save-btn:hover {
+  background: #2d5180;
+}
+
+.import-section-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1e3a5f;
+  margin: 28px 0 14px;
+  padding-top: 20px;
+  border-top: 1px solid #eef0f4;
+}
+
+.import-section-hint {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  color: #8492a6;
+}
+
+.import-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #d7dce3;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #1a202c;
+}
+
+.import-toggle input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #1e3a5f;
+}
+
+.import-field input[type="color"] {
+  padding: 3px;
+  width: 60px;
+  height: 36px;
+  cursor: pointer;
+}
 

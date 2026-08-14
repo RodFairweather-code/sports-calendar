@@ -10,11 +10,14 @@ import BoothsView from './components/BoothsView'
 import BookStaffView from './components/BookStaffView'
 import ResourceGapsView from './components/ResourceGapsView'
 import AssetsView from './components/AssetsView'
+import ImportEventsView from './components/ImportEventsView'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
 import { SEED_RIGHTS_MATRIX } from './data/seedRights'
 import { saveToStorage } from './services/storage'
+import { loadImportedEvents, addImportedEvent } from './services/importedEvents'
+import { loadCustomCompetitions, addCustomCompetition } from './services/customCompetitions'
 import './App.css'
 
 // Populate localStorage from seed on first load (skipped if data already exists)
@@ -34,25 +37,28 @@ const VIEWS = [
   { id: 'book-staff', label: 'Book Staff' },
   { id: 'resource-gaps',  label: 'Resource Gaps' },
   { id: 'assets',          label: 'Asset Management' },
+  { id: 'import',          label: 'Import Events' },
   { id: 'admin',          label: 'Admin' },
 ]
 
 const VISIBLE_COMPETITIONS = COMPETITIONS.filter(comp => !comp.hidden)
 
-const GOVERNING_BODIES = Object.values(
-  VISIBLE_COMPETITIONS.reduce((acc, comp) => {
-    if (!acc[comp.governingBody]) {
-      acc[comp.governingBody] = {
-        id: comp.governingBody,
-        name: comp.governingBody,
-        color: comp.color,
-        competitionIds: [],
+function buildGoverningBodies(comps) {
+  return Object.values(
+    comps.reduce((acc, comp) => {
+      if (!acc[comp.governingBody]) {
+        acc[comp.governingBody] = {
+          id: comp.governingBody,
+          name: comp.governingBody,
+          color: comp.color,
+          competitionIds: [],
+        }
       }
-    }
-    acc[comp.governingBody].competitionIds.push(comp.id)
-    return acc
-  }, {})
-)
+      acc[comp.governingBody].competitionIds.push(comp.id)
+      return acc
+    }, {})
+  )
+}
 
 const ALL_EVENTS = VISIBLE_COMPETITIONS.flatMap(comp => {
   return getLocalFixtures(comp.dataKey).map((f, i) => ({
@@ -84,6 +90,8 @@ function App() {
   const [selectedEvent, setSelectedEvent] = useState(null)
   const [snapshotUnlocked, setSnapshotUnlocked] = useState(false)
   const [storageWarning, setStorageWarning] = useState(null)
+  const [importedEvents, setImportedEvents] = useState(loadImportedEvents)
+  const [customCompetitions, setCustomCompetitions] = useState(loadCustomCompetitions)
 
   useEffect(() => {
     function onQuotaExceeded(e) {
@@ -93,10 +101,33 @@ function App() {
     return () => window.removeEventListener('storage-quota-exceeded', onQuotaExceeded)
   }, [])
 
-  const visibleEvents = useMemo(
-    () => ALL_EVENTS.filter(e => activeComps.has(e.extendedProps.competitionId)),
-    [activeComps]
+  const combinedEvents = useMemo(
+    () => [...ALL_EVENTS, ...importedEvents],
+    [importedEvents]
   )
+
+  const visibleEvents = useMemo(
+    () => combinedEvents.filter(e => activeComps.has(e.extendedProps.competitionId)),
+    [combinedEvents, activeComps]
+  )
+
+  const allCompetitions = useMemo(
+    () => [...VISIBLE_COMPETITIONS, ...customCompetitions],
+    [customCompetitions]
+  )
+
+  const governingBodies = useMemo(
+    () => buildGoverningBodies(allCompetitions),
+    [allCompetitions]
+  )
+
+  function handleAddImportedEvent(event) {
+    setImportedEvents(addImportedEvent(event))
+  }
+
+  function handleAddCompetition(competition) {
+    setCustomCompetitions(addCustomCompetition(competition))
+  }
 
   function activateComps(ids) {
     setActiveComps(prev => new Set([...prev, ...ids]))
@@ -117,7 +148,7 @@ function App() {
   }
 
   function toggleGoverningBody(bodyId) {
-    const body = GOVERNING_BODIES.find(b => b.id === bodyId)
+    const body = governingBodies.find(b => b.id === bodyId)
     if (!body) return
     const allActive = body.competitionIds.every(id => activeComps.has(id))
     setActiveComps(prev => {
@@ -152,7 +183,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.70</span>
+        <span className="header-version">v2.79</span>
       </header>
 
       {storageWarning && (
@@ -178,17 +209,25 @@ function App() {
       {view === 'technical' && <TechnicalView events={visibleEvents} />}
       {view === 'booths' && <BoothsView events={visibleEvents} onEventClick={setSelectedEvent} />}
       {view === 'book-staff' && <BookStaffView events={visibleEvents} />}
-      {view === 'assets' && <AssetsView events={ALL_EVENTS} />}
-      {view === 'resource-gaps' && <ResourceGapsView allEvents={ALL_EVENTS} onEventClick={setSelectedEvent} />}
-      {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={ALL_EVENTS} onNavigate={setView} onActivateComps={activateComps} />}
+      {view === 'assets' && <AssetsView events={combinedEvents} />}
+      {view === 'resource-gaps' && <ResourceGapsView allEvents={combinedEvents} onEventClick={setSelectedEvent} />}
+      {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={combinedEvents} onNavigate={setView} onActivateComps={activateComps} />}
+      {view === 'import' && (
+        <ImportEventsView
+          competitions={allCompetitions}
+          onAdd={handleAddImportedEvent}
+          onAddCompetition={handleAddCompetition}
+        />
+      )}
 
-      {view !== 'admin' && view !== 'resource-gaps' && view !== 'book-staff' && (
+      {view !== 'admin' && view !== 'resource-gaps' && view !== 'book-staff' && view !== 'import' && (
         <CompetitionToggles
-          competitions={VISIBLE_COMPETITIONS}
-          governingBodies={GOVERNING_BODIES}
+          competitions={allCompetitions}
+          governingBodies={governingBodies}
           activeComps={activeComps}
           onToggle={toggleComp}
           onToggleBody={toggleGoverningBody}
+          onShowAll={() => activateComps(allCompetitions.map(c => c.id))}
         />
       )}
 

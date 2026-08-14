@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function CompetitionToggles({ competitions, governingBodies, activeComps, onToggle, onToggleBody }) {
+function CompetitionToggles({ competitions, governingBodies, activeComps, onToggle, onToggleBody, onShowAll }) {
   const [selectedSport, setSelectedSport] = useState(null)
 
   const sports = [...new Set(competitions.map(c => c.sport))]
@@ -25,6 +25,13 @@ function CompetitionToggles({ competitions, governingBodies, activeComps, onTogg
       {/* Layer 1: Sport */}
       <div className="toggle-layer">
         <span className="toggle-layer-label">Sport</span>
+        <button
+          className="toggle-btn toggle-btn--show-all"
+          onClick={onShowAll}
+          title="Show every competition across all sports"
+        >
+          <span className="toggle-name">Show All</span>
+        </button>
         {sports.map(sport => (
           <button
             key={sport}

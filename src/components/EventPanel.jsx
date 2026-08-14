@@ -142,6 +142,12 @@ function buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts,
     lines.push({ section: 'Equipment', label: 'OB Unit', qty: 1, unitCost: uc, total: uc })
   }
 
+  // Pre-production cost — a flat figure entered when the event was created/edited
+  const preProdCost = Number(asgn.preProductionCost) || 0
+  if (preProdCost > 0) {
+    lines.push({ section: 'Pre-Production', label: 'Pre-Production Cost', qty: 1, unitCost: preProdCost, total: preProdCost })
+  }
+
   return lines
 }
 
@@ -149,7 +155,7 @@ function buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts,
 
 function CostView({ asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack }) {
   const lines = buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack)
-  const sections = ['Operational', 'Lines', 'Equipment']
+  const sections = ['Pre-Production', 'Operational', 'Lines', 'Equipment']
   const grandTotal = lines.reduce((s, l) => s + l.total, 0)
 
   return (

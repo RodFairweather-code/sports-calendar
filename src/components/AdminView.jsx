@@ -158,16 +158,20 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
     const otherPlatformIds = platforms.filter(p => p.id !== tams.id).map(p => p.id)
     const decisions = JSON.parse(localStorage.getItem('editorial_decisions') || '{}')
 
-    let selectedCount = 0
+    let definiteCount = 0
+    let possibleCount = 0
     for (const event of allEvents) {
       const eventDecisions = decisions[event.id] || {}
-      const hasSelection = otherPlatformIds.some(id => eventDecisions[id] === 'Y' || eventDecisions[id] === 'P')
+      const values = otherPlatformIds.map(id => eventDecisions[id])
+      const isDefinite = values.includes('Y')
+      const isPossible = !isDefinite && values.includes('P')
       if (!decisions[event.id]) decisions[event.id] = {}
-      decisions[event.id][tams.id] = hasSelection ? 'Y' : ''
-      if (hasSelection) selectedCount++
+      decisions[event.id][tams.id] = isDefinite ? 'Y' : isPossible ? 'P' : ''
+      if (isDefinite) definiteCount++
+      if (isPossible) possibleCount++
     }
     if (!saveToStorage('editorial_decisions', decisions)) return
-    alert(`TAMS cleared, then set to Y for ${selectedCount} event(s) selected on at least one other platform.`)
+    alert(`TAMS cleared, then set to Y for ${definiteCount} definite event(s) and P for ${possibleCount} possible-only event(s).`)
   }
 
   function handleClearTams() {
