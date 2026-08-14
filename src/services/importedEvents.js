@@ -12,3 +12,9 @@ export function addImportedEvent(event) {
   saveToStorage(KEY, next)
   return next
 }
+
+export function addImportedEvents(events) {
+  const next = [...loadImportedEvents(), ...events]
+  saveToStorage(KEY, next)
+  return next
+}

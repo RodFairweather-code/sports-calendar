@@ -3248,6 +3248,12 @@
   background: #e0e4ea;
 }
 
+.unsaved-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* ── Technical View ──────────────────────────────────────────── */
 .tv-view {
   flex: 1;
@@ -3867,5 +3873,118 @@
   width: 60px;
   height: 36px;
   cursor: pointer;
+}
+
+/* ── Import Events — page shell + bottom bar ─────────────────── */
+.import-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.import-bottom-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #1e3a5f;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.import-excel-btn {
+  padding: 9px 26px;
+  border: none;
+  border-radius: 24px;
+  background: #4caf50;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.import-excel-btn:hover {
+  background: #43a047;
+}
+
+/* ── Import from Excel modal ─────────────────────────────────── */
+.excel-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.excel-modal-dialog {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
+  padding: 28px 28px 22px;
+  max-width: 720px;
+  width: 92%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.excel-modal-dialog h3 {
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  margin: 0 0 6px;
+}
+
+.excel-dropzone {
+  margin-top: 8px;
+  padding: 40px 20px;
+  border: 2px dashed #c3cad6;
+  border-radius: 10px;
+  text-align: center;
+  color: #6b7a8f;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.excel-dropzone:hover {
+  border-color: #8492a6;
+  background: #f8f9fb;
+}
+
+.excel-dropzone--active {
+  border-color: #1e3a5f;
+  background: #eaf1f8;
+}
+
+.excel-dropzone-filename {
+  font-weight: 700;
+  color: #1e3a5f;
+}
+
+.excel-modal-error {
+  background: #fdecea;
+  color: #7a1f14;
+  border: 1px solid #f3b4ac;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  margin-top: 14px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.excel-preview-scroll {
+  margin-top: 14px;
+  border: 1px solid #eef0f4;
+  border-radius: 8px;
+  overflow: auto;
+  max-height: 45vh;
+}
+
+.excel-modal-dialog .unsaved-dialog-actions {
+  margin-top: 20px;
 }
 

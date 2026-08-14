@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { saveToStorage } from '../services/storage'
+import { buildImportedEventFromRow, colorForName } from '../services/excelImport'
+import ImportExcelModal from './ImportExcelModal'
 
 const NEW_COMPETITION = '__new_competition__'
 const NEW_SPORT = '__new_sport__'
@@ -203,12 +205,13 @@ function StaffField({ label, value, options, onChange }) {
   )
 }
 
-function ImportEventsView({ competitions, onAdd, onAddCompetition }) {
+function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition }) {
   const [form, setForm] = useState(EMPTY_FORM)
   const [errors, setErrors] = useState({})
   const [successMsg, setSuccessMsg] = useState('')
   const [staff] = useState(loadStaff)
   const [patterns] = useState(loadPatterns)
+  const [showExcelModal, setShowExcelModal] = useState(false)
 
   const sports = [...new Set(competitions.map(c => c.sport))].sort()
   const isNewCompetition = form.competitionId === NEW_COMPETITION
@@ -289,7 +292,31 @@ function ImportEventsView({ competitions, onAdd, onAddCompetition }) {
     setErrors({})
   }
 
+  function handleExcelAccept({ sportName, competitionName, rows }) {
+    let competition = competitions.find(
+      c => c.name.trim().toLowerCase() === competitionName.trim().toLowerCase()
+    )
+    if (!competition) {
+      competition = {
+        id: `custom_${crypto.randomUUID()}`,
+        name: competitionName,
+        shortName: competitionName,
+        sport: sportName,
+        governingBody: competitionName,
+        color: colorForName(competitionName),
+      }
+      onAddCompetition(competition)
+    }
+
+    const events = rows.map(row => buildImportedEventFromRow(row, competition))
+    onAddBatch(events)
+
+    setShowExcelModal(false)
+    setSuccessMsg(`Imported ${events.length} event(s) into ${competition.name}. Toggle ${competition.name} on in the competition bar to see them on the calendar.`)
+  }
+
   return (
+    <div className="import-page">
     <div className="import-view">
       <form className="import-card" onSubmit={handleSubmit}>
         <h2>Import Event</h2>
@@ -535,6 +562,20 @@ function ImportEventsView({ competitions, onAdd, onAddCompetition }) {
           <button type="submit" className="import-save-btn">Save</button>
         </div>
       </form>
+    </div>
+
+      <div className="import-bottom-bar">
+        <button className="import-excel-btn" onClick={() => setShowExcelModal(true)}>
+          Import from Excel
+        </button>
+      </div>
+
+      {showExcelModal && (
+        <ImportExcelModal
+          onAccept={handleExcelAccept}
+          onClose={() => setShowExcelModal(false)}
+        />
+      )}
     </div>
   )
 }

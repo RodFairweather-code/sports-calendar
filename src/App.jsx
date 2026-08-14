@@ -16,7 +16,7 @@ import { getLocalFixtures } from './services/localFixtures'
 import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
 import { SEED_RIGHTS_MATRIX } from './data/seedRights'
 import { saveToStorage } from './services/storage'
-import { loadImportedEvents, addImportedEvent } from './services/importedEvents'
+import { loadImportedEvents, addImportedEvent, addImportedEvents } from './services/importedEvents'
 import { loadCustomCompetitions, addCustomCompetition } from './services/customCompetitions'
 import './App.css'
 
@@ -125,6 +125,10 @@ function App() {
     setImportedEvents(addImportedEvent(event))
   }
 
+  function handleAddImportedEvents(events) {
+    setImportedEvents(addImportedEvents(events))
+  }
+
   function handleAddCompetition(competition) {
     setCustomCompetitions(addCustomCompetition(competition))
   }
@@ -183,7 +187,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.79</span>
+        <span className="header-version">v2.80</span>
       </header>
 
       {storageWarning && (
@@ -216,6 +220,7 @@ function App() {
         <ImportEventsView
           competitions={allCompetitions}
           onAdd={handleAddImportedEvent}
+          onAddBatch={handleAddImportedEvents}
           onAddCompetition={handleAddCompetition}
         />
       )}
