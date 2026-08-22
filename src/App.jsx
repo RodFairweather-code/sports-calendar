@@ -16,6 +16,7 @@ import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
 import { SEED_RIGHTS_MATRIX } from './data/seedRights'
+import { SEED_BOOKABLE_ASSETS, SEED_ASSET_BOOKINGS } from './data/seedBookableAssets'
 import { saveToStorage } from './services/storage'
 import { loadImportedEvents, addImportedEvent, addImportedEvents } from './services/importedEvents'
 import { loadCustomCompetitions, addCustomCompetition } from './services/customCompetitions'
@@ -28,6 +29,10 @@ if (!localStorage.getItem('admin_staff_profiles'))
   saveToStorage('admin_staff_profiles', SEED_STAFF_PROFILES)
 if (!localStorage.getItem('rights_matrix'))
   saveToStorage('rights_matrix', SEED_RIGHTS_MATRIX)
+if (!localStorage.getItem('bookable_assets'))
+  saveToStorage('bookable_assets', SEED_BOOKABLE_ASSETS)
+if (!localStorage.getItem('asset_bookings'))
+  saveToStorage('asset_bookings', SEED_ASSET_BOOKINGS)
 
 const VIEWS = [
   { id: 'calendar',   label: 'Calendar' },
@@ -189,7 +194,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.00</span>
+        <span className="header-version">v3.01</span>
       </header>
 
       {storageWarning && (
