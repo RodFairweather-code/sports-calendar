@@ -125,7 +125,7 @@ function TechnicalView({ events }) {
       <div className="tv-view">
         <div className="tv-empty">
           <p>No events selected yet.</p>
-          <span>Mark events Y or P on the Editorial Decisions page to see daily requirements here.</span>
+          <span>Mark events Y or P on the Planning page to see daily requirements here.</span>
         </div>
       </div>
     )

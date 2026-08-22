@@ -178,7 +178,7 @@ function AssetsView({ events = [] }) {
     return (
       <div className="assets-view">
         <div className="assets-empty">
-          No events have TAMS selected in Editorial Decisions.
+          No events have TAMS selected in Planning.
         </div>
       </div>
     )

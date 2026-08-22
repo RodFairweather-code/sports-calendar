@@ -4,6 +4,7 @@ import StaffView from './StaffView'
 import PlatformsView from './PlatformsView'
 import TechStackView from './TechStackView'
 import RightsView from './RightsView'
+import BookableAssetsView from './BookableAssetsView'
 import { saveToStorage } from '../services/storage'
 
 const ROLE_KEYS = [
@@ -252,6 +253,7 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
         {adminTab === 'platforms'  && <PlatformsView />}
         {adminTab === 'techstack'  && <TechStackView />}
         {adminTab === 'rights'     && <RightsView />}
+        {adminTab === 'bookableAssets' && <BookableAssetsView />}
       </div>
       <div className="admin-bottom-bar">
         <button className={`admin-tab-btn${adminTab === 'patterns'  ? ' active' : ''}`} onClick={() => setAdminTab('patterns')}>Patterns</button>
@@ -259,6 +261,7 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
         <button className={`admin-tab-btn${adminTab === 'platforms' ? ' active' : ''}`} onClick={() => setAdminTab('platforms')}>Platforms</button>
         <button className={`admin-tab-btn${adminTab === 'techstack' ? ' active' : ''}`} onClick={() => setAdminTab('techstack')}>Tech Stack</button>
         <button className={`admin-tab-btn${adminTab === 'rights'    ? ' active' : ''}`} onClick={() => setAdminTab('rights')}>Rights</button>
+        <button className={`admin-tab-btn${adminTab === 'bookableAssets' ? ' active' : ''}`} onClick={() => setAdminTab('bookableAssets')}>Bookable Assets</button>
         <div className="admin-snapshot-group">
           <button
             className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}

@@ -10,6 +10,7 @@ import BoothsView from './components/BoothsView'
 import BookStaffView from './components/BookStaffView'
 import ResourceGapsView from './components/ResourceGapsView'
 import AssetsView from './components/AssetsView'
+import BookAssetsView from './components/BookAssetsView'
 import ImportEventsView from './components/ImportEventsView'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
@@ -30,13 +31,14 @@ if (!localStorage.getItem('rights_matrix'))
 
 const VIEWS = [
   { id: 'calendar',   label: 'Calendar' },
-  { id: 'editorial',  label: 'Editorial Decisions' },
+  { id: 'editorial',  label: 'Planning' },
   { id: 'production', label: 'Production' },
   { id: 'technical',  label: 'Technical' },
   { id: 'booths',      label: 'Operations' },
   { id: 'book-staff', label: 'Book Staff' },
   { id: 'resource-gaps',  label: 'Resource Gaps' },
   { id: 'assets',          label: 'Asset Management' },
+  { id: 'book-assets',     label: 'Bookable Assets' },
   { id: 'import',          label: 'Import Events' },
   { id: 'admin',          label: 'Admin' },
 ]
@@ -187,7 +189,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.80</span>
+        <span className="header-version">v2.95</span>
       </header>
 
       {storageWarning && (
@@ -214,6 +216,7 @@ function App() {
       {view === 'booths' && <BoothsView events={visibleEvents} onEventClick={setSelectedEvent} />}
       {view === 'book-staff' && <BookStaffView events={visibleEvents} />}
       {view === 'assets' && <AssetsView events={combinedEvents} />}
+      {view === 'book-assets' && <BookAssetsView />}
       {view === 'resource-gaps' && <ResourceGapsView allEvents={combinedEvents} onEventClick={setSelectedEvent} />}
       {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={combinedEvents} onNavigate={setView} onActivateComps={activateComps} />}
       {view === 'import' && (
@@ -225,7 +228,7 @@ function App() {
         />
       )}
 
-      {view !== 'admin' && view !== 'resource-gaps' && view !== 'book-staff' && view !== 'import' && (
+      {view !== 'admin' && view !== 'resource-gaps' && view !== 'book-staff' && view !== 'import' && view !== 'book-assets' && (
         <CompetitionToggles
           competitions={allCompetitions}
           governingBodies={governingBodies}

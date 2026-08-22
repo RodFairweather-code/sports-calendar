@@ -3748,6 +3748,14 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
+}
+
+.import-field input,
+.import-field select {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .import-field label {
@@ -3986,5 +3994,678 @@
 
 .excel-modal-dialog .unsaved-dialog-actions {
   margin-top: 20px;
+}
+
+/* ── Bookable Assets view ────────────────────────────────────── */
+
+.ba-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ba-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  background: #1e3a5f;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.ba-mode-toggle {
+  display: flex;
+  gap: 6px;
+}
+
+.ba-mode-btn {
+  padding: 5px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ba-mode-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.ba-mode-btn.active {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #fff;
+}
+
+.ba-create-btn {
+  padding: 5px 14px;
+  border: 1px solid #1e7a3f;
+  border-radius: 6px;
+  background: #fff;
+  color: #1e7a3f;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.ba-create-btn:hover {
+  background: #1e7a3f;
+  color: #fff;
+}
+
+.ba-view {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+  background: #f5f7fa;
+}
+
+.ba-empty {
+  padding: 40px 32px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.ba-empty span {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.ba-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.ba-card {
+  position: relative;
+  width: 200px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 16px 18px;
+}
+
+.ba-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 4px;
+  padding-right: 20px;
+}
+
+.ba-card-qty {
+  font-size: 0.8rem;
+  color: #5a6a7a;
+  margin-bottom: 10px;
+}
+
+.ba-card-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.ba-card-field label {
+  font-size: 0.72rem;
+  color: #8492a6;
+  font-weight: 600;
+}
+
+.ba-card-field input {
+  width: 70px;
+  padding: 4px 6px;
+  border: 1px solid #d5dae2;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+.ba-card-del {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  color: #b0bac5;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.ba-card-del:hover {
+  color: #c0392b;
+}
+
+.ba-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-modal-dialog {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
+  padding: 28px 28px 22px;
+  max-width: 420px;
+  width: 92%;
+}
+
+.ba-modal-dialog h3 {
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  margin: 0 0 18px;
+}
+
+.ba-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.ba-form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #5a6a7a;
+}
+
+.ba-form-input {
+  padding: 8px 10px;
+  border: 1px solid #d5dae2;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.ba-form-input--number {
+  width: 100px;
+}
+
+.ba-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.ba-modal-actions--split {
+  justify-content: space-between;
+}
+
+.ba-modal-actions-left,
+.ba-modal-actions-right {
+  display: flex;
+  gap: 10px;
+}
+
+.ba-delete-btn {
+  border: 1px solid #c0392b;
+  background: transparent;
+  color: #c0392b;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ba-delete-btn:hover {
+  background: #c0392b;
+  color: #fff;
+}
+
+.ba-edit-series-note {
+  font-size: 0.78rem;
+  color: #8492a6;
+  margin: 4px 0 0;
+}
+
+.ba-edit-series-note p {
+  margin: 0 0 6px;
+}
+
+.ba-apply-series-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1a202c;
+  cursor: pointer;
+}
+
+.ba-apply-series-option input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #1e3a5f;
+}
+
+.ba-conflict-warning {
+  background: #fdecea;
+  border: 1px solid #f3b4ac;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+
+.ba-conflict-title {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #7a1f14;
+}
+
+.ba-conflict-warning ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.ba-conflict-warning li {
+  font-size: 0.8rem;
+  color: #7a1f14;
+  margin-bottom: 3px;
+}
+
+.ba-conflict-more {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #7a1f14;
+}
+
+.ba-booking-dialog {
+  max-width: 760px;
+  width: 94%;
+}
+
+.ba-radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+
+.ba-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #1a202c;
+  cursor: pointer;
+}
+
+.ba-radio-option input[type="radio"] {
+  accent-color: #1e3a5f;
+  cursor: pointer;
+}
+
+.ba-inline-field {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 16px;
+}
+
+.ba-inline-field input {
+  width: 70px;
+  padding: 6px 8px;
+  border: 1px solid #d7dce3;
+  border-radius: 6px;
+}
+
+.ba-inline-number {
+  width: 56px;
+  padding: 4px 6px;
+  border: 1px solid #d7dce3;
+  border-radius: 6px;
+  margin: 0 2px;
+}
+
+.ba-inline-date {
+  padding: 4px 6px;
+  border: 1px solid #d7dce3;
+  border-radius: 6px;
+  margin-left: 2px;
+}
+
+/* ── Bookable Assets booking list ────────────────────────────── */
+
+.ba-booking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 900px;
+}
+
+.ba-booking-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 12px 16px;
+}
+
+.ba-booking-row--clickable {
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+
+.ba-booking-row--clickable:hover {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+.ba-booking-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ba-booking-asset {
+  font-weight: 700;
+  color: #1e3a5f;
+  font-size: 0.9rem;
+}
+
+.ba-booking-when {
+  font-size: 0.85rem;
+  color: #2c3e50;
+  font-variant-numeric: tabular-nums;
+}
+
+.ba-booking-by,
+.ba-booking-notes {
+  font-size: 0.8rem;
+  color: #6b7a8f;
+}
+
+.ba-booking-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #1e7a3f;
+  background: #eaf7ee;
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+
+.ba-booking-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.ba-booking-del {
+  border: none;
+  background: transparent;
+  color: #b0bac5;
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.ba-booking-del:hover {
+  color: #c0392b;
+}
+
+.ba-cancel-series-btn {
+  border: 1px solid #c0392b;
+  background: transparent;
+  color: #c0392b;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ba-cancel-series-btn:hover {
+  background: #c0392b;
+  color: #fff;
+}
+
+/* ── Bookable Assets — day detail view ───────────────────────── */
+
+.day-detail-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.day-detail-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 20px;
+  background: #1e3a5f;
+  flex-shrink: 0;
+}
+
+.day-detail-back-btn {
+  padding: 5px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.day-detail-back-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.day-detail-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.day-detail-body {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+  background: #f5f7fa;
+}
+
+/* ── Bookable Assets timeline ────────────────────────────────── */
+
+.at-timeline-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.at-timeline-empty {
+  padding: 40px 32px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.at-timeline-empty span {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.at-timeline-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: #f0f2f5;
+  border-bottom: 1px solid #e0e4ea;
+  flex-shrink: 0;
+}
+
+.at-timeline-nav-btn {
+  padding: 5px 14px;
+  border: 1px solid #1e3a5f;
+  border-radius: 6px;
+  background: #fff;
+  color: #1e3a5f;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.at-timeline-nav-btn:hover {
+  background: #1e3a5f;
+  color: #fff;
+}
+
+.at-timeline-goto-label {
+  margin-left: 12px;
+  font-size: 0.78rem;
+  color: #5a6a7a;
+  font-weight: 600;
+}
+
+.at-timeline-goto-input {
+  padding: 5px 8px;
+  border: 1px solid #d5dae2;
+  border-radius: 6px;
+  font-size: 0.82rem;
+}
+
+.at-timeline-scroll {
+  flex: 1;
+  overflow: auto;
+  background: #fff;
+}
+
+.at-timeline-grid {
+  display: grid;
+  min-width: 900px;
+}
+
+.at-tl-corner {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background: #1e3a5f;
+}
+
+.at-tl-daycol-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 2px;
+  background: #1e3a5f;
+  color: #fff;
+  border-left: 1px solid rgba(255,255,255,0.12);
+}
+
+.at-tl-weekday {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: rgba(255,255,255,0.65);
+}
+
+.at-tl-daymonth {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.at-tl-daycol-header.at-tl-today {
+  background: #2d5180;
+}
+
+.at-tl-daycol-header--clickable {
+  cursor: pointer;
+}
+
+.at-tl-daycol-header--clickable:hover {
+  background: #35618f;
+}
+
+.at-tl-row-label {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f5f7fa;
+  border-bottom: 1px solid #d5dae2;
+  border-right: 1px solid #c7cdd6;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  white-space: nowrap;
+}
+
+.at-tl-row-label--clickable {
+  cursor: pointer;
+}
+
+.at-tl-row-label--clickable:hover {
+  background: #e8eef5;
+}
+
+.at-tl-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px;
+  border-bottom: 1px solid #d5dae2;
+  border-left: 1px solid #d5dae2;
+  min-height: 40px;
+  cursor: pointer;
+}
+
+.at-tl-cell:hover {
+  background: #f5f9fc;
+}
+
+.at-tl-cell.at-tl-today:hover {
+  background: #d9ecfa;
+}
+
+.at-tl-cell.at-tl-today {
+  background: #e8f4fd;
+}
+
+.at-tl-chip {
+  background: #1e3a5f;
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.at-tl-chip:hover {
+  background: #c0392b;
 }
 

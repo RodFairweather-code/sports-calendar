@@ -165,7 +165,7 @@ function ProductionView({ events, onEventClick }) {
           <div className="prod-empty">
             <p>No events are queued for production.</p>
             <span>
-              Tick <strong>Init Production</strong> on the Editorial Decisions page
+              Tick <strong>Init Production</strong> on the Planning page
               to send events here.
             </span>
           </div>
