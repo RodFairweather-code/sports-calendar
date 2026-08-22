@@ -524,7 +524,7 @@ function BookAssetsView() {
   const [showForm, setShowForm] = useState(false)
   const [formPrefill, setFormPrefill] = useState(null)
   const [editingBooking, setEditingBooking] = useState(null)
-  const [mode, setMode] = useState('list')
+  const [mode, setMode] = useState('timeline')
   const [dayViewDate, setDayViewDate] = useState(null)
 
   function openBookingForm(prefill) {

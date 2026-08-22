@@ -189,7 +189,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v2.99</span>
+        <span className="header-version">v3.00</span>
       </header>
 
       {storageWarning && (
