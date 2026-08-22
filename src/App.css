@@ -968,6 +968,42 @@
   background: #15803d;
 }
 
+.ep-field--locked {
+  opacity: 0.85;
+}
+
+.ep-lock-btn {
+  margin-left: auto;
+  padding: 3px 9px;
+  border: 1px solid #c3cad6;
+  border-radius: 4px;
+  background: #fff;
+  color: #8492a6;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ep-booking-btn + .ep-lock-btn {
+  margin-left: 6px;
+}
+
+.ep-lock-btn:hover {
+  border-color: #1e3a5f;
+  color: #1e3a5f;
+}
+
+.ep-lock-btn--locked {
+  background: #ffc850;
+  border-color: #e0a800;
+  color: #6b4e00;
+}
+
+.ep-lock-btn--locked:hover {
+  background: #ffbc2e;
+}
+
 .ep-field-group-label {
   font-size: 0.68rem;
   font-weight: 700;
@@ -1457,7 +1493,6 @@
 
 .booth-staff-row {
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
   gap: 6px;
   font-size: 0.76rem;
@@ -1473,6 +1508,77 @@
   color: #2c3e50;
   font-weight: 500;
   text-align: right;
+  margin-left: auto;
+}
+
+.booth-staff-row--locked {
+  background: #fff8e6;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: 1px -6px;
+}
+
+.booth-lock-btn {
+  margin-left: auto;
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  background: transparent;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.booth-lock-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.booth-lock-btn--locked {
+  background: #ffc850;
+  border-color: #ffc850;
+  color: #1e3a5f;
+}
+
+.booth-lock-btn--locked:hover {
+  background: #ffbc2e;
+}
+
+.booth-role-lock-btn {
+  flex-shrink: 0;
+  padding: 1px 6px;
+  border: 1px solid #c3cad6;
+  border-radius: 10px;
+  background: #fff;
+  color: #8492a6;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.booth-role-lock-btn:hover {
+  border-color: #1e3a5f;
+  color: #1e3a5f;
+}
+
+.booth-role-lock-btn--locked {
+  background: #fff4d6;
+  border-color: #e0a800;
+  color: #8a6300;
+}
+
+.booth-role-lock-btn--locked:hover {
+  background: #ffe9ad;
+}
+
+.booth-staff-row--freelance .booth-role-lock-btn {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: #fff;
 }
 
 .booth-staff-tba {
@@ -3612,7 +3718,7 @@
 .bs-comp  { white-space: nowrap; color: #000; font-weight: 600; }
 .bs-role  { font-weight: 700; color: #000; white-space: nowrap; }
 .bs-name  { font-weight: 700; color: #000; }
-.bs-actions { white-space: nowrap; }
+.bs-actions { white-space: nowrap; display: flex; gap: 6px; }
 
 .bs-badge {
   display: inline-block;
@@ -3641,6 +3747,8 @@
 .bs-action-btn--offer:hover  { background: #1d4ed8; }
 .bs-action-btn--accept { background: #059669; color: #fff; }
 .bs-action-btn--accept:hover { background: #047857; }
+.bs-action-btn:not(.bs-action-btn--offer):not(.bs-action-btn--accept) { background: #64748b; color: #fff; }
+.bs-action-btn:not(.bs-action-btn--offer):not(.bs-action-btn--accept):hover { background: #475569; }
 
 /* Bottom banner */
 .book-staff-banner {

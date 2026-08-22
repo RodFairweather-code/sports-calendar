@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { saveToStorage } from '../services/storage'
+import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
 
 function formatDate(start) {
   if (!start) return '—'
@@ -49,6 +50,7 @@ function BookStaffView({ events }) {
   const [assignments] = useState(loadAssignments)
   const [profiles] = useState(loadProfiles)
   const [bookings, setBookings] = useState(loadBookings)
+  const [locks, setLocks] = useState(loadLocks)
 
   const todayStr = new Date().toISOString().slice(0, 10)
   const roleTab = ROLE_TABS.find(r => r.key === selectedRole)
@@ -68,8 +70,9 @@ function BookStaffView({ events }) {
     const isStaff = profileEntry?.isStaff ?? false
     const storedStatus = bookings[event.id]?.[selectedRole] || ''
     const effectiveStatus = isStaff ? 'confirmed' : storedStatus
+    const locked = isRoleLocked(locks, event.id, selectedRole)
 
-    return [{ event, person, isStaff, effectiveStatus }]
+    return [{ event, person, isStaff, effectiveStatus, locked }]
   })
 
   const filtered = filter === 'unconfirmed'
@@ -80,6 +83,22 @@ function BookStaffView({ events }) {
     setBookings(prev => {
       const next = { ...prev, [eventId]: { ...prev[eventId], [selectedRole]: status } }
       persistBookings(next)
+      return next
+    })
+    // A confirmed freelancer is booking-final — pencil becomes locked automatically.
+    if (status === 'confirmed') {
+      setLocks(prev => {
+        const next = withRoleLock(prev, eventId, selectedRole, true)
+        persistLocks(next)
+        return next
+      })
+    }
+  }
+
+  function toggleLock(eventId) {
+    setLocks(prev => {
+      const next = withRoleLock(prev, eventId, selectedRole, !isRoleLocked(prev, eventId, selectedRole))
+      persistLocks(next)
       return next
     })
   }
@@ -104,11 +123,12 @@ function BookStaffView({ events }) {
                 <th>Name</th>
                 <th>Type</th>
                 <th>Status</th>
+                <th>Locked</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {filtered.map(({ event, person, isStaff, effectiveStatus }) => {
+              {filtered.map(({ event, person, isStaff, effectiveStatus, locked }) => {
                 const ep = event.extendedProps
                 return (
                   <tr key={event.id}>
@@ -132,8 +152,13 @@ function BookStaffView({ events }) {
                           : 'Not offered'}
                       </span>
                     </td>
+                    <td>
+                      <span className={`bs-badge bs-badge--${locked ? 'confirmed' : 'unbooked'}`}>
+                        {locked ? 'Locked' : 'Pencil'}
+                      </span>
+                    </td>
                     <td className="bs-actions">
-                      {!isStaff && effectiveStatus === '' && (
+                      {!isStaff && !locked && effectiveStatus === '' && (
                         <button
                           className="bs-action-btn bs-action-btn--offer"
                           onClick={() => setBookingStatus(event.id, 'offered')}
@@ -141,7 +166,7 @@ function BookStaffView({ events }) {
                           Offer job
                         </button>
                       )}
-                      {!isStaff && effectiveStatus === 'offered' && (
+                      {!isStaff && !locked && effectiveStatus === 'offered' && (
                         <button
                           className="bs-action-btn bs-action-btn--accept"
                           onClick={() => setBookingStatus(event.id, 'confirmed')}
@@ -149,6 +174,12 @@ function BookStaffView({ events }) {
                           Accepted
                         </button>
                       )}
+                      <button
+                        className={`bs-action-btn${locked ? ' bs-action-btn--accept' : ''}`}
+                        onClick={() => toggleLock(event.id)}
+                      >
+                        {locked ? 'Unlock' : 'Lock'}
+                      </button>
                     </td>
                   </tr>
                 )

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { deriveRequiredCap, capable, staffFirst } from '../services/staffCapabilities'
 import { saveToStorage } from '../services/storage'
 import { loadTechStack } from '../services/techStack'
+import { loadLocks, persistLocks, isRoleLocked, withRoleLock, withEventLock, isEventFullyLocked } from '../services/staffLocks'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -58,8 +59,9 @@ const BOOTH_ROLES = [
 ]
 
 // For the given event IDs, counts accepted/offered freelancers being cleared
-// and returns updated bookings with those statuses wiped.
-function computeClear(eventIds, assignments, profiles, bookings) {
+// and returns updated bookings with those statuses wiped. Locked roles are
+// left untouched entirely — locking means "don't clear this".
+function computeClear(eventIds, assignments, profiles, bookings, locks) {
   let accepted = 0
   let offered  = 0
   const nextBookings = { ...bookings }
@@ -70,6 +72,7 @@ function computeClear(eventIds, assignments, profiles, bookings) {
     let changed = false
 
     for (const { asgnKey, staffKey } of BOOTH_ROLES) {
+      if (isRoleLocked(locks, id, asgnKey)) continue
       const name = asgn[asgnKey]
       if (!name || name === 'Freelance required') continue
       if (profiles[staffKey]?.[name]?.isStaff ?? false) continue
@@ -85,6 +88,16 @@ function computeClear(eventIds, assignments, profiles, bookings) {
   }
 
   return { accepted, offered, nextBookings }
+}
+
+// Strips the three auto-allocated roles from an assignment, but leaves any
+// that are locked in place.
+function stripUnlockedRoles(asgn, id, locks) {
+  const next = { ...asgn }
+  for (const { asgnKey } of BOOTH_ROLES) {
+    if (!isRoleLocked(locks, id, asgnKey)) delete next[asgnKey]
+  }
+  return next
 }
 
 function needsBooth(event, assignments, patternMap, defaultPatterns) {
@@ -128,7 +141,7 @@ function tv(asgn, pattern, techKey, patternKey) {
 // Events are processed in priority tiers: definite (Y) → possible (P) → unscheduled.
 // Each tier's existing assignments are locked in before that tier's TBA slots are filled,
 // so possible-event staff never block definite events from getting first pick.
-function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatterns, profiles, decisions = {}) {
+function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatterns, profiles, decisions = {}, locks = {}) {
   const next = { ...assignments }
   const dayUsed = {
     director:         new Set(),
@@ -157,7 +170,7 @@ function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatt
       const reqCap   = deriveRequiredCap(pattern)
       let changed = false
 
-      if (!asgn.director) {
+      if (!asgn.director && !isRoleLocked(locks, event.id, 'director')) {
         const pool   = staffFirst(capable(staff.director, profiles, 'director', reqCap), profiles, 'director')
         const person = pool.find(n => !dayUsed.director.has(n))
         asgn.director = person ?? 'Freelance required'
@@ -165,7 +178,7 @@ function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatt
         changed = true
       }
 
-      if (evsCount > 0 && !asgn.evsOperator) {
+      if (evsCount > 0 && !asgn.evsOperator && !isRoleLocked(locks, event.id, 'evsOperator')) {
         const pool   = staffFirst(capable(staff.evsOperator, profiles, 'evsOperator', reqCap), profiles, 'evsOperator')
         const person = pool.find(n => !dayUsed.evsOperator.has(n))
         asgn.evsOperator = person ?? 'Freelance required'
@@ -173,7 +186,7 @@ function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatt
         changed = true
       }
 
-      if (!asgn.graphicsOperator) {
+      if (!asgn.graphicsOperator && !isRoleLocked(locks, event.id, 'graphicsOperator')) {
         const pool   = staffFirst(capable(staff.graphicsOperator, profiles, 'graphicsOperator', reqCap), profiles, 'graphicsOperator')
         const person = pool.find(n => !dayUsed.graphicsOperator.has(n))
         asgn.graphicsOperator = person ?? 'Freelance required'
@@ -188,16 +201,47 @@ function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatt
   return next
 }
 
-function staffDisplay(name, eventId, roleKey, staffKey, profiles, bookings) {
-  if (!name)                         return { text: 'TBA',               cls: 'booth-staff-tba',      rowCls: '' }
-  if (name === 'Freelance required') return { text: 'Freelance required', cls: 'booth-staff-freelance', rowCls: 'booth-staff-row--freelance' }
+// Only a real, named allocation is lockable — not an empty (TBA) or
+// unfulfilled (Freelance required) slot.
+function isNamedAllocation(text) {
+  return text !== 'TBA' && text !== 'Freelance required'
+}
+
+function EventLockButton({ locked, onClick }) {
+  return (
+    <button
+      className={`booth-lock-btn${locked ? ' booth-lock-btn--locked' : ''}`}
+      onClick={e => { e.stopPropagation(); onClick() }}
+      title={locked ? 'Unlock event' : 'Lock event'}
+    >
+      {locked ? 'Locked' : 'Lock event'}
+    </button>
+  )
+}
+
+function RoleLockBadge({ locked, onClick }) {
+  return (
+    <button
+      className={`booth-role-lock-btn${locked ? ' booth-role-lock-btn--locked' : ''}`}
+      onClick={e => { e.stopPropagation(); onClick() }}
+      title={locked ? 'Unlock to make changes' : 'Lock this person'}
+    >
+      {locked ? 'Locked' : 'Lock'}
+    </button>
+  )
+}
+
+function staffDisplay(name, eventId, roleKey, staffKey, profiles, bookings, locked) {
+  const rowLockCls = locked ? ' booth-staff-row--locked' : ''
+  if (!name)                         return { text: 'TBA',               cls: 'booth-staff-tba',      rowCls: rowLockCls }
+  if (name === 'Freelance required') return { text: 'Freelance required', cls: 'booth-staff-freelance', rowCls: `booth-staff-row--freelance${rowLockCls}` }
   const isStaff = profiles[staffKey]?.[name]?.isStaff ?? false
   const storedStatus = bookings[eventId]?.[roleKey] || ''
   const effectiveStatus = isStaff ? 'confirmed' : storedStatus
   const cls = effectiveStatus === 'confirmed' ? 'booth-staff-name--confirmed'
             : effectiveStatus === 'offered'   ? 'booth-staff-name--offered'
             :                                   'booth-staff-name--unbooked'
-  return { text: name, cls, rowCls: '' }
+  return { text: name, cls, rowCls: rowLockCls }
 }
 
 function BoothsView({ events, onEventClick }) {
@@ -208,6 +252,7 @@ function BoothsView({ events, onEventClick }) {
   const [staff]           = useState(loadStaff)
   const [profiles]        = useState(loadProfiles)
   const [bookings, setBookings] = useState(loadBookings)
+  const [locks, setLocks]       = useState(loadLocks)
   const [decisions]       = useState(loadDecisions)
   const [selectedDate, setSelectedDate] = useState('')
   const [clearNotice, setClearNotice]   = useState(null)
@@ -224,6 +269,12 @@ function BoothsView({ events, onEventClick }) {
     function onUpdate() { setBookings(loadBookings()) }
     window.addEventListener('bookings-updated', onUpdate)
     return () => window.removeEventListener('bookings-updated', onUpdate)
+  }, [])
+
+  useEffect(() => {
+    function onUpdate() { setLocks(loadLocks()) }
+    window.addEventListener('locks-updated', onUpdate)
+    return () => window.removeEventListener('locks-updated', onUpdate)
   }, [])
 
   useEffect(() => {
@@ -253,6 +304,18 @@ function BoothsView({ events, onEventClick }) {
     if (!saveToStorage('staff_bookings', next)) return
     setBookings(next)
     window.dispatchEvent(new CustomEvent('bookings-updated'))
+  }
+
+  function toggleRoleLock(eventId, roleKey) {
+    const next = withRoleLock(locks, eventId, roleKey, !isRoleLocked(locks, eventId, roleKey))
+    persistLocks(next)
+    setLocks(next)
+  }
+
+  function toggleEventLock(eventId, roleKeys) {
+    const next = withEventLock(locks, eventId, roleKeys, !isEventFullyLocked(locks, eventId, roleKeys))
+    persistLocks(next)
+    setLocks(next)
   }
 
   function showClearNotice(accepted, offered) {
@@ -327,14 +390,11 @@ function BoothsView({ events, onEventClick }) {
           <button
             className="booths-clear-btn"
             onClick={() => {
-              if (!window.confirm('Clear all allocated staff from every booth? This cannot be undone.')) return
+              if (!window.confirm('Clear all allocated staff from every booth? Locked assignments are left untouched. This cannot be undone.')) return
               const allIds = Object.keys(assignments)
-              const { accepted, offered, nextBookings } = computeClear(allIds, assignments, profiles, bookings)
+              const { accepted, offered, nextBookings } = computeClear(allIds, assignments, profiles, bookings, locks)
               const nextAssignments = Object.fromEntries(
-                Object.entries(assignments).map(([id, asgn]) => {
-                  const { director, evsOperator, graphicsOperator, ...rest } = asgn
-                  return [id, rest]
-                })
+                Object.entries(assignments).map(([id, asgn]) => [id, stripUnlockedRoles(asgn, id, locks)])
               )
               saveAssignments(nextAssignments)
               saveBookings(nextBookings)
@@ -348,7 +408,7 @@ function BoothsView({ events, onEventClick }) {
             onClick={() => {
               let next = { ...assignments }
               for (const date of sortedDates) {
-                next = autoAllocateDay(byDateAll[date], next, staff, patternMap, defaultPatterns, profiles, decisions)
+                next = autoAllocateDay(byDateAll[date], next, staff, patternMap, defaultPatterns, profiles, decisions, locks)
               }
               saveAssignments(next)
             }}
@@ -391,13 +451,11 @@ function BoothsView({ events, onEventClick }) {
                     className="booths-clear-day-btn"
                     onClick={() => {
                       const dayIds = new Set(byDateAll[date].map(e => e.id))
-                      const { accepted, offered, nextBookings } = computeClear([...dayIds], assignments, profiles, bookings)
+                      const { accepted, offered, nextBookings } = computeClear([...dayIds], assignments, profiles, bookings, locks)
                       const nextAssignments = Object.fromEntries(
-                        Object.entries(assignments).map(([id, asgn]) => {
-                          if (!dayIds.has(id)) return [id, asgn]
-                          const { director, evsOperator, graphicsOperator, ...rest } = asgn
-                          return [id, rest]
-                        })
+                        Object.entries(assignments).map(([id, asgn]) =>
+                          dayIds.has(id) ? [id, stripUnlockedRoles(asgn, id, locks)] : [id, asgn]
+                        )
                       )
                       saveAssignments(nextAssignments)
                       saveBookings(nextBookings)
@@ -409,7 +467,7 @@ function BoothsView({ events, onEventClick }) {
                   <button
                     className="booths-auto-btn"
                     onClick={() => saveAssignments(
-                      autoAllocateDay(byDateAll[date], assignments, staff, patternMap, defaultPatterns, profiles, decisions)
+                      autoAllocateDay(byDateAll[date], assignments, staff, patternMap, defaultPatterns, profiles, decisions, locks)
                     )}
                   >
                     Auto allocate this day
@@ -421,13 +479,11 @@ function BoothsView({ events, onEventClick }) {
                     onClick={() => {
                       const forwardDates = sortedDates.filter(d => d >= date)
                       const forwardIds = new Set(forwardDates.flatMap(d => byDateAll[d].map(e => e.id)))
-                      const { accepted, offered, nextBookings } = computeClear([...forwardIds], assignments, profiles, bookings)
+                      const { accepted, offered, nextBookings } = computeClear([...forwardIds], assignments, profiles, bookings, locks)
                       const nextAssignments = Object.fromEntries(
-                        Object.entries(assignments).map(([id, asgn]) => {
-                          if (!forwardIds.has(id)) return [id, asgn]
-                          const { director, evsOperator, graphicsOperator, ...rest } = asgn
-                          return [id, rest]
-                        })
+                        Object.entries(assignments).map(([id, asgn]) =>
+                          forwardIds.has(id) ? [id, stripUnlockedRoles(asgn, id, locks)] : [id, asgn]
+                        )
                       )
                       saveAssignments(nextAssignments)
                       saveBookings(nextBookings)
@@ -442,7 +498,7 @@ function BoothsView({ events, onEventClick }) {
                       const forwardDates = sortedDates.filter(d => d >= date)
                       let next = { ...assignments }
                       for (const d of forwardDates) {
-                        next = autoAllocateDay(byDateAll[d], next, staff, patternMap, defaultPatterns, profiles, decisions)
+                        next = autoAllocateDay(byDateAll[d], next, staff, patternMap, defaultPatterns, profiles, decisions, locks)
                       }
                       saveAssignments(next)
                     }}
@@ -465,9 +521,11 @@ function BoothsView({ events, onEventClick }) {
                 const overCapacity = maxBooths > 0 && (idx + 1) > maxBooths
                 const isPossible   = eventStatus(event.id, decisions) === 'possible'
 
-                const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings)
-                const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings) : null
-                const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings)
+                const roleKeys = ['director', ...(evsCount > 0 ? ['evsOperator'] : []), 'graphicsOperator']
+                const fullyLocked = isEventFullyLocked(locks, event.id, roleKeys)
+                const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings, isRoleLocked(locks, event.id, 'director'))
+                const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings, isRoleLocked(locks, event.id, 'evsOperator')) : null
+                const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings, isRoleLocked(locks, event.id, 'graphicsOperator'))
 
                 return (
                   <div
@@ -479,6 +537,7 @@ function BoothsView({ events, onEventClick }) {
                     <div className="booth-card-header" style={{ background: event.backgroundColor }}>
                       <span className="booth-number">Booth {idx + 1}</span>
                       {overCapacity && <span className="booth-over-label">Over capacity</span>}
+                      <EventLockButton locked={fullyLocked} onClick={() => toggleEventLock(event.id, roleKeys)} />
                     </div>
                     {isPossible && <div className="booth-possible-label">Possible event</div>}
                     <div className="booth-card-body">
@@ -495,16 +554,19 @@ function BoothsView({ events, onEventClick }) {
                         <div className={`booth-staff-row ${dir.rowCls}`}>
                           <span className="booth-staff-role">Director</span>
                           <span className={`booth-staff-name ${dir.cls}`}>{dir.text}</span>
+                          {isNamedAllocation(dir.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'director')} onClick={() => toggleRoleLock(event.id, 'director')} />}
                         </div>
                         {evs && (
                           <div className={`booth-staff-row ${evs.rowCls}`}>
                             <span className="booth-staff-role">EVS</span>
                             <span className={`booth-staff-name ${evs.cls}`}>{evs.text}</span>
+                            {isNamedAllocation(evs.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'evsOperator')} onClick={() => toggleRoleLock(event.id, 'evsOperator')} />}
                           </div>
                         )}
                         <div className={`booth-staff-row ${gfx.rowCls}`}>
                           <span className="booth-staff-role">Graphics</span>
                           <span className={`booth-staff-name ${gfx.cls}`}>{gfx.text}</span>
+                          {isNamedAllocation(gfx.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'graphicsOperator')} onClick={() => toggleRoleLock(event.id, 'graphicsOperator')} />}
                         </div>
                       </div>
                     </div>
@@ -527,9 +589,11 @@ function BoothsView({ events, onEventClick }) {
                   const evsCount   = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
                   const isPossible = eventStatus(event.id, decisions) === 'possible'
 
-                  const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings)
-                  const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings) : null
-                  const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings)
+                  const roleKeys = ['director', ...(evsCount > 0 ? ['evsOperator'] : []), 'graphicsOperator']
+                  const fullyLocked = isEventFullyLocked(locks, event.id, roleKeys)
+                  const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings, isRoleLocked(locks, event.id, 'director'))
+                  const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings, isRoleLocked(locks, event.id, 'evsOperator')) : null
+                  const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings, isRoleLocked(locks, event.id, 'graphicsOperator'))
 
                   return (
                     <div
@@ -540,6 +604,7 @@ function BoothsView({ events, onEventClick }) {
                     >
                       <div className="booth-card-header" style={{ background: event.backgroundColor }}>
                         <span className="booth-number">Studio {idx + 1}</span>
+                        <EventLockButton locked={fullyLocked} onClick={() => toggleEventLock(event.id, roleKeys)} />
                       </div>
                       {isPossible && <div className="booth-possible-label">Possible event</div>}
                       <div className="booth-card-body">
@@ -556,16 +621,19 @@ function BoothsView({ events, onEventClick }) {
                           <div className={`booth-staff-row ${dir.rowCls}`}>
                             <span className="booth-staff-role">Director</span>
                             <span className={`booth-staff-name ${dir.cls}`}>{dir.text}</span>
+                            {isNamedAllocation(dir.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'director')} onClick={() => toggleRoleLock(event.id, 'director')} />}
                           </div>
                           {evs && (
                             <div className={`booth-staff-row ${evs.rowCls}`}>
                               <span className="booth-staff-role">EVS</span>
                               <span className={`booth-staff-name ${evs.cls}`}>{evs.text}</span>
+                              {isNamedAllocation(evs.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'evsOperator')} onClick={() => toggleRoleLock(event.id, 'evsOperator')} />}
                             </div>
                           )}
                           <div className={`booth-staff-row ${gfx.rowCls}`}>
                             <span className="booth-staff-role">Graphics</span>
                             <span className={`booth-staff-name ${gfx.cls}`}>{gfx.text}</span>
+                            {isNamedAllocation(gfx.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'graphicsOperator')} onClick={() => toggleRoleLock(event.id, 'graphicsOperator')} />}
                           </div>
                         </div>
                       </div>
@@ -589,9 +657,11 @@ function BoothsView({ events, onEventClick }) {
                   const evsCount   = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
                   const isPossible = eventStatus(event.id, decisions) === 'possible'
 
-                  const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings)
-                  const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings) : null
-                  const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings)
+                  const roleKeys = ['director', ...(evsCount > 0 ? ['evsOperator'] : []), 'graphicsOperator']
+                  const fullyLocked = isEventFullyLocked(locks, event.id, roleKeys)
+                  const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings, isRoleLocked(locks, event.id, 'director'))
+                  const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings, isRoleLocked(locks, event.id, 'evsOperator')) : null
+                  const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings, isRoleLocked(locks, event.id, 'graphicsOperator'))
 
                   return (
                     <div
@@ -602,6 +672,7 @@ function BoothsView({ events, onEventClick }) {
                     >
                       <div className="booth-card-header" style={{ background: event.backgroundColor }}>
                         <span className="booth-number">OB Unit {idx + 1}</span>
+                        <EventLockButton locked={fullyLocked} onClick={() => toggleEventLock(event.id, roleKeys)} />
                       </div>
                       {isPossible && <div className="booth-possible-label">Possible event</div>}
                       <div className="booth-card-body">
@@ -618,16 +689,19 @@ function BoothsView({ events, onEventClick }) {
                           <div className={`booth-staff-row ${dir.rowCls}`}>
                             <span className="booth-staff-role">Director</span>
                             <span className={`booth-staff-name ${dir.cls}`}>{dir.text}</span>
+                            {isNamedAllocation(dir.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'director')} onClick={() => toggleRoleLock(event.id, 'director')} />}
                           </div>
                           {evs && (
                             <div className={`booth-staff-row ${evs.rowCls}`}>
                               <span className="booth-staff-role">EVS</span>
                               <span className={`booth-staff-name ${evs.cls}`}>{evs.text}</span>
+                              {isNamedAllocation(evs.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'evsOperator')} onClick={() => toggleRoleLock(event.id, 'evsOperator')} />}
                             </div>
                           )}
                           <div className={`booth-staff-row ${gfx.rowCls}`}>
                             <span className="booth-staff-role">Graphics</span>
                             <span className={`booth-staff-name ${gfx.cls}`}>{gfx.text}</span>
+                            {isNamedAllocation(gfx.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'graphicsOperator')} onClick={() => toggleRoleLock(event.id, 'graphicsOperator')} />}
                           </div>
                         </div>
                       </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import { loadTechStack } from '../services/techStack'
+import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -196,30 +197,41 @@ function CostView({ asgn, tv, techBooth, techStudio, techObUnit, staffCosts, tec
 
 // ── Resource view sub-components ─────────────────────────────────────────────
 
-function StaffSelect({ label, value, options, field, onChange, status, onStatusChange }) {
+function StaffSelect({ label, value, options, field, onChange, status, onStatusChange, locked, onToggleLock }) {
   const statusCls = status === 'confirmed' ? ' ep-field--confirmed'
                   : status === 'offered'   ? ' ep-field--offered'
                   : status === 'unbooked'  ? ' ep-field--unbooked'
                   : ''
   return (
-    <div className={`ep-field${statusCls}`}>
+    <div className={`ep-field${statusCls}${locked ? ' ep-field--locked' : ''}`}>
       <span className="ep-field-label">{label}</span>
       <select
         className={`ep-select${value ? ' ep-select--set' : ''}`}
         value={value || ''}
+        disabled={locked}
         onChange={e => onChange(field, e.target.value)}
       >
         <option value="">—</option>
         {options.map(o => <option key={o} value={o}>{o}</option>)}
       </select>
-      {status === 'unbooked' && (
+      {!locked && status === 'unbooked' && (
         <button className="ep-booking-btn ep-booking-btn--offer" onClick={() => onStatusChange('offered')}>
           Offer job
         </button>
       )}
-      {status === 'offered' && (
+      {!locked && status === 'offered' && (
         <button className="ep-booking-btn ep-booking-btn--accept" onClick={() => onStatusChange('confirmed')}>
           Confirm
+        </button>
+      )}
+      {value && value !== 'Freelance required' && (
+        <button
+          type="button"
+          className={`ep-lock-btn${locked ? ' ep-lock-btn--locked' : ''}`}
+          title={locked ? 'Unlock to make changes' : 'Lock this booking'}
+          onClick={onToggleLock}
+        >
+          {locked ? 'Locked' : 'Lock'}
         </button>
       )}
     </div>
@@ -272,6 +284,7 @@ function EventPanel({ event, onClose }) {
   const [techStack]       = useState(loadTechStack)
   const [profiles]        = useState(loadProfiles)
   const [bookings, setBookings] = useState(loadBookings)
+  const [locks, setLocks]       = useState(loadLocks)
   const [view, setView]   = useState('resources')
 
   useEffect(() => {
@@ -279,6 +292,12 @@ function EventPanel({ event, onClose }) {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
+
+  useEffect(() => {
+    function onUpdate() { setLocks(loadLocks()) }
+    window.addEventListener('locks-updated', onUpdate)
+    return () => window.removeEventListener('locks-updated', onUpdate)
+  }, [])
 
   const asgn = assignments[event.id] || {}
   const patternId = asgn.patternId !== undefined
@@ -323,6 +342,22 @@ function EventPanel({ event, onClose }) {
       const next = { ...prev, [event.id]: { ...prev[event.id], [field]: newStatus } }
       persistBookings(next)
       window.dispatchEvent(new CustomEvent('bookings-updated'))
+      return next
+    })
+    // A confirmed freelancer is booking-final — pencil becomes locked automatically.
+    if (newStatus === 'confirmed') {
+      setLocks(prev => {
+        const next = withRoleLock(prev, event.id, field, true)
+        persistLocks(next)
+        return next
+      })
+    }
+  }
+
+  function toggleLock(field) {
+    setLocks(prev => {
+      const next = withRoleLock(prev, event.id, field, !isRoleLocked(prev, event.id, field))
+      persistLocks(next)
       return next
     })
   }
@@ -465,14 +500,14 @@ function EventPanel({ event, onClose }) {
                     {patterns.map(pat => <option key={pat.id} value={pat.id}>{pat.name}</option>)}
                   </select>
                 </div>
-                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} status={bookingStatus(asgn.director,          'director',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('director',          s)} />
-                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('productionManager',  s)} />
-                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('producer',          s)} />
-                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('commentator',       s)} />
-                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('cameraman',         s)} />
-                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} status={bookingStatus(asgn.evsOperator,       'evsOperator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('evsOperator',       s)} />
-                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s)} />
-                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('graphicsOperator',  s)} />
+                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} status={bookingStatus(asgn.director,          'director',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('director',          s)} locked={isRoleLocked(locks, event.id, 'director')}          onToggleLock={() => toggleLock('director')} />
+                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('productionManager',  s)} locked={isRoleLocked(locks, event.id, 'productionManager')} onToggleLock={() => toggleLock('productionManager')} />
+                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('producer',          s)} locked={isRoleLocked(locks, event.id, 'producer')}          onToggleLock={() => toggleLock('producer')} />
+                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('commentator',       s)} locked={isRoleLocked(locks, event.id, 'commentator')}       onToggleLock={() => toggleLock('commentator')} />
+                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('cameraman',         s)} locked={isRoleLocked(locks, event.id, 'cameraman')}         onToggleLock={() => toggleLock('cameraman')} />
+                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} status={bookingStatus(asgn.evsOperator,       'evsOperator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('evsOperator',       s)} locked={isRoleLocked(locks, event.id, 'evsOperator')}       onToggleLock={() => toggleLock('evsOperator')} />
+                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s)} locked={isRoleLocked(locks, event.id, 'onsiteAudio')}       onToggleLock={() => toggleLock('onsiteAudio')} />
+                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('graphicsOperator',  s)} locked={isRoleLocked(locks, event.id, 'graphicsOperator')}  onToggleLock={() => toggleLock('graphicsOperator')} />
               </div>
 
               {/* ── Technical Resources ── */}
