@@ -33,13 +33,30 @@ export function formatRange(startTime, duration) {
   return `${startTime}–${end.time}${dayTag}`
 }
 
-// Hours from startTime to endTime, treating endTime <= startTime as the next day.
-export function hoursBetween(startTime, endTime) {
-  const [sh, sm] = startTime.split(':').map(Number)
-  const [eh, em] = endTime.split(':').map(Number)
-  let diff = (eh * 60 + em) - (sh * 60 + sm)
-  if (diff <= 0) diff += 1440
-  return diff / 60
+// Hours between a start date+time and an end date+time — supports spans of
+// any length, so a booking can run across several days, not just within 24h.
+export function combinedDuration(startDate, startTime, endDate, endTime) {
+  const start = new Date(`${startDate}T${startTime}:00`).getTime()
+  const end = new Date(`${endDate}T${endTime}:00`).getTime()
+  return Math.max(0.5, (end - start) / 3600000)
+}
+
+// Every calendar date (local) that a booking's interval touches, so
+// multi-day bookings can be shown on each day they occupy, not just the
+// start date.
+export function bookingSpanDates(date, time, durationHours) {
+  const { start, end } = bookingInterval(date, time, durationHours)
+  const cursor = new Date(start)
+  cursor.setHours(0, 0, 0, 0)
+  const dates = []
+  while (cursor.getTime() < end) {
+    const y = cursor.getFullYear()
+    const m = String(cursor.getMonth() + 1).padStart(2, '0')
+    const d = String(cursor.getDate()).padStart(2, '0')
+    dates.push(`${y}-${m}-${d}`)
+    cursor.setDate(cursor.getDate() + 1)
+  }
+  return dates
 }
 
 // Real start/end instants (ms) for a booking, so overlap checks work correctly

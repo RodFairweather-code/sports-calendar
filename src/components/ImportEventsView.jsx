@@ -5,8 +5,12 @@ import ImportExcelModal from './ImportExcelModal'
 
 const NEW_COMPETITION = '__new_competition__'
 const NEW_SPORT = '__new_sport__'
+const NEW_DEPARTMENT = '__new_department__'
+const MAX_REPEAT_OCCURRENCES = 366
 
 const EMPTY_FORM = {
+  eventType: 'sport',
+
   competitionId: '',
   newCompetitionName: '',
   sport: '',
@@ -22,6 +26,15 @@ const EMPTY_FORM = {
   startDate: '',
   startTime: '',
   endDate: '',
+
+  programmeTitle: '',
+  departmentId: '',
+  newDepartmentName: '',
+  repeat: 'none',
+  repeatCustomDays: 7,
+  repeatEndType: 'occurrences',
+  repeatOccurrences: 4,
+  repeatEndDate: '',
 
   patternId: '',
   director: '',
@@ -83,6 +96,41 @@ function saveAssignment(eventId, assignment) {
   window.dispatchEvent(new CustomEvent('assignments-updated'))
 }
 
+function addDays(dateStr, n) {
+  const d = new Date(dateStr + 'T12:00:00')
+  d.setDate(d.getDate() + n)
+  return d.toISOString().slice(0, 10)
+}
+
+// Expands a repeat rule into one or more dated occurrences.
+function buildRepeatDates(form) {
+  if (form.repeat === 'none') return [form.startDate]
+
+  const step = form.repeat === 'daily' ? 1
+    : form.repeat === 'weekly' ? 7
+    : Math.max(1, parseInt(form.repeatCustomDays, 10) || 1)
+
+  const dates = []
+  let current = form.startDate
+
+  if (form.repeatEndType === 'occurrences') {
+    const count = Math.max(1, parseInt(form.repeatOccurrences, 10) || 1)
+    for (let i = 0; i < count && i < MAX_REPEAT_OCCURRENCES; i++) {
+      dates.push(current)
+      current = addDays(current, step)
+    }
+  } else {
+    let i = 0
+    while (current <= form.repeatEndDate && i < MAX_REPEAT_OCCURRENCES) {
+      dates.push(current)
+      current = addDays(current, step)
+      i++
+    }
+  }
+
+  return dates
+}
+
 function buildEvent(form, competition) {
   const start = form.allDay ? form.startDate : `${form.startDate}T${form.startTime}`
   const end = form.allDay && form.endDate ? form.endDate : undefined
@@ -109,6 +157,32 @@ function buildEvent(form, competition) {
       awayScore: null,
       venue: form.venue || null,
       round: form.round || null,
+    },
+  }
+}
+
+function buildProgrammeEvent(form, department, date) {
+  const title = form.programmeTitle.trim() || 'Untitled Programme'
+
+  return {
+    id: `imported|${crypto.randomUUID()}`,
+    title,
+    start: `${date}T${form.startTime}`,
+    end: undefined,
+    allDay: false,
+    backgroundColor: department.color,
+    borderColor: department.color,
+    extendedProps: {
+      competitionId: department.id,
+      competitionName: department.name,
+      governingBody: department.governingBody,
+      sport: department.sport,
+      homeTeam: null,
+      awayTeam: null,
+      homeScore: null,
+      awayScore: null,
+      venue: null,
+      round: null,
     },
   }
 }
@@ -215,9 +289,17 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
 
   const sports = [...new Set(competitions.map(c => c.sport))].sort()
   const isNewCompetition = form.competitionId === NEW_COMPETITION
+  const departments = competitions.filter(c => c.sport === 'Programme')
+  const isNewDepartment = form.departmentId === NEW_DEPARTMENT
 
   function setField(field, value) {
     setForm(prev => ({ ...prev, [field]: value }))
+  }
+
+  function handleEventTypeChange(eventType) {
+    setForm({ ...EMPTY_FORM, eventType, techStudio: eventType === 'programme' })
+    setErrors({})
+    setSuccessMsg('')
   }
 
   function handlePatternChange(patternId) {
@@ -258,7 +340,26 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
     return next
   }
 
+  function validateProgramme() {
+    const next = {}
+    if (!form.programmeTitle.trim()) next.programmeTitle = 'Enter a programme title'
+    if (!form.departmentId) next.departmentId = 'Choose a department'
+    if (isNewDepartment && !form.newDepartmentName.trim()) next.newDepartmentName = 'Enter a department name'
+    if (!form.startDate) next.startDate = 'Start date is required'
+    if (!form.startTime) next.startTime = 'Start time is required'
+    if (form.repeat !== 'none' && form.repeatEndType === 'date' &&
+        (!form.repeatEndDate || form.repeatEndDate < form.startDate)) {
+      next.repeatEndDate = 'Enter an end date on or after the start date'
+    }
+    return next
+  }
+
   function handleSubmit(e) {
+    if (form.eventType === 'programme') handleProgrammeSubmit(e)
+    else handleSportSubmit(e)
+  }
+
+  function handleSportSubmit(e) {
     e.preventDefault()
     const validation = validate()
     setErrors(validation)
@@ -292,6 +393,47 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
     setErrors({})
   }
 
+  function handleProgrammeSubmit(e) {
+    e.preventDefault()
+    const validation = validateProgramme()
+    setErrors(validation)
+    if (Object.keys(validation).length > 0) { setSuccessMsg(''); return }
+
+    let department
+    if (isNewDepartment) {
+      const name = form.newDepartmentName.trim()
+      department = {
+        id: `custom_${crypto.randomUUID()}`,
+        name,
+        shortName: name,
+        sport: 'Programme',
+        governingBody: name,
+        color: colorForName(name),
+      }
+      onAddCompetition(department)
+    } else {
+      department = competitions.find(c => c.id === form.departmentId)
+    }
+
+    const dates = buildRepeatDates(form)
+    const events = dates.map(date => buildProgrammeEvent(form, department, date))
+
+    if (events.length === 1) onAdd(events[0])
+    else onAddBatch(events)
+
+    const assignment = buildAssignment(form)
+    if (Object.keys(assignment).length > 0) {
+      events.forEach(ev => saveAssignment(ev.id, assignment))
+    }
+
+    setSuccessMsg(
+      `"${events[0].title}" was added${events.length > 1 ? ` (${events.length} occurrences)` : ''}. ` +
+      `Toggle ${department.name} on in the competition bar to see it on the calendar.`
+    )
+    setForm({ ...EMPTY_FORM, eventType: 'programme', techStudio: true, departmentId: department.id })
+    setErrors({})
+  }
+
   function handleExcelAccept({ sportName, competitionName, rows }) {
     let competition = competitions.find(
       c => c.name.trim().toLowerCase() === competitionName.trim().toLowerCase()
@@ -322,8 +464,23 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
         <h2>Import Event</h2>
         <p className="import-hint">Fill in the details below to add a new event to the calendar.</p>
 
+        <div className="ep-view-toggle">
+          <button
+            type="button"
+            className={`ep-view-btn${form.eventType === 'sport' ? ' ep-view-btn--active' : ''}`}
+            onClick={() => handleEventTypeChange('sport')}
+          >Sport Event</button>
+          <button
+            type="button"
+            className={`ep-view-btn${form.eventType === 'programme' ? ' ep-view-btn--active' : ''}`}
+            onClick={() => handleEventTypeChange('programme')}
+          >Programme Event</button>
+        </div>
+
         {successMsg && <div className="import-success">{successMsg}</div>}
 
+        {form.eventType === 'sport' ? (
+        <>
         <div className="import-grid">
           <div className={`import-field${errors.competitionId ? ' import-field--error' : ''}`}>
             <label htmlFor="imp-competition">Competition</label>
@@ -557,6 +714,177 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
             <span className="import-field-hint">Added to this event's costings in the Event Inspector.</span>
           </div>
         </div>
+        </>
+        ) : (
+        <>
+        <div className="import-grid">
+          <div className={`import-field${errors.programmeTitle ? ' import-field--error' : ''}`}>
+            <label htmlFor="imp-prog-title">Programme Title</label>
+            <input
+              id="imp-prog-title"
+              type="text"
+              value={form.programmeTitle}
+              onChange={e => setField('programmeTitle', e.target.value)}
+            />
+            {errors.programmeTitle && <span className="import-field-error-msg">{errors.programmeTitle}</span>}
+          </div>
+
+          <div className={`import-field${errors.departmentId ? ' import-field--error' : ''}`}>
+            <label htmlFor="imp-department">Department</label>
+            <select
+              id="imp-department"
+              value={form.departmentId}
+              onChange={e => setField('departmentId', e.target.value)}
+            >
+              <option value="">— select department —</option>
+              {departments.map(d => (
+                <option key={d.id} value={d.id}>{d.name}</option>
+              ))}
+              <option value={NEW_DEPARTMENT}>+ Add new department…</option>
+            </select>
+            {errors.departmentId && <span className="import-field-error-msg">{errors.departmentId}</span>}
+          </div>
+
+          {isNewDepartment && (
+            <div className={`import-field${errors.newDepartmentName ? ' import-field--error' : ''}`}>
+              <label htmlFor="imp-new-dept-name">New Department Name</label>
+              <input
+                id="imp-new-dept-name"
+                type="text"
+                value={form.newDepartmentName}
+                onChange={e => setField('newDepartmentName', e.target.value)}
+              />
+              {errors.newDepartmentName && <span className="import-field-error-msg">{errors.newDepartmentName}</span>}
+            </div>
+          )}
+
+          <div className={`import-field${errors.startDate ? ' import-field--error' : ''}`}>
+            <label htmlFor="imp-prog-start-date">Start Date</label>
+            <input
+              id="imp-prog-start-date"
+              type="date"
+              value={form.startDate}
+              onChange={e => setField('startDate', e.target.value)}
+            />
+            {errors.startDate && <span className="import-field-error-msg">{errors.startDate}</span>}
+          </div>
+
+          <div className={`import-field${errors.startTime ? ' import-field--error' : ''}`}>
+            <label htmlFor="imp-prog-start-time">Start Time</label>
+            <input
+              id="imp-prog-start-time"
+              type="time"
+              value={form.startTime}
+              onChange={e => setField('startTime', e.target.value)}
+            />
+            {errors.startTime && <span className="import-field-error-msg">{errors.startTime}</span>}
+          </div>
+        </div>
+
+        <div className="import-section-title">Repeat</div>
+        <div className="ba-radio-row">
+          {[
+            { key: 'none',   label: 'Does not repeat' },
+            { key: 'daily',  label: 'Daily' },
+            { key: 'weekly', label: 'Weekly' },
+            { key: 'custom', label: 'Custom interval' },
+          ].map(opt => (
+            <label key={opt.key} className="ba-radio-option">
+              <input type="radio" name="imp-prog-repeat" checked={form.repeat === opt.key} onChange={() => setField('repeat', opt.key)} />
+              {opt.label}
+            </label>
+          ))}
+        </div>
+
+        {form.repeat === 'custom' && (
+          <div className="import-field ba-inline-field">
+            <label htmlFor="imp-prog-interval">Every</label>
+            <input
+              id="imp-prog-interval"
+              type="number"
+              min="1"
+              max="365"
+              value={form.repeatCustomDays}
+              onChange={e => setField('repeatCustomDays', Math.max(1, parseInt(e.target.value, 10) || 1))}
+            />
+            <span>day(s)</span>
+          </div>
+        )}
+
+        {form.repeat !== 'none' && (
+          <>
+            <div className="import-section-title">Ends</div>
+            <div className="ba-radio-row">
+              <label className="ba-radio-option">
+                <input type="radio" name="imp-prog-endtype" checked={form.repeatEndType === 'occurrences'} onChange={() => setField('repeatEndType', 'occurrences')} />
+                After
+                <input
+                  type="number"
+                  min="1"
+                  max="366"
+                  className="ba-inline-number"
+                  disabled={form.repeatEndType !== 'occurrences'}
+                  value={form.repeatOccurrences}
+                  onChange={e => setField('repeatOccurrences', Math.max(1, parseInt(e.target.value, 10) || 1))}
+                />
+                occasion(s)
+              </label>
+              <label className="ba-radio-option">
+                <input type="radio" name="imp-prog-endtype" checked={form.repeatEndType === 'date'} onChange={() => setField('repeatEndType', 'date')} />
+                Until
+                <input
+                  type="date"
+                  className="ba-inline-date"
+                  disabled={form.repeatEndType !== 'date'}
+                  value={form.repeatEndDate}
+                  onChange={e => setField('repeatEndDate', e.target.value)}
+                />
+              </label>
+            </div>
+            {errors.repeatEndDate && <span className="import-field-error-msg">{errors.repeatEndDate}</span>}
+          </>
+        )}
+
+        <div className="import-section-title">Production <span className="import-section-hint">(optional)</span></div>
+        <div className="import-grid">
+          <StaffField label="Director"          value={form.director}          options={staff.director}                onChange={v => setField('director', v)} />
+          <StaffField label="Production Manager" value={form.productionManager} options={staff.onsiteProductionManager} onChange={v => setField('productionManager', v)} />
+          <StaffField label="Producer"          value={form.producer}          options={staff.producer}                onChange={v => setField('producer', v)} />
+        </div>
+
+        <div className="import-section-title">Technical Resources <span className="import-section-hint">(optional)</span></div>
+        <div className="import-grid">
+          <TechField label="Cameramen"          value={form.techCameramen}          onChange={v => setField('techCameramen', v)} />
+          <TechField label="EVS Operators"      value={form.techEvsOperator}        onChange={v => setField('techEvsOperator', v)} />
+          <TechField label="Studio Sound"       value={form.techAudioOnLocation}    onChange={v => setField('techAudioOnLocation', v)} />
+          <TechField label="Video Lines In"     value={form.techIncomingVideoLines} onChange={v => setField('techIncomingVideoLines', v)} />
+          <TechField label="Video Lines Out"    value={form.techOutgoingVideoLines} onChange={v => setField('techOutgoingVideoLines', v)} />
+          <TechField label="Audio Lines In"     value={form.techIncomingAudioLines} onChange={v => setField('techIncomingAudioLines', v)} />
+          <TechField label="Audio Lines Out"    value={form.techOutgoingAudioLines} onChange={v => setField('techOutgoingAudioLines', v)} />
+          <TechField label="Talkback In"        value={form.techIncomingTalkbackLines} onChange={v => setField('techIncomingTalkbackLines', v)} />
+          <TechField label="Talkback Out"       value={form.techOutgoingTalkbackLines} onChange={v => setField('techOutgoingTalkbackLines', v)} />
+          <TechToggle label="Studio"            checked={form.techStudio}          onChange={v => setField('techStudio', v)} />
+          <TechToggle label="Passthrough"       checked={form.techPassthrough}     onChange={v => setField('techPassthrough', v)} />
+        </div>
+
+        <div className="import-section-title">Costs <span className="import-section-hint">(optional)</span></div>
+        <div className="import-grid">
+          <div className="import-field">
+            <label htmlFor="imp-studio-cost">Fixed Studio Cost (£)</label>
+            <input
+              id="imp-studio-cost"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+              value={form.preProductionCost}
+              onChange={e => setField('preProductionCost', e.target.value)}
+            />
+            <span className="import-field-hint">Added to this event's costings in the Event Inspector.</span>
+          </div>
+        </div>
+        </>
+        )}
 
         <div className="import-actions">
           <button type="submit" className="import-save-btn">Save</button>

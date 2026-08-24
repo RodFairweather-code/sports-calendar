@@ -18,8 +18,10 @@ import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
 import { SEED_RIGHTS_MATRIX } from './data/seedRights'
 import { SEED_BOOKABLE_ASSETS, SEED_ASSET_BOOKINGS } from './data/seedBookableAssets'
 import { saveToStorage } from './services/storage'
-import { loadImportedEvents, addImportedEvent, addImportedEvents } from './services/importedEvents'
+import { loadImportedEvents, addImportedEvent, addImportedEvents, removeImportedEvent } from './services/importedEvents'
 import { loadCustomCompetitions, addCustomCompetition } from './services/customCompetitions'
+import { loadDeletedEventIds, addDeletedEventId } from './services/deletedEvents'
+import { clearEventReferences } from './services/eventCleanup'
 import './App.css'
 
 // Populate localStorage from seed on first load (skipped if data already exists)
@@ -99,6 +101,7 @@ function App() {
   const [storageWarning, setStorageWarning] = useState(null)
   const [importedEvents, setImportedEvents] = useState(loadImportedEvents)
   const [customCompetitions, setCustomCompetitions] = useState(loadCustomCompetitions)
+  const [deletedEventIds, setDeletedEventIds] = useState(() => new Set(loadDeletedEventIds()))
 
   useEffect(() => {
     function onQuotaExceeded(e) {
@@ -109,8 +112,8 @@ function App() {
   }, [])
 
   const combinedEvents = useMemo(
-    () => [...ALL_EVENTS, ...importedEvents],
-    [importedEvents]
+    () => [...ALL_EVENTS, ...importedEvents].filter(e => !deletedEventIds.has(e.id)),
+    [importedEvents, deletedEventIds]
   )
 
   const visibleEvents = useMemo(
@@ -138,6 +141,16 @@ function App() {
 
   function handleAddCompetition(competition) {
     setCustomCompetitions(addCustomCompetition(competition))
+  }
+
+  function handleDeleteEvent(event) {
+    clearEventReferences(event.id)
+    if (event.id.startsWith('imported|')) {
+      setImportedEvents(removeImportedEvent(event.id))
+    } else {
+      setDeletedEventIds(new Set(addDeletedEventId(event.id)))
+    }
+    setSelectedEvent(null)
   }
 
   function activateComps(ids) {
@@ -194,7 +207,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.01</span>
+        <span className="header-version">v3.02</span>
       </header>
 
       {storageWarning && (
@@ -241,6 +254,7 @@ function App() {
           onToggle={toggleComp}
           onToggleBody={toggleGoverningBody}
           onShowAll={() => activateComps(allCompetitions.map(c => c.id))}
+          onClearAll={() => setActiveComps(new Set())}
         />
       )}
 
@@ -248,6 +262,7 @@ function App() {
         <EventPanel
           event={selectedEvent}
           onClose={() => setSelectedEvent(null)}
+          onDeleteEvent={handleDeleteEvent}
         />
       )}
     </div>

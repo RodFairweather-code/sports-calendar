@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
 
@@ -51,6 +51,10 @@ function BookStaffView({ events }) {
   const [profiles] = useState(loadProfiles)
   const [bookings, setBookings] = useState(loadBookings)
   const [locks, setLocks] = useState(loadLocks)
+  const [notice, setNotice] = useState(null)
+  const noticeTimerRef = useRef(null)
+
+  useEffect(() => () => clearTimeout(noticeTimerRef.current), [])
 
   const todayStr = new Date().toISOString().slice(0, 10)
   const roleTab = ROLE_TABS.find(r => r.key === selectedRole)
@@ -95,6 +99,14 @@ function BookStaffView({ events }) {
     }
   }
 
+  function offerJob(event, person) {
+    setBookingStatus(event.id, 'offered')
+    const timeStr = event.start?.length > 10 ? ` at ${event.start.slice(11, 16)}` : ''
+    clearTimeout(noticeTimerRef.current)
+    setNotice(`${person} has been offered ${roleTab.label} for ${event.title} on ${formatDate(event.start)}${timeStr}. A calendar invite has also been sent out.`)
+    noticeTimerRef.current = setTimeout(() => setNotice(null), 8000)
+  }
+
   function toggleLock(eventId) {
     setLocks(prev => {
       const next = withRoleLock(prev, eventId, selectedRole, !isRoleLocked(prev, eventId, selectedRole))
@@ -105,6 +117,7 @@ function BookStaffView({ events }) {
 
   return (
     <div className="book-staff-view">
+      {notice && <div className="bs-toast">{notice}</div>}
       <div className="book-staff-scroll">
         {filtered.length === 0 ? (
           <div className="book-staff-empty">
@@ -161,7 +174,7 @@ function BookStaffView({ events }) {
                       {!isStaff && !locked && effectiveStatus === '' && (
                         <button
                           className="bs-action-btn bs-action-btn--offer"
-                          onClick={() => setBookingStatus(event.id, 'offered')}
+                          onClick={() => offerJob(event, person)}
                         >
                           Offer job
                         </button>

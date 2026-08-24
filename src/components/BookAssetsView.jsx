@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import {
-  addHours, hoursBetween, DEFAULT_DURATION, bookingDuration,
+  addHours, combinedDuration, DEFAULT_DURATION, bookingDuration,
   findConflicts, formatTimeOfDay, formatDateLabel, formatRange,
 } from '../services/bookingTime'
 import AssetTimelineView from './AssetTimelineView'
@@ -143,8 +143,14 @@ function ProductionFields({ idPrefix, production, contractNumber, programme, onC
   )
 }
 
-function DurationEndTimeFields({ idPrefix, time, duration, onDurationChange, onEndTimeChange }) {
+function DurationEndTimeFields({ idPrefix, date, time, duration, onDurationChange, onEndChange }) {
   const end = time ? addHours(time, duration) : null
+  const endDate = date ? addDays(date, end ? end.dayOffset : 0) : ''
+
+  function handleEndDateChange(newEndDate) {
+    if (!newEndDate || (date && newEndDate < date)) return
+    onEndChange(newEndDate, end ? end.time : time)
+  }
 
   return (
     <>
@@ -161,17 +167,27 @@ function DurationEndTimeFields({ idPrefix, time, duration, onDurationChange, onE
       </div>
 
       <div className="import-field">
+        <label htmlFor={`${idPrefix}-enddate`}>End date</label>
+        <input
+          id={`${idPrefix}-enddate`}
+          type="date"
+          min={date || undefined}
+          disabled={!date}
+          value={endDate}
+          onChange={e => handleEndDateChange(e.target.value)}
+        />
+        <span className="import-field-hint">Needed for more than one day? Push this forward.</span>
+      </div>
+
+      <div className="import-field">
         <label htmlFor={`${idPrefix}-endtime`}>End time</label>
         <input
           id={`${idPrefix}-endtime`}
           type="time"
           disabled={!time}
           value={end ? end.time : ''}
-          onChange={e => onEndTimeChange(e.target.value)}
+          onChange={e => onEndChange(endDate, e.target.value)}
         />
-        {end && end.dayOffset > 0 && (
-          <span className="import-field-hint">+{end.dayOffset} day{end.dayOffset > 1 ? 's' : ''}</span>
-        )}
       </div>
     </>
   )
@@ -196,9 +212,9 @@ function BookingForm({ assets, bookings, initial, onCreate, onCancel }) {
     setForm(prev => ({ ...prev, assetId, unit: '', duration: found?.duration ?? DEFAULT_DURATION }))
   }
 
-  function handleEndTimeChange(endTime) {
-    if (!form.time || !endTime) return
-    setField('duration', hoursBetween(form.time, endTime))
+  function handleEndChange(newEndDate, newEndTime) {
+    if (!form.date || !form.time || !newEndDate || !newEndTime) return
+    setField('duration', combinedDuration(form.date, form.time, newEndDate, newEndTime))
   }
 
   const datesValid = form.repeat === 'none' || form.endType === 'occurrences' || form.endDate >= form.date
@@ -254,10 +270,11 @@ function BookingForm({ assets, bookings, initial, onCreate, onCancel }) {
 
             <DurationEndTimeFields
               idPrefix="bk"
+              date={form.date}
               time={form.time}
               duration={form.duration}
               onDurationChange={v => setField('duration', v)}
-              onEndTimeChange={handleEndTimeChange}
+              onEndChange={handleEndChange}
             />
 
             <div className="import-field">
@@ -381,9 +398,9 @@ function EditBookingForm({ booking, assets, bookings, onSave, onDelete, onDelete
     setForm(prev => ({ ...prev, assetId, unit: '', duration: found?.duration ?? DEFAULT_DURATION }))
   }
 
-  function handleEndTimeChange(endTime) {
-    if (!form.time || !endTime) return
-    setField('duration', hoursBetween(form.time, endTime))
+  function handleEndChange(newEndDate, newEndTime) {
+    if (!form.date || !form.time || !newEndDate || !newEndTime) return
+    setField('duration', combinedDuration(form.date, form.time, newEndDate, newEndTime))
   }
 
   const seriesBookings = booking.seriesId ? bookings.filter(b => b.seriesId === booking.seriesId) : [booking]
@@ -459,10 +476,11 @@ function EditBookingForm({ booking, assets, bookings, onSave, onDelete, onDelete
 
             <DurationEndTimeFields
               idPrefix="ebk"
+              date={form.date}
               time={form.time}
               duration={form.duration}
               onDurationChange={v => setField('duration', v)}
-              onEndTimeChange={handleEndTimeChange}
+              onEndChange={handleEndChange}
             />
 
             <div className="import-field">

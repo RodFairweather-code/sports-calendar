@@ -18,3 +18,9 @@ export function addImportedEvents(events) {
   saveToStorage(KEY, next)
   return next
 }
+
+export function removeImportedEvent(id) {
+  const next = loadImportedEvents().filter(e => e.id !== id)
+  saveToStorage(KEY, next)
+  return next
+}

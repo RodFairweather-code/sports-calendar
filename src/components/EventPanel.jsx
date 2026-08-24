@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import { loadTechStack } from '../services/techStack'
 import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
@@ -46,6 +46,17 @@ function loadBookings() {
 
 function persistBookings(b) {
   saveToStorage('staff_bookings', b)
+}
+
+const ROLE_LABELS = {
+  director:          'Director',
+  productionManager: 'Production Manager',
+  producer:          'Producer',
+  commentator:       'Commentator',
+  cameraman:         'Cameraman',
+  evsOperator:       'EVS Operator',
+  onsiteAudio:       'Onsite Audio',
+  graphicsOperator:  'Graphics Operator',
 }
 
 const STAFF_KEY_MAP = {
@@ -273,7 +284,7 @@ function TechToggleField({ label, value, field, onChange, overridden }) {
 
 // ── Main panel ───────────────────────────────────────────────────────────────
 
-function EventPanel({ event, onClose }) {
+function EventPanel({ event, onClose, onDeleteEvent }) {
   const p = event.extendedProps
 
   const [assignments, setAssignmentsState] = useState(loadAssignments)
@@ -286,6 +297,10 @@ function EventPanel({ event, onClose }) {
   const [bookings, setBookings] = useState(loadBookings)
   const [locks, setLocks]       = useState(loadLocks)
   const [view, setView]   = useState('resources')
+  const [notice, setNotice] = useState(null)
+  const noticeTimerRef = useRef(null)
+
+  useEffect(() => () => clearTimeout(noticeTimerRef.current), [])
 
   useEffect(() => {
     function onKey(e) { if (e.key === 'Escape') onClose() }
@@ -337,7 +352,7 @@ function EventPanel({ event, onClose }) {
   const passthroughOverridden = asgn.techPassthrough !== undefined &&
     asgn.techPassthrough !== (pattern?.passthrough ?? false)
 
-  function setBookingStatus(field, newStatus) {
+  function setBookingStatus(field, newStatus, name) {
     setBookings(prev => {
       const next = { ...prev, [event.id]: { ...prev[event.id], [field]: newStatus } }
       persistBookings(next)
@@ -352,6 +367,20 @@ function EventPanel({ event, onClose }) {
         return next
       })
     }
+    if (newStatus === 'offered' && name) {
+      const timeStr = timePart ? ` at ${timePart}` : ''
+      const dateSuffix = dateStr ? ` on ${dateStr}` : ''
+      clearTimeout(noticeTimerRef.current)
+      setNotice(`${name} has been offered ${ROLE_LABELS[field] || field} for ${event.title}${dateSuffix}${timeStr}. A calendar invite has also been sent out.`)
+      noticeTimerRef.current = setTimeout(() => setNotice(null), 8000)
+    }
+  }
+
+  function handleDeleteEvent() {
+    if (!window.confirm(
+      `Delete "${event.title}"? This removes it and every related staff booking, editorial decision, and production assignment. This cannot be undone.`
+    )) return
+    onDeleteEvent(event)
   }
 
   function toggleLock(field) {
@@ -421,6 +450,8 @@ function EventPanel({ event, onClose }) {
     <>
       <div className="panel-backdrop" onClick={onClose} aria-hidden="true" />
 
+      {notice && <div className="ep-toast">{notice}</div>}
+
       <aside className="event-panel" role="dialog" aria-modal="true" aria-label={event.title}>
 
         <div className="ep-accent" style={{ background: event.backgroundColor }} />
@@ -431,9 +462,12 @@ function EventPanel({ event, onClose }) {
             <span className="ep-comp-name">{p.competitionName}</span>
             <span className="ep-sport-badge">{p.sport}</span>
           </div>
-          <button className="ep-close" onClick={onClose} aria-label="Close panel">
-            &#x2715;
-          </button>
+          <div className="ep-header-actions">
+            <button className="ba-delete-btn" onClick={handleDeleteEvent}>Delete Event</button>
+            <button className="ep-close" onClick={onClose} aria-label="Close panel">
+              &#x2715;
+            </button>
+          </div>
         </div>
 
         <div className="ep-body">
@@ -500,14 +534,14 @@ function EventPanel({ event, onClose }) {
                     {patterns.map(pat => <option key={pat.id} value={pat.id}>{pat.name}</option>)}
                   </select>
                 </div>
-                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} status={bookingStatus(asgn.director,          'director',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('director',          s)} locked={isRoleLocked(locks, event.id, 'director')}          onToggleLock={() => toggleLock('director')} />
-                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('productionManager',  s)} locked={isRoleLocked(locks, event.id, 'productionManager')} onToggleLock={() => toggleLock('productionManager')} />
-                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('producer',          s)} locked={isRoleLocked(locks, event.id, 'producer')}          onToggleLock={() => toggleLock('producer')} />
-                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('commentator',       s)} locked={isRoleLocked(locks, event.id, 'commentator')}       onToggleLock={() => toggleLock('commentator')} />
-                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('cameraman',         s)} locked={isRoleLocked(locks, event.id, 'cameraman')}         onToggleLock={() => toggleLock('cameraman')} />
-                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} status={bookingStatus(asgn.evsOperator,       'evsOperator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('evsOperator',       s)} locked={isRoleLocked(locks, event.id, 'evsOperator')}       onToggleLock={() => toggleLock('evsOperator')} />
-                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s)} locked={isRoleLocked(locks, event.id, 'onsiteAudio')}       onToggleLock={() => toggleLock('onsiteAudio')} />
-                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('graphicsOperator',  s)} locked={isRoleLocked(locks, event.id, 'graphicsOperator')}  onToggleLock={() => toggleLock('graphicsOperator')} />
+                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} status={bookingStatus(asgn.director,          'director',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('director',          s, asgn.director)} locked={isRoleLocked(locks, event.id, 'director')}          onToggleLock={() => toggleLock('director')} />
+                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('productionManager',  s, asgn.productionManager)} locked={isRoleLocked(locks, event.id, 'productionManager')} onToggleLock={() => toggleLock('productionManager')} />
+                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('producer',          s, asgn.producer)} locked={isRoleLocked(locks, event.id, 'producer')}          onToggleLock={() => toggleLock('producer')} />
+                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('commentator',       s, asgn.commentator)} locked={isRoleLocked(locks, event.id, 'commentator')}       onToggleLock={() => toggleLock('commentator')} />
+                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('cameraman',         s, asgn.cameraman)} locked={isRoleLocked(locks, event.id, 'cameraman')}         onToggleLock={() => toggleLock('cameraman')} />
+                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} status={bookingStatus(asgn.evsOperator,       'evsOperator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('evsOperator',       s, asgn.evsOperator)} locked={isRoleLocked(locks, event.id, 'evsOperator')}       onToggleLock={() => toggleLock('evsOperator')} />
+                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s, asgn.onsiteAudio)} locked={isRoleLocked(locks, event.id, 'onsiteAudio')}       onToggleLock={() => toggleLock('onsiteAudio')} />
+                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('graphicsOperator',  s, asgn.graphicsOperator)} locked={isRoleLocked(locks, event.id, 'graphicsOperator')}  onToggleLock={() => toggleLock('graphicsOperator')} />
               </div>
 
               {/* ── Technical Resources ── */}

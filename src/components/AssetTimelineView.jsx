@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react'
-import { addHours, bookingDuration } from '../services/bookingTime'
+import { addHours, bookingDuration, bookingSpanDates, formatDateLabel } from '../services/bookingTime'
 
 const WINDOW_DAYS = 14
 
@@ -31,12 +31,14 @@ function buildRows(assets) {
   return rows
 }
 
-function buildBookingMap(bookings) {
+function buildBookingMap(bookings, assets) {
   const map = {}
   for (const b of bookings) {
-    const key = `${b.assetId}|${b.unit}|${b.date}`
-    if (!map[key]) map[key] = []
-    map[key].push(b)
+    for (const date of bookingSpanDates(b.date, b.time, bookingDuration(b, assets))) {
+      const key = `${b.assetId}|${b.unit}|${date}`
+      if (!map[key]) map[key] = []
+      map[key].push(b)
+    }
   }
   return map
 }
@@ -45,7 +47,7 @@ function AssetTimelineView({ assets, bookings, onOpenBooking, onEditBooking, onD
   const [startDate, setStartDate] = useState(todayStr)
 
   const rows = buildRows(assets)
-  const bookingMap = buildBookingMap(bookings)
+  const bookingMap = buildBookingMap(bookings, assets)
   const today = todayStr()
   const days = Array.from({ length: WINDOW_DAYS }, (_, i) => addDays(startDate, i))
 
@@ -133,12 +135,14 @@ function AssetTimelineView({ assets, bookings, onOpenBooking, onEditBooking, onD
                       .map(b => {
                         const end = addHours(b.time, bookingDuration(b, assets))
                         const range = `${b.time}–${end.time}${end.dayOffset > 0 ? ` (+${end.dayOffset}d)` : ''}`
+                        const continuing = date !== b.date
                         return (
                           <div
                             key={b.id}
-                            className="at-tl-chip"
+                            className={`at-tl-chip${continuing ? ' at-tl-chip--continues' : ''}`}
                             title={[
                               range,
+                              continuing && `continues from ${formatDateLabel(b.date)}`,
                               b.bookedBy && `Booked by ${b.bookedBy}`,
                               b.production && `Production: ${b.production}`,
                               b.contractNumber && `Contract: ${b.contractNumber}`,
@@ -147,7 +151,7 @@ function AssetTimelineView({ assets, bookings, onOpenBooking, onEditBooking, onD
                             ].filter(Boolean).join(' · ')}
                             onClick={e => handleChipClick(e, b)}
                           >
-                            {range}
+                            {continuing ? '↦ continues' : range}
                           </div>
                         )
                       })}

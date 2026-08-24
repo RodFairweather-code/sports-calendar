@@ -17,9 +17,9 @@ function isSelected(eventId, decisions) {
 
 function CalendarView({ events, onEventClick }) {
   const [decisions] = useState(loadDecisions)
-  const [imgOnly, setImgOnly] = useState(false)
+  const [showAll, setShowAll] = useState(false)
 
-  const displayEvents = imgOnly ? events.filter(e => isSelected(e.id, decisions)) : events
+  const displayEvents = showAll ? events : events.filter(e => isSelected(e.id, decisions))
 
   return (
     <main className="calendar-container">
@@ -27,10 +27,10 @@ function CalendarView({ events, onEventClick }) {
         <label className="calendar-img-toggle">
           <input
             type="checkbox"
-            checked={imgOnly}
-            onChange={e => setImgOnly(e.target.checked)}
+            checked={showAll}
+            onChange={e => setShowAll(e.target.checked)}
           />
-          Show only IMG events
+          Show all events
         </label>
       </div>
       <div className="calendar-fc-wrapper">

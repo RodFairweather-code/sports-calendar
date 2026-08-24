@@ -643,6 +643,16 @@
   color: #fff;
 }
 
+.toggle-btn--clear-all {
+  --comp-color: #8492a6;
+  color: #b0bec5;
+  font-weight: 800;
+}
+
+.toggle-btn--clear-all:hover {
+  color: #fff;
+}
+
 .toggle-btn--sport.active {
   background: rgba(255, 255, 255, 0.18);
   border-color: rgba(255, 255, 255, 0.8);
@@ -680,6 +690,32 @@
   z-index: 1000;
   cursor: pointer;
   animation: fadeInBackdrop 0.2s ease;
+}
+
+.ep-toast {
+  position: fixed;
+  top: 24px;
+  right: 440px;
+  max-width: 380px;
+  background: #1e293b;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border-left: 4px solid #d97706;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  z-index: 1002;
+  animation: bs-toast-in 0.2s ease-out;
+}
+
+@media (max-width: 860px) {
+  .ep-toast {
+    right: 16px;
+    left: 16px;
+    max-width: none;
+    top: 16px;
+  }
 }
 
 .event-panel {
@@ -744,6 +780,13 @@
   border-radius: 4px;
   padding: 2px 7px;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ep-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   flex-shrink: 0;
 }
 
@@ -3750,6 +3793,28 @@
 .bs-action-btn:not(.bs-action-btn--offer):not(.bs-action-btn--accept) { background: #64748b; color: #fff; }
 .bs-action-btn:not(.bs-action-btn--offer):not(.bs-action-btn--accept):hover { background: #475569; }
 
+.bs-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  max-width: 380px;
+  background: #1e293b;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border-left: 4px solid #d97706;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  z-index: 1000;
+  animation: bs-toast-in 0.2s ease-out;
+}
+
+@keyframes bs-toast-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Bottom banner */
 .book-staff-banner {
   display: flex;
@@ -4775,5 +4840,11 @@
 
 .at-tl-chip:hover {
   background: #c0392b;
+}
+
+.at-tl-chip--continues {
+  background: #3a5a80;
+  font-weight: 400;
+  font-style: italic;
 }
 

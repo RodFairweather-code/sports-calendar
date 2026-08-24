@@ -1,8 +1,8 @@
-import { bookingDuration, formatDateLabel, formatRange } from '../services/bookingTime'
+import { bookingDuration, bookingSpanDates, formatDateLabel, formatRange } from '../services/bookingTime'
 
 function DayDetailView({ date, bookings, assets, onEditBooking, onBookThisDay, onBack }) {
   const dayBookings = bookings
-    .filter(b => b.date === date)
+    .filter(b => bookingSpanDates(b.date, b.time, bookingDuration(b, assets)).includes(date))
     .sort((a, b) => (a.assetName + a.unit).localeCompare(b.assetName + b.unit) || a.time.localeCompare(b.time))
 
   return (
@@ -28,6 +28,7 @@ function DayDetailView({ date, bookings, assets, onEditBooking, onBookThisDay, o
                 <div className="ba-booking-main">
                   <span className="ba-booking-asset">{b.assetName} {b.unit}</span>
                   <span className="ba-booking-when">{formatRange(b.time, bookingDuration(b, assets))}</span>
+                  {b.date !== date && <span className="ba-booking-tag">Continues from {formatDateLabel(b.date)}</span>}
                   {b.bookedBy && <span className="ba-booking-by">Booked by {b.bookedBy}</span>}
                   {b.production && <span className="ba-booking-notes">Production: {b.production}</span>}
                   {b.contractNumber && <span className="ba-booking-notes">Contract: {b.contractNumber}</span>}
