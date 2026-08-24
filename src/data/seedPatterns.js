@@ -44,8 +44,8 @@ export const SEED_PATTERNS = [
     "productionBooth": true
   },
   {
-    "id": "pat_seed_3",
     "name": "8 Cam Feature Match",
+    "requiredCapability": "",
     "cameramen": 8,
     "evsOperator": 4,
     "audioOnLocation": 3,
@@ -61,7 +61,10 @@ export const SEED_PATTERNS = [
     "audioFrom": -3,
     "audioUntil": 2,
     "productionBooth": false,
-    "studio": true
+    "studio": true,
+    "obUnit": true,
+    "passthrough": false,
+    "id": "pat_seed_3"
   },
   {
     "id": "pat_seed_4",
@@ -100,5 +103,28 @@ export const SEED_PATTERNS = [
     "audioFrom": -2,
     "audioUntil": 2,
     "productionBooth": false
+  },
+  {
+    "name": "Studio Show",
+    "requiredCapability": "cam4",
+    "cameramen": 4,
+    "evsOperator": 1,
+    "audioOnLocation": 1,
+    "crewFrom": 0,
+    "crewUntil": 0,
+    "incomingVideoLines": 0,
+    "outgoingVideoLines": 0,
+    "videoFrom": 0,
+    "videoUntil": 0,
+    "incomingAudioLines": 0,
+    "incomingTalkbackLines": 0,
+    "outgoingTalkbackLines": 0,
+    "audioFrom": 0,
+    "audioUntil": 0,
+    "productionBooth": false,
+    "studio": true,
+    "obUnit": false,
+    "passthrough": false,
+    "id": "pat_1787577989897_v74uu"
   }
 ]
