@@ -24,7 +24,7 @@ const EMPTY_FORM = {
   venue: '',
   allDay: false,
   startDate: '',
-  startTime: '',
+  startTime: '09:00',
   endDate: '',
 
   programmeTitle: '',
@@ -296,8 +296,34 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
     setForm(prev => ({ ...prev, [field]: value }))
   }
 
+  function patternDefaults(pattern) {
+    if (!pattern) return {}
+    return {
+      techCameramen:             pattern.cameramen             ?? 0,
+      techEvsOperator:           pattern.evsOperator           ?? 0,
+      techAudioOnLocation:       pattern.audioOnLocation       ?? 0,
+      techIncomingVideoLines:    pattern.incomingVideoLines    ?? 0,
+      techOutgoingVideoLines:    pattern.outgoingVideoLines    ?? 0,
+      techIncomingAudioLines:    pattern.incomingAudioLines    ?? 0,
+      techIncomingTalkbackLines: pattern.incomingTalkbackLines ?? 0,
+      techOutgoingTalkbackLines: pattern.outgoingTalkbackLines ?? 0,
+      techProductionBooth:       pattern.productionBooth       ?? false,
+      techStudio:                pattern.studio                ?? false,
+      techObUnit:                pattern.obUnit                ?? false,
+      techPassthrough:           pattern.passthrough            ?? false,
+    }
+  }
+
   function handleEventTypeChange(eventType) {
-    setForm({ ...EMPTY_FORM, eventType, techStudio: eventType === 'programme' })
+    let next = { ...EMPTY_FORM, eventType }
+    if (eventType === 'programme') {
+      const studioPattern = patterns.find(p => p.name === 'Studio Show')
+      next.techStudio = true
+      if (studioPattern) {
+        next = { ...next, patternId: studioPattern.id, ...patternDefaults(studioPattern) }
+      }
+    }
+    setForm(next)
     setErrors({})
     setSuccessMsg('')
   }
@@ -305,21 +331,7 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
   function handlePatternChange(patternId) {
     const pattern = patterns.find(p => p.id === patternId)
     setForm(prev => {
-      const next = { ...prev, patternId }
-      if (pattern) {
-        next.techCameramen             = pattern.cameramen             ?? 0
-        next.techEvsOperator           = pattern.evsOperator           ?? 0
-        next.techAudioOnLocation       = pattern.audioOnLocation       ?? 0
-        next.techIncomingVideoLines    = pattern.incomingVideoLines    ?? 0
-        next.techOutgoingVideoLines    = pattern.outgoingVideoLines    ?? 0
-        next.techIncomingAudioLines    = pattern.incomingAudioLines    ?? 0
-        next.techIncomingTalkbackLines = pattern.incomingTalkbackLines ?? 0
-        next.techOutgoingTalkbackLines = pattern.outgoingTalkbackLines ?? 0
-        next.techProductionBooth       = pattern.productionBooth       ?? false
-        next.techStudio                = pattern.studio                ?? false
-        next.techObUnit                = pattern.obUnit                ?? false
-        next.techPassthrough           = pattern.passthrough           ?? false
-      }
+      const next = { ...prev, patternId, ...patternDefaults(pattern) }
       return next
     })
   }
@@ -430,7 +442,12 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
       `"${events[0].title}" was added${events.length > 1 ? ` (${events.length} occurrences)` : ''}. ` +
       `Toggle ${department.name} on in the competition bar to see it on the calendar.`
     )
-    setForm({ ...EMPTY_FORM, eventType: 'programme', techStudio: true, departmentId: department.id })
+    const studioPattern = patterns.find(p => p.name === 'Studio Show')
+    let resetForm = { ...EMPTY_FORM, eventType: 'programme', techStudio: true, departmentId: department.id }
+    if (studioPattern) {
+      resetForm = { ...resetForm, patternId: studioPattern.id, ...patternDefaults(studioPattern) }
+    }
+    setForm(resetForm)
     setErrors({})
   }
 
@@ -847,6 +864,18 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
 
         <div className="import-section-title">Production <span className="import-section-hint">(optional)</span></div>
         <div className="import-grid">
+          <div className="import-field">
+            <label htmlFor="imp-prog-pattern">Production Type</label>
+            <select
+              id="imp-prog-pattern"
+              value={form.patternId}
+              onChange={e => handlePatternChange(e.target.value)}
+            >
+              <option value="">— none —</option>
+              {patterns.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
+            </select>
+            <span className="import-field-hint">Defaults to Studio Show; selecting a type pre-fills the technical resources below.</span>
+          </div>
           <StaffField label="Director"          value={form.director}          options={staff.director}                onChange={v => setField('director', v)} />
           <StaffField label="Production Manager" value={form.productionManager} options={staff.onsiteProductionManager} onChange={v => setField('productionManager', v)} />
           <StaffField label="Producer"          value={form.producer}          options={staff.producer}                onChange={v => setField('producer', v)} />
