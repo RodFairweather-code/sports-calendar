@@ -16,6 +16,7 @@ import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
 import { SEED_RIGHTS_MATRIX } from './data/seedRights'
+import { SEED_PATTERNS } from './data/seedPatterns'
 import { SEED_BOOKABLE_ASSETS, SEED_ASSET_BOOKINGS } from './data/seedBookableAssets'
 import { saveToStorage } from './services/storage'
 import { loadImportedEvents, addImportedEvent, addImportedEvents, removeImportedEvent } from './services/importedEvents'
@@ -31,6 +32,8 @@ if (!localStorage.getItem('admin_staff_profiles'))
   saveToStorage('admin_staff_profiles', SEED_STAFF_PROFILES)
 if (!localStorage.getItem('rights_matrix'))
   saveToStorage('rights_matrix', SEED_RIGHTS_MATRIX)
+if (!localStorage.getItem('admin_patterns'))
+  saveToStorage('admin_patterns', SEED_PATTERNS)
 if (!localStorage.getItem('bookable_assets'))
   saveToStorage('bookable_assets', SEED_BOOKABLE_ASSETS)
 if (!localStorage.getItem('asset_bookings'))
