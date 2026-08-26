@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<!-- saved from url=(0253)https://e24b8996-6234-4ed5-9ead-4112f88ad65e.frame.claudeusercontent.com/_f/1787748507-8d4b/?__frame_t=fmeO0LZzujgiwmEt-2-tbBHd.70867ff5-1f16-4026-9be9-452e83101c9f.6da01530-ab51-41cc-a520-e72fa1d7a720.1787754845&__frame_v=manifest.14a5398c0bc96a59.json -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- frame-runtime --><!--<base href="/_f/1787748507-8d4b/">--><base href="."><script>window.__FRAME_PREAMBLE={"v":1,"capabilities":{"artifact":"artifact.oqIe8shs.js","assets":"assets.DBUJcvq_.js","comments":"comments.GLuHR3zP.js","db":"db.CRhVHzSt.js","downloads":"downloads.C3GSvEDP.js","embed":"embed.CxGAyc-v.js","mcp":"mcp.Bvma3qD7.js","network":"network.B5UA9Su4.js","permissions":"permissions.BNySkLV5.js","room":"room.DE7EMui-.js","sample":"sample.BW2Uysoh.js","self":"artifact.oqIe8shs.js","user":"user.BpKav-Rf.js"},"transforms":"_transforms.CQm3TZ9K.js","comments":"_comments.PBVy184F.js","translate":"_translate.5HCW4BJh.js"}</script><script>(function(){"use strict";var Z=["light","dark","system"],J=/^[A-Za-z0-9_-]{1,64}$/,z=/^[a-zA-Z_:][a-zA-Z0-9_:.-]{0,127}$/,Q=new Set(["class","hidden","value","checked"]);function ee(e){const t=e.toLowerCase();return t.startsWith("data-")||t.startsWith("aria-")||Q.has(t)}var Me="http://www.w3.org/1999/xhtml",te="http://www.w3.org/2000/svg",re=new Set(["script","style","iframe","noscript","noframes","noembed","xmp","plaintext","template","title","textarea","object","embed"]),ne=new Set(["script","style"]);function oe(e){const t=e.localName.toLowerCase();return e.namespaceURI==="http://www.w3.org/1999/xhtml"?!re.has(t):e.namespaceURI===te?!ne.has(t):!1}var se=new Set(["html","head","body","frameset"]);function ae(e){return e.namespaceURI==="http://www.w3.org/1999/xhtml"&&se.has(e.localName)}function ie(e){if(e===null||typeof e!="object")return!1;const t=e;if(typeof t.target!="string"||!J.test(t.target)||t.text!==void 0&&typeof t.text!="string")return!1;if(t.attrsSet!==void 0){if(t.attrsSet===null||typeof t.attrsSet!="object")return!1;for(const[r,n]of Object.entries(t.attrsSet))if(!z.test(r)||typeof n!="string")return!1}if(t.attrsRemoved!==void 0){if(!Array.isArray(t.attrsRemoved))return!1;for(const r of t.attrsRemoved)if(typeof r!="string"||!z.test(r))return!1}return!0}function ce(e,t){if(e===null||typeof e!="object")return!1;const{seq:r,elements:n}=e;if(typeof r!="number"||!Number.isSafeInteger(r)||!Array.isArray(n)||n.length===0||n.length>64)return!1;for(let s=0;s<n.length;s++)if(!t(n[s]))return!1;return!0}function le(e){return e===null||typeof e!="object"?!1:ce(e.__frame_patch,ie)}function ue(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_init;return t!==null&&typeof t=="object"}function fe(e){return e!==null&&typeof e=="object"&&e.__frame_size_poke===!0}function pe(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_theme;if(t===null||typeof t!="object")return!1;const r=t.theme;return typeof r=="string"&&Z.includes(r)}var g=/^[\w.-]+\.js$/;function de(e,t,r){return r?"inert":typeof t=="string"&&g.test(t)?e?[t]:"inert":e?"inert":"framed"}function me(){return{post(e,t){parent.postMessage(e,t)},on(e){const t=r=>{r.source===parent&&e(r.data,r.origin)};return addEventListener("message",t),()=>removeEventListener("message",t)}}}function he(){return{post:()=>{},on:()=>()=>{}}}var O="__frame_scroll",_e=150,ve=310,ye=160,we=3e4;function be(){let e=0,t=!1,r=!1,n=!1,s=0,a=null;const u=i=>{try{sessionStorage.setItem(O,JSON.stringify({y:i}))}catch{}},f=()=>{if(clearTimeout(e),a===null)return;const i=a;a=null,u(i)},R=()=>{if(t){t=!1;return}r=!0,a=scrollY,clearTimeout(e),e=setTimeout(f,_e)};try{addEventListener("scroll",R,{passive:!0}),addEventListener("pagehide",f)}catch{}const v=()=>{let i;try{i=sessionStorage.getItem(O)}catch{return null}if(i===null)return null;let m;try{m=JSON.parse(i)}catch{m=null}const l=m?.y;if(!(typeof l=="number"&&Number.isFinite(l)&&l>=0)){try{sessionStorage.removeItem(O)}catch{}return null}return l};let S=!1;const h=i=>{try{const m=scrollY;scrollTo({top:i,left:0,behavior:"instant"}),s=i,n=!0,clearTimeout(e),a=null,u(i);const l=scrollY;l!==m&&(t=!0),l!==i&&!S&&(S=!0,addEventListener("load",()=>{try{if(scrollY===l){const k=v();h(k!==null?k:s)}}catch{}},{once:!0}))}catch{}},y=()=>{try{return!!location.hash}catch{return!0}};let o=!1;const p=()=>{try{if(o||innerWidth>ve||innerHeight>ye)return;o=!0;const i=Date.now(),m=()=>{try{removeEventListener("resize",m)}catch{}if(Date.now()-i>we||r||y())return;const l=v();h(l!==null?l:s)};addEventListener("resize",m)}catch{}};let _=!1,w=!1;return{restore(){if(_||(_=!0,y()))return;const i=v();i!==null&&(h(i),p())},promoted(){if(w||(w=!0,y()))return;const i=v();i!==null?(h(i),p()):n&&h(s)}}}function Ee(e,t,r){let n=null;try{n=window.trustedTypes?.createPolicy("frame-runtime",{createScriptURL:f=>f})??null}catch{}const s=window.Worker,a=s?.prototype,u=Object.freeze({Worker:s,workerOn:a?.addEventListener,workerPost:a?.postMessage,workerTerminate:a?.terminate,fetch:window.fetch.bind(window),preventDefault:Event.prototype.preventDefault,policy:n});t(e).then(f=>f?.bootTopLevel?f.bootTopLevel(u,{settle:r}):r()).catch(r)}var Oe="modulepreload",Ce=function(e){return"/"+e},je={},ge=function(t,r,n){let s=Promise.resolve();function a(u){const f=new Event("vite:preloadError",{cancelable:!0});if(f.payload=u,window.dispatchEvent(f),!f.defaultPrevented)throw u}return s.then(u=>{for(const f of u||[])f.status==="rejected"&&a(f.reason);return t().catch(a)})},Ae=window===top,H=Object.getOwnPropertyDescriptor(window,"claude"),T=de(Ae,window.__FRAME_PREAMBLE?.topLevel,H?.writable===!1),C=typeof T=="object"&&T[0],d=C?he():me();(function(){const e=Object.defineProperty,t=globalThis,r=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let n=0;for(let s=0;s<r.length;s++){const a=r[s];try{e(t,a,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[a]}catch{}try{e(t,a,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[a]=="function"&&n++}if(n&&T==="framed")try{d.post({__frame_rtc_lockdown_failed:n},"*")}catch{}})();var Re=1e4,Se=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function q(e){for(const t of Se)if(t.endsWith(":*"))try{const r=new URL(e);if(`${r.protocol}//${r.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}var L=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities}),j=window.__FRAME_PREAMBLE?.transforms,N=window.__FRAME_PREAMBLE?.comments,I=window.__FRAME_PREAMBLE?.translate;function A(e){return ge(()=>import("/_runtime/"+e),void 0)}function W(e,t){return{contract:e.contract,changes:new Set(e.changes??[]),flags:new Set(e.flags??[]),capabilities:e.capabilities??{},capBudgets:e.capBudgets??{},transforms:new Map,shellOrigin:t,mount:G,pipe:()=>({wrap:(r,n)=>(...s)=>{try{return n(...s)}catch(a){return Promise.reject(a)}}})}}var P=null,b=null;function $(e,t,r){try{Object.defineProperty(e,t,{value:r,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:r,writable:!1,configurable:!0,enumerable:!0})}catch{}}}var B=!1;function ke(e,t){const r=[];for(const n of e.elements){const s=document.querySelector(`[data-id="${n.target}"]`);if(!s){d.post({__frame_patch_miss:{seq:e.seq}},t);return}if([...Object.keys(n.attrsSet??{}),...n.attrsRemoved??[]].some(a=>!ee(a))){d.post({__frame_patch_miss:{seq:e.seq}},t);return}if(n.text!==void 0&&(!oe(s)||ae(s))){d.post({__frame_patch_miss:{seq:e.seq}},t);return}for(const[a,u]of Object.entries(n.attrsSet??{}))if(!Y(s,a)){try{s.setAttribute(a,u)}catch{}K(s,a,u)}for(const a of n.attrsRemoved??[])Y(s,a)||(s.removeAttribute(a),K(s,a,null));typeof n.text=="string"&&(s.textContent=n.text),r.push(n.target)}try{document.dispatchEvent(new CustomEvent("claude:edit",{detail:{seq:e.seq,targets:r}}))}catch{}}function K(e,t,r){if(!(e instanceof HTMLInputElement))return;const n=t.toLowerCase();n==="checked"?e.checked=r!==null:n==="value"&&e.type!=="file"&&(e.value=r??"")}function Y(e,t){const r=t.toLowerCase(),n=e;return r==="data-id"||(r==="value"||r==="checked")&&(n.__artifactSecret===!0||/^(password|hidden|file)$/.test(n.type??"")||/(^|\s)(cc-|one-time-code|current-password|new-password)/i.test(`${e.getAttribute("autocomplete")??""} ${n.autocomplete??""}`))}function X(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,B=!0):B&&(delete t.dataset.theme,t.style.colorScheme="",B=!1)}var M=new Map;function Te(){let e;const t={u:new Promise(r=>{e=r}),r:r=>{t.done=!0,e(r)},done:!1,nulled:!1};return t}function U(){for(const e of M.values())e.done||(e.nulled=!0,e.r(null))}var Le=Object.freeze(Object.assign(Object.create(null),{call:Function.prototype.call,apply:Function.prototype.apply,bind:Function.prototype.bind})),G=(e,t)=>{const r=M.get(e);if(!r||r.done){r?.nulled&&b&&d.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:e}},b);return}const n=typeof t=="function"?Object.setPrototypeOf(t,Le):Object.assign(Object.create(null),t);typeof n.then=="function"&&delete n.then,r.r(Object.freeze(n))};function V(){const e=H?.value??{};$(window,"claude",e);for(const t of Object.keys(L)){if(e[t]!==void 0){$(e,t,e[t]);continue}M.set(t,Te())}if(e.use===void 0){const t=r=>{if(typeof r!="string"||!Object.hasOwn(L,r))return Promise.resolve(null);const n=M.get(r);return n?n.u:Promise.resolve(e[r]??null)};try{Object.defineProperty(e,"use",{value:t,writable:!0,configurable:!0,enumerable:!1})}catch{}}}if(T==="framed"){const e=j&&g.test(j)?A(j).catch(()=>{}):Promise.resolve(void 0),t=o=>{if(o.type==="auxclick"&&o.button!==1)return;const p=o.target,_=p&&p.closest?p.closest("a[href],area[href]"):null;if(!_)return;const w=_.getAttribute("href");if(!w)return;let i;try{i=new URL(w,document.baseURI)}catch{return}if((i.protocol==="http:"||i.protocol==="https:")&&i.origin!==location.origin){o.preventDefault();const m=(_.getAttribute("target")??"").toLowerCase(),l=o.type==="auxclick"||o.metaKey||o.ctrlKey||o.shiftKey||o.altKey||!["","_self","_top","_parent"].includes(m);d.post({__frame_nav:!0,url:i.href,newTab:l},"*")}};addEventListener("click",t,!0),addEventListener("auxclick",t,!0);const r={},n=o=>{o.isTrusted&&(r.pointer=!0)},s=o=>{o.isTrusted&&(r.click=!0)};addEventListener("pointermove",n,{capture:!0,passive:!0}),addEventListener("click",s,{capture:!0,passive:!0}),e.then(o=>{o?.wireNav&&(o.wireNav(),removeEventListener("click",t,!0),removeEventListener("auxclick",t,!0),removeEventListener("pointermove",n,!0),removeEventListener("click",s,!0),o.wireEngagement?.(r))});let a=null;try{a=be()}catch{}V();let u=null,f=null,R=0;const v=d.on((o,p)=>{q(p)&&ue(o)&&(u=o.__frame_init,b=p,v(),clearTimeout(R),f?.())});d.post({__frame_connect:!0},"*");const S=new Promise(o=>{f=o,R=setTimeout(()=>{v(),o()},Re)}),h=document.readyState==="loading"?new Promise(o=>document.addEventListener("DOMContentLoaded",()=>o(),{once:!0})):Promise.resolve();h.then(()=>{try{a?.restore()}catch{}});const y={cb:null};d.on((o,p)=>{if(q(p)&&fe(o)){try{a?.promoted()}catch{}y.cb?.()}}),S.then(async()=>{if(!u||!b){U();return}X(u.theme);const o=b;let p=!1,_=!1;d.on((c,D)=>{if(D!==o)return;pe(c)&&X(c.__frame_theme.theme),le(c)&&ke(c.__frame_patch,o);const E=c?.__fc_mode;E&&typeof E=="object"&&!p&&N&&g.test(N)&&(p=!0,A(N).then(F=>F.install?.(o,E.on===!0)).catch(()=>{}));const x=c?.__ft_cmd;x&&typeof x=="object"&&!_&&I&&g.test(I)&&(_=!0,A(I).then(F=>F.install?.(o,x)).catch(()=>{}))});const w=Object.keys(u.capabilities??{}).filter(c=>Object.hasOwn(L,c)).map(c=>[c,L[c]]).filter(c=>typeof c[1]=="string"&&g.test(c[1])),i=await Promise.allSettled(w.map(([,c])=>A(c))),m=await e,l=b;if(m?.buildBoot||d.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:"_transforms"}},l),m?.buildBoot)try{P=m.buildBoot(u,m.TRANSFORMS??{},{shellOrigin:l,mount:G},c=>d.post({__frame_cap_telemetry:c},l))}catch{d.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:"_transforms"}},l),P=W(u,l)}else P=W(u,l);const k=c=>d.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:c}},l),Pe=P;i.forEach((c,D)=>{const E=w[D][0];if(c.status!=="fulfilled"){k(E);return}try{c.value?.install?.(Pe)}catch{k(E)}}),U(),await h,d.post({__frame_ready:!0},b),e.then(c=>c?.installSizeReporter?.(l,y))})}else C&&(V(),Ee(C,A,U))})();</script><!-- /frame-runtime --><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>Sports Calendar Schema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./css2" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EEF2F4;
+    --surface: #FFFFFF;
+    --surface-2: #E3EAEE;
+    --ink: #142438;
+    --ink-2: #2B3F56;
+    --muted: #5B6B7D;
+    --line: #C7D3DB;
+    --line-strong: #9FB0BE;
+    --accent: #0B7285;
+    --accent-ink: #075A69;
+    --accent-soft: rgba(11,114,133,0.10);
+    --font-display: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0A1929;
+      --surface: #0F2338;
+      --surface-2: #15304A;
+      --ink: #E7F1F6;
+      --ink-2: #C7D9E4;
+      --muted: #7C93A8;
+      --line: rgba(143,193,212,0.22);
+      --line-strong: rgba(154,203,222,0.42);
+      --accent: #4FD1DE;
+      --accent-ink: #8FE6EE;
+      --accent-soft: rgba(79,209,222,0.13);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0A1929;
+    --surface: #0F2338;
+    --surface-2: #15304A;
+    --ink: #E7F1F6;
+    --ink-2: #C7D9E4;
+    --muted: #7C93A8;
+    --line: rgba(143,193,212,0.22);
+    --line-strong: rgba(154,203,222,0.42);
+    --accent: #4FD1DE;
+    --accent-ink: #8FE6EE;
+    --accent-soft: rgba(79,209,222,0.13);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-display);
+    margin: 0;
+    padding: 56px 24px 96px;
+  }
+  .page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+
+  /* ---- masthead ---- */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 700;
+    line-height: 1.15;
+    text-wrap: balance;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .dek { font-size: 16px; color: var(--ink-2); line-height: 1.55; max-width: 62ch; margin: 0 0 18px; }
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--muted);
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+  .meta b { color: var(--ink-2); font-weight: 600; }
+
+  /* ---- prose sections ---- */
+  section { display: flex; flex-direction: column; gap: 16px; }
+  h2 {
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.005em;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  h2 .domain-count {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  p { line-height: 1.65; font-size: 15.5px; color: var(--ink-2); max-width: 66ch; margin: 0; }
+  p + p { margin-top: 2px; }
+  .lede { display: flex; flex-direction: column; gap: 12px; }
+
+  .rec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .rec-card {
+    background: var(--surface);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .rec-card .k { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .rec-card .v { font-size: 16px; font-weight: 600; color: var(--ink); }
+  .rec-card .d { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .callout .callout-title {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-ink);
+    font-weight: 600;
+  }
+  .callout ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .callout li { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+  .callout li b { color: var(--ink); }
+
+  /* ---- figures ---- */
+  figure {
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+  }
+  figure svg { display: block; width: 100%; height: auto; min-width: 480px; }
+  figcaption {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    line-height: 1.5;
+  }
+  .xref { font-size: 13px; color: var(--muted); line-height: 1.55; margin: -4px 0 0; }
+  .xref code { font-family: var(--font-mono); color: var(--ink-2); }
+
+  /* svg shared styles */
+  .erd text, .map text { font-family: var(--font-mono); }
+  .ent-title, .domain-title { font-family: var(--font-display); font-weight: 600; }
+  .ent-box, .domain-box { fill: var(--surface-2); stroke: var(--line-strong); stroke-width: 1.25; }
+  .ent-div { stroke: var(--line); stroke-width: 1; }
+  .ent-fields { fill: var(--ink-2); }
+  .ent-fields .tag-pk { fill: var(--accent-ink); font-weight: 600; }
+  .ent-fields .tag-fk { fill: var(--muted); font-weight: 600; }
+  .ent-fields .proposed { fill: var(--accent-ink); }
+  .conn { stroke: var(--line-strong); stroke-width: 1.3; fill: none; }
+  .conn-accent { stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 5 3; fill: none; }
+  .conn-label { fill: var(--muted); }
+  .conn-label-bg { fill: var(--surface); }
+  .arrow { fill: var(--line-strong); }
+  .arrow-accent { fill: var(--accent); }
+  .domain-sub { fill: var(--muted); }
+  .src-line { fill: var(--ink-2); }
+
+  /* ---- data dictionary ---- */
+  details {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 14px 18px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "▸"; color: var(--accent); font-size: 11px; transition: transform 0.15s ease; }
+  details[open] summary::before { transform: rotate(90deg); }
+  summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .dict-wrap { overflow-x: auto; border-top: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; }
+  thead th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    background: var(--surface-2);
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  tbody td {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-2);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.col-field, td.col-table { font-family: var(--font-mono); color: var(--ink); white-space: nowrap; }
+  td.col-type { font-family: var(--font-mono); color: var(--muted); white-space: nowrap; }
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    letter-spacing: 0.02em;
+  }
+  .badge-pk { background: var(--accent-soft); color: var(--accent-ink); }
+  .badge-fk { background: var(--surface-2); color: var(--muted); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    summary::before { transition: none; }
+  }
+</style>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Database architecture — proposal</p>
+    <h1>Sports Calendar Schema</h1>
+    <p class="dek">A relational schema for the Sports Broadcasting Calendar app, derived from the sixteen localStorage keys the app already reads and writes today — grouped into five domains, with an entity map and full column reference for each.</p>
+    <div class="meta">
+      <span><b>Source app</b> Sports Broadcasting Calendar v3.03</span>
+      <span><b>Basis</b> current localStorage read/write sites, verified against source</span>
+      <span><b>Engine</b> PostgreSQL</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Why PostgreSQL</h2>
+    <div class="lede">
+      <p>The app's sixteen localStorage keys already behave like a normalized relational schema — flat JSON blobs keyed by id, cross-referenced by other blobs via string ids (<code style="font-family:var(--font-mono)">event_id</code>, <code style="font-family:var(--font-mono)">platform_id</code>, <code style="font-family:var(--font-mono)">pattern_id</code>...). Every view assembles its data by parsing three or four of these keys and joining them in JavaScript at render time. A relational engine turns that implicit, hand-rolled join logic into real foreign keys and query joins.</p>
+      <p>The closed-vocabulary fields scattered through the app — decision states (<code style="font-family:var(--font-mono)">Y</code>/<code style="font-family:var(--font-mono)">P</code>/blank), rights (<code style="font-family:var(--font-mono)">Y</code>/<code style="font-family:var(--font-mono)">N</code>/unknown), booking status (confirmed/offered/unbooked) — become real <code style="font-family:var(--font-mono)">CHECK</code> constraints or enums instead of untyped strings, and multi-table writes (an editorial decision plus its default pattern, an event plus its cascade of bookings) become atomic transactions instead of sequential <code style="font-family:var(--font-mono)">setItem</code> calls with no rollback.</p>
+    </div>
+    <div class="rec-grid">
+      <div class="rec-card">
+        <span class="k">Engine</span>
+        <span class="v">PostgreSQL</span>
+        <span class="d">Deep, mostly-fixed relational structure with a few genuinely open-ended fields (staff capability tags) — a good fit for relational tables plus a narrow JSONB escape hatch, not a document store.</span>
+      </div>
+      <div class="rec-card">
+        <span class="k">Shape</span>
+        <span class="v">19 tables / 5 domains</span>
+        <span class="d">Scheduling, Editorial &amp; Rights, Production Planning, Staffing, Bookable Assets — mirrors the app's own nav sections closely.</span>
+      </div>
+      <div class="rec-card">
+        <span class="k">Migration path</span>
+        <span class="v">Seed files → seed scripts</span>
+        <span class="d">seedStaff.js, seedRights.js, seedPatterns.js and seedBookableAssets.js are already hand-maintained fixture snapshots — they map directly onto DB seed/migration scripts.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>System map</h2>
+    <p>Every domain hangs off one core table pair — <code style="font-family:var(--font-mono)">competitions</code> and <code style="font-family:var(--font-mono)">events</code> — which itself is fed by three different fixture sources today. The one dashed edge marks a link that doesn't exist yet in the current app.</p>
+    <figure>
+      <svg class="map" viewBox="0 0 980 580" role="img" aria-label="System map: three external fixture sources feed the Scheduling core, which Editorial and Rights, Production Planning, and Staffing all reference by event id; Bookable Assets currently has no foreign key back to events.">
+        <!-- external sources -->
+        <rect class="domain-box" x="30" y="215" width="240" height="150" rx="6"></rect>
+        <text class="domain-title" x="50" y="245" font-size="14">External fixture sources</text>
+        <line class="ent-div" x1="30" y1="257" x2="270" y2="257"></line>
+        <text class="domain-sub src-line" x="50" y="280" font-size="11">Bundled season JSON</text>
+        <text class="domain-sub src-line" x="50" y="300" font-size="11">TheSportsDB API (live)</text>
+        <text class="domain-sub src-line" x="50" y="320" font-size="11">fixturedownload.com (CSV)</text>
+        <text class="domain-sub src-line" x="50" y="345" font-size="10.5" fill="var(--muted)">manual import, per competition</text>
+
+        <!-- scheduling hub -->
+        <rect class="domain-box" x="405" y="240" width="220" height="110" rx="6" style="fill:var(--surface);stroke:var(--accent);stroke-width:1.5"></rect>
+        <text class="domain-title" x="425" y="270" font-size="14.5">Scheduling</text>
+        <line class="ent-div" x1="405" y1="282" x2="625" y2="282"></line>
+        <text class="domain-sub" x="425" y="304" font-size="11.5">competitions</text>
+        <text class="domain-sub" x="425" y="324" font-size="11.5">events</text>
+
+        <!-- domain boxes -->
+        <rect class="domain-box" x="725" y="25" width="230" height="92" rx="6"></rect>
+        <text class="domain-title" x="745" y="52" font-size="13.5">Editorial &amp; Rights</text>
+        <line class="ent-div" x1="725" y1="64" x2="955" y2="64"></line>
+        <text class="domain-sub" x="745" y="84" font-size="10.5">platforms · decisions · rights</text>
+        <text class="domain-sub" x="745" y="100" font-size="10.5">4 tables</text>
+
+        <rect class="domain-box" x="725" y="155" width="230" height="92" rx="6"></rect>
+        <text class="domain-title" x="745" y="182" font-size="13.5">Production Planning</text>
+        <line class="ent-div" x1="725" y1="194" x2="955" y2="194"></line>
+        <text class="domain-sub" x="745" y="214" font-size="10.5">patterns · assignments · tech</text>
+        <text class="domain-sub" x="745" y="230" font-size="10.5">4 tables</text>
+
+        <rect class="domain-box" x="725" y="285" width="230" height="92" rx="6"></rect>
+        <text class="domain-title" x="745" y="312" font-size="13.5">Staffing</text>
+        <line class="ent-div" x1="725" y1="324" x2="955" y2="324"></line>
+        <text class="domain-sub" x="745" y="344" font-size="10.5">staff · bookings · costs</text>
+        <text class="domain-sub" x="745" y="360" font-size="10.5">6 tables</text>
+
+        <rect class="domain-box" x="725" y="415" width="230" height="92" rx="6"></rect>
+        <text class="domain-title" x="745" y="442" font-size="13.5">Bookable Assets</text>
+        <line class="ent-div" x1="725" y1="454" x2="955" y2="454"></line>
+        <text class="domain-sub" x="745" y="474" font-size="10.5">assets · bookings</text>
+        <text class="domain-sub" x="745" y="490" font-size="10.5">2 tables</text>
+
+        <!-- connector: sources -> scheduling -->
+        <line class="conn" x1="270" y1="290" x2="403" y2="290"></line>
+        <polygon class="arrow" points="405,290 396,285 396,295"></polygon>
+        <rect class="conn-label-bg" x="298" y="272" width="48" height="16" rx="3"></rect>
+        <text class="conn-label" x="322" y="284" font-size="10" text-anchor="middle">import</text>
+
+        <!-- connector: scheduling -> editorial -->
+        <line class="conn" x1="625" y1="265" x2="723" y2="90"></line>
+        <polygon class="arrow" points="725,86 714,88 719,97" transform="rotate(20 719 91)"></polygon>
+        <rect class="conn-label-bg" x="638" y="150" width="62" height="16" rx="3"></rect>
+        <text class="conn-label" x="669" y="162" font-size="10" text-anchor="middle">event_id</text>
+
+        <!-- connector: scheduling -> production -->
+        <line class="conn" x1="625" y1="295" x2="723" y2="215"></line>
+        <polygon class="arrow" points="725,213 714,213 719,223" transform="rotate(-35 719 216)"></polygon>
+        <rect class="conn-label-bg" x="638" y="245" width="62" height="16" rx="3"></rect>
+        <text class="conn-label" x="669" y="257" font-size="10" text-anchor="middle">event_id</text>
+
+        <!-- connector: scheduling -> staffing -->
+        <line class="conn" x1="625" y1="320" x2="723" y2="335"></line>
+        <polygon class="arrow" points="725,336 714,331 715,341"></polygon>
+        <rect class="conn-label-bg" x="638" y="330" width="62" height="16" rx="3"></rect>
+        <text class="conn-label" x="669" y="342" font-size="10" text-anchor="middle">event_id</text>
+
+        <!-- connector: scheduling -> assets (dashed, accent, missing) -->
+        <line class="conn-accent" x1="625" y1="345" x2="723" y2="450"></line>
+        <polygon class="arrow-accent" points="725,452 714,449 718,459" transform="rotate(15 718 453)"></polygon>
+        <rect class="conn-label-bg" x="630" y="392" width="98" height="16" rx="3"></rect>
+        <text class="conn-label" x="679" y="404" font-size="10" text-anchor="middle" fill="var(--accent-ink)">no FK today</text>
+      </svg>
+      <figcaption>Editorial &amp; Rights, Production Planning and Staffing all key off <code style="font-family:var(--font-mono)">events.id</code>. Bookable Assets is currently a self-contained booking log with no link back to the calendar — see the Bookable Assets section below for a proposed fix.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DOMAIN 1: SCHEDULING & FIXTURES -->
+  <!-- ============================================================ -->
+  <section>
+    <h2>Scheduling &amp; fixtures <span class="domain-count">2 tables</span></h2>
+    <p>Today's calendar is a runtime union of three things: fixtures recomputed from bundled JSON on every page load, a separate <code style="font-family:var(--font-mono)">imported_events</code> array, and a <code style="font-family:var(--font-mono)">deleted_event_ids</code> list that filters both. One <code style="font-family:var(--font-mono)">events</code> table with a <code style="font-family:var(--font-mono)">source</code> column and a real <code style="font-family:var(--font-mono)">is_deleted</code> flag replaces all three.</p>
+    <figure>
+      <svg class="erd" viewBox="0 0 820 220" role="img" aria-label="competitions has a one-to-many relationship to events via competition_id.">
+        <g>
+          <rect class="ent-box" x="40" y="30" width="300" height="142" rx="5"></rect>
+          <text class="ent-title" x="56" y="52" font-size="13.5">competitions</text>
+          <line class="ent-div" x1="40" y1="62" x2="340" y2="62"></line>
+          <text class="ent-fields" x="56" y="80" font-size="11">id <tspan class="tag-pk">PK</tspan></text>
+          <text class="ent-fields" x="56" y="96" font-size="11">name</text>
+          <text class="ent-fields" x="56" y="112" font-size="11">sport</text>
+          <text class="ent-fields" x="56" y="128" font-size="11">governing_body</text>
+          <text class="ent-fields" x="56" y="144" font-size="11">external_source</text>
+          <text class="ent-fields" x="56" y="160" font-size="11">external_id</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="460" y="30" width="300" height="158" rx="5"></rect>
+          <text class="ent-title" x="476" y="52" font-size="13.5">events</text>
+          <line class="ent-div" x1="460" y1="62" x2="760" y2="62"></line>
+          <text class="ent-fields" x="476" y="80" font-size="11">id <tspan class="tag-pk">PK</tspan></text>
+          <text class="ent-fields" x="476" y="96" font-size="11">competition_id <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="476" y="112" font-size="11">title</text>
+          <text class="ent-fields" x="476" y="128" font-size="11">start_at</text>
+          <text class="ent-fields" x="476" y="144" font-size="11">venue</text>
+          <text class="ent-fields" x="476" y="160" font-size="11">source</text>
+          <text class="ent-fields" x="476" y="176" font-size="11">is_deleted</text>
+        </g>
+        <line class="conn" x1="340" y1="80" x2="458" y2="96"></line>
+        <polygon class="arrow" points="460,97 449,93 449,101"></polygon>
+        <rect class="conn-label-bg" x="358" y="80" width="30" height="15" rx="3"></rect>
+        <text class="conn-label" x="373" y="92" font-size="10" text-anchor="middle">1—*</text>
+      </svg>
+      <figcaption>Full columns include end_at, all_day, round, home/away team &amp; score (nullable — only populated for fixture-sourced events) and is_hidden on competitions for governing-body toggles.</figcaption>
+    </figure>
+    <details>
+      <summary>Full column reference</summary>
+      <div class="dict-wrap">
+        <table>
+          <thead><tr><th>Table</th><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="col-table">competitions</td><td class="col-field">id<span class="badge badge-pk">PK</span></td><td class="col-type">uuid</td><td>e.g. premier_league</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">name, short_name</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">sport, governing_body</td><td class="col-type">text</td><td>free text today; candidates for lookup tables if the list stays small and fixed</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">color</td><td class="col-type">text</td><td>hex, used for calendar chip color</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">external_source</td><td class="col-type">enum</td><td>local · thesportsdb · fixturedownload · custom</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">external_id</td><td class="col-type">text, null</td><td>TheSportsDB league id / fixturedownload slug</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">is_hidden</td><td class="col-type">bool</td><td>governing-body toggle visibility (most competitions default hidden today)</td></tr>
+            <tr><td class="col-table">events</td><td class="col-field">id<span class="badge badge-pk">PK</span></td><td class="col-type">uuid</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">competition_id<span class="badge badge-fk">FK</span></td><td class="col-type">uuid, null</td><td>→ competitions.id — nullable for one-off custom events</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">title</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">start_at, end_at</td><td class="col-type">timestamptz</td><td>end_at nullable</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">all_day</td><td class="col-type">bool</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">venue, round</td><td class="col-type">text, null</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">home_team, away_team</td><td class="col-type">text, null</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">home_score, away_score</td><td class="col-type">int, null</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">source</td><td class="col-type">enum</td><td>fixture · imported · custom</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">is_deleted</td><td class="col-type">bool</td><td>replaces the separate deleted_event_ids list</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DOMAIN 2: EDITORIAL & RIGHTS -->
+  <!-- ============================================================ -->
+  <section>
+    <h2>Editorial &amp; rights <span class="domain-count">4 tables</span></h2>
+    <p>Coverage decisions and platform rights are both, structurally, the same thing: a grid cell keyed by two ids. <code style="font-family:var(--font-mono)">editorial_decisions</code> keys on (event, platform); <code style="font-family:var(--font-mono)">rights_matrix</code> keys on (competition, platform) — the same shape one level up the hierarchy.</p>
+    <figure>
+      <svg class="erd" viewBox="0 0 780 420" role="img" aria-label="platforms has one-to-many relationships to editorial_decisions and rights_matrix via platform_id. rights_default_patterns references competitions and patterns, both defined elsewhere.">
+        <g>
+          <rect class="ent-box" x="40" y="140" width="300" height="126" rx="5"></rect>
+          <text class="ent-title" x="56" y="162" font-size="13.5">platforms</text>
+          <line class="ent-div" x1="40" y1="172" x2="340" y2="172"></line>
+          <text class="ent-fields" x="56" y="190" font-size="11">id <tspan class="tag-pk">PK</tspan></text>
+          <text class="ent-fields" x="56" y="206" font-size="11">name</text>
+          <text class="ent-fields" x="56" y="222" font-size="11">default_incoming_line</text>
+          <text class="ent-fields" x="56" y="238" font-size="11">default_outgoing_line</text>
+          <text class="ent-fields" x="56" y="254" font-size="11">mcr_phone</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="440" y="20" width="300" height="110" rx="5"></rect>
+          <text class="ent-title" x="456" y="42" font-size="13.5">editorial_decisions</text>
+          <line class="ent-div" x1="440" y1="52" x2="740" y2="52"></line>
+          <text class="ent-fields" x="456" y="70" font-size="11">event_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="456" y="86" font-size="11">platform_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="456" y="102" font-size="11">decision</text>
+          <text class="ent-fields" x="456" y="118" font-size="11">init_production</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="440" y="160" width="300" height="94" rx="5"></rect>
+          <text class="ent-title" x="456" y="182" font-size="13.5">rights_matrix</text>
+          <line class="ent-div" x1="440" y1="192" x2="740" y2="192"></line>
+          <text class="ent-fields" x="456" y="210" font-size="11">competition_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="456" y="226" font-size="11">platform_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="456" y="242" font-size="11">rights</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="40" y="320" width="300" height="78" rx="5"></rect>
+          <text class="ent-title" x="56" y="342" font-size="13.5">rights_default_patterns</text>
+          <line class="ent-div" x1="40" y1="352" x2="340" y2="352"></line>
+          <text class="ent-fields" x="56" y="370" font-size="11">competition_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="56" y="386" font-size="11">pattern_id <tspan class="tag-fk">FK</tspan></text>
+        </g>
+        <line class="conn" x1="340" y1="200" x2="438" y2="70"></line>
+        <polygon class="arrow" points="440,66 429,68 434,77" transform="rotate(20 434 71)"></polygon>
+        <rect class="conn-label-bg" x="358" y="118" width="58" height="16" rx="3"></rect>
+        <text class="conn-label" x="387" y="130" font-size="10" text-anchor="middle">platform_id</text>
+        <line class="conn" x1="340" y1="215" x2="438" y2="210"></line>
+        <polygon class="arrow" points="440,210 429,205 429,215"></polygon>
+        <rect class="conn-label-bg" x="358" y="230" width="58" height="16" rx="3"></rect>
+        <text class="conn-label" x="387" y="242" font-size="10" text-anchor="middle">platform_id</text>
+      </svg>
+      <figcaption><code style="font-family:var(--font-mono)">editorial_decisions.event_id</code> → events; <code style="font-family:var(--font-mono)">rights_matrix.competition_id</code> and <code style="font-family:var(--font-mono)">rights_default_patterns.competition_id</code> → competitions (Scheduling); <code style="font-family:var(--font-mono)">rights_default_patterns.pattern_id</code> → patterns (Production Planning, below).</figcaption>
+    </figure>
+    <details>
+      <summary>Full column reference</summary>
+      <div class="dict-wrap">
+        <table>
+          <thead><tr><th>Table</th><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="col-table">platforms</td><td class="col-field">id<span class="badge badge-pk">PK</span></td><td class="col-type">uuid</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">name</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">default_incoming_line, default_outgoing_line</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">four_wires</td><td class="col-type">int</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">feed_routing</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">mcr_phone, editorial_phone</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table">editorial_decisions</td><td class="col-field">event_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ events.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">platform_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ platforms.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">decision</td><td class="col-type">enum</td><td>Y (confirmed) · P (provisional) · none</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">init_production</td><td class="col-type">bool</td><td>gates whether the event appears on Production</td></tr>
+            <tr><td class="col-table">rights_matrix</td><td class="col-field">competition_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ competitions.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">platform_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ platforms.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">rights</td><td class="col-type">enum</td><td>Y · N · unknown</td></tr>
+            <tr><td class="col-table">rights_default_patterns</td><td class="col-field">competition_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ competitions.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">pattern_id<span class="badge badge-fk">FK</span></td><td class="col-type">uuid, null</td><td>→ patterns.id</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DOMAIN 3: PRODUCTION PLANNING -->
+  <!-- ============================================================ -->
+  <section>
+    <h2>Production planning <span class="domain-count">4 tables</span></h2>
+    <p>A pattern is a reusable resourcing template (crew size, line counts, timing offsets); an assignment applies one pattern — plus named staff — to a specific event. Tech-stack line costs are broken out per platform since every platform routes a different mix of video, audio and talkback.</p>
+    <figure>
+      <svg class="erd" viewBox="0 0 820 400" role="img" aria-label="patterns has a one-to-many relationship to production_assignments via pattern_id. tech_stack and tech_stack_platform_lines are shown adjacent as a shared configuration group with no formal foreign key between them.">
+        <g>
+          <rect class="ent-box" x="40" y="30" width="300" height="142" rx="5"></rect>
+          <text class="ent-title" x="56" y="52" font-size="13.5">patterns</text>
+          <line class="ent-div" x1="40" y1="62" x2="340" y2="62"></line>
+          <text class="ent-fields" x="56" y="80" font-size="11">id <tspan class="tag-pk">PK</tspan></text>
+          <text class="ent-fields" x="56" y="96" font-size="11">name</text>
+          <text class="ent-fields" x="56" y="112" font-size="11">cameramen</text>
+          <text class="ent-fields" x="56" y="128" font-size="11">evs_operator</text>
+          <text class="ent-fields" x="56" y="144" font-size="11">video_lines</text>
+          <text class="ent-fields" x="56" y="160" font-size="11">audio_lines</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="460" y="20" width="300" height="142" rx="5"></rect>
+          <text class="ent-title" x="476" y="42" font-size="13.5">production_assignments</text>
+          <line class="ent-div" x1="460" y1="52" x2="760" y2="52"></line>
+          <text class="ent-fields" x="476" y="70" font-size="11">event_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="476" y="86" font-size="11">pattern_id <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="476" y="102" font-size="11">director_id <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="476" y="118" font-size="11">production_manager_id <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="476" y="134" font-size="11">producer_id <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="476" y="150" font-size="11">pre_production_cost</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="40" y="240" width="300" height="110" rx="5"></rect>
+          <text class="ent-title" x="56" y="262" font-size="13.5">tech_stack</text>
+          <line class="ent-div" x1="40" y1="272" x2="340" y2="272"></line>
+          <text class="ent-fields" x="56" y="290" font-size="11">id <tspan class="tag-pk">PK</tspan> (singleton)</text>
+          <text class="ent-fields" x="56" y="306" font-size="11">encoders</text>
+          <text class="ent-fields" x="56" y="322" font-size="11">decoders</text>
+          <text class="ent-fields" x="56" y="338" font-size="11">frame_rate_converters</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="460" y="220" width="300" height="126" rx="5"></rect>
+          <text class="ent-title" x="476" y="242" font-size="13.5">tech_stack_platform_lines</text>
+          <line class="ent-div" x1="460" y1="252" x2="760" y2="252"></line>
+          <text class="ent-fields" x="476" y="270" font-size="11">platform_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="476" y="286" font-size="11">video_incoming</text>
+          <text class="ent-fields" x="476" y="302" font-size="11">video_outgoing</text>
+          <text class="ent-fields" x="476" y="318" font-size="11">audio_incoming</text>
+        </g>
+        <line class="conn" x1="340" y1="80" x2="458" y2="80"></line>
+        <polygon class="arrow" points="460,80 449,75 449,85"></polygon>
+        <rect class="conn-label-bg" x="358" y="72" width="55" height="16" rx="3"></rect>
+        <text class="conn-label" x="385" y="84" font-size="10" text-anchor="middle">pattern_id</text>
+        <text class="conn-label" x="400" y="205" font-size="10.5" text-anchor="middle" fill="var(--muted)">‖ shared config, no formal FK</text>
+      </svg>
+      <figcaption><code style="font-family:var(--font-mono)">director_id / production_manager_id / producer_id</code> → staff (below); <code style="font-family:var(--font-mono)">tech_stack_platform_lines.platform_id</code> → platforms (Editorial &amp; Rights). Full assignment row also carries commentator_id and graphics_operator_id.</figcaption>
+    </figure>
+    <details>
+      <summary>Full column reference</summary>
+      <div class="dict-wrap">
+        <table>
+          <thead><tr><th>Table</th><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="col-table">patterns</td><td class="col-field">id<span class="badge badge-pk">PK</span></td><td class="col-type">uuid</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">name</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">cameramen</td><td class="col-type">int</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">evs_operator</td><td class="col-type">bool</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">crew_from, crew_until</td><td class="col-type">int</td><td>hour offset from event start/end</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">incoming_video_lines, outgoing_video_lines</td><td class="col-type">int</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">video_from, video_until</td><td class="col-type">int</td><td>hour offset</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">incoming_audio_lines, incoming_talkback_lines, outgoing_talkback_lines</td><td class="col-type">int</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">audio_from, audio_until</td><td class="col-type">int</td><td>hour offset</td></tr>
+            <tr><td class="col-table">production_assignments</td><td class="col-field">event_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ events.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">pattern_id<span class="badge badge-fk">FK</span></td><td class="col-type">uuid, null</td><td>→ patterns.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">director_id, production_manager_id, producer_id, commentator_id, graphics_operator_id<span class="badge badge-fk">FK</span></td><td class="col-type">uuid, null (×5)</td><td>each → staff.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">pre_production_cost</td><td class="col-type">numeric</td><td>flat figure entered at booking time</td></tr>
+            <tr><td class="col-table">tech_stack</td><td class="col-field">id<span class="badge badge-pk">PK</span></td><td class="col-type">int, fixed = 1</td><td>singleton row</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">encoders, decoders, frame_rate_converters, audio_offset, outgoing_idents</td><td class="col-type">int</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">*_cost columns</td><td class="col-type">numeric</td><td>per-line-type unit cost, one per line kind below</td></tr>
+            <tr><td class="col-table">tech_stack_platform_lines</td><td class="col-field">platform_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ platforms.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">video_incoming, video_outgoing</td><td class="col-type">int</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">talkback_incoming, talkback_outgoing</td><td class="col-type">int</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">audio_incoming, audio_outgoing</td><td class="col-type">int</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">smpte2110</td><td class="col-type">int</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DOMAIN 4: STAFFING -->
+  <!-- ============================================================ -->
+  <section>
+    <h2>Staffing <span class="domain-count">6 tables</span></h2>
+    <p>Today a person's identity, capabilities and cost live in three separate objects keyed by the same free-text name (<code style="font-family:var(--font-mono)">admin_staff</code>, <code style="font-family:var(--font-mono)">admin_staff_profiles</code>, <code style="font-family:var(--font-mono)">admin_staff_costs</code>) — a rename anywhere breaks the join. One <code style="font-family:var(--font-mono)">staff</code> table with a real id fixes that; capabilities and cost overrides become child rows.</p>
+    <figure>
+      <svg class="erd" viewBox="0 0 820 460" role="img" aria-label="staff is the hub, referenced by staff_capabilities, staff_cost_overrides and staff_bookings via staff_id. staff_costs and staff_locks are shown nearby but do not carry a direct foreign key to staff.">
+        <g>
+          <rect class="ent-box" x="270" y="180" width="280" height="110" rx="5" style="fill:var(--surface);stroke:var(--accent);stroke-width:1.5"></rect>
+          <text class="ent-title" x="286" y="202" font-size="13.5">staff</text>
+          <line class="ent-div" x1="270" y1="212" x2="550" y2="212"></line>
+          <text class="ent-fields" x="286" y="230" font-size="11">id <tspan class="tag-pk">PK</tspan></text>
+          <text class="ent-fields" x="286" y="246" font-size="11">role</text>
+          <text class="ent-fields" x="286" y="262" font-size="11">name</text>
+          <text class="ent-fields" x="286" y="278" font-size="11">is_staff · seniority</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="40" y="30" width="280" height="94" rx="5"></rect>
+          <text class="ent-title" x="56" y="52" font-size="13">staff_capabilities</text>
+          <line class="ent-div" x1="40" y1="62" x2="320" y2="62"></line>
+          <text class="ent-fields" x="56" y="80" font-size="11">staff_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="56" y="96" font-size="11">capability <tspan class="tag-pk">PK</tspan></text>
+          <text class="ent-fields" x="56" y="112" font-size="11">value</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="560" y="30" width="220" height="78" rx="5"></rect>
+          <text class="ent-title" x="576" y="52" font-size="13">staff_cost_overrides</text>
+          <line class="ent-div" x1="560" y1="62" x2="780" y2="62"></line>
+          <text class="ent-fields" x="576" y="80" font-size="11">staff_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="576" y="96" font-size="11">cost</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="270" y="360" width="280" height="94" rx="5"></rect>
+          <text class="ent-title" x="286" y="382" font-size="13">staff_bookings</text>
+          <line class="ent-div" x1="270" y1="392" x2="550" y2="392"></line>
+          <text class="ent-fields" x="286" y="410" font-size="11">event_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="286" y="426" font-size="11">role_field <tspan class="tag-pk">PK</tspan></text>
+          <text class="ent-fields" x="286" y="442" font-size="11">staff_id <tspan class="tag-fk">FK</tspan> · status</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="40" y="200" width="180" height="62" rx="5"></rect>
+          <text class="ent-title" x="56" y="222" font-size="12.5">staff_costs</text>
+          <line class="ent-div" x1="40" y1="232" x2="220" y2="232"></line>
+          <text class="ent-fields" x="56" y="250" font-size="10.5">role <tspan class="tag-pk">PK</tspan> · default_cost</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="600" y="200" width="180" height="62" rx="5"></rect>
+          <text class="ent-title" x="616" y="222" font-size="12.5">staff_locks</text>
+          <line class="ent-div" x1="600" y1="232" x2="780" y2="232"></line>
+          <text class="ent-fields" x="616" y="250" font-size="10.5">event_id <tspan class="tag-pk">PK</tspan> <tspan class="tag-fk">FK</tspan></text>
+        </g>
+
+        <line class="conn" x1="290" y1="180" x2="220" y2="124"></line>
+        <polygon class="arrow" points="217,122 222,133 231,127" transform="rotate(0 220 127)"></polygon>
+        <line class="conn" x1="470" y1="180" x2="580" y2="108"></line>
+        <polygon class="arrow" points="583,105 574,111 581,118"></polygon>
+        <line class="conn" x1="420" y1="290" x2="410" y2="358"></line>
+        <polygon class="arrow" points="410,360 405,349 415,349"></polygon>
+        <rect class="conn-label-bg" x="228" y="140" width="58" height="16" rx="3"></rect>
+        <text class="conn-label" x="257" y="152" font-size="10" text-anchor="middle">staff_id</text>
+        <rect class="conn-label-bg" x="495" y="130" width="58" height="16" rx="3"></rect>
+        <text class="conn-label" x="524" y="142" font-size="10" text-anchor="middle">staff_id</text>
+        <rect class="conn-label-bg" x="380" y="316" width="58" height="16" rx="3"></rect>
+        <text class="conn-label" x="409" y="328" font-size="10" text-anchor="middle">staff_id</text>
+      </svg>
+      <figcaption><code style="font-family:var(--font-mono)">staff_bookings.event_id</code> and <code style="font-family:var(--font-mono)">staff_locks.event_id</code> → events (Scheduling). <code style="font-family:var(--font-mono)">staff_costs.role</code> and <code style="font-family:var(--font-mono)">staff.role</code> share a vocabulary but aren't a formal FK — role is closer to an enum both tables draw from.</figcaption>
+    </figure>
+    <details>
+      <summary>Full column reference</summary>
+      <div class="dict-wrap">
+        <table>
+          <thead><tr><th>Table</th><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="col-table">staff</td><td class="col-field">id<span class="badge badge-pk">PK</span></td><td class="col-type">uuid</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">role</td><td class="col-type">enum</td><td>cameramen · onsiteAudio · onsiteProductionManager · director · producer · commentator · evsOperator · graphicsOperator</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">name, email</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">is_staff</td><td class="col-type">bool</td><td>staff vs. freelance</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">seniority</td><td class="col-type">int</td><td></td></tr>
+            <tr><td class="col-table">staff_capabilities</td><td class="col-field">staff_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ staff.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">capability<span class="badge badge-pk">PK</span></td><td class="col-type">enum</td><td>cam2 · cam4 · cam8plus · studio · tennis · rugby ...</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">value</td><td class="col-type">bool</td><td>normalizes the caps: {...} object</td></tr>
+            <tr><td class="col-table">staff_costs</td><td class="col-field">role<span class="badge badge-pk">PK</span></td><td class="col-type">enum</td><td>default day rate per role</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">default_cost</td><td class="col-type">numeric</td><td></td></tr>
+            <tr><td class="col-table">staff_cost_overrides</td><td class="col-field">staff_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ staff.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">cost</td><td class="col-type">numeric</td><td>overrides staff_costs.default_cost for this person</td></tr>
+            <tr><td class="col-table">staff_bookings</td><td class="col-field">event_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ events.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">role_field<span class="badge badge-pk">PK</span></td><td class="col-type">enum</td><td>director · productionManager · producer · commentator · cameraman · evsOperator · onsiteAudio · graphicsOperator</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">staff_id<span class="badge badge-fk">FK</span></td><td class="col-type">uuid, null</td><td>→ staff.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">status</td><td class="col-type">enum</td><td>unbooked · offered · confirmed</td></tr>
+            <tr><td class="col-table">staff_locks</td><td class="col-field">event_id<span class="badge badge-pk">PK</span><span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ events.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">role_field<span class="badge badge-pk">PK</span></td><td class="col-type">enum</td><td>same vocabulary as staff_bookings.role_field</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">locked</td><td class="col-type">bool</td><td>"pencil" vs. locked assignment</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DOMAIN 5: BOOKABLE ASSETS -->
+  <!-- ============================================================ -->
+  <section>
+    <h2>Bookable assets <span class="domain-count">2 tables</span></h2>
+    <p>The simplest domain, and the one worth changing on the way in: <code style="font-family:var(--font-mono)">asset_bookings</code> today carries free-text <code style="font-family:var(--font-mono)">production</code> / <code style="font-family:var(--font-mono)">programme</code> fields but no foreign key to the event it's actually for. Adding a nullable <code style="font-family:var(--font-mono)">event_id</code> would let a booking optionally tie back to the calendar without forcing every booking to have one.</p>
+    <figure>
+      <svg class="erd" viewBox="0 0 780 220" role="img" aria-label="bookable_assets has a one-to-many relationship to asset_bookings via asset_id. A proposed event_id foreign key on asset_bookings, shown in the accent color, would link bookings back to the Scheduling domain.">
+        <g>
+          <rect class="ent-box" x="40" y="40" width="280" height="126" rx="5"></rect>
+          <text class="ent-title" x="56" y="62" font-size="13.5">bookable_assets</text>
+          <line class="ent-div" x1="40" y1="72" x2="320" y2="72"></line>
+          <text class="ent-fields" x="56" y="90" font-size="11">id <tspan class="tag-pk">PK</tspan></text>
+          <text class="ent-fields" x="56" y="106" font-size="11">name</text>
+          <text class="ent-fields" x="56" y="122" font-size="11">quantity</text>
+          <text class="ent-fields" x="56" y="138" font-size="11">cost</text>
+          <text class="ent-fields" x="56" y="154" font-size="11">duration</text>
+        </g>
+        <g>
+          <rect class="ent-box" x="440" y="16" width="300" height="190" rx="5"></rect>
+          <text class="ent-title" x="456" y="38" font-size="13.5">asset_bookings</text>
+          <line class="ent-div" x1="440" y1="48" x2="740" y2="48"></line>
+          <text class="ent-fields" x="456" y="66" font-size="11">id <tspan class="tag-pk">PK</tspan></text>
+          <text class="ent-fields" x="456" y="82" font-size="11">series_id</text>
+          <text class="ent-fields" x="456" y="98" font-size="11">asset_id <tspan class="tag-fk">FK</tspan></text>
+          <text class="ent-fields" x="456" y="114" font-size="11">unit</text>
+          <text class="ent-fields" x="456" y="130" font-size="11">date · time · duration</text>
+          <text class="ent-fields" x="456" y="146" font-size="11">booked_by</text>
+          <text class="ent-fields" x="456" y="162" font-size="11">production · programme</text>
+          <text class="ent-fields proposed" x="456" y="182" font-size="11">event_id <tspan class="tag-fk" style="fill:var(--accent-ink)">FK</tspan> — proposed</text>
+        </g>
+        <line class="conn" x1="320" y1="98" x2="438" y2="98"></line>
+        <polygon class="arrow" points="440,98 429,93 429,103"></polygon>
+        <rect class="conn-label-bg" x="338" y="90" width="52" height="16" rx="3"></rect>
+        <text class="conn-label" x="364" y="102" font-size="10" text-anchor="middle">asset_id</text>
+      </svg>
+      <figcaption>series_id groups instances of a recurring booking (e.g. an edit suite booked every Thursday) — it isn't a formal FK to another table today, just a shared string.</figcaption>
+    </figure>
+    <details>
+      <summary>Full column reference</summary>
+      <div class="dict-wrap">
+        <table>
+          <thead><tr><th>Table</th><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="col-table">bookable_assets</td><td class="col-field">id<span class="badge badge-pk">PK</span></td><td class="col-type">uuid</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">name</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">quantity</td><td class="col-type">int</td><td>units available (e.g. 4 edit suites)</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">cost</td><td class="col-type">numeric</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">duration</td><td class="col-type">numeric</td><td>default booking length, hours</td></tr>
+            <tr><td class="col-table">asset_bookings</td><td class="col-field">id<span class="badge badge-pk">PK</span></td><td class="col-type">uuid</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">series_id</td><td class="col-type">text, null</td><td>groups recurring bookings; not a formal FK today</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">asset_id<span class="badge badge-fk">FK</span></td><td class="col-type">uuid</td><td>→ bookable_assets.id</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">unit</td><td class="col-type">text</td><td>which numbered unit of the asset (e.g. "camera 2")</td></tr>
+            <tr><td class="col-table"></td><td class="col-field">date, time, duration</td><td class="col-type">date / time / numeric</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">booked_by, notes</td><td class="col-type">text</td><td></td></tr>
+            <tr><td class="col-table"></td><td class="col-field">production, contract_number, programme</td><td class="col-type">text</td><td>free text today — see event_id proposal above</td></tr>
+            <tr><td class="col-table"></td><td class="col-field" style="color:var(--accent-ink)">event_id — proposed</td><td class="col-type">uuid, null</td><td>→ events.id, nullable so non-broadcast bookings still work</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <div class="callout">
+      <span class="callout-title">Worth deciding before this goes live</span>
+      <ol>
+        <li><b>Concurrent editing.</b> localStorage is implicitly single-user — moving to a shared database makes concurrent edits possible, but a schema alone doesn't make them safe. Two producers opening the same event's staff booking at once will race. Decide on optimistic locking (a <code style="font-family:var(--font-mono)">version</code> column plus a conditional update) or a realtime layer before more than one person edits at a time.</li>
+        <li><b>The "unsafe" admin bulk tools.</b> Admin's hidden power-tools bar (Snapshot, Clear TAMS, Init All, Select/Clear Many Events) currently mutates localStorage directly and in bulk. Against a real database those need to become gated, logged operations — not raw table wipes — or they'll take out other people's in-progress work.</li>
+        <li><b>Fixture sync identity.</b> Three fixture sources (bundled JSON, TheSportsDB, fixturedownload.com) can describe the same real-world match. <code style="font-family:var(--font-mono)">external_source</code> + <code style="font-family:var(--font-mono)">external_id</code> on events is enough to store where a row came from, but de-duplicating across sources on re-sync still needs an explicit matching rule (kick-off time + team names is the obvious first pass).</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    Schema derived from the app's own localStorage read/write call sites (App.jsx, services/*.js, components/*.jsx) as of 2026-08-26, not from the stale project-memory snapshot — several tables here (bookable_assets, asset_bookings, staff_capabilities, staff_cost_overrides) postdate that snapshot.
+  </footer>
+
+</div>
+
+</body></html>
