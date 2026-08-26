@@ -1,10 +1,10 @@
-Drop the IMG brand font files directly into this folder, named exactly:
+IMG brand font — Album Sans Power. Four weights/styles live here:
 
   AlbumSansPower-Book.otf
   AlbumSansPower-BookItalic.otf
   AlbumSansPower-SemiBold.otf
   AlbumSansPower-SemiBoldItalic.otf
 
-The @font-face rules in App.css already point here — no code changes needed.
-Once the files exist, the IMG skin (Admin -> Appearance) will pick them up
-automatically. Until then it falls back to the system UI sans-serif font.
+Wired up via @font-face in App.css and used by the IMG skin
+(Admin -> Appearance). If a file here ever goes missing, that skin
+silently falls back to the system UI sans-serif font instead of erroring.
