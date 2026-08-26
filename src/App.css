@@ -58,6 +58,31 @@
   flex-shrink: 0;
 }
 
+.ba-event-context-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #eaf2fb;
+  color: #1e3a5f;
+  border-bottom: 1px solid #c7d9ee;
+  padding: 10px 20px;
+  font-size: 0.88rem;
+  flex-shrink: 0;
+}
+
+.ba-event-context-banner button {
+  background: #1e3a5f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 .header-version {
   font-size: 0.75rem;
   opacity: 0.45;
@@ -904,6 +929,65 @@
   font-size: 0.75rem;
   color: #8492a6;
   font-style: italic;
+}
+
+.ep-add-assets-btn {
+  margin-left: auto;
+  padding: 4px 12px;
+  border: 1px solid #1e3a5f;
+  border-radius: 6px;
+  background: #fff;
+  color: #1e3a5f;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.ep-add-assets-btn:hover {
+  background: #1e3a5f;
+  color: #fff;
+}
+
+.ep-asset-bookings {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.ep-asset-booking-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #f8f9fb;
+  border: 1px solid #e2e6ec;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+.ep-asset-booking-name {
+  font-weight: 700;
+  color: #1e3a5f;
+}
+
+.ep-asset-booking-when {
+  color: #2c3e50;
+  font-variant-numeric: tabular-nums;
+}
+
+.ep-asset-booking-by {
+  color: #8492a6;
+  margin-left: auto;
+}
+
+.ep-asset-bookings-empty {
+  font-size: 0.8rem;
+  color: #8492a6;
+  margin: 0 0 4px;
 }
 
 .ep-fields {

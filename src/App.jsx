@@ -105,6 +105,8 @@ function App() {
   const [importedEvents, setImportedEvents] = useState(loadImportedEvents)
   const [customCompetitions, setCustomCompetitions] = useState(loadCustomCompetitions)
   const [deletedEventIds, setDeletedEventIds] = useState(() => new Set(loadDeletedEventIds()))
+  const [bookingContextEvent, setBookingContextEvent] = useState(null)
+  const [preBookingView, setPreBookingView] = useState('calendar')
 
   useEffect(() => {
     function onQuotaExceeded(e) {
@@ -174,6 +176,22 @@ function App() {
     if (event) setSelectedEvent(event)
   }
 
+  function handleAddBookableAssets(event) {
+    setPreBookingView(view)
+    setBookingContextEvent(event)
+    setSelectedEvent(null)
+    setView('book-assets')
+  }
+
+  function handleDoneBookingAssets() {
+    const event = bookingContextEvent
+    setBookingContextEvent(null)
+    setView(preBookingView)
+    if (event) {
+      setSelectedEvent(combinedEvents.find(e => e.id === event.id) || event)
+    }
+  }
+
   function toggleGoverningBody(bodyId) {
     const body = governingBodies.find(b => b.id === bodyId)
     if (!body) return
@@ -210,7 +228,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.03</span>
+        <span className="header-version">v3.04</span>
       </header>
 
       {storageWarning && (
@@ -237,7 +255,9 @@ function App() {
       {view === 'booths' && <BoothsView events={visibleEvents} onEventClick={setSelectedEvent} />}
       {view === 'book-staff' && <BookStaffView events={visibleEvents} />}
       {view === 'assets' && <AssetsView events={combinedEvents} />}
-      {view === 'book-assets' && <BookAssetsView />}
+      {view === 'book-assets' && (
+        <BookAssetsView eventContext={bookingContextEvent} onDone={handleDoneBookingAssets} />
+      )}
       {view === 'resource-gaps' && <ResourceGapsView allEvents={combinedEvents} onEventClick={setSelectedEvent} />}
       {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={combinedEvents} onNavigate={setView} onActivateComps={activateComps} />}
       {view === 'import' && (
@@ -266,6 +286,7 @@ function App() {
           event={selectedEvent}
           onClose={() => setSelectedEvent(null)}
           onDeleteEvent={handleDeleteEvent}
+          onAddBookableAssets={handleAddBookableAssets}
         />
       )}
     </div>

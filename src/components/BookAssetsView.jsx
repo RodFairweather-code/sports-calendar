@@ -60,6 +60,7 @@ function loadBookings() {
 
 function persistBookings(bookings) {
   saveToStorage('asset_bookings', bookings)
+  window.dispatchEvent(new CustomEvent('asset-bookings-updated'))
 }
 
 function newId(prefix) {
@@ -536,7 +537,7 @@ function EditBookingForm({ booking, assets, bookings, onSave, onDelete, onDelete
   )
 }
 
-function BookAssetsView() {
+function BookAssetsView({ eventContext, onDone }) {
   const [assets] = useState(loadAssets)
   const [bookings, setBookings] = useState(loadBookings)
   const [showForm, setShowForm] = useState(false)
@@ -573,6 +574,7 @@ function BookAssetsView() {
       production: form.production.trim(),
       contractNumber: form.contractNumber.trim(),
       programme: form.programme.trim(),
+      eventId: eventContext?.id ?? null,
     }))
 
     const updated = [...bookings, ...created]
@@ -636,6 +638,15 @@ function BookAssetsView() {
 
   return (
     <div className="ba-container">
+      {eventContext && (
+        <div className="ba-event-context-banner">
+          <span>
+            Booking assets for <strong>{eventContext.title}</strong>
+            {eventContext.start && ` · ${eventContext.start.slice(0, 10)}`}
+          </span>
+          <button onClick={onDone}>Done — back to event</button>
+        </div>
+      )}
       {dayViewDate ? (
         <DayDetailView
           date={dayViewDate}

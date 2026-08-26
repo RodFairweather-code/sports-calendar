@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import { loadTechStack } from '../services/techStack'
 import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
+import { bookingDuration, formatDateLabel, formatRange } from '../services/bookingTime'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -46,6 +47,16 @@ function loadBookings() {
 
 function persistBookings(b) {
   saveToStorage('staff_bookings', b)
+}
+
+function loadBookableAssets() {
+  try { return JSON.parse(localStorage.getItem('bookable_assets') || '[]') }
+  catch { return [] }
+}
+
+function loadAssetBookings() {
+  try { return JSON.parse(localStorage.getItem('asset_bookings') || '[]') }
+  catch { return [] }
 }
 
 const ROLE_LABELS = {
@@ -284,7 +295,7 @@ function TechToggleField({ label, value, field, onChange, overridden }) {
 
 // ── Main panel ───────────────────────────────────────────────────────────────
 
-function EventPanel({ event, onClose, onDeleteEvent }) {
+function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets }) {
   const p = event.extendedProps
 
   const [assignments, setAssignmentsState] = useState(loadAssignments)
@@ -296,6 +307,8 @@ function EventPanel({ event, onClose, onDeleteEvent }) {
   const [profiles]        = useState(loadProfiles)
   const [bookings, setBookings] = useState(loadBookings)
   const [locks, setLocks]       = useState(loadLocks)
+  const [bookableAssets]        = useState(loadBookableAssets)
+  const [assetBookings, setAssetBookings] = useState(loadAssetBookings)
   const [view, setView]   = useState('resources')
   const [notice, setNotice] = useState(null)
   const noticeTimerRef = useRef(null)
@@ -312,6 +325,12 @@ function EventPanel({ event, onClose, onDeleteEvent }) {
     function onUpdate() { setLocks(loadLocks()) }
     window.addEventListener('locks-updated', onUpdate)
     return () => window.removeEventListener('locks-updated', onUpdate)
+  }, [])
+
+  useEffect(() => {
+    function onUpdate() { setAssetBookings(loadAssetBookings()) }
+    window.addEventListener('asset-bookings-updated', onUpdate)
+    return () => window.removeEventListener('asset-bookings-updated', onUpdate)
   }, [])
 
   const asgn = assignments[event.id] || {}
@@ -446,6 +465,10 @@ function EventPanel({ event, onClose, onDeleteEvent }) {
 
   const kickoffLabel = p.sport === 'Rugby Union' ? 'Kick-off' : p.sport === 'Tennis' ? 'Starts' : 'Kick-off'
 
+  const linkedAssetBookings = assetBookings
+    .filter(b => b.eventId === event.id)
+    .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time))
+
   return (
     <>
       <div className="panel-backdrop" onClick={onClose} aria-hidden="true" />
@@ -543,6 +566,29 @@ function EventPanel({ event, onClose, onDeleteEvent }) {
                 <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s, asgn.onsiteAudio)} locked={isRoleLocked(locks, event.id, 'onsiteAudio')}       onToggleLock={() => toggleLock('onsiteAudio')} />
                 <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('graphicsOperator',  s, asgn.graphicsOperator)} locked={isRoleLocked(locks, event.id, 'graphicsOperator')}  onToggleLock={() => toggleLock('graphicsOperator')} />
               </div>
+
+              {/* ── Bookable Assets ── */}
+              <div className="ep-section">
+                <span className="ep-section-title">Bookable Assets</span>
+                <button className="ep-add-assets-btn" onClick={() => onAddBookableAssets(event)}>
+                  + Add Bookable Assets
+                </button>
+              </div>
+              {linkedAssetBookings.length > 0 ? (
+                <div className="ep-asset-bookings">
+                  {linkedAssetBookings.map(b => (
+                    <div key={b.id} className="ep-asset-booking-row">
+                      <span className="ep-asset-booking-name">{b.assetName} {b.unit}</span>
+                      <span className="ep-asset-booking-when">
+                        {formatDateLabel(b.date)} · {formatRange(b.time, bookingDuration(b, bookableAssets))}
+                      </span>
+                      {b.bookedBy && <span className="ep-asset-booking-by">Booked by {b.bookedBy}</span>}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="ep-asset-bookings-empty">No assets booked for this event yet.</p>
+              )}
 
               {/* ── Technical Resources ── */}
               <div className="ep-section">
