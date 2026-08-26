@@ -23,7 +23,15 @@ import { loadImportedEvents, addImportedEvent, addImportedEvents, removeImported
 import { loadCustomCompetitions, addCustomCompetition } from './services/customCompetitions'
 import { loadDeletedEventIds, addDeletedEventId } from './services/deletedEvents'
 import { clearEventReferences } from './services/eventCleanup'
+import imgLogoWhite from './assets/img-brand/img-logo-white.png'
 import './App.css'
+
+const SKIN_KEY = 'ui_skin'
+
+function loadSkin() {
+  const stored = localStorage.getItem(SKIN_KEY)
+  return stored === 'img' ? 'img' : 'classic'
+}
 
 // Populate localStorage from seed on first load (skipped if data already exists)
 if (!localStorage.getItem('admin_staff'))
@@ -107,6 +115,11 @@ function App() {
   const [deletedEventIds, setDeletedEventIds] = useState(() => new Set(loadDeletedEventIds()))
   const [bookingContextEvent, setBookingContextEvent] = useState(null)
   const [preBookingView, setPreBookingView] = useState('calendar')
+  const [skin, setSkin] = useState(loadSkin)
+
+  useEffect(() => {
+    localStorage.setItem(SKIN_KEY, skin)
+  }, [skin])
 
   useEffect(() => {
     function onQuotaExceeded(e) {
@@ -208,8 +221,9 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app" data-skin={skin}>
       <header className="app-header">
+        {skin === 'img' && <img src={imgLogoWhite} alt="IMG" className="app-header-logo" />}
         <h1>Sports Broadcasting Calendar</h1>
         <nav className="nav-tabs">
           {VIEWS.map(v => (
@@ -228,7 +242,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.04</span>
+        <span className="header-version">v3.05</span>
       </header>
 
       {storageWarning && (
@@ -259,7 +273,16 @@ function App() {
         <BookAssetsView eventContext={bookingContextEvent} onDone={handleDoneBookingAssets} />
       )}
       {view === 'resource-gaps' && <ResourceGapsView allEvents={combinedEvents} onEventClick={setSelectedEvent} />}
-      {view === 'admin' && <AdminView snapshotUnlocked={snapshotUnlocked} allEvents={combinedEvents} onNavigate={setView} onActivateComps={activateComps} />}
+      {view === 'admin' && (
+        <AdminView
+          snapshotUnlocked={snapshotUnlocked}
+          allEvents={combinedEvents}
+          onNavigate={setView}
+          onActivateComps={activateComps}
+          skin={skin}
+          onSkinChange={setSkin}
+        />
+      )}
       {view === 'import' && (
         <ImportEventsView
           competitions={allCompetitions}

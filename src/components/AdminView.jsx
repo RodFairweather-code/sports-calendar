@@ -5,6 +5,7 @@ import PlatformsView from './PlatformsView'
 import TechStackView from './TechStackView'
 import RightsView from './RightsView'
 import BookableAssetsView from './BookableAssetsView'
+import AppearanceView from './AppearanceView'
 import { saveToStorage } from '../services/storage'
 
 const ROLE_KEYS = [
@@ -123,7 +124,7 @@ function downloadText(filename, content) {
   URL.revokeObjectURL(url)
 }
 
-function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps }) {
+function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps, skin, onSkinChange }) {
   const [adminTab, setAdminTab] = useState('patterns')
 
   function handleSnapshot() {
@@ -295,6 +296,7 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
         {adminTab === 'techstack'  && <TechStackView />}
         {adminTab === 'rights'     && <RightsView />}
         {adminTab === 'bookableAssets' && <BookableAssetsView />}
+        {adminTab === 'appearance' && <AppearanceView skin={skin} onSkinChange={onSkinChange} />}
       </div>
       <div className="admin-bottom-bar">
         <button className={`admin-tab-btn${adminTab === 'patterns'  ? ' active' : ''}`} onClick={() => setAdminTab('patterns')}>Patterns</button>
@@ -303,6 +305,7 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps })
         <button className={`admin-tab-btn${adminTab === 'techstack' ? ' active' : ''}`} onClick={() => setAdminTab('techstack')}>Tech Stack</button>
         <button className={`admin-tab-btn${adminTab === 'rights'    ? ' active' : ''}`} onClick={() => setAdminTab('rights')}>Rights</button>
         <button className={`admin-tab-btn${adminTab === 'bookableAssets' ? ' active' : ''}`} onClick={() => setAdminTab('bookableAssets')}>Bookable Assets</button>
+        <button className={`admin-tab-btn${adminTab === 'appearance' ? ' active' : ''}`} onClick={() => setAdminTab('appearance')}>Appearance</button>
         <div className="admin-snapshot-group">
           <button
             className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
