@@ -30,6 +30,14 @@
   font-display: swap;
 }
 
+/* Baseline for every disabled control app-wide — role-gated buttons/inputs
+   rely on this to read as "off" even where a component has no disabled
+   style of its own. Class-level rules elsewhere still take precedence. */
+button:disabled, input:disabled, select:disabled, textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Layout */
 .app {
   display: flex;
@@ -475,6 +483,12 @@
 
 .decision-cell:focus {
   box-shadow: 0 0 0 2px rgba(var(--brand-primary-rgb), 0.35);
+}
+
+.decision-cell--readonly {
+  cursor: default;
+  opacity: 0.65;
+  pointer-events: none;
 }
 
 .decision-cell--empty {
@@ -2202,6 +2216,166 @@
   display: flex;
   gap: 24px;
   align-items: flex-start;
+}
+
+/* ── User Types (roles) ──────────────────────────────────────── */
+.ut-form-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 640px;
+}
+
+.ut-bulk-links {
+  float: right;
+  display: inline-flex;
+  gap: 10px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 600;
+}
+
+.ut-bulk-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--brand-primary);
+  font-size: 0.72rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.ut-view-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px 16px;
+  padding: 12px 16px;
+}
+
+.ut-view-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 0.86rem;
+  color: #2c3e50;
+  cursor: pointer;
+}
+
+.ut-view-cell input {
+  cursor: pointer;
+}
+
+.ut-perm-table {
+  padding: 6px 16px 14px;
+}
+
+.ut-perm-row {
+  display: grid;
+  grid-template-columns: 170px repeat(4, 1fr);
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.ut-perm-row:last-child {
+  border-bottom: none;
+}
+
+.ut-perm-row--head {
+  border-bottom: 1px solid #e0e4ea;
+  padding-top: 4px;
+}
+
+.ut-perm-bucket {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+.ut-perm-col-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8492a6;
+  text-align: center;
+}
+
+.ut-perm-checkbox {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ut-perm-checkbox input {
+  cursor: pointer;
+}
+
+.ut-perm-note {
+  padding: 0 16px 14px;
+  margin: 0;
+  font-size: 0.76rem;
+  color: #8492a6;
+  line-height: 1.5;
+}
+
+/* ── Assume Role modal ───────────────────────────────────────── */
+.assume-role-dialog {
+  max-width: 420px;
+}
+
+.assume-role-hint {
+  font-size: 0.82rem;
+  color: #6b7a8f;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.assume-role-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.assume-role-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border: 1px solid #e2e6ec;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: #1e3a5f;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.assume-role-option:hover {
+  border-color: var(--brand-primary);
+}
+
+.assume-role-option--active {
+  background: rgba(var(--brand-primary-rgb), 0.08);
+  border-color: var(--brand-primary);
+}
+
+.assume-role-name {
+  font-weight: 600;
+}
+
+.assume-role-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #fff;
+  background: var(--brand-primary);
+  border-radius: 10px;
+  padding: 2px 8px;
 }
 
 .pf-capacity-col {

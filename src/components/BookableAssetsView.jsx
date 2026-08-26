@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { saveToStorage } from '../services/storage'
+import { hasPermission } from '../services/roles'
 
 const DEFAULT_DURATION = 8
 
@@ -100,11 +101,15 @@ function CreateAssetForm({ onCreate, onCancel }) {
   )
 }
 
-function BookableAssetsView() {
+function BookableAssetsView({ role }) {
+  const canCreate = hasPermission(role, 'technicalAssets', 'create')
+  const canUpdate = hasPermission(role, 'technicalAssets', 'update')
+  const canDelete = hasPermission(role, 'technicalAssets', 'delete')
   const [assets, setAssets] = useState(load)
   const [showForm, setShowForm] = useState(false)
 
   function handleCreate({ name, quantity, cost, duration }) {
+    if (!canCreate) return
     const updated = [...assets, { id: newId(), name, quantity, cost, duration }]
     setAssets(updated)
     persist(updated)
@@ -112,12 +117,14 @@ function BookableAssetsView() {
   }
 
   function handleDelete(id) {
+    if (!canDelete) return
     const updated = assets.filter(a => a.id !== id)
     setAssets(updated)
     persist(updated)
   }
 
   function handleFieldChange(id, field, value) {
+    if (!canUpdate) return
     const updated = assets.map(a => a.id === id ? { ...a, [field]: value } : a)
     setAssets(updated)
     persist(updated)
@@ -127,7 +134,14 @@ function BookableAssetsView() {
     <div className="ba-container">
       <div className="ba-toolbar">
         <div className="ed-toolbar-right">
-          <button className="ba-create-btn" onClick={() => setShowForm(true)}>+ Create Asset(s)</button>
+          <button
+            className="ba-create-btn"
+            disabled={!canCreate}
+            title={!canCreate ? "Your role doesn't have permission to create assets" : undefined}
+            onClick={() => setShowForm(true)}
+          >
+            + Create Asset(s)
+          </button>
         </div>
       </div>
 
@@ -150,6 +164,7 @@ function BookableAssetsView() {
                     min="0"
                     step="0.01"
                     value={a.cost}
+                    disabled={!canUpdate}
                     onChange={e => handleFieldChange(a.id, 'cost', Math.max(0, parseFloat(e.target.value) || 0))}
                   />
                 </div>
@@ -160,10 +175,16 @@ function BookableAssetsView() {
                     min="0.5"
                     step="0.5"
                     value={a.duration}
+                    disabled={!canUpdate}
                     onChange={e => handleFieldChange(a.id, 'duration', Math.max(0.5, parseFloat(e.target.value) || DEFAULT_DURATION))}
                   />
                 </div>
-                <button className="ba-card-del" title="Delete" onClick={() => handleDelete(a.id)}>✕</button>
+                <button
+                  className="ba-card-del"
+                  disabled={!canDelete}
+                  title={canDelete ? 'Delete' : "Your role doesn't have permission to delete assets"}
+                  onClick={() => handleDelete(a.id)}
+                >✕</button>
               </div>
             ))}
           </div>

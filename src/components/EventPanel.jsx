@@ -3,6 +3,7 @@ import { saveToStorage } from '../services/storage'
 import { loadTechStack } from '../services/techStack'
 import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
 import { bookingDuration, formatDateLabel, formatRange } from '../services/bookingTime'
+import { hasPermission } from '../services/roles'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -219,7 +220,7 @@ function CostView({ asgn, tv, techBooth, techStudio, techObUnit, staffCosts, tec
 
 // ── Resource view sub-components ─────────────────────────────────────────────
 
-function StaffSelect({ label, value, options, field, onChange, status, onStatusChange, locked, onToggleLock }) {
+function StaffSelect({ label, value, options, field, onChange, status, onStatusChange, locked, onToggleLock, readOnly }) {
   const statusCls = status === 'confirmed' ? ' ep-field--confirmed'
                   : status === 'offered'   ? ' ep-field--offered'
                   : status === 'unbooked'  ? ' ep-field--unbooked'
@@ -230,18 +231,19 @@ function StaffSelect({ label, value, options, field, onChange, status, onStatusC
       <select
         className={`ep-select${value ? ' ep-select--set' : ''}`}
         value={value || ''}
-        disabled={locked}
+        disabled={locked || readOnly}
+        title={readOnly ? "Your role doesn't have permission to edit events" : undefined}
         onChange={e => onChange(field, e.target.value)}
       >
         <option value="">—</option>
         {options.map(o => <option key={o} value={o}>{o}</option>)}
       </select>
-      {!locked && status === 'unbooked' && (
+      {!locked && !readOnly && status === 'unbooked' && (
         <button className="ep-booking-btn ep-booking-btn--offer" onClick={() => onStatusChange('offered')}>
           Offer job
         </button>
       )}
-      {!locked && status === 'offered' && (
+      {!locked && !readOnly && status === 'offered' && (
         <button className="ep-booking-btn ep-booking-btn--accept" onClick={() => onStatusChange('confirmed')}>
           Confirm
         </button>
@@ -250,7 +252,8 @@ function StaffSelect({ label, value, options, field, onChange, status, onStatusC
         <button
           type="button"
           className={`ep-lock-btn${locked ? ' ep-lock-btn--locked' : ''}`}
-          title={locked ? 'Unlock to make changes' : 'Lock this booking'}
+          disabled={readOnly}
+          title={readOnly ? "Your role doesn't have permission to edit events" : (locked ? 'Unlock to make changes' : 'Lock this booking')}
           onClick={onToggleLock}
         >
           {locked ? 'Locked' : 'Lock'}
@@ -260,7 +263,7 @@ function StaffSelect({ label, value, options, field, onChange, status, onStatusC
   )
 }
 
-function TechNumField({ label, value, field, onChange, overridden }) {
+function TechNumField({ label, value, field, onChange, overridden, readOnly }) {
   return (
     <div className={`ep-field${overridden ? ' ep-field--overridden' : ''}`}>
       <span className="ep-field-label">{label}</span>
@@ -270,13 +273,15 @@ function TechNumField({ label, value, field, onChange, overridden }) {
         min="0"
         max="999"
         value={value}
+        disabled={readOnly}
+        title={readOnly ? "Your role doesn't have permission to edit events" : undefined}
         onChange={e => onChange(field, Math.max(0, parseInt(e.target.value, 10) || 0))}
       />
     </div>
   )
 }
 
-function TechToggleField({ label, value, field, onChange, overridden }) {
+function TechToggleField({ label, value, field, onChange, overridden, readOnly }) {
   return (
     <div className={`ep-field${overridden ? ' ep-field--overridden' : ''}`}>
       <span className="ep-field-label">{label}</span>
@@ -284,6 +289,8 @@ function TechToggleField({ label, value, field, onChange, overridden }) {
         <input
           type="checkbox"
           checked={!!value}
+          disabled={readOnly}
+          title={readOnly ? "Your role doesn't have permission to edit events" : undefined}
           onChange={e => onChange(field, e.target.checked)}
         />
         <span className="pf-toggle-track"><span className="pf-toggle-thumb" /></span>
@@ -295,8 +302,11 @@ function TechToggleField({ label, value, field, onChange, overridden }) {
 
 // ── Main panel ───────────────────────────────────────────────────────────────
 
-function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets }) {
+function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role }) {
   const p = event.extendedProps
+  const canUpdate = hasPermission(role, 'events', 'update')
+  const canDelete = hasPermission(role, 'events', 'delete')
+  const canAddAssets = hasPermission(role, 'technicalAssets', 'create')
 
   const [assignments, setAssignmentsState] = useState(loadAssignments)
   const [patterns]        = useState(loadPatterns)
@@ -486,7 +496,14 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets }) {
             <span className="ep-sport-badge">{p.sport}</span>
           </div>
           <div className="ep-header-actions">
-            <button className="ba-delete-btn" onClick={handleDeleteEvent}>Delete Event</button>
+            <button
+              className="ba-delete-btn"
+              disabled={!canDelete}
+              title={!canDelete ? "Your role doesn't have permission to delete events" : undefined}
+              onClick={handleDeleteEvent}
+            >
+              Delete Event
+            </button>
             <button className="ep-close" onClick={onClose} aria-label="Close panel">
               &#x2715;
             </button>
@@ -551,26 +568,33 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets }) {
                   <select
                     className={`ep-select${patternId ? ' ep-select--set' : ''}`}
                     value={patternId}
+                    disabled={!canUpdate}
+                    title={!canUpdate ? "Your role doesn't have permission to edit events" : undefined}
                     onChange={e => setPatternType(e.target.value)}
                   >
                     <option value="">—</option>
                     {patterns.map(pat => <option key={pat.id} value={pat.id}>{pat.name}</option>)}
                   </select>
                 </div>
-                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} status={bookingStatus(asgn.director,          'director',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('director',          s, asgn.director)} locked={isRoleLocked(locks, event.id, 'director')}          onToggleLock={() => toggleLock('director')} />
-                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('productionManager',  s, asgn.productionManager)} locked={isRoleLocked(locks, event.id, 'productionManager')} onToggleLock={() => toggleLock('productionManager')} />
-                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('producer',          s, asgn.producer)} locked={isRoleLocked(locks, event.id, 'producer')}          onToggleLock={() => toggleLock('producer')} />
-                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('commentator',       s, asgn.commentator)} locked={isRoleLocked(locks, event.id, 'commentator')}       onToggleLock={() => toggleLock('commentator')} />
-                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('cameraman',         s, asgn.cameraman)} locked={isRoleLocked(locks, event.id, 'cameraman')}         onToggleLock={() => toggleLock('cameraman')} />
-                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} status={bookingStatus(asgn.evsOperator,       'evsOperator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('evsOperator',       s, asgn.evsOperator)} locked={isRoleLocked(locks, event.id, 'evsOperator')}       onToggleLock={() => toggleLock('evsOperator')} />
-                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s, asgn.onsiteAudio)} locked={isRoleLocked(locks, event.id, 'onsiteAudio')}       onToggleLock={() => toggleLock('onsiteAudio')} />
-                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('graphicsOperator',  s, asgn.graphicsOperator)} locked={isRoleLocked(locks, event.id, 'graphicsOperator')}  onToggleLock={() => toggleLock('graphicsOperator')} />
+                <StaffSelect label="Director"    value={asgn.director}          options={staff.director}                field="director"          onChange={setField} status={bookingStatus(asgn.director,          'director',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('director',          s, asgn.director)} locked={isRoleLocked(locks, event.id, 'director')}          onToggleLock={() => toggleLock('director')} readOnly={!canUpdate} />
+                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('productionManager',  s, asgn.productionManager)} locked={isRoleLocked(locks, event.id, 'productionManager')} onToggleLock={() => toggleLock('productionManager')} readOnly={!canUpdate} />
+                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('producer',          s, asgn.producer)} locked={isRoleLocked(locks, event.id, 'producer')}          onToggleLock={() => toggleLock('producer')} readOnly={!canUpdate} />
+                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('commentator',       s, asgn.commentator)} locked={isRoleLocked(locks, event.id, 'commentator')}       onToggleLock={() => toggleLock('commentator')} readOnly={!canUpdate} />
+                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('cameraman',         s, asgn.cameraman)} locked={isRoleLocked(locks, event.id, 'cameraman')}         onToggleLock={() => toggleLock('cameraman')} readOnly={!canUpdate} />
+                <StaffSelect label="EVS"         value={asgn.evsOperator}       options={staff.evsOperator}             field="evsOperator"       onChange={setField} status={bookingStatus(asgn.evsOperator,       'evsOperator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('evsOperator',       s, asgn.evsOperator)} locked={isRoleLocked(locks, event.id, 'evsOperator')}       onToggleLock={() => toggleLock('evsOperator')} readOnly={!canUpdate} />
+                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s, asgn.onsiteAudio)} locked={isRoleLocked(locks, event.id, 'onsiteAudio')}       onToggleLock={() => toggleLock('onsiteAudio')} readOnly={!canUpdate} />
+                <StaffSelect label="Graphics"    value={asgn.graphicsOperator}  options={staff.graphicsOperator}        field="graphicsOperator"  onChange={setField} status={bookingStatus(asgn.graphicsOperator,  'graphicsOperator',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('graphicsOperator',  s, asgn.graphicsOperator)} locked={isRoleLocked(locks, event.id, 'graphicsOperator')}  onToggleLock={() => toggleLock('graphicsOperator')} readOnly={!canUpdate} />
               </div>
 
               {/* ── Bookable Assets ── */}
               <div className="ep-section">
                 <span className="ep-section-title">Bookable Assets</span>
-                <button className="ep-add-assets-btn" onClick={() => onAddBookableAssets(event)}>
+                <button
+                  className="ep-add-assets-btn"
+                  disabled={!canAddAssets}
+                  title={!canAddAssets ? "Your role doesn't have permission to book assets" : undefined}
+                  onClick={() => onAddBookableAssets(event)}
+                >
                   + Add Bookable Assets
                 </button>
               </div>
@@ -597,21 +621,21 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets }) {
               </div>
               <div className="ep-fields">
                 <span className="ep-field-group-label">Crew</span>
-                <TechNumField label="Cameramen"     value={tv('techCameramen',            'cameramen')}             field="techCameramen"             onChange={setField} overridden={isOverridden('techCameramen',            'cameramen')} />
-                <TechNumField label="EVS Operators" value={tv('techEvsOperator',          'evsOperator')}           field="techEvsOperator"           onChange={setField} overridden={isOverridden('techEvsOperator',          'evsOperator')} />
-                <TechNumField label="Audio on loc"  value={tv('techAudioOnLocation',      'audioOnLocation')}       field="techAudioOnLocation"       onChange={setField} overridden={isOverridden('techAudioOnLocation',      'audioOnLocation')} />
+                <TechNumField label="Cameramen"     value={tv('techCameramen',            'cameramen')}             field="techCameramen"             onChange={setField} overridden={isOverridden('techCameramen',            'cameramen')} readOnly={!canUpdate} />
+                <TechNumField label="EVS Operators" value={tv('techEvsOperator',          'evsOperator')}           field="techEvsOperator"           onChange={setField} overridden={isOverridden('techEvsOperator',          'evsOperator')} readOnly={!canUpdate} />
+                <TechNumField label="Audio on loc"  value={tv('techAudioOnLocation',      'audioOnLocation')}       field="techAudioOnLocation"       onChange={setField} overridden={isOverridden('techAudioOnLocation',      'audioOnLocation')} readOnly={!canUpdate} />
                 <span className="ep-field-group-label">Video Lines</span>
-                <TechNumField label="Incoming"      value={tv('techIncomingVideoLines',    'incomingVideoLines')}    field="techIncomingVideoLines"    onChange={setField} overridden={isOverridden('techIncomingVideoLines',    'incomingVideoLines')} />
-                <TechNumField label="Outgoing"      value={tv('techOutgoingVideoLines',    'outgoingVideoLines')}    field="techOutgoingVideoLines"    onChange={setField} overridden={isOverridden('techOutgoingVideoLines',    'outgoingVideoLines')} />
+                <TechNumField label="Incoming"      value={tv('techIncomingVideoLines',    'incomingVideoLines')}    field="techIncomingVideoLines"    onChange={setField} overridden={isOverridden('techIncomingVideoLines',    'incomingVideoLines')} readOnly={!canUpdate} />
+                <TechNumField label="Outgoing"      value={tv('techOutgoingVideoLines',    'outgoingVideoLines')}    field="techOutgoingVideoLines"    onChange={setField} overridden={isOverridden('techOutgoingVideoLines',    'outgoingVideoLines')} readOnly={!canUpdate} />
                 <span className="ep-field-group-label">Audio &amp; Talkback</span>
-                <TechNumField label="Audio in"      value={tv('techIncomingAudioLines',    'incomingAudioLines')}    field="techIncomingAudioLines"    onChange={setField} overridden={isOverridden('techIncomingAudioLines',    'incomingAudioLines')} />
-                <TechNumField label="Talkback in"   value={tv('techIncomingTalkbackLines', 'incomingTalkbackLines')} field="techIncomingTalkbackLines" onChange={setField} overridden={isOverridden('techIncomingTalkbackLines', 'incomingTalkbackLines')} />
-                <TechNumField label="Talkback out"  value={tv('techOutgoingTalkbackLines', 'outgoingTalkbackLines')} field="techOutgoingTalkbackLines" onChange={setField} overridden={isOverridden('techOutgoingTalkbackLines', 'outgoingTalkbackLines')} />
+                <TechNumField label="Audio in"      value={tv('techIncomingAudioLines',    'incomingAudioLines')}    field="techIncomingAudioLines"    onChange={setField} overridden={isOverridden('techIncomingAudioLines',    'incomingAudioLines')} readOnly={!canUpdate} />
+                <TechNumField label="Talkback in"   value={tv('techIncomingTalkbackLines', 'incomingTalkbackLines')} field="techIncomingTalkbackLines" onChange={setField} overridden={isOverridden('techIncomingTalkbackLines', 'incomingTalkbackLines')} readOnly={!canUpdate} />
+                <TechNumField label="Talkback out"  value={tv('techOutgoingTalkbackLines', 'outgoingTalkbackLines')} field="techOutgoingTalkbackLines" onChange={setField} overridden={isOverridden('techOutgoingTalkbackLines', 'outgoingTalkbackLines')} readOnly={!canUpdate} />
                 <span className="ep-field-group-label">Production</span>
-                <TechToggleField label="Prod. Booth" value={techBooth} field="techProductionBooth" onChange={setField} overridden={boothOverridden} />
-                <TechToggleField label="Studio" value={techStudio} field="techStudio" onChange={setField} overridden={studioOverridden} />
-                <TechToggleField label="OB Unit" value={techObUnit} field="techObUnit" onChange={setField} overridden={obUnitOverridden} />
-                <TechToggleField label="Passthrough" value={techPassthrough} field="techPassthrough" onChange={setField} overridden={passthroughOverridden} />
+                <TechToggleField label="Prod. Booth" value={techBooth} field="techProductionBooth" onChange={setField} overridden={boothOverridden} readOnly={!canUpdate} />
+                <TechToggleField label="Studio" value={techStudio} field="techStudio" onChange={setField} overridden={studioOverridden} readOnly={!canUpdate} />
+                <TechToggleField label="OB Unit" value={techObUnit} field="techObUnit" onChange={setField} overridden={obUnitOverridden} readOnly={!canUpdate} />
+                <TechToggleField label="Passthrough" value={techPassthrough} field="techPassthrough" onChange={setField} overridden={passthroughOverridden} readOnly={!canUpdate} />
               </div>
             </>
           )}

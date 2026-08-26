@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { saveToStorage } from '../services/storage'
+import { hasPermission } from '../services/roles'
 
 function formatDateRange(start, end) {
   if (!start) return '—'
@@ -37,17 +38,19 @@ function loadRights() {
 }
 
 // Cycles: empty → Y → P → empty. Keyboard Y/P also work directly.
-function DecisionCell({ value, eventId, platformId, onChange, eventIndex }) {
+function DecisionCell({ value, eventId, platformId, onChange, eventIndex, readOnly }) {
   const state = value || ''
 
   function handleClick(e) {
     e.stopPropagation()
+    if (readOnly) return
     const next = state === '' ? 'Y' : state === 'Y' ? 'P' : ''
     onChange(eventId, platformId, next, eventIndex, e.shiftKey)
   }
 
   function handleKeyDown(e) {
     e.stopPropagation()
+    if (readOnly) return
     const k = e.key.toUpperCase()
     if (k === 'P') { e.preventDefault(); onChange(eventId, platformId, state === 'P' ? '' : 'P', eventIndex, false) }
     else if (k === 'Y') { e.preventDefault(); onChange(eventId, platformId, state === 'Y' ? '' : 'Y', eventIndex, false) }
@@ -60,19 +63,22 @@ function DecisionCell({ value, eventId, platformId, onChange, eventIndex }) {
 
   return (
     <div
-      className={cls}
+      className={`${cls}${readOnly ? ' decision-cell--readonly' : ''}`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      tabIndex={0}
+      tabIndex={readOnly ? -1 : 0}
       role="button"
+      aria-disabled={readOnly}
       aria-label={`Coverage ${state || 'none'}`}
+      title={readOnly ? "Your role doesn't have permission to edit events" : undefined}
     >
       {state}
     </div>
   )
 }
 
-function EditorialView({ events, onEventClick }) {
+function EditorialView({ events, onEventClick, role }) {
+  const readOnly = !hasPermission(role, 'events', 'update')
   const rowRefs = useRef({})
   const lastClickRef = useRef(null)
   const [selectedDate, setSelectedDate] = useState('')
@@ -293,6 +299,7 @@ function EditorialView({ events, onEventClick }) {
                           platformId={p.id}
                           onChange={handleDecision}
                           eventIndex={i}
+                          readOnly={readOnly}
                         />
                       </td>
                     )
@@ -302,9 +309,10 @@ function EditorialView({ events, onEventClick }) {
                       type="checkbox"
                       className="ed-initprod-cb"
                       checked={!!eventDecisions.initProduction}
+                      disabled={readOnly}
                       onChange={() => {}}
-                      onClick={e => { e.stopPropagation(); toggleInitProduction(event.id, i, e) }}
-                      title="Initialise production planning"
+                      onClick={e => { e.stopPropagation(); if (!readOnly) toggleInitProduction(event.id, i, e) }}
+                      title={readOnly ? "Your role doesn't have permission to edit events" : 'Initialise production planning'}
                     />
                   </td>
                 </tr>

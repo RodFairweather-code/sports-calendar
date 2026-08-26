@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { saveToStorage } from '../services/storage'
+import { hasPermission } from '../services/roles'
 
 const ROLES = [
   { key: 'cameramen',               label: 'Cameramen' },
@@ -125,7 +126,7 @@ function formatDate(start) {
   return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
 }
 
-function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack }) {
+function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack, canUpdate }) {
   const roleProfiles = allProfiles[role.key] || {}
   const [selectedPerson, setSelectedPerson] = useState(null)
 
@@ -194,10 +195,11 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
                       <span
                         className={p.isStaff ? 'srt-staff-tag srt-tag-btn' : 'srt-fl-tag srt-tag-btn'}
                         role="button"
-                        tabIndex={0}
-                        title="Click to toggle Staff / Freelance"
-                        onClick={() => onUpdate(role.key, name, 'isStaff', !p.isStaff)}
-                        onKeyDown={e => e.key === 'Enter' && onUpdate(role.key, name, 'isStaff', !p.isStaff)}
+                        tabIndex={canUpdate ? 0 : -1}
+                        aria-disabled={!canUpdate}
+                        title={canUpdate ? 'Click to toggle Staff / Freelance' : "Your role doesn't have permission to edit staff"}
+                        onClick={() => canUpdate && onUpdate(role.key, name, 'isStaff', !p.isStaff)}
+                        onKeyDown={e => canUpdate && e.key === 'Enter' && onUpdate(role.key, name, 'isStaff', !p.isStaff)}
                       >
                         {p.isStaff ? 'Staff' : 'Freelance'}
                       </span>
@@ -209,6 +211,7 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
                         className="srt-email-input"
                         value={p.email}
                         placeholder="email@example.com"
+                        disabled={!canUpdate}
                         onChange={e => onUpdate(role.key, name, 'email', e.target.value)}
                       />
                     </td>
@@ -219,6 +222,7 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
                           type="checkbox"
                           className="srt-cap-check"
                           checked={p.caps[c.key] || false}
+                          disabled={!canUpdate}
                           onChange={e => onUpdate(role.key, name, `caps.${c.key}`, e.target.checked)}
                         />
                       </td>
@@ -231,6 +235,7 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
                         min="1"
                         max="5"
                         value={p.seniority}
+                        disabled={!canUpdate}
                         onChange={e => {
                           const v = Math.min(5, Math.max(1, parseInt(e.target.value, 10) || 1))
                           onUpdate(role.key, name, 'seniority', v)
@@ -273,7 +278,10 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
 
 // ── Main Staff view (cards grid) ─────────────────────────────────────────────
 
-function StaffView({ allEvents = [] }) {
+function StaffView({ allEvents = [], role }) {
+  const canCreate = hasPermission(role, 'humanAssets', 'create')
+  const canUpdate = hasPermission(role, 'humanAssets', 'update')
+  const canDelete = hasPermission(role, 'humanAssets', 'delete')
   const [staff, setStaff]           = useState(loadStaff)
   const [costs, setCosts]           = useState(loadStaffCosts)
   const [inputs, setInputs]         = useState(Object.fromEntries(ROLES.map(r => [r.key, ''])))
@@ -297,6 +305,7 @@ function StaffView({ allEvents = [] }) {
   }
 
   function addPerson(roleKey) {
+    if (!canCreate) return
     const name = inputs[roleKey].trim()
     if (!name) return
     const list = staff[roleKey]
@@ -308,6 +317,7 @@ function StaffView({ allEvents = [] }) {
   }
 
   function removePerson(roleKey, name) {
+    if (!canDelete) return
     const updated = { ...staff, [roleKey]: staff[roleKey].filter(n => n !== name) }
     setStaff(updated)
     persist(updated)
@@ -329,12 +339,14 @@ function StaffView({ allEvents = [] }) {
   }
 
   function setDefaultCost(roleKey, value) {
+    if (!canUpdate) return
     const next = { ...costs, defaults: { ...costs.defaults, [roleKey]: value } }
     setCosts(next)
     persistCosts(next)
   }
 
   function setPersonCost(roleKey, name, rawValue) {
+    if (!canUpdate) return
     const key = overrideKey(roleKey, name)
     const next = { ...costs, overrides: { ...costs.overrides } }
     if (rawValue === '' || rawValue === null) {
@@ -367,6 +379,7 @@ function StaffView({ allEvents = [] }) {
         allEvents={allEvents}
         onUpdate={updateProfile}
         onBack={() => setSelectedRole(null)}
+        canUpdate={canUpdate}
       />
     )
   }
@@ -397,6 +410,7 @@ function StaffView({ allEvents = [] }) {
                   className="staff-cost-input"
                   type="number" min="0"
                   value={defaultCost}
+                  disabled={!canUpdate}
                   onChange={e => setDefaultCost(role.key, Math.max(0, parseInt(e.target.value, 10) || 0))}
                 />
               </div>
@@ -419,13 +433,15 @@ function StaffView({ allEvents = [] }) {
                             type="number" min="0"
                             value={overrideVal}
                             placeholder={String(defaultCost)}
+                            disabled={!canUpdate}
                             onChange={e => setPersonCost(role.key, name, e.target.value)}
                           />
                         </div>
                         <button
                           className="staff-remove-btn"
+                          disabled={!canDelete}
+                          title={canDelete ? `Remove ${name}` : "Your role doesn't have permission to remove staff"}
                           onClick={() => removePerson(role.key, name)}
-                          title={`Remove ${name}`}
                         >✕</button>
                       </div>
                     )
@@ -439,13 +455,15 @@ function StaffView({ allEvents = [] }) {
                   type="text"
                   placeholder="Full name…"
                   value={inputs[role.key]}
+                  disabled={!canCreate}
                   onChange={e => setInputs(prev => ({ ...prev, [role.key]: e.target.value }))}
                   onKeyDown={e => onKey(e, role.key)}
                 />
                 <button
                   className="staff-add-btn"
                   onClick={() => addPerson(role.key)}
-                  disabled={!inputs[role.key].trim()}
+                  disabled={!canCreate || !inputs[role.key].trim()}
+                  title={!canCreate ? "Your role doesn't have permission to add staff" : undefined}
                 >
                   Add
                 </button>

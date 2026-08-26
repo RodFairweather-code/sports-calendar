@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import { loadTechStack } from '../services/techStack'
+import { hasPermission } from '../services/roles'
 
 function persistTechStack(data) {
   saveToStorage('admin_tech_stack', data)
@@ -12,7 +13,7 @@ function loadPlatforms() {
 }
 
 // Equipment field: qty + cost side by side
-function EquipField({ label, value, costValue, onChange, onCostChange }) {
+function EquipField({ label, value, costValue, onChange, onCostChange, disabled }) {
   return (
     <div className="ts-field">
       <span className="ts-field-label">{label}</span>
@@ -21,6 +22,7 @@ function EquipField({ label, value, costValue, onChange, onCostChange }) {
           className="ts-field-input"
           type="number" min="0" max="9999"
           value={value ?? 0}
+          disabled={disabled}
           onChange={e => onChange(Math.max(0, parseInt(e.target.value, 10) || 0))}
         />
         <span className="ts-cost-sep">£</span>
@@ -28,6 +30,7 @@ function EquipField({ label, value, costValue, onChange, onCostChange }) {
           className="ts-field-cost"
           type="number" min="0"
           value={costValue ?? 0}
+          disabled={disabled}
           onChange={e => onCostChange(Math.max(0, parseInt(e.target.value, 10) || 0))}
         />
       </div>
@@ -36,7 +39,7 @@ function EquipField({ label, value, costValue, onChange, onCostChange }) {
 }
 
 // Plain number field for platform lines (no cost)
-function NumField({ label, value, onChange }) {
+function NumField({ label, value, onChange, disabled }) {
   return (
     <div className="ts-field">
       <span className="ts-field-label">{label}</span>
@@ -44,6 +47,7 @@ function NumField({ label, value, onChange }) {
         className="ts-field-input"
         type="number" min="0" max="9999"
         value={value ?? 0}
+        disabled={disabled}
         onChange={e => onChange(Math.max(0, parseInt(e.target.value, 10) || 0))}
       />
     </div>
@@ -63,11 +67,13 @@ function TechCard({ title, children }) {
   )
 }
 
-function TechStackView() {
+function TechStackView({ role }) {
+  const canUpdate = hasPermission(role, 'technicalAssets', 'update')
   const [platforms] = useState(loadPlatforms)
   const [data, setData] = useState(loadTechStack)
 
   function setTop(field, value) {
+    if (!canUpdate) return
     setData(prev => {
       const next = { ...prev, [field]: value }
       persistTechStack(next)
@@ -76,6 +82,7 @@ function TechStackView() {
   }
 
   function setPlatLine(platformId, field, value) {
+    if (!canUpdate) return
     setData(prev => {
       const next = {
         ...prev,
@@ -108,48 +115,48 @@ function TechStackView() {
           <div className="staff-grid">
 
             <TechCard title="Encoders &amp; Decoders">
-              <EquipField label="Encoders" value={data.encoders} costValue={data.encodersCost}
+              <EquipField label="Encoders" value={data.encoders} costValue={data.encodersCost} disabled={!canUpdate}
                 onChange={v => setTop('encoders', v)} onCostChange={v => setTop('encodersCost', v)} />
-              <EquipField label="Decoders" value={data.decoders} costValue={data.decodersCost}
+              <EquipField label="Decoders" value={data.decoders} costValue={data.decodersCost} disabled={!canUpdate}
                 onChange={v => setTop('decoders', v)} onCostChange={v => setTop('decodersCost', v)} />
             </TechCard>
 
             <TechCard title="Frame Rate Converters">
-              <EquipField label="Frame Rate Converters" value={data.frameRateConverters} costValue={data.frameRateConvertersCost}
+              <EquipField label="Frame Rate Converters" value={data.frameRateConverters} costValue={data.frameRateConvertersCost} disabled={!canUpdate}
                 onChange={v => setTop('frameRateConverters', v)} onCostChange={v => setTop('frameRateConvertersCost', v)} />
             </TechCard>
 
             <TechCard title="Audio Offset">
-              <EquipField label="Audio Offset" value={data.audioOffset} costValue={data.audioOffsetCost}
+              <EquipField label="Audio Offset" value={data.audioOffset} costValue={data.audioOffsetCost} disabled={!canUpdate}
                 onChange={v => setTop('audioOffset', v)} onCostChange={v => setTop('audioOffsetCost', v)} />
             </TechCard>
 
             <TechCard title="Outgoing Idents">
-              <EquipField label="Outgoing Idents" value={data.outgoingIdents} costValue={data.outgoingIdentsCost}
+              <EquipField label="Outgoing Idents" value={data.outgoingIdents} costValue={data.outgoingIdentsCost} disabled={!canUpdate}
                 onChange={v => setTop('outgoingIdents', v)} onCostChange={v => setTop('outgoingIdentsCost', v)} />
             </TechCard>
 
             <TechCard title="OB Units, Booths and Studios">
-              <EquipField label="OB Units" value={data.obUnits} costValue={data.obUnitsCost}
+              <EquipField label="OB Units" value={data.obUnits} costValue={data.obUnitsCost} disabled={!canUpdate}
                 onChange={v => setTop('obUnits', v)} onCostChange={v => setTop('obUnitsCost', v)} />
-              <EquipField label="Production Booths" value={data.productionBooths} costValue={data.productionBoothsCost}
+              <EquipField label="Production Booths" value={data.productionBooths} costValue={data.productionBoothsCost} disabled={!canUpdate}
                 onChange={v => setTop('productionBooths', v)} onCostChange={v => setTop('productionBoothsCost', v)} />
-              <EquipField label="Studios" value={data.studios} costValue={data.studiosCost}
+              <EquipField label="Studios" value={data.studios} costValue={data.studiosCost} disabled={!canUpdate}
                 onChange={v => setTop('studios', v)} onCostChange={v => setTop('studiosCost', v)} />
             </TechCard>
 
             <TechCard title="Record Ports">
-              <EquipField label="Record Ports" value={data.recordPorts} costValue={data.recordPortsCost}
+              <EquipField label="Record Ports" value={data.recordPorts} costValue={data.recordPortsCost} disabled={!canUpdate}
                 onChange={v => setTop('recordPorts', v)} onCostChange={v => setTop('recordPortsCost', v)} />
             </TechCard>
 
             <TechCard title="Lines">
-              <EquipField label="Video Incoming"    value={data.videoIncoming}    costValue={data.videoIncomingCost}    onChange={v => setTop('videoIncoming',    v)} onCostChange={v => setTop('videoIncomingCost',    v)} />
-              <EquipField label="Video Outgoing"    value={data.videoOutgoing}    costValue={data.videoOutgoingCost}    onChange={v => setTop('videoOutgoing',    v)} onCostChange={v => setTop('videoOutgoingCost',    v)} />
-              <EquipField label="Audio Incoming"    value={data.audioIncoming}    costValue={data.audioIncomingCost}    onChange={v => setTop('audioIncoming',    v)} onCostChange={v => setTop('audioIncomingCost',    v)} />
-              <EquipField label="Audio Outgoing"    value={data.audioOutgoing}    costValue={data.audioOutgoingCost}    onChange={v => setTop('audioOutgoing',    v)} onCostChange={v => setTop('audioOutgoingCost',    v)} />
-              <EquipField label="Talkback Incoming" value={data.talkbackIncoming} costValue={data.talkbackIncomingCost} onChange={v => setTop('talkbackIncoming', v)} onCostChange={v => setTop('talkbackIncomingCost', v)} />
-              <EquipField label="Talkback Outgoing" value={data.talkbackOutgoing} costValue={data.talkbackOutgoingCost} onChange={v => setTop('talkbackOutgoing', v)} onCostChange={v => setTop('talkbackOutgoingCost', v)} />
+              <EquipField label="Video Incoming"    value={data.videoIncoming}    costValue={data.videoIncomingCost}    disabled={!canUpdate} onChange={v => setTop('videoIncoming',    v)} onCostChange={v => setTop('videoIncomingCost',    v)} />
+              <EquipField label="Video Outgoing"    value={data.videoOutgoing}    costValue={data.videoOutgoingCost}    disabled={!canUpdate} onChange={v => setTop('videoOutgoing',    v)} onCostChange={v => setTop('videoOutgoingCost',    v)} />
+              <EquipField label="Audio Incoming"    value={data.audioIncoming}    costValue={data.audioIncomingCost}    disabled={!canUpdate} onChange={v => setTop('audioIncoming',    v)} onCostChange={v => setTop('audioIncomingCost',    v)} />
+              <EquipField label="Audio Outgoing"    value={data.audioOutgoing}    costValue={data.audioOutgoingCost}    disabled={!canUpdate} onChange={v => setTop('audioOutgoing',    v)} onCostChange={v => setTop('audioOutgoingCost',    v)} />
+              <EquipField label="Talkback Incoming" value={data.talkbackIncoming} costValue={data.talkbackIncomingCost} disabled={!canUpdate} onChange={v => setTop('talkbackIncoming', v)} onCostChange={v => setTop('talkbackIncomingCost', v)} />
+              <EquipField label="Talkback Outgoing" value={data.talkbackOutgoing} costValue={data.talkbackOutgoingCost} disabled={!canUpdate} onChange={v => setTop('talkbackOutgoing', v)} onCostChange={v => setTop('talkbackOutgoingCost', v)} />
             </TechCard>
 
           </div>
@@ -166,13 +173,13 @@ function TechStackView() {
             <div className="staff-grid">
               {platforms.map(p => (
                 <TechCard key={p.id} title={p.name}>
-                  <NumField label="Video incoming"     value={pl(p.id, 'videoIncoming')}    onChange={v => setPlatLine(p.id, 'videoIncoming',    v)} />
-                  <NumField label="Video outgoing"     value={pl(p.id, 'videoOutgoing')}    onChange={v => setPlatLine(p.id, 'videoOutgoing',    v)} />
-                  <NumField label="Talkback incoming"  value={pl(p.id, 'talkbackIncoming')} onChange={v => setPlatLine(p.id, 'talkbackIncoming', v)} />
-                  <NumField label="Talkback outgoing"  value={pl(p.id, 'talkbackOutgoing')} onChange={v => setPlatLine(p.id, 'talkbackOutgoing', v)} />
-                  <NumField label="Audio incoming"     value={pl(p.id, 'audioIncoming')}    onChange={v => setPlatLine(p.id, 'audioIncoming',    v)} />
-                  <NumField label="Audio outgoing"     value={pl(p.id, 'audioOutgoing')}    onChange={v => setPlatLine(p.id, 'audioOutgoing',    v)} />
-                  <NumField label="2110"               value={pl(p.id, 'smpte2110')}        onChange={v => setPlatLine(p.id, 'smpte2110',        v)} />
+                  <NumField label="Video incoming"     value={pl(p.id, 'videoIncoming')}    disabled={!canUpdate} onChange={v => setPlatLine(p.id, 'videoIncoming',    v)} />
+                  <NumField label="Video outgoing"     value={pl(p.id, 'videoOutgoing')}    disabled={!canUpdate} onChange={v => setPlatLine(p.id, 'videoOutgoing',    v)} />
+                  <NumField label="Talkback incoming"  value={pl(p.id, 'talkbackIncoming')} disabled={!canUpdate} onChange={v => setPlatLine(p.id, 'talkbackIncoming', v)} />
+                  <NumField label="Talkback outgoing"  value={pl(p.id, 'talkbackOutgoing')} disabled={!canUpdate} onChange={v => setPlatLine(p.id, 'talkbackOutgoing', v)} />
+                  <NumField label="Audio incoming"     value={pl(p.id, 'audioIncoming')}    disabled={!canUpdate} onChange={v => setPlatLine(p.id, 'audioIncoming',    v)} />
+                  <NumField label="Audio outgoing"     value={pl(p.id, 'audioOutgoing')}    disabled={!canUpdate} onChange={v => setPlatLine(p.id, 'audioOutgoing',    v)} />
+                  <NumField label="2110"               value={pl(p.id, 'smpte2110')}        disabled={!canUpdate} onChange={v => setPlatLine(p.id, 'smpte2110',        v)} />
                 </TechCard>
               ))}
             </div>

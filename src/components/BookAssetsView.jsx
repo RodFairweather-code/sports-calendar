@@ -6,6 +6,7 @@ import {
 } from '../services/bookingTime'
 import AssetTimelineView from './AssetTimelineView'
 import DayDetailView from './DayDetailView'
+import { hasPermission } from '../services/roles'
 
 function describeBooking(b) {
   const parts = []
@@ -372,7 +373,7 @@ function BookingForm({ assets, bookings, initial, onCreate, onCancel }) {
   )
 }
 
-function EditBookingForm({ booking, assets, bookings, onSave, onDelete, onDeleteSeries, onCancel }) {
+function EditBookingForm({ booking, assets, bookings, onSave, onDelete, onDeleteSeries, onCancel, canUpdate, canDelete }) {
   const [form, setForm] = useState(() => ({
     assetId: booking.assetId,
     unit: booking.unit,
@@ -418,7 +419,7 @@ function EditBookingForm({ booking, assets, bookings, onSave, onDelete, onDelete
     assets,
   )
 
-  const canSubmit = form.assetId && form.unit && form.date && form.time && conflicts.length === 0
+  const canSubmit = canUpdate && form.assetId && form.unit && form.date && form.time && conflicts.length === 0
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -427,11 +428,13 @@ function EditBookingForm({ booking, assets, bookings, onSave, onDelete, onDelete
   }
 
   function handleDelete() {
+    if (!canDelete) return
     if (!window.confirm(`Delete this booking of ${booking.assetName} ${booking.unit} on ${booking.date} at ${booking.time}?`)) return
     onDelete(booking.id)
   }
 
   function handleDeleteSeries() {
+    if (!canDelete) return
     if (!window.confirm('Delete every occurrence in this recurring series? This cannot be undone.')) return
     onDeleteSeries(booking.seriesId)
   }
@@ -521,14 +524,37 @@ function EditBookingForm({ booking, assets, bookings, onSave, onDelete, onDelete
 
           <div className="ba-modal-actions ba-modal-actions--split">
             <div className="ba-modal-actions-left">
-              <button type="button" className="ba-delete-btn" onClick={handleDelete}>Delete booking</button>
+              <button
+                type="button"
+                className="ba-delete-btn"
+                disabled={!canDelete}
+                title={!canDelete ? "Your role doesn't have permission to delete bookings" : undefined}
+                onClick={handleDelete}
+              >
+                Delete booking
+              </button>
               {booking.seriesId && (
-                <button type="button" className="ba-cancel-series-btn" onClick={handleDeleteSeries}>Delete series</button>
+                <button
+                  type="button"
+                  className="ba-cancel-series-btn"
+                  disabled={!canDelete}
+                  title={!canDelete ? "Your role doesn't have permission to delete bookings" : undefined}
+                  onClick={handleDeleteSeries}
+                >
+                  Delete series
+                </button>
               )}
             </div>
             <div className="ba-modal-actions-right">
               <button type="button" className="unsaved-btn unsaved-btn--cancel" onClick={onCancel}>Cancel</button>
-              <button type="submit" className="unsaved-btn unsaved-btn--save" disabled={!canSubmit}>Save</button>
+              <button
+                type="submit"
+                className="unsaved-btn unsaved-btn--save"
+                disabled={!canSubmit}
+                title={!canUpdate ? "Your role doesn't have permission to edit bookings" : undefined}
+              >
+                Save
+              </button>
             </div>
           </div>
         </form>
@@ -537,7 +563,10 @@ function EditBookingForm({ booking, assets, bookings, onSave, onDelete, onDelete
   )
 }
 
-function BookAssetsView({ eventContext, onDone }) {
+function BookAssetsView({ eventContext, onDone, role }) {
+  const canCreate = hasPermission(role, 'technicalAssets', 'create')
+  const canUpdate = hasPermission(role, 'technicalAssets', 'update')
+  const canDelete = hasPermission(role, 'technicalAssets', 'delete')
   const [assets] = useState(loadAssets)
   const [bookings, setBookings] = useState(loadBookings)
   const [showForm, setShowForm] = useState(false)
@@ -547,6 +576,7 @@ function BookAssetsView({ eventContext, onDone }) {
   const [dayViewDate, setDayViewDate] = useState(null)
 
   function openBookingForm(prefill) {
+    if (!canCreate) return
     setFormPrefill(prefill || null)
     setShowForm(true)
   }
@@ -584,18 +614,21 @@ function BookAssetsView({ eventContext, onDone }) {
   }
 
   function handleDelete(id) {
+    if (!canDelete) return
     const updated = bookings.filter(b => b.id !== id)
     setBookings(updated)
     persistBookings(updated)
   }
 
   function handleDeleteSeries(seriesId) {
+    if (!canDelete) return
     const updated = bookings.filter(b => b.seriesId !== seriesId)
     setBookings(updated)
     persistBookings(updated)
   }
 
   function handleUpdateBooking(id, form, asset, applyToSeries) {
+    if (!canUpdate) return
     const original = bookings.find(b => b.id === id)
     const seriesId = original?.seriesId
 
@@ -666,8 +699,12 @@ function BookAssetsView({ eventContext, onDone }) {
             <div className="ed-toolbar-right">
               <button
                 className="ba-create-btn"
-                disabled={assets.length === 0}
-                title={assets.length === 0 ? 'No bookable assets exist yet — add some in Admin → Bookable Assets' : ''}
+                disabled={assets.length === 0 || !canCreate}
+                title={
+                  !canCreate ? "Your role doesn't have permission to book assets"
+                    : assets.length === 0 ? 'No bookable assets exist yet — add some in Admin → Bookable Assets'
+                    : ''
+                }
                 onClick={() => openBookingForm(null)}
               >
                 + Book Asset
@@ -710,9 +747,21 @@ function BookAssetsView({ eventContext, onDone }) {
                         {b.seriesId && <span className="ba-booking-tag">Recurring</span>}
                       </div>
                       <div className="ba-booking-actions">
-                        <button className="ba-booking-del" title="Delete this booking" onClick={e => { e.stopPropagation(); handleDelete(b.id) }}>✕</button>
+                        <button
+                          className="ba-booking-del"
+                          disabled={!canDelete}
+                          title={canDelete ? 'Delete this booking' : "Your role doesn't have permission to delete bookings"}
+                          onClick={e => { e.stopPropagation(); handleDelete(b.id) }}
+                        >✕</button>
                         {b.seriesId && (
-                          <button className="ba-cancel-series-btn" onClick={e => { e.stopPropagation(); handleDeleteSeries(b.seriesId) }}>Cancel series</button>
+                          <button
+                            className="ba-cancel-series-btn"
+                            disabled={!canDelete}
+                            title={!canDelete ? "Your role doesn't have permission to delete bookings" : undefined}
+                            onClick={e => { e.stopPropagation(); handleDeleteSeries(b.seriesId) }}
+                          >
+                            Cancel series
+                          </button>
                         )}
                       </div>
                     </div>
@@ -743,6 +792,8 @@ function BookAssetsView({ eventContext, onDone }) {
           onDelete={handleDeleteFromEdit}
           onDeleteSeries={handleDeleteSeriesFromEdit}
           onCancel={() => setEditingBooking(null)}
+          canUpdate={canUpdate}
+          canDelete={canDelete}
         />
       )}
     </div>

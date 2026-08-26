@@ -6,6 +6,7 @@ import TechStackView from './TechStackView'
 import RightsView from './RightsView'
 import BookableAssetsView from './BookableAssetsView'
 import AppearanceView from './AppearanceView'
+import UserTypesView from './UserTypesView'
 import { saveToStorage } from '../services/storage'
 
 const ROLE_KEYS = [
@@ -124,8 +125,12 @@ function downloadText(filename, content) {
   URL.revokeObjectURL(url)
 }
 
-function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps, skin, onSkinChange }) {
+function AdminView({
+  snapshotUnlocked, allEvents, onNavigate, onActivateComps, skin, onSkinChange,
+  roles, onRolesChange, currentRoleId, onOpenAssumeRole,
+}) {
   const [adminTab, setAdminTab] = useState('patterns')
+  const activeRole = roles.find(r => r.id === currentRoleId) || roles[0]
 
   function handleSnapshot() {
     downloadText('seedStaff.js', buildSnapshot())
@@ -291,12 +296,13 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps, s
     <div className="admin-view">
       <div className="admin-content">
         {adminTab === 'patterns'   && <PatternsView />}
-        {adminTab === 'staff'      && <StaffView allEvents={allEvents} />}
+        {adminTab === 'staff'      && <StaffView allEvents={allEvents} role={activeRole} />}
         {adminTab === 'platforms'  && <PlatformsView />}
-        {adminTab === 'techstack'  && <TechStackView />}
+        {adminTab === 'techstack'  && <TechStackView role={activeRole} />}
         {adminTab === 'rights'     && <RightsView />}
-        {adminTab === 'bookableAssets' && <BookableAssetsView />}
+        {adminTab === 'bookableAssets' && <BookableAssetsView role={activeRole} />}
         {adminTab === 'appearance' && <AppearanceView skin={skin} onSkinChange={onSkinChange} />}
+        {adminTab === 'userTypes' && <UserTypesView roles={roles} onRolesChange={onRolesChange} />}
       </div>
       <div className="admin-bottom-bar">
         <button className={`admin-tab-btn${adminTab === 'patterns'  ? ' active' : ''}`} onClick={() => setAdminTab('patterns')}>Patterns</button>
@@ -306,6 +312,7 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps, s
         <button className={`admin-tab-btn${adminTab === 'rights'    ? ' active' : ''}`} onClick={() => setAdminTab('rights')}>Rights</button>
         <button className={`admin-tab-btn${adminTab === 'bookableAssets' ? ' active' : ''}`} onClick={() => setAdminTab('bookableAssets')}>Bookable Assets</button>
         <button className={`admin-tab-btn${adminTab === 'appearance' ? ' active' : ''}`} onClick={() => setAdminTab('appearance')}>Appearance</button>
+        <button className={`admin-tab-btn${adminTab === 'userTypes' ? ' active' : ''}`} onClick={() => setAdminTab('userTypes')}>User Types</button>
         <div className="admin-snapshot-group">
           <button
             className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
@@ -402,6 +409,14 @@ function AdminView({ snapshotUnlocked, allEvents, onNavigate, onActivateComps, s
             onClick={handleClearMany}
           >
             Clear Many Events
+          </button>
+          <button
+            className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
+            disabled={!snapshotUnlocked}
+            tabIndex={snapshotUnlocked ? 0 : -1}
+            onClick={onOpenAssumeRole}
+          >
+            Assume Role
           </button>
         </div>
       </div>

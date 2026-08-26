@@ -18,11 +18,13 @@ import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
 import { SEED_RIGHTS_MATRIX } from './data/seedRights'
 import { SEED_PATTERNS } from './data/seedPatterns'
 import { SEED_BOOKABLE_ASSETS, SEED_ASSET_BOOKINGS } from './data/seedBookableAssets'
+import { SEED_ROLES } from './data/seedRoles'
 import { saveToStorage } from './services/storage'
 import { loadImportedEvents, addImportedEvent, addImportedEvents, removeImportedEvent } from './services/importedEvents'
 import { loadCustomCompetitions, addCustomCompetition } from './services/customCompetitions'
 import { loadDeletedEventIds, addDeletedEventId } from './services/deletedEvents'
 import { clearEventReferences } from './services/eventCleanup'
+import { loadRoles, persistRoles, loadCurrentRoleId, persistCurrentRoleId, getActiveRole, canSeeView } from './services/roles'
 import imgLogoWhite from './assets/img-brand/img-logo-white.png'
 import './App.css'
 
@@ -46,6 +48,8 @@ if (!localStorage.getItem('bookable_assets'))
   saveToStorage('bookable_assets', SEED_BOOKABLE_ASSETS)
 if (!localStorage.getItem('asset_bookings'))
   saveToStorage('asset_bookings', SEED_ASSET_BOOKINGS)
+if (!localStorage.getItem('admin_roles'))
+  saveToStorage('admin_roles', SEED_ROLES)
 
 const VIEWS = [
   { id: 'calendar',   label: 'Calendar' },
@@ -116,10 +120,27 @@ function App() {
   const [bookingContextEvent, setBookingContextEvent] = useState(null)
   const [preBookingView, setPreBookingView] = useState('calendar')
   const [skin, setSkin] = useState(loadSkin)
+  const [roles, setRoles] = useState(loadRoles)
+  const [currentRoleId, setCurrentRoleId] = useState(loadCurrentRoleId)
+  const [showAssumeRole, setShowAssumeRole] = useState(false)
+
+  const activeRole = useMemo(
+    () => getActiveRole(roles, currentRoleId),
+    [roles, currentRoleId]
+  )
 
   useEffect(() => {
     localStorage.setItem(SKIN_KEY, skin)
   }, [skin])
+
+  // If the assumed role changes (or its own view access was edited) while
+  // sitting on a now-forbidden tab, fall back to the first tab it can see.
+  useEffect(() => {
+    if (!canSeeView(activeRole, view)) {
+      const fallback = VIEWS.find(v => canSeeView(activeRole, v.id))
+      setView(fallback ? fallback.id : 'calendar')
+    }
+  }, [activeRole, view])
 
   useEffect(() => {
     function onQuotaExceeded(e) {
@@ -205,6 +226,21 @@ function App() {
     }
   }
 
+  function handleAssumeRole(roleId) {
+    setCurrentRoleId(roleId)
+    persistCurrentRoleId(roleId)
+  }
+
+  function handleRolesChange(nextRoles) {
+    setRoles(nextRoles)
+    persistRoles(nextRoles)
+    // If the role being previewed was just deleted, fall back rather than
+    // keep pointing at an id nothing matches.
+    if (!nextRoles.some(r => r.id === currentRoleId)) {
+      handleAssumeRole(nextRoles[0]?.id || '')
+    }
+  }
+
   function toggleGoverningBody(bodyId) {
     const body = governingBodies.find(b => b.id === bodyId)
     if (!body) return
@@ -224,16 +260,27 @@ function App() {
     <div className="app" data-skin={skin}>
       <header className="app-header">
         {skin === 'img' && <img src={imgLogoWhite} alt="IMG" className="app-header-logo" />}
-        <h1>Sports Broadcasting Calendar</h1>
+        <h1
+          onClick={e => { if (e.ctrlKey) setShowAssumeRole(prev => !prev) }}
+          title="Ctrl+click to assume a different user type"
+        >
+          Sports Broadcasting Calendar
+        </h1>
         <nav className="nav-tabs">
-          {VIEWS.map(v => (
+          {VIEWS.filter(v => canSeeView(activeRole, v.id)).map(v => (
             <button
               key={v.id}
               data-id={v.id}
               className={`nav-tab${view === v.id ? ' active' : ''}`}
               onClick={e => {
-                if (v.id === 'admin' && e.ctrlKey) {
-                  setSnapshotUnlocked(prev => !prev)
+                if ((v.id === 'admin' || v.id === 'calendar') && e.ctrlKey) {
+                  setSnapshotUnlocked(true)
+                  setShowAssumeRole(prev => !prev)
+                } else {
+                  // Plain click on any tab re-hides the power-tools bar —
+                  // it should only ever be visible right after the
+                  // deliberate Ctrl+Admin / Ctrl+Calendar gesture.
+                  setSnapshotUnlocked(false)
                 }
                 setView(v.id)
               }}
@@ -242,8 +289,36 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.06</span>
+        <span className="header-version">v3.10</span>
       </header>
+
+      {showAssumeRole && (
+        <div className="ba-modal-backdrop" onClick={() => setShowAssumeRole(false)}>
+          <div className="ba-modal-dialog assume-role-dialog" onClick={e => e.stopPropagation()}>
+            <h3>Assume Role</h3>
+            <p className="assume-role-hint">
+              Preview the app as a different user type. This changes what's visible for
+              everyone using this browser until switched back — it isn't real access
+              control (that arrives with OKTA), just a way to demonstrate each role.
+            </p>
+            <div className="assume-role-list">
+              {roles.map(r => (
+                <button
+                  key={r.id}
+                  className={`assume-role-option${r.id === currentRoleId ? ' assume-role-option--active' : ''}`}
+                  onClick={() => { handleAssumeRole(r.id); setShowAssumeRole(false) }}
+                >
+                  <span className="assume-role-name">{r.name}</span>
+                  {r.id === currentRoleId && <span className="assume-role-badge">Current</span>}
+                </button>
+              ))}
+            </div>
+            <div className="ba-modal-actions">
+              <button type="button" className="unsaved-btn unsaved-btn--cancel" onClick={() => setShowAssumeRole(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {storageWarning && (
         <div className="storage-quota-banner">
@@ -256,24 +331,24 @@ function App() {
         </div>
       )}
 
-      {view === 'calendar' && (
+      {view === 'calendar' && canSeeView(activeRole, 'calendar') && (
         <CalendarView events={visibleEvents} onEventClick={handleCalendarEventClick} />
       )}
-      {view === 'editorial' && (
-        <EditorialView events={visibleEvents} onEventClick={setSelectedEvent} />
+      {view === 'editorial' && canSeeView(activeRole, 'editorial') && (
+        <EditorialView events={visibleEvents} onEventClick={setSelectedEvent} role={activeRole} />
       )}
-      {view === 'production' && (
+      {view === 'production' && canSeeView(activeRole, 'production') && (
         <ProductionView events={visibleEvents} onEventClick={setSelectedEvent} />
       )}
-      {view === 'technical' && <TechnicalView events={visibleEvents} />}
-      {view === 'booths' && <BoothsView events={visibleEvents} onEventClick={setSelectedEvent} />}
-      {view === 'book-staff' && <BookStaffView events={visibleEvents} />}
-      {view === 'assets' && <AssetsView events={combinedEvents} />}
-      {view === 'book-assets' && (
-        <BookAssetsView eventContext={bookingContextEvent} onDone={handleDoneBookingAssets} />
+      {view === 'technical' && canSeeView(activeRole, 'technical') && <TechnicalView events={visibleEvents} />}
+      {view === 'booths' && canSeeView(activeRole, 'booths') && <BoothsView events={visibleEvents} onEventClick={setSelectedEvent} />}
+      {view === 'book-staff' && canSeeView(activeRole, 'book-staff') && <BookStaffView events={visibleEvents} role={activeRole} />}
+      {view === 'assets' && canSeeView(activeRole, 'assets') && <AssetsView events={combinedEvents} />}
+      {view === 'book-assets' && canSeeView(activeRole, 'book-assets') && (
+        <BookAssetsView eventContext={bookingContextEvent} onDone={handleDoneBookingAssets} role={activeRole} />
       )}
-      {view === 'resource-gaps' && <ResourceGapsView allEvents={combinedEvents} onEventClick={setSelectedEvent} />}
-      {view === 'admin' && (
+      {view === 'resource-gaps' && canSeeView(activeRole, 'resource-gaps') && <ResourceGapsView allEvents={combinedEvents} onEventClick={setSelectedEvent} />}
+      {view === 'admin' && canSeeView(activeRole, 'admin') && (
         <AdminView
           snapshotUnlocked={snapshotUnlocked}
           allEvents={combinedEvents}
@@ -281,14 +356,19 @@ function App() {
           onActivateComps={activateComps}
           skin={skin}
           onSkinChange={setSkin}
+          roles={roles}
+          onRolesChange={handleRolesChange}
+          currentRoleId={currentRoleId}
+          onOpenAssumeRole={() => setShowAssumeRole(true)}
         />
       )}
-      {view === 'import' && (
+      {view === 'import' && canSeeView(activeRole, 'import') && (
         <ImportEventsView
           competitions={allCompetitions}
           onAdd={handleAddImportedEvent}
           onAddBatch={handleAddImportedEvents}
           onAddCompetition={handleAddCompetition}
+          role={activeRole}
         />
       )}
 
@@ -310,6 +390,7 @@ function App() {
           onClose={() => setSelectedEvent(null)}
           onDeleteEvent={handleDeleteEvent}
           onAddBookableAssets={handleAddBookableAssets}
+          role={activeRole}
         />
       )}
     </div>

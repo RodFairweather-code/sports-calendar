@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import { buildImportedEventFromRow, colorForName } from '../services/excelImport'
 import ImportExcelModal from './ImportExcelModal'
+import { hasPermission } from '../services/roles'
 
 const NEW_COMPETITION = '__new_competition__'
 const NEW_SPORT = '__new_sport__'
@@ -279,7 +280,8 @@ function StaffField({ label, value, options, onChange }) {
   )
 }
 
-function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition }) {
+function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, role }) {
+  const canCreate = hasPermission(role, 'events', 'create')
   const [form, setForm] = useState(EMPTY_FORM)
   const [errors, setErrors] = useState({})
   const [successMsg, setSuccessMsg] = useState('')
@@ -373,6 +375,7 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
 
   function handleSportSubmit(e) {
     e.preventDefault()
+    if (!canCreate) return
     const validation = validate()
     setErrors(validation)
     if (Object.keys(validation).length > 0) { setSuccessMsg(''); return }
@@ -407,6 +410,7 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
 
   function handleProgrammeSubmit(e) {
     e.preventDefault()
+    if (!canCreate) return
     const validation = validateProgramme()
     setErrors(validation)
     if (Object.keys(validation).length > 0) { setSuccessMsg(''); return }
@@ -452,6 +456,7 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
   }
 
   function handleExcelAccept({ sportName, competitionName, rows }) {
+    if (!canCreate) return
     let competition = competitions.find(
       c => c.name.trim().toLowerCase() === competitionName.trim().toLowerCase()
     )
@@ -916,13 +921,25 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition })
         )}
 
         <div className="import-actions">
-          <button type="submit" className="import-save-btn">Save</button>
+          <button
+            type="submit"
+            className="import-save-btn"
+            disabled={!canCreate}
+            title={!canCreate ? "Your role doesn't have permission to create events" : undefined}
+          >
+            Save
+          </button>
         </div>
       </form>
     </div>
 
       <div className="import-bottom-bar">
-        <button className="import-excel-btn" onClick={() => setShowExcelModal(true)}>
+        <button
+          className="import-excel-btn"
+          disabled={!canCreate}
+          title={!canCreate ? "Your role doesn't have permission to create events" : undefined}
+          onClick={() => setShowExcelModal(true)}
+        >
           Import from Excel
         </button>
       </div>

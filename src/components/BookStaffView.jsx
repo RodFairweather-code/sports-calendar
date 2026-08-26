@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
+import { hasPermission } from '../services/roles'
 
 function formatDate(start) {
   if (!start) return '—'
@@ -44,7 +45,8 @@ const FILTERS = [
   { key: 'unconfirmed', label: 'Unconfirmed' },
 ]
 
-function BookStaffView({ events }) {
+function BookStaffView({ events, role }) {
+  const canUpdate = hasPermission(role, 'humanAssets', 'update')
   const [selectedRole, setSelectedRole] = useState(ROLE_TABS[0].key)
   const [filter, setFilter] = useState('all')
   const [assignments] = useState(loadAssignments)
@@ -84,6 +86,7 @@ function BookStaffView({ events }) {
     : rows
 
   function setBookingStatus(eventId, status) {
+    if (!canUpdate) return
     setBookings(prev => {
       const next = { ...prev, [eventId]: { ...prev[eventId], [selectedRole]: status } }
       persistBookings(next)
@@ -100,6 +103,7 @@ function BookStaffView({ events }) {
   }
 
   function offerJob(event, person) {
+    if (!canUpdate) return
     setBookingStatus(event.id, 'offered')
     const timeStr = event.start?.length > 10 ? ` at ${event.start.slice(11, 16)}` : ''
     clearTimeout(noticeTimerRef.current)
@@ -108,6 +112,7 @@ function BookStaffView({ events }) {
   }
 
   function toggleLock(eventId) {
+    if (!canUpdate) return
     setLocks(prev => {
       const next = withRoleLock(prev, eventId, selectedRole, !isRoleLocked(prev, eventId, selectedRole))
       persistLocks(next)
@@ -174,6 +179,8 @@ function BookStaffView({ events }) {
                       {!isStaff && !locked && effectiveStatus === '' && (
                         <button
                           className="bs-action-btn bs-action-btn--offer"
+                          disabled={!canUpdate}
+                          title={!canUpdate ? "Your role doesn't have permission to edit staff bookings" : undefined}
                           onClick={() => offerJob(event, person)}
                         >
                           Offer job
@@ -182,6 +189,8 @@ function BookStaffView({ events }) {
                       {!isStaff && !locked && effectiveStatus === 'offered' && (
                         <button
                           className="bs-action-btn bs-action-btn--accept"
+                          disabled={!canUpdate}
+                          title={!canUpdate ? "Your role doesn't have permission to edit staff bookings" : undefined}
                           onClick={() => setBookingStatus(event.id, 'confirmed')}
                         >
                           Accepted
@@ -189,6 +198,8 @@ function BookStaffView({ events }) {
                       )}
                       <button
                         className={`bs-action-btn${locked ? ' bs-action-btn--accept' : ''}`}
+                        disabled={!canUpdate}
+                        title={!canUpdate ? "Your role doesn't have permission to edit staff bookings" : undefined}
                         onClick={() => toggleLock(event.id)}
                       >
                         {locked ? 'Unlock' : 'Lock'}
