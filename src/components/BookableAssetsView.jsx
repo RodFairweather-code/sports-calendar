@@ -155,8 +155,27 @@ function BookableAssetsView({ role }) {
           <div className="ba-grid">
             {assets.map(a => (
               <div key={a.id} className="ba-card">
-                <div className="ba-card-name">{a.name}</div>
-                <div className="ba-card-qty">{a.quantity} available</div>
+                <input
+                  className="ba-card-name ba-card-name-input"
+                  type="text"
+                  value={a.name}
+                  disabled={!canUpdate}
+                  onChange={e => handleFieldChange(a.id, 'name', e.target.value)}
+                  onBlur={e => {
+                    if (!e.target.value.trim()) handleFieldChange(a.id, 'name', a.name)
+                  }}
+                />
+                <div className="ba-card-field">
+                  <label>Quantity</label>
+                  <input
+                    type="number"
+                    min="1"
+                    step="1"
+                    value={a.quantity}
+                    disabled={!canUpdate}
+                    onChange={e => handleFieldChange(a.id, 'quantity', Math.max(1, parseInt(e.target.value, 10) || 1))}
+                  />
+                </div>
                 <div className="ba-card-field">
                   <label>Cost (£)</label>
                   <input

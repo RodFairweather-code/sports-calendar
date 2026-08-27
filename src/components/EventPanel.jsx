@@ -108,7 +108,7 @@ function fmt(n) {
 
 // ── Cost line builder ────────────────────────────────────────────────────────
 
-function buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack) {
+function buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack, linkedAssetBookings, bookableAssets) {
   const lines = []
 
   // Individual named staff (single-person roles)
@@ -166,6 +166,12 @@ function buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts,
     lines.push({ section: 'Equipment', label: 'OB Unit', qty: 1, unitCost: uc, total: uc })
   }
 
+  // Bookable assets booked for this event
+  linkedAssetBookings.forEach(b => {
+    const uc = bookableAssets.find(a => a.id === b.assetId)?.cost ?? 0
+    lines.push({ section: 'Equipment', label: `${b.assetName} ${b.unit}`, note: formatDateLabel(b.date), qty: 1, unitCost: uc, total: uc })
+  })
+
   // Pre-production cost — a flat figure entered when the event was created/edited
   const preProdCost = Number(asgn.preProductionCost) || 0
   if (preProdCost > 0) {
@@ -177,8 +183,8 @@ function buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts,
 
 // ── Cost view ────────────────────────────────────────────────────────────────
 
-function CostView({ asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack }) {
-  const lines = buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack)
+function CostView({ asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack, linkedAssetBookings, bookableAssets }) {
+  const lines = buildCostLines(asgn, tv, techBooth, techStudio, techObUnit, staffCosts, techStack, linkedAssetBookings, bookableAssets)
   const sections = ['Pre-Production', 'Operational', 'Lines', 'Equipment']
   const grandTotal = lines.reduce((s, l) => s + l.total, 0)
 
@@ -555,6 +561,8 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role }
               techObUnit={techObUnit}
               staffCosts={staffCosts}
               techStack={techStack}
+              linkedAssetBookings={linkedAssetBookings}
+              bookableAssets={bookableAssets}
             />
           ) : (
             <>

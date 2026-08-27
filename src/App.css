@@ -4679,6 +4679,27 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   padding-right: 20px;
 }
 
+.ba-card-name-input {
+  display: block;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  margin-bottom: 6px;
+}
+
+.ba-card-name-input:hover:not(:disabled),
+.ba-card-name-input:focus {
+  border-color: #d5dae2;
+  background: #fff;
+  outline: none;
+}
+
+.ba-card-name-input:disabled {
+  color: var(--brand-primary);
+  opacity: 1;
+}
+
 .ba-card-qty {
   font-size: 0.8rem;
   color: #5a6a7a;
