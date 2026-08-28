@@ -21,6 +21,7 @@ import { SEED_RIGHTS_MATRIX } from './data/seedRights'
 import { SEED_PATTERNS } from './data/seedPatterns'
 import { SEED_BOOKABLE_ASSETS, SEED_ASSET_BOOKINGS } from './data/seedBookableAssets'
 import { SEED_ROLES } from './data/seedRoles'
+import { SEED_DEFAULT_TIMINGS } from './data/seedDefaultTimings'
 import { saveToStorage } from './services/storage'
 import { loadImportedEvents, addImportedEvent, addImportedEvents, removeImportedEvent, removeImportedEvents } from './services/importedEvents'
 import { loadCustomCompetitions, addCustomCompetition, removeCustomCompetitions } from './services/customCompetitions'
@@ -53,6 +54,8 @@ if (!localStorage.getItem('asset_bookings'))
   saveToStorage('asset_bookings', SEED_ASSET_BOOKINGS)
 if (!localStorage.getItem('admin_roles'))
   saveToStorage('admin_roles', SEED_ROLES)
+if (!localStorage.getItem('admin_default_timings'))
+  saveToStorage('admin_default_timings', SEED_DEFAULT_TIMINGS)
 
 const VIEWS = [
   { id: 'calendar',   label: 'Calendar' },
@@ -328,7 +331,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.19</span>
+        <span className="header-version">v3.20</span>
       </header>
 
       {showAssumeRole && (
