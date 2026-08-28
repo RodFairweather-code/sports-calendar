@@ -6,6 +6,7 @@ import CompetitionToggles from './components/CompetitionToggles'
 import AdminView from './components/AdminView'
 import ProductionView from './components/ProductionView'
 import TechnicalView from './components/TechnicalView'
+import TechnicalBookedView from './components/TechnicalBookedView'
 import BoothsView from './components/BoothsView'
 import BookStaffView from './components/BookStaffView'
 import ResourceGapsView from './components/ResourceGapsView'
@@ -58,6 +59,7 @@ const VIEWS = [
   { id: 'editorial',  label: 'Planning' },
   { id: 'production', label: 'Production' },
   { id: 'technical',  label: 'Technical' },
+  { id: 'technical2', label: 'Technical 2' },
   { id: 'booths',      label: 'Operations' },
   { id: 'book-staff', label: 'Book Staff' },
   { id: 'resource-gaps',  label: 'Resource Gaps' },
@@ -326,7 +328,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.14</span>
+        <span className="header-version">v3.15</span>
       </header>
 
       {showAssumeRole && (
@@ -387,6 +389,7 @@ function App() {
         <ProductionView events={visibleEvents} onEventClick={setSelectedEvent} />
       )}
       {view === 'technical' && canSeeView(activeRole, 'technical') && <TechnicalView events={visibleEvents} />}
+      {view === 'technical2' && canSeeView(activeRole, 'technical2') && <TechnicalBookedView events={visibleEvents} />}
       {view === 'booths' && canSeeView(activeRole, 'booths') && <BoothsView events={visibleEvents} onEventClick={setSelectedEvent} />}
       {view === 'book-staff' && canSeeView(activeRole, 'book-staff') && <BookStaffView events={visibleEvents} role={activeRole} />}
       {view === 'assets' && canSeeView(activeRole, 'assets') && <AssetsView events={combinedEvents} />}

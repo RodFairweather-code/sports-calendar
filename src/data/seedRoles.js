@@ -4,7 +4,7 @@
 
 function views(overrides) {
   const all = {
-    calendar: false, editorial: false, production: false, technical: false,
+    calendar: false, editorial: false, production: false, technical: false, technical2: false,
     booths: false, 'book-staff': false, 'resource-gaps': false, assets: false,
     'book-assets': false, import: false, admin: false,
   }
@@ -25,7 +25,7 @@ export const SEED_ROLES = [
     id: 'role_administrator',
     name: 'Administrator',
     views: views({
-      calendar: true, editorial: true, production: true, technical: true,
+      calendar: true, editorial: true, production: true, technical: true, technical2: true,
       booths: true, 'book-staff': true, 'resource-gaps': true, assets: true,
       'book-assets': true, import: true, admin: true,
     }),
@@ -39,7 +39,7 @@ export const SEED_ROLES = [
     id: 'role_senior_manager',
     name: 'Senior Manager',
     views: views({
-      calendar: true, editorial: true, production: true, technical: true,
+      calendar: true, editorial: true, production: true, technical: true, technical2: true,
       booths: true, 'book-staff': true, 'resource-gaps': true, assets: true,
       'book-assets': true, import: true, admin: false,
     }),
@@ -53,7 +53,7 @@ export const SEED_ROLES = [
     id: 'role_standard_operator',
     name: 'Standard Operator',
     views: views({
-      calendar: true, editorial: true, production: true, technical: true,
+      calendar: true, editorial: true, production: true, technical: true, technical2: true,
       booths: true, 'book-staff': true, 'resource-gaps': true, 'book-assets': true,
     }),
     permissions: perms(
@@ -66,7 +66,7 @@ export const SEED_ROLES = [
     id: 'role_mcr_operator',
     name: 'MCR Operator',
     views: views({
-      calendar: true, technical: true, booths: true, 'resource-gaps': true,
+      calendar: true, technical: true, technical2: true, booths: true, 'resource-gaps': true,
       'book-assets': true, assets: true,
     }),
     permissions: perms(
@@ -79,7 +79,7 @@ export const SEED_ROLES = [
     id: 'role_asset_manager',
     name: 'Asset Manager',
     views: views({
-      calendar: true, technical: true, 'resource-gaps': true,
+      calendar: true, technical: true, technical2: true, 'resource-gaps': true,
       'book-assets': true, assets: true,
     }),
     permissions: perms(

@@ -7,6 +7,7 @@ const VIEW_ROWS = [
   { id: 'editorial',     label: 'Planning' },
   { id: 'production',    label: 'Production' },
   { id: 'technical',     label: 'Technical' },
+  { id: 'technical2',    label: 'Technical 2' },
   { id: 'booths',        label: 'Operations' },
   { id: 'book-staff',    label: 'Book Staff' },
   { id: 'resource-gaps', label: 'Resource Gaps' },

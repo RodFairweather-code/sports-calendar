@@ -9,7 +9,7 @@ const FALLBACK_ROLE = {
   id: 'role_fallback',
   name: 'Everyone (fallback)',
   views: {
-    calendar: true, editorial: true, production: true, technical: true,
+    calendar: true, editorial: true, production: true, technical: true, technical2: true,
     booths: true, 'book-staff': true, 'resource-gaps': true, assets: true,
     'book-assets': true, import: true, admin: true,
   },
@@ -20,8 +20,21 @@ const FALLBACK_ROLE = {
   },
 }
 
+// Roles persisted before a new nav view existed won't have a key for it,
+// which canSeeView reads as hidden — default it to whatever "technical"
+// was set to, since it's a sibling view, rather than silently disappearing
+// for every role already saved in someone's browser.
+function backfillViews(role) {
+  if (role.views?.technical2 !== undefined) return role
+  return { ...role, views: { ...role.views, technical2: !!role.views?.technical } }
+}
+
 export function loadRoles() {
-  try { return JSON.parse(localStorage.getItem(ROLES_KEY) || '[]') }
+  try {
+    const roles = JSON.parse(localStorage.getItem(ROLES_KEY) || '[]').map(backfillViews)
+    if (roles.length > 0) saveToStorage(ROLES_KEY, roles)
+    return roles
+  }
   catch { return [] }
 }
 

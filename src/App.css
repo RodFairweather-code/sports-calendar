@@ -4061,6 +4061,47 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 .tv-td-val--possible  { color: #e65100; }
 .tv-td-val--combined  { color: #1565c0; font-size: 1.05rem; }
 
+/* ── Technical 2 (booked equipment list) ── */
+.tv2-booking-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.tv2-booking-item {
+  padding: 12px 18px;
+  border-bottom: 1px solid #eef0f4;
+}
+
+.tv2-booking-item:last-child { border-bottom: none; }
+
+.tv2-booking-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tv2-booking-none {
+  margin: 0;
+}
+
+.tv2-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tv2-chip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--brand-primary);
+  background: rgba(var(--brand-primary-rgb), 0.08);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.25);
+  border-radius: 12px;
+  padding: 3px 10px;
+}
+
 /* ── Asset Management view ──────────────────────────────────────────────────── */
 
 .assets-view {
