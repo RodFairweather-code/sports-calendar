@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, Fragment } from 'react'
 import { addHours } from '../services/bookingTime'
 import { addMinutesToLocalDatetime } from '../services/excelImport'
 import { loadDefaultTimings } from '../services/defaultTimings'
+import { needsBooth, needsStudio } from './BoothsView'
 
 function loadDecisions() {
   try { return JSON.parse(localStorage.getItem('editorial_decisions') || '{}') }
@@ -101,21 +102,27 @@ function formatOffsetResult(resultDatetime, baseDate) {
 
 // MCR control-room timings for an event, from the competition's default
 // offsets (minutes): Lineup and Live Feed count back from the event's
-// start, Auto Teardown counts forward from its end (or start, if no end
-// is recorded).
+// start. Auto Teardown counts forward from the event's end, which is
+// worked out as start + the competition's default duration (minutes,
+// including half time) — not any recorded event.end, since most fixtures
+// don't have one.
 function computeControlTimes(event, timing) {
   const startDT = splitDateTime(event.start)
-  if (!startDT) return { lineup: '—', liveFeed: '—', teardown: '—' }
+  if (!startDT) return { start: '—', lineup: '—', liveFeed: '—', teardown: '—' }
 
-  const endDT = splitDateTime(event.end) || startDT
   const lineupMin = timing?.lineup || 0
   const liveFeedMin = timing?.liveFeed || 0
   const teardownMin = timing?.autoTeardown || 0
+  const durationMin = timing?.duration || 0
+
+  const endDatetime = addMinutesToLocalDatetime(startDT.date, startDT.time, durationMin)
+  const teardownDatetime = addMinutesToLocalDatetime(endDatetime.slice(0, 10), endDatetime.slice(11, 16), teardownMin)
 
   return {
+    start: startDT.time,
     lineup: formatOffsetResult(addMinutesToLocalDatetime(startDT.date, startDT.time, -lineupMin), startDT.date),
     liveFeed: formatOffsetResult(addMinutesToLocalDatetime(startDT.date, startDT.time, -liveFeedMin), startDT.date),
-    teardown: formatOffsetResult(addMinutesToLocalDatetime(endDT.date, endDT.time, teardownMin), endDT.date),
+    teardown: formatOffsetResult(teardownDatetime, startDT.date),
   }
 }
 
@@ -132,9 +139,18 @@ function TechnicalBookedView({ events }) {
     return () => window.removeEventListener('assignments-updated', onUpdate)
   }, [])
 
+  // Runs after every render (no deps) but only actually scrolls once, the
+  // first time today's date shows up in sortedDays — on plain mount that's
+  // immediate, but if this view mounts before events/competitions are
+  // ready, sortedDays starts empty and only fills in on a later render.
+  const hasScrolledToday = useRef(false)
   useEffect(() => {
-    if (todayIndex !== -1) scrollToDate(todayStr)
-  }, [])
+    if (hasScrolledToday.current) return
+    if (todayIndex !== -1) {
+      scrollToDate(todayStr)
+      hasScrolledToday.current = true
+    }
+  })
 
   const dayRefs = useRef({})
   const [selectedDate, setSelectedDate] = useState('')
@@ -148,6 +164,29 @@ function TechnicalBookedView({ events }) {
       ? asgn.patternId
       : (defaultPatterns[event.extendedProps.competitionId] || '')
     return patId ? (patternMap[patId] || null) : null
+  }
+
+  // Booth numbers exactly as the Operations page assigns them: among
+  // Init-Production events that need a booth, grouped by day and sorted by
+  // start time, numbered 1-based within each day.
+  const boothNumbers = {}
+  const boothEventsByDate = events
+    .filter(e => decisions[e.id]?.initProduction && needsBooth(e, assignments, patternMap, defaultPatterns))
+    .reduce((byDate, event) => {
+      const d = event.start.slice(0, 10)
+      ;(byDate[d] ||= []).push(event)
+      return byDate
+    }, {})
+  Object.values(boothEventsByDate).forEach(dayEvents => {
+    dayEvents.sort((a, b) => a.start.localeCompare(b.start))
+    dayEvents.forEach((event, idx) => { boothNumbers[event.id] = idx + 1 })
+  })
+
+  function allocationLabel(event) {
+    const boothNumber = boothNumbers[event.id]
+    if (boothNumber) return `Booth ${boothNumber}`
+    if (needsStudio(event, assignments, patternMap, defaultPatterns)) return 'Studio'
+    return null
   }
 
   // dateStr -> { [categoryLabel]: [ { timeLabel, sortMin, qty, event, status } ] }
@@ -168,6 +207,7 @@ function TechnicalBookedView({ events }) {
     const status = hasY ? 'confirmed' : 'possible'
     const timing = defaultTimings[event.extendedProps.competitionId]
     const controlTimes = computeControlTimes(event, timing)
+    const allocation = allocationLabel(event)
 
     CATEGORY_DEFS.forEach(def => {
       const value = def.isFlag
@@ -182,7 +222,7 @@ function TechnicalBookedView({ events }) {
       if (!dayMap[dateStr]) dayMap[dateStr] = {}
       if (!dayMap[dateStr][def.label]) dayMap[dateStr][def.label] = []
       dayMap[dateStr][def.label].push({
-        timeLabel, sortMin, qty: def.isFlag ? null : value, event, status, controlTimes,
+        timeLabel, sortMin, qty: def.isFlag ? null : value, event, status, controlTimes, allocation,
       })
     })
   })
@@ -272,18 +312,39 @@ function TechnicalBookedView({ events }) {
                         <div className="tv2-cat-title">{def.label}</div>
                         <ul className="tv2-cat-list">
                           {categories[def.label].map((b, i) => (
-                            <li key={i} className="tv2-cat-item">
-                              <span className="tv2-time-badge">{b.timeLabel}</span>
-                              {b.qty != null && <span className="tv2-qty">{b.qty}</span>}
-                              <span className="tv-dot" style={{ background: b.event.backgroundColor }} />
-                              <span className="tv-event-name">{b.event.title}</span>
-                              {b.event.extendedProps.venue && (
-                                <span className="tv2-venue">· {b.event.extendedProps.venue}</span>
-                              )}
-                              <span className="tv2-control-badge">Lineup {b.controlTimes.lineup}</span>
-                              <span className="tv2-control-badge">Live Feed {b.controlTimes.liveFeed}</span>
-                              <span className="tv2-control-badge">Auto Teardown {b.controlTimes.teardown}</span>
-                              <span className={`tv-pill tv-pill--${b.status}`}>{b.status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>
+                            <li key={i}>
+                              <div className="tv2-row">
+                                <span className="tv2-cell tv2-cell--time">
+                                  <span className="tv2-time-badge">{b.timeLabel}</span>
+                                </span>
+                                <span className="tv2-cell tv2-cell--qty">{b.qty != null ? b.qty : ''}</span>
+                                <span className="tv2-cell tv2-cell--comp">
+                                  <span className="tv-dot" style={{ background: b.event.backgroundColor }} />
+                                  <span className="tv2-comp-name">{b.event.extendedProps.competitionName}</span>
+                                </span>
+                                <span className="tv2-cell tv2-cell--event">{b.event.title}</span>
+                                <span className="tv2-cell tv2-cell--venue">{b.event.extendedProps.venue || '—'}</span>
+                                <span className="tv2-cell tv2-cell--booth">
+                                  {b.allocation && (
+                                    <span className={`tv2-booth-badge${b.allocation === 'Studio' ? ' tv2-booth-badge--studio' : ''}`}>{b.allocation}</span>
+                                  )}
+                                </span>
+                                <span className="tv2-cell tv2-cell--lineup">
+                                  <span className="tv2-control-badge">Lineup {b.controlTimes.lineup}</span>
+                                </span>
+                                <span className="tv2-cell tv2-cell--livefeed">
+                                  <span className="tv2-control-badge">Live Feed {b.controlTimes.liveFeed}</span>
+                                </span>
+                                <span className="tv2-cell tv2-cell--start">
+                                  <span className="tv2-control-badge tv2-control-badge--start">Start {b.controlTimes.start}</span>
+                                </span>
+                                <span className="tv2-cell tv2-cell--teardown">
+                                  <span className="tv2-control-badge">Teardown {b.controlTimes.teardown}</span>
+                                </span>
+                                <span className="tv2-cell tv2-cell--status">
+                                  <span className={`tv-pill tv-pill--${b.status}`}>{b.status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>
+                                </span>
+                              </div>
                             </li>
                           ))}
                         </ul>

@@ -4112,22 +4112,82 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   list-style: none;
   display: flex;
   flex-direction: column;
+}
+
+.tv2-row {
+  display: grid;
+  grid-template-columns: 118px 30px 160px minmax(0, 240px) 160px 90px 90px 108px 84px 148px 78px;
+  justify-content: start;
+  align-items: center;
+  column-gap: 10px;
+  padding: 5px 2px;
+  font-size: 0.84rem;
+  border-bottom: 1px solid #f1f2f5;
+}
+
+.tv2-row:last-child { border-bottom: none; }
+
+.tv2-cat-list li:nth-child(even) .tv2-row { background: #fafbfc; }
+
+.tv2-cell {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.tv2-cell--qty {
+  text-align: right;
+  font-weight: 700;
+  color: #1a1a2e;
+  padding-right: 14px;
+}
+
+.tv2-cell--comp {
+  display: flex;
+  align-items: center;
   gap: 6px;
 }
 
-.tv2-cat-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.86rem;
-  flex-wrap: wrap;
+.tv2-comp-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  color: #445;
 }
 
-.tv2-venue {
+.tv2-cell--event {
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+.tv2-cell--venue {
   font-size: 0.78rem;
   color: #6b7a8f;
-  flex-shrink: 0;
+}
+
+.tv2-cell--status {
+  display: flex;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+.tv2-booth-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #4a148c;
+  background: #f3e5f5;
+  border: 1px solid #e1bee7;
+  border-radius: 9px;
+  padding: 1px 7px;
   white-space: nowrap;
+}
+
+.tv2-booth-badge--studio {
+  color: #00695c;
+  background: #e0f2f1;
+  border-color: #b2dfdb;
 }
 
 .tv2-control-badge {
@@ -4139,7 +4199,13 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   border-radius: 9px;
   padding: 1px 7px;
   white-space: nowrap;
-  flex-shrink: 0;
+}
+
+.tv2-control-badge--start {
+  color: #1a1a2e;
+  background: #fff3cd;
+  border-color: #ffe08a;
+  font-weight: 700;
 }
 
 .tv2-time-badge {
@@ -4150,16 +4216,7 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   border: 1px solid rgba(var(--brand-primary-rgb), 0.25);
   border-radius: 10px;
   padding: 2px 8px;
-  flex-shrink: 0;
   white-space: nowrap;
-}
-
-.tv2-qty {
-  font-weight: 700;
-  color: #1a1a2e;
-  flex-shrink: 0;
-  min-width: 1.2em;
-  text-align: right;
 }
 
 /* ── Asset Management view ──────────────────────────────────────────────────── */

@@ -100,7 +100,7 @@ function stripUnlockedRoles(asgn, id, locks) {
   return next
 }
 
-function needsBooth(event, assignments, patternMap, defaultPatterns) {
+export function needsBooth(event, assignments, patternMap, defaultPatterns) {
   const asgn = assignments[event.id] || {}
   if (asgn.techProductionBooth !== undefined) return asgn.techProductionBooth
   const patternId = asgn.patternId ?? defaultPatterns[event.extendedProps.competitionId]
@@ -108,7 +108,7 @@ function needsBooth(event, assignments, patternMap, defaultPatterns) {
   return patternMap[patternId]?.productionBooth ?? false
 }
 
-function needsStudio(event, assignments, patternMap, defaultPatterns) {
+export function needsStudio(event, assignments, patternMap, defaultPatterns) {
   const asgn = assignments[event.id] || {}
   if (asgn.techStudio !== undefined) return asgn.techStudio
   const patternId = asgn.patternId ?? defaultPatterns[event.extendedProps.competitionId]
