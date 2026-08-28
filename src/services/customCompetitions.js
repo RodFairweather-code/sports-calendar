@@ -12,3 +12,10 @@ export function addCustomCompetition(competition) {
   saveToStorage(KEY, next)
   return next
 }
+
+export function removeCustomCompetitions(ids) {
+  const idSet = new Set(ids)
+  const next = loadCustomCompetitions().filter(c => !idSet.has(c.id))
+  saveToStorage(KEY, next)
+  return next
+}

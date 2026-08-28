@@ -12,6 +12,7 @@ import ResourceGapsView from './components/ResourceGapsView'
 import AssetsView from './components/AssetsView'
 import BookAssetsView from './components/BookAssetsView'
 import ImportEventsView from './components/ImportEventsView'
+import ManageCompetitionsModal from './components/ManageCompetitionsModal'
 import { COMPETITIONS } from './data/competitions'
 import { getLocalFixtures } from './services/localFixtures'
 import { SEED_STAFF, SEED_STAFF_PROFILES } from './data/seedStaff'
@@ -20,9 +21,10 @@ import { SEED_PATTERNS } from './data/seedPatterns'
 import { SEED_BOOKABLE_ASSETS, SEED_ASSET_BOOKINGS } from './data/seedBookableAssets'
 import { SEED_ROLES } from './data/seedRoles'
 import { saveToStorage } from './services/storage'
-import { loadImportedEvents, addImportedEvent, addImportedEvents, removeImportedEvent } from './services/importedEvents'
-import { loadCustomCompetitions, addCustomCompetition } from './services/customCompetitions'
-import { loadDeletedEventIds, addDeletedEventId } from './services/deletedEvents'
+import { loadImportedEvents, addImportedEvent, addImportedEvents, removeImportedEvent, removeImportedEvents } from './services/importedEvents'
+import { loadCustomCompetitions, addCustomCompetition, removeCustomCompetitions } from './services/customCompetitions'
+import { loadDeletedEventIds, addDeletedEventId, addDeletedEventIds } from './services/deletedEvents'
+import { loadDeletedCompetitionIds, addDeletedCompetitionIds } from './services/deletedCompetitions'
 import { clearEventReferences } from './services/eventCleanup'
 import { loadRoles, persistRoles, loadCurrentRoleId, persistCurrentRoleId, getActiveRole, canSeeView } from './services/roles'
 import imgLogoWhite from './assets/img-brand/img-logo-white.png'
@@ -117,12 +119,14 @@ function App() {
   const [importedEvents, setImportedEvents] = useState(loadImportedEvents)
   const [customCompetitions, setCustomCompetitions] = useState(loadCustomCompetitions)
   const [deletedEventIds, setDeletedEventIds] = useState(() => new Set(loadDeletedEventIds()))
+  const [deletedCompetitionIds, setDeletedCompetitionIds] = useState(() => new Set(loadDeletedCompetitionIds()))
   const [bookingContextEvent, setBookingContextEvent] = useState(null)
   const [preBookingView, setPreBookingView] = useState('calendar')
   const [skin, setSkin] = useState(loadSkin)
   const [roles, setRoles] = useState(loadRoles)
   const [currentRoleId, setCurrentRoleId] = useState(loadCurrentRoleId)
   const [showAssumeRole, setShowAssumeRole] = useState(false)
+  const [showManageComps, setShowManageComps] = useState(false)
 
   const activeRole = useMemo(
     () => getActiveRole(roles, currentRoleId),
@@ -161,8 +165,8 @@ function App() {
   )
 
   const allCompetitions = useMemo(
-    () => [...VISIBLE_COMPETITIONS, ...customCompetitions],
-    [customCompetitions]
+    () => [...VISIBLE_COMPETITIONS, ...customCompetitions].filter(c => !deletedCompetitionIds.has(c.id)),
+    [customCompetitions, deletedCompetitionIds]
   )
 
   const governingBodies = useMemo(
@@ -190,6 +194,37 @@ function App() {
       setDeletedEventIds(new Set(addDeletedEventId(event.id)))
     }
     setSelectedEvent(null)
+  }
+
+  // Deletes one or more competitions (and, transitively, every event that
+  // belongs to them) leaving no trace behind: production assignments,
+  // editorial decisions, staff bookings/locks, and the competition itself.
+  function handleDeleteCompetitions(competitionIds) {
+    const idSet = new Set(competitionIds)
+    const eventsToRemove = combinedEvents.filter(e => idSet.has(e.extendedProps.competitionId))
+    eventsToRemove.forEach(e => clearEventReferences(e.id))
+
+    const importedIds = eventsToRemove.filter(e => e.id.startsWith('imported|')).map(e => e.id)
+    const builtInEventIds = eventsToRemove.filter(e => !e.id.startsWith('imported|')).map(e => e.id)
+
+    if (importedIds.length > 0) setImportedEvents(removeImportedEvents(importedIds))
+    if (builtInEventIds.length > 0) setDeletedEventIds(new Set(addDeletedEventIds(builtInEventIds)))
+
+    const customIds = competitionIds.filter(id => customCompetitions.some(c => c.id === id))
+    const builtInCompIds = competitionIds.filter(id => !customIds.includes(id))
+
+    if (customIds.length > 0) setCustomCompetitions(removeCustomCompetitions(customIds))
+    if (builtInCompIds.length > 0) setDeletedCompetitionIds(new Set(addDeletedCompetitionIds(builtInCompIds)))
+
+    setActiveComps(prev => {
+      if (![...idSet].some(id => prev.has(id))) return prev
+      const next = new Set(prev)
+      idSet.forEach(id => next.delete(id))
+      return next
+    })
+    if (selectedEvent && idSet.has(selectedEvent.extendedProps.competitionId)) {
+      setSelectedEvent(null)
+    }
   }
 
   function activateComps(ids) {
@@ -274,8 +309,10 @@ function App() {
               className={`nav-tab${view === v.id ? ' active' : ''}`}
               onClick={e => {
                 if ((v.id === 'admin' || v.id === 'calendar') && e.ctrlKey) {
+                  // Reveals the power-tools bar only — it no longer also
+                  // pops the Assume Role picker; that stays reachable via
+                  // Ctrl+click on the header title, or the bar's own button.
                   setSnapshotUnlocked(true)
-                  setShowAssumeRole(prev => !prev)
                 } else {
                   // Plain click on any tab re-hides the power-tools bar —
                   // it should only ever be visible right after the
@@ -289,7 +326,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.13</span>
+        <span className="header-version">v3.14</span>
       </header>
 
       {showAssumeRole && (
@@ -318,6 +355,15 @@ function App() {
             </div>
           </div>
         </div>
+      )}
+
+      {showManageComps && (
+        <ManageCompetitionsModal
+          competitions={allCompetitions}
+          allEvents={combinedEvents}
+          onDeleteCompetitions={handleDeleteCompetitions}
+          onClose={() => setShowManageComps(false)}
+        />
       )}
 
       {storageWarning && (
@@ -360,6 +406,7 @@ function App() {
           onRolesChange={handleRolesChange}
           currentRoleId={currentRoleId}
           onOpenAssumeRole={() => setShowAssumeRole(true)}
+          onOpenManageComps={() => setShowManageComps(true)}
         />
       )}
       {view === 'import' && canSeeView(activeRole, 'import') && (

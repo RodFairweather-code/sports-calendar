@@ -127,7 +127,7 @@ function downloadText(filename, content) {
 
 function AdminView({
   snapshotUnlocked, allEvents, onNavigate, onActivateComps, skin, onSkinChange,
-  roles, onRolesChange, currentRoleId, onOpenAssumeRole,
+  roles, onRolesChange, currentRoleId, onOpenAssumeRole, onOpenManageComps,
 }) {
   const [adminTab, setAdminTab] = useState('patterns')
   const activeRole = roles.find(r => r.id === currentRoleId) || roles[0]
@@ -417,6 +417,14 @@ function AdminView({
             onClick={onOpenAssumeRole}
           >
             Assume Role
+          </button>
+          <button
+            className={`admin-tab-btn admin-snapshot-btn${snapshotUnlocked ? ' visible' : ''}`}
+            disabled={!snapshotUnlocked}
+            tabIndex={snapshotUnlocked ? 0 : -1}
+            onClick={onOpenManageComps}
+          >
+            Manage Comps
           </button>
         </div>
       </div>

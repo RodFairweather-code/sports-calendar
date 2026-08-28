@@ -24,3 +24,10 @@ export function removeImportedEvent(id) {
   saveToStorage(KEY, next)
   return next
 }
+
+export function removeImportedEvents(ids) {
+  const idSet = new Set(ids)
+  const next = loadImportedEvents().filter(e => !idSet.has(e.id))
+  saveToStorage(KEY, next)
+  return next
+}

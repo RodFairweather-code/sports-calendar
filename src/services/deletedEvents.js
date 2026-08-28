@@ -15,3 +15,9 @@ export function addDeletedEventId(id) {
   saveToStorage(KEY, next)
   return next
 }
+
+export function addDeletedEventIds(ids) {
+  const next = [...new Set([...loadDeletedEventIds(), ...ids])]
+  saveToStorage(KEY, next)
+  return next
+}

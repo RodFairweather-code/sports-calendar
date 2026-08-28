@@ -2367,6 +2367,67 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   font-weight: 600;
 }
 
+/* ── Manage Competitions modal ───────────────────────────────── */
+.ba-modal-dialog.manage-comps-dialog {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+}
+
+.manage-comps-scroll {
+  max-height: 50vh;
+  overflow-y: auto;
+  border: 1px solid #eef0f4;
+  border-radius: 8px;
+}
+
+.manage-comps-sport-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.manage-comps-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 9px 12px;
+  margin-bottom: 4px;
+  border: 1px solid #e3e6ec;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.manage-comps-count {
+  font-size: 0.8rem;
+  color: #6b7a8f;
+}
+
+.manage-comps-del-btn {
+  padding: 5px 14px;
+  border: 1px solid #c0392b;
+  border-radius: 16px;
+  background: transparent;
+  color: #c0392b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.manage-comps-del-btn:hover {
+  background: #c0392b;
+  color: #fff;
+}
+
+.manage-comps-del-btn--sport {
+  padding: 4px 12px;
+}
+
 .assume-role-badge {
   font-size: 0.68rem;
   font-weight: 700;
