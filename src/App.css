@@ -1036,6 +1036,8 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 }
 
 .ep-extend-timings-note {
+  display: block;
+  width: 100%;
   margin: 0 0 4px;
   padding: 10px 12px;
   background: #fdecea;
@@ -1044,6 +1046,23 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   color: #8e0000;
   font-size: 0.82rem;
   line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.ep-extend-timings-note:hover {
+  background: #fbdad5;
+}
+
+.ep-extend-timings-note--confirmed {
+  background: #e8f5e9;
+  border-color: #a5d6a7;
+  color: #2e7d32;
+}
+
+.ep-extend-timings-note--confirmed:hover {
+  background: #d9eeda;
 }
 
 .ep-asset-bookings {

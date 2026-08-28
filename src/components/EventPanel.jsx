@@ -233,9 +233,27 @@ function TimingsView({ event, timing, asgn, onChange, readOnly }) {
   const postMatchTotal = (asgn.postMatchShowDuration || 0) + extendedMinutes
   const controlTimes = computeControlTimes(event, timing, asgn.preMatchShowDuration, postMatchTotal)
   const extendedHours = extendedMinutes / 60
+  const [showExtensionModal, setShowExtensionModal] = useState(false)
 
+  // A fresh extension always needs re-confirming, even if a previous one
+  // had already been signed off by the supplier.
   function handleExtend() {
+    if (!window.confirm('Are you sure you want to extend the timings for this event by an hour?')) return
     onChange('extendedMinutes', extendedMinutes + 60)
+    onChange('extensionConfirmed', false)
+  }
+
+  function handleConfirmBySupplier() {
+    onChange('extensionConfirmed', true)
+    setShowExtensionModal(false)
+  }
+
+  // Reverts to the original (un-extended) Lines Down time entirely, rather
+  // than just undoing the last +1hr press.
+  function handleCancelExtension() {
+    onChange('extendedMinutes', 0)
+    onChange('extensionConfirmed', false)
+    setShowExtensionModal(false)
   }
 
   return (
@@ -282,10 +300,36 @@ function TimingsView({ event, timing, asgn, onChange, readOnly }) {
         URGENT: Extend timings
       </button>
       {extendedHours > 0 && (
-        <p className="ep-extend-timings-note">
+        <button
+          type="button"
+          className={`ep-extend-timings-note${asgn.extensionConfirmed ? ' ep-extend-timings-note--confirmed' : ''}`}
+          onClick={() => setShowExtensionModal(true)}
+        >
           All internal facilities have been extended by {extendedHours === 1 ? 'an hour' : `${extendedHours} hours`},
           and external lines providers have had an urgent request to extend the booking.
-        </p>
+        </button>
+      )}
+
+      {showExtensionModal && (
+        <div className="ba-modal-backdrop" onClick={() => setShowExtensionModal(false)}>
+          <div className="ba-modal-dialog" onClick={e => e.stopPropagation()}>
+            <h3>Extension — {event.title}</h3>
+            <p className="assume-role-hint">
+              This event's lines were extended by an hour. What's the status?
+            </p>
+            <div className="assume-role-list">
+              <button type="button" className="assume-role-option" onClick={handleConfirmBySupplier}>
+                Lines extended by supplier
+              </button>
+              <button type="button" className="assume-role-option" onClick={handleCancelExtension}>
+                Cancel Extension
+              </button>
+            </div>
+            <div className="ba-modal-actions">
+              <button type="button" className="unsaved-btn unsaved-btn--cancel" onClick={() => setShowExtensionModal(false)}>Close</button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   )

@@ -331,7 +331,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.47</span>
+        <span className="header-version">v3.48</span>
       </header>
 
       {showAssumeRole && (
