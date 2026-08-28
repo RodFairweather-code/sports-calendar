@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { saveToStorage } from '../services/storage'
-import { buildImportedEventFromRow, colorForName } from '../services/excelImport'
+import { buildImportedEventFromRow, colorForName, addMinutesToLocalDatetime } from '../services/excelImport'
 import ImportExcelModal from './ImportExcelModal'
 import ImportOptaModal from './ImportOptaModal'
 import ImportCompetitionOrganiserModal from './ImportCompetitionOrganiserModal'
@@ -31,6 +31,7 @@ const EMPTY_FORM = {
   endDate: '',
 
   programmeTitle: '',
+  programmeDuration: 1,
   departmentId: '',
   newDepartmentName: '',
   repeat: 'none',
@@ -166,12 +167,14 @@ function buildEvent(form, competition) {
 
 function buildProgrammeEvent(form, department, date) {
   const title = form.programmeTitle.trim() || 'Untitled Programme'
+  const duration = Number(form.programmeDuration)
+  const end = duration > 0 ? addMinutesToLocalDatetime(date, form.startTime, Math.round(duration * 60)) : undefined
 
   return {
     id: `imported|${crypto.randomUUID()}`,
     title,
     start: `${date}T${form.startTime}`,
-    end: undefined,
+    end,
     allDay: false,
     backgroundColor: department.color,
     borderColor: department.color,
@@ -816,6 +819,19 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, r
               onChange={e => setField('startTime', e.target.value)}
             />
             {errors.startTime && <span className="import-field-error-msg">{errors.startTime}</span>}
+          </div>
+
+          <div className="import-field">
+            <label htmlFor="imp-prog-duration">Duration (hrs)</label>
+            <input
+              id="imp-prog-duration"
+              type="number"
+              min="0.25"
+              step="0.25"
+              value={form.programmeDuration}
+              onChange={e => setField('programmeDuration', e.target.value)}
+            />
+            <span className="import-field-hint">Used to work out this programme's end time.</span>
           </div>
         </div>
 

@@ -44,7 +44,7 @@ function timeCellToHHMM(value) {
   return null
 }
 
-function addMinutesToLocalDatetime(dateStr, timeStr, minutesToAdd) {
+export function addMinutesToLocalDatetime(dateStr, timeStr, minutesToAdd) {
   const [year, month, day] = dateStr.split('-').map(Number)
   const [h, m] = timeStr.split(':').map(Number)
   const base = new Date(Date.UTC(year, month - 1, day, h, m))
