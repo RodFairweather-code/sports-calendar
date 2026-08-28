@@ -4112,13 +4112,7 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.tv2-cat-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .tv2-cat-item {
@@ -4126,13 +4120,14 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   align-items: center;
   gap: 8px;
   font-size: 0.86rem;
+  flex-wrap: wrap;
 }
 
-.tv2-control-times {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding-left: 2px;
+.tv2-venue {
+  font-size: 0.78rem;
+  color: #6b7a8f;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .tv2-control-badge {
@@ -4144,6 +4139,7 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   border-radius: 9px;
   padding: 1px 7px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tv2-time-badge {

@@ -272,19 +272,18 @@ function TechnicalBookedView({ events }) {
                         <div className="tv2-cat-title">{def.label}</div>
                         <ul className="tv2-cat-list">
                           {categories[def.label].map((b, i) => (
-                            <li key={i} className="tv2-cat-row">
-                              <div className="tv2-cat-item">
-                                <span className="tv2-time-badge">{b.timeLabel}</span>
-                                {b.qty != null && <span className="tv2-qty">{b.qty}</span>}
-                                <span className="tv-dot" style={{ background: b.event.backgroundColor }} />
-                                <span className="tv-event-name">{b.event.title}</span>
-                                <span className={`tv-pill tv-pill--${b.status}`}>{b.status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>
-                              </div>
-                              <div className="tv2-control-times">
-                                <span className="tv2-control-badge">Lineup {b.controlTimes.lineup}</span>
-                                <span className="tv2-control-badge">Live Feed {b.controlTimes.liveFeed}</span>
-                                <span className="tv2-control-badge">Auto Teardown {b.controlTimes.teardown}</span>
-                              </div>
+                            <li key={i} className="tv2-cat-item">
+                              <span className="tv2-time-badge">{b.timeLabel}</span>
+                              {b.qty != null && <span className="tv2-qty">{b.qty}</span>}
+                              <span className="tv-dot" style={{ background: b.event.backgroundColor }} />
+                              <span className="tv-event-name">{b.event.title}</span>
+                              {b.event.extendedProps.venue && (
+                                <span className="tv2-venue">· {b.event.extendedProps.venue}</span>
+                              )}
+                              <span className="tv2-control-badge">Lineup {b.controlTimes.lineup}</span>
+                              <span className="tv2-control-badge">Live Feed {b.controlTimes.liveFeed}</span>
+                              <span className="tv2-control-badge">Auto Teardown {b.controlTimes.teardown}</span>
+                              <span className={`tv-pill tv-pill--${b.status}`}>{b.status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>
                             </li>
                           ))}
                         </ul>
