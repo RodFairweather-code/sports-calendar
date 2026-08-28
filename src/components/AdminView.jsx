@@ -4,6 +4,7 @@ import StaffView from './StaffView'
 import PlatformsView from './PlatformsView'
 import TechStackView from './TechStackView'
 import RightsView from './RightsView'
+import DefaultTimingsView from './DefaultTimingsView'
 import BookableAssetsView from './BookableAssetsView'
 import AppearanceView from './AppearanceView'
 import UserTypesView from './UserTypesView'
@@ -300,6 +301,7 @@ function AdminView({
         {adminTab === 'platforms'  && <PlatformsView />}
         {adminTab === 'techstack'  && <TechStackView role={activeRole} />}
         {adminTab === 'rights'     && <RightsView />}
+        {adminTab === 'defaultTimings' && <DefaultTimingsView />}
         {adminTab === 'bookableAssets' && <BookableAssetsView role={activeRole} />}
         {adminTab === 'appearance' && <AppearanceView skin={skin} onSkinChange={onSkinChange} />}
         {adminTab === 'userTypes' && <UserTypesView roles={roles} onRolesChange={onRolesChange} />}
@@ -310,6 +312,7 @@ function AdminView({
         <button className={`admin-tab-btn${adminTab === 'platforms' ? ' active' : ''}`} onClick={() => setAdminTab('platforms')}>Platforms</button>
         <button className={`admin-tab-btn${adminTab === 'techstack' ? ' active' : ''}`} onClick={() => setAdminTab('techstack')}>Tech Stack</button>
         <button className={`admin-tab-btn${adminTab === 'rights'    ? ' active' : ''}`} onClick={() => setAdminTab('rights')}>Rights</button>
+        <button className={`admin-tab-btn${adminTab === 'defaultTimings' ? ' active' : ''}`} onClick={() => setAdminTab('defaultTimings')}>Default Timings</button>
         <button className={`admin-tab-btn${adminTab === 'bookableAssets' ? ' active' : ''}`} onClick={() => setAdminTab('bookableAssets')}>Bookable Assets</button>
         <button className={`admin-tab-btn${adminTab === 'appearance' ? ' active' : ''}`} onClick={() => setAdminTab('appearance')}>Appearance</button>
         <button className={`admin-tab-btn${adminTab === 'userTypes' ? ' active' : ''}`} onClick={() => setAdminTab('userTypes')}>User Types</button>

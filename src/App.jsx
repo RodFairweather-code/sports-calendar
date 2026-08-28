@@ -59,7 +59,7 @@ const VIEWS = [
   { id: 'editorial',  label: 'Planning' },
   { id: 'production', label: 'Production' },
   { id: 'technical',  label: 'Technical' },
-  { id: 'technical2', label: 'Technical 2' },
+  { id: 'technical2', label: 'MCR' },
   { id: 'booths',      label: 'Operations' },
   { id: 'book-staff', label: 'Book Staff' },
   { id: 'resource-gaps',  label: 'Resource Gaps' },
@@ -328,7 +328,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.17</span>
+        <span className="header-version">v3.18</span>
       </header>
 
       {showAssumeRole && (

@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef, Fragment } from 'react'
 import { addHours } from '../services/bookingTime'
+import { addMinutesToLocalDatetime } from '../services/excelImport'
+import { loadDefaultTimings } from '../services/defaultTimings'
 
 function loadDecisions() {
   try { return JSON.parse(localStorage.getItem('editorial_decisions') || '{}') }
@@ -85,11 +87,44 @@ const CATEGORY_DEFS = [
 
 const GROUPS = ['Video Lines', 'Audio & Talkback', 'Equipment', 'Production']
 
+function splitDateTime(value) {
+  if (!value || value.length < 16) return null
+  return { date: value.slice(0, 10), time: value.slice(11, 16) }
+}
+
+function formatOffsetResult(resultDatetime, baseDate) {
+  const resultDate = resultDatetime.slice(0, 10)
+  const resultTime = resultDatetime.slice(11, 16)
+  const dayTag = resultDate === baseDate ? '' : (resultDate > baseDate ? ' (+1d)' : ' (-1d)')
+  return `${resultTime}${dayTag}`
+}
+
+// MCR control-room timings for an event, from the competition's default
+// offsets (minutes): Lineup and Live Feed count back from the event's
+// start, Auto Teardown counts forward from its end (or start, if no end
+// is recorded).
+function computeControlTimes(event, timing) {
+  const startDT = splitDateTime(event.start)
+  if (!startDT) return { lineup: '—', liveFeed: '—', teardown: '—' }
+
+  const endDT = splitDateTime(event.end) || startDT
+  const lineupMin = timing?.lineup || 0
+  const liveFeedMin = timing?.liveFeed || 0
+  const teardownMin = timing?.autoTeardown || 0
+
+  return {
+    lineup: formatOffsetResult(addMinutesToLocalDatetime(startDT.date, startDT.time, -lineupMin), startDT.date),
+    liveFeed: formatOffsetResult(addMinutesToLocalDatetime(startDT.date, startDT.time, -liveFeedMin), startDT.date),
+    teardown: formatOffsetResult(addMinutesToLocalDatetime(endDT.date, endDT.time, teardownMin), endDT.date),
+  }
+}
+
 function TechnicalBookedView({ events }) {
   const [decisions]       = useState(loadDecisions)
   const [assignments, setAssignments] = useState(loadAssignments)
   const [defaultPatterns] = useState(loadDefaultPatterns)
   const [patterns]        = useState(loadPatterns)
+  const [defaultTimings]  = useState(loadDefaultTimings)
 
   useEffect(() => {
     function onUpdate() { setAssignments(loadAssignments()) }
@@ -131,6 +166,8 @@ function TechnicalBookedView({ events }) {
     const asgn = assignments[event.id] || {}
     const pattern = getPattern(event)
     const status = hasY ? 'confirmed' : 'possible'
+    const timing = defaultTimings[event.extendedProps.competitionId]
+    const controlTimes = computeControlTimes(event, timing)
 
     CATEGORY_DEFS.forEach(def => {
       const value = def.isFlag
@@ -145,7 +182,7 @@ function TechnicalBookedView({ events }) {
       if (!dayMap[dateStr]) dayMap[dateStr] = {}
       if (!dayMap[dateStr][def.label]) dayMap[dateStr][def.label] = []
       dayMap[dateStr][def.label].push({
-        timeLabel, sortMin, qty: def.isFlag ? null : value, event, status,
+        timeLabel, sortMin, qty: def.isFlag ? null : value, event, status, controlTimes,
       })
     })
   })
@@ -235,12 +272,19 @@ function TechnicalBookedView({ events }) {
                         <div className="tv2-cat-title">{def.label}</div>
                         <ul className="tv2-cat-list">
                           {categories[def.label].map((b, i) => (
-                            <li key={i} className="tv2-cat-item">
-                              <span className="tv2-time-badge">{b.timeLabel}</span>
-                              {b.qty != null && <span className="tv2-qty">{b.qty}</span>}
-                              <span className="tv-dot" style={{ background: b.event.backgroundColor }} />
-                              <span className="tv-event-name">{b.event.title}</span>
-                              <span className={`tv-pill tv-pill--${b.status}`}>{b.status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>
+                            <li key={i} className="tv2-cat-row">
+                              <div className="tv2-cat-item">
+                                <span className="tv2-time-badge">{b.timeLabel}</span>
+                                {b.qty != null && <span className="tv2-qty">{b.qty}</span>}
+                                <span className="tv-dot" style={{ background: b.event.backgroundColor }} />
+                                <span className="tv-event-name">{b.event.title}</span>
+                                <span className={`tv-pill tv-pill--${b.status}`}>{b.status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>
+                              </div>
+                              <div className="tv2-control-times">
+                                <span className="tv2-control-badge">Lineup {b.controlTimes.lineup}</span>
+                                <span className="tv2-control-badge">Live Feed {b.controlTimes.liveFeed}</span>
+                                <span className="tv2-control-badge">Auto Teardown {b.controlTimes.teardown}</span>
+                              </div>
                             </li>
                           ))}
                         </ul>

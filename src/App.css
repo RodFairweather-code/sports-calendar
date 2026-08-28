@@ -3641,6 +3641,23 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   box-shadow: 0 0 0 2px rgba(var(--brand-primary-rgb), 0.15);
 }
 
+.dt-input {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 0.82rem;
+  color: #1a1a2e;
+  outline: none;
+  text-align: right;
+}
+
+.dt-input:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 2px rgba(var(--brand-primary-rgb), 0.15);
+}
+
 .rights-row:nth-child(even) .rights-td-pattern {
   background: #f8f9fb;
 }
@@ -4061,7 +4078,7 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 .tv-td-val--possible  { color: #e65100; }
 .tv-td-val--combined  { color: #1565c0; font-size: 1.05rem; }
 
-/* ── Technical 2 (booked equipment, grouped by tech stack) ── */
+/* ── MCR (booked equipment, grouped by tech stack) ── */
 .tv2-booking-none {
   margin: 0;
   padding: 12px 18px;
@@ -4095,7 +4112,13 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
+}
+
+.tv2-cat-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .tv2-cat-item {
@@ -4103,6 +4126,24 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   align-items: center;
   gap: 8px;
   font-size: 0.86rem;
+}
+
+.tv2-control-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-left: 2px;
+}
+
+.tv2-control-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #5a6a7a;
+  background: #f4f6fa;
+  border: 1px solid #e3e6ec;
+  border-radius: 9px;
+  padding: 1px 7px;
+  white-space: nowrap;
 }
 
 .tv2-time-badge {
