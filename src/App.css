@@ -4151,7 +4151,7 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 
 .tv2-row {
   display: grid;
-  grid-template-columns: 118px 30px 160px minmax(0, 240px) 160px 90px 90px 190px 120px 148px 78px;
+  grid-template-columns: 118px 30px 160px minmax(0, 240px) 160px 90px 90px 190px 120px 148px 78px minmax(20px, 1fr) auto;
   justify-content: start;
   align-items: center;
   column-gap: 10px;
@@ -4206,6 +4206,52 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   display: flex;
   justify-content: flex-end;
   overflow: visible;
+}
+
+.tv2-cell--spacer {
+  overflow: visible;
+}
+
+.tv2-cell--extend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+.tv2-extend-requested {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #8e0000;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.tv2-extend-requested--confirmed {
+  color: #2e7d32;
+}
+
+.tv2-urgent-extend-btn {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 9px;
+  background: #c62828;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.tv2-urgent-extend-btn:hover {
+  background: #8e0000;
 }
 
 .tv2-booth-badge {

@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, Fragment } from 'react'
+import { saveToStorage } from '../services/storage'
 import { loadDefaultTimings } from '../services/defaultTimings'
 import { needsBooth, needsStudio } from './BoothsView'
 import { timeWindow, computeControlTimes } from '../services/mcrTiming'
@@ -67,12 +68,45 @@ function TechnicalBookedView({ events }) {
   const [defaultPatterns] = useState(loadDefaultPatterns)
   const [patterns]        = useState(loadPatterns)
   const [defaultTimings]  = useState(loadDefaultTimings)
+  const [extendTarget, setExtendTarget] = useState(null)
 
   useEffect(() => {
     function onUpdate() { setAssignments(loadAssignments()) }
     window.addEventListener('assignments-updated', onUpdate)
     return () => window.removeEventListener('assignments-updated', onUpdate)
   }, [])
+
+  function updateAssignment(eventId, patch) {
+    setAssignments(prev => {
+      const current = prev[eventId] || {}
+      const next = { ...prev, [eventId]: { ...current, ...patch } }
+      saveToStorage('production_assignments', next)
+      window.dispatchEvent(new CustomEvent('assignments-updated'))
+      return next
+    })
+  }
+
+  // Same action as the Inspector's "URGENT: Extend timings" button — adds
+  // another hour on top of the post-match show duration for this event. A
+  // fresh extension always needs re-confirming, even if a previous one had
+  // already been signed off by the supplier.
+  function handleExtend(eventId) {
+    if (!window.confirm('Are you sure you want to extend the timings for this event by an hour?')) return
+    const current = assignments[eventId] || {}
+    updateAssignment(eventId, { extendedMinutes: (current.extendedMinutes || 0) + 60, extensionConfirmed: false })
+  }
+
+  function handleConfirmBySupplier(eventId) {
+    updateAssignment(eventId, { extensionConfirmed: true })
+    setExtendTarget(null)
+  }
+
+  // Reverts to the original (un-extended) Lines Down time entirely, rather
+  // than just undoing the last +1hr press.
+  function handleCancelExtension(eventId) {
+    updateAssignment(eventId, { extendedMinutes: 0, extensionConfirmed: false })
+    setExtendTarget(null)
+  }
 
   // Runs after every render (no deps) but only actually scrolls once, the
   // first time today's date shows up in sortedDays — on plain mount that's
@@ -147,6 +181,8 @@ function TechnicalBookedView({ events }) {
     const postMatchTotal = (asgn.postMatchShowDuration || 0) + (asgn.extendedMinutes || 0)
     const controlTimes = computeControlTimes(event, timing, asgn.preMatchShowDuration, postMatchTotal)
     const allocation = allocationLabel(event)
+    const extended = (asgn.extendedMinutes || 0) > 0
+    const extensionConfirmed = !!asgn.extensionConfirmed
 
     CATEGORY_DEFS.forEach(def => {
       const value = def.isFlag
@@ -163,7 +199,7 @@ function TechnicalBookedView({ events }) {
       if (!dayMap[dateStr]) dayMap[dateStr] = {}
       if (!dayMap[dateStr][def.label]) dayMap[dateStr][def.label] = []
       dayMap[dateStr][def.label].push({
-        timeLabel, sortMin, qty: def.isFlag ? null : value, event, status, controlTimes, allocation,
+        timeLabel, sortMin, qty: def.isFlag ? null : value, event, status, controlTimes, allocation, extended, extensionConfirmed,
       })
     })
   })
@@ -285,6 +321,25 @@ function TechnicalBookedView({ events }) {
                                 <span className="tv2-cell tv2-cell--status">
                                   <span className={`tv-pill tv-pill--${b.status}`}>{b.status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>
                                 </span>
+                                <span className="tv2-cell tv2-cell--spacer" />
+                                <span className="tv2-cell tv2-cell--extend">
+                                  {b.extended && (
+                                    <button
+                                      type="button"
+                                      className={`tv2-extend-requested${b.extensionConfirmed ? ' tv2-extend-requested--confirmed' : ''}`}
+                                      onClick={() => setExtendTarget(b.event)}
+                                    >
+                                      Extension requested
+                                    </button>
+                                  )}
+                                  <button
+                                    type="button"
+                                    className="tv2-urgent-extend-btn"
+                                    onClick={() => handleExtend(b.event.id)}
+                                  >
+                                    URGENT: Extend
+                                  </button>
+                                </span>
                               </div>
                             </li>
                           ))}
@@ -299,6 +354,36 @@ function TechnicalBookedView({ events }) {
           )
         })}
       </div>
+
+      {extendTarget && (
+        <div className="ba-modal-backdrop" onClick={() => setExtendTarget(null)}>
+          <div className="ba-modal-dialog" onClick={e => e.stopPropagation()}>
+            <h3>Extension — {extendTarget.title}</h3>
+            <p className="assume-role-hint">
+              This event's lines were extended by an hour. What's the status?
+            </p>
+            <div className="assume-role-list">
+              <button
+                type="button"
+                className="assume-role-option"
+                onClick={() => handleConfirmBySupplier(extendTarget.id)}
+              >
+                Lines extended by supplier
+              </button>
+              <button
+                type="button"
+                className="assume-role-option"
+                onClick={() => handleCancelExtension(extendTarget.id)}
+              >
+                Cancel Extension
+              </button>
+            </div>
+            <div className="ba-modal-actions">
+              <button type="button" className="unsaved-btn unsaved-btn--cancel" onClick={() => setExtendTarget(null)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
