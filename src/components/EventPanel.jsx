@@ -252,22 +252,6 @@ function TimingsView({ event, timing, asgn, onChange, readOnly }) {
         <dt>Lines Down</dt><dd>{controlTimes.linesDown}</dd>
       </dl>
 
-      <button
-        type="button"
-        className="ep-extend-timings-btn"
-        disabled={readOnly}
-        title={readOnly ? "Your role doesn't have permission to edit events" : undefined}
-        onClick={handleExtend}
-      >
-        Extend Timings
-      </button>
-      {extendedHours > 0 && (
-        <p className="ep-extend-timings-note">
-          All internal facilities have been extended by {extendedHours === 1 ? 'an hour' : `${extendedHours} hours`},
-          and external lines providers have had an urgent request to extend the booking.
-        </p>
-      )}
-
       <div className="ep-section">
         <span className="ep-section-title">Surrounding Programming</span>
       </div>
@@ -287,6 +271,22 @@ function TimingsView({ event, timing, asgn, onChange, readOnly }) {
           readOnly={readOnly}
         />
       </div>
+
+      <button
+        type="button"
+        className="ep-extend-timings-btn"
+        disabled={readOnly}
+        title={readOnly ? "Your role doesn't have permission to edit events" : undefined}
+        onClick={handleExtend}
+      >
+        URGENT: Extend timings
+      </button>
+      {extendedHours > 0 && (
+        <p className="ep-extend-timings-note">
+          All internal facilities have been extended by {extendedHours === 1 ? 'an hour' : `${extendedHours} hours`},
+          and external lines providers have had an urgent request to extend the booking.
+        </p>
+      )}
     </div>
   )
 }
