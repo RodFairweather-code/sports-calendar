@@ -4061,45 +4061,68 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 .tv-td-val--possible  { color: #e65100; }
 .tv-td-val--combined  { color: #1565c0; font-size: 1.05rem; }
 
-/* ── Technical 2 (booked equipment list) ── */
-.tv2-booking-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
+/* ── Technical 2 (booked equipment, grouped by tech stack) ── */
+.tv2-booking-none {
+  margin: 0;
+  padding: 12px 18px;
 }
 
-.tv2-booking-item {
-  padding: 12px 18px;
+.tv2-group-header {
+  background: #eef1f6;
+  color: #445;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 8px 18px;
+  border-bottom: 1px solid #dde2ea;
+  border-top: 1px solid #dde2ea;
+}
+
+.tv2-cat-block {
+  padding: 10px 18px;
   border-bottom: 1px solid #eef0f4;
 }
 
-.tv2-booking-item:last-child { border-bottom: none; }
-
-.tv2-booking-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+.tv2-cat-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
 }
 
-.tv2-booking-none {
-  margin: 0;
-}
-
-.tv2-chip-row {
+.tv2-cat-list {
+  list-style: none;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 6px;
 }
 
-.tv2-chip {
-  font-size: 0.78rem;
+.tv2-cat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+}
+
+.tv2-time-badge {
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--brand-primary);
   background: rgba(var(--brand-primary-rgb), 0.08);
   border: 1px solid rgba(var(--brand-primary-rgb), 0.25);
-  border-radius: 12px;
-  padding: 3px 10px;
+  border-radius: 10px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.tv2-qty {
+  font-weight: 700;
+  color: #1a1a2e;
+  flex-shrink: 0;
+  min-width: 1.2em;
+  text-align: right;
 }
 
 /* ── Asset Management view ──────────────────────────────────────────────────── */

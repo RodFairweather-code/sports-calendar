@@ -1,4 +1,5 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, Fragment } from 'react'
+import { addHours } from '../services/bookingTime'
 
 function loadDecisions() {
   try { return JSON.parse(localStorage.getItem('editorial_decisions') || '{}') }
@@ -27,47 +28,62 @@ function tv(asgn, pattern, techKey, patternKey) {
   return (patternKey && pattern?.[patternKey]) || 0
 }
 
-const QUANTITY_ITEMS = [
-  { key: 'techCameramen',             patternKey: 'cameramen',             label: 'Cameramen' },
-  { key: 'techEvsOperator',           patternKey: 'evsOperator',           label: 'EVS Operators' },
-  { key: 'techAudioOnLocation',       patternKey: 'audioOnLocation',       label: 'Audio on Location' },
-  { key: 'techIncomingVideoLines',    patternKey: 'incomingVideoLines',    label: 'Video Lines In' },
-  { key: 'techOutgoingVideoLines',    patternKey: 'outgoingVideoLines',    label: 'Video Lines Out' },
-  { key: 'techIncomingAudioLines',    patternKey: 'incomingAudioLines',    label: 'Audio Lines In' },
-  { key: 'techOutgoingAudioLines',    patternKey: null,                    label: 'Audio Lines Out' },
-  { key: 'techIncomingTalkbackLines', patternKey: 'incomingTalkbackLines', label: 'Talkback In' },
-  { key: 'techOutgoingTalkbackLines', patternKey: 'outgoingTalkbackLines', label: 'Talkback Out' },
-  { key: 'techEncoders',              patternKey: null,                    label: 'Encoders' },
-  { key: 'techDecoders',              patternKey: null,                    label: 'Decoders' },
-  { key: 'techFrameRateConverters',   patternKey: null,                    label: 'Frame Rate Converters' },
-  { key: 'techAudioOffset',           patternKey: null,                    label: 'Audio Offset' },
-  { key: 'techOutgoingIdents',        patternKey: null,                    label: 'Outgoing Idents' },
-  { key: 'techRecordPorts',           patternKey: null,                    label: 'Record Ports' },
-]
-
-const FLAG_ITEMS = [
-  { key: 'techProductionBooth', patternKey: 'productionBooth', label: 'Production Booth' },
-  { key: 'techStudio',          patternKey: 'studio',          label: 'Studio' },
-  { key: 'techObUnit',          patternKey: 'obUnit',          label: 'OB Unit' },
-  { key: 'techPassthrough',     patternKey: 'passthrough',     label: 'Passthrough' },
-]
-
 function flagValue(asgn, pattern, techKey, patternKey) {
   if (asgn[techKey] !== undefined) return asgn[techKey]
-  return pattern?.[patternKey] ?? false
+  return (patternKey && pattern?.[patternKey]) || false
 }
 
-function bookedItems(asgn, pattern) {
-  const items = []
-  QUANTITY_ITEMS.forEach(({ key, patternKey, label }) => {
-    const qty = tv(asgn, pattern, key, patternKey)
-    if (qty > 0) items.push(`${qty} ${label}`)
-  })
-  FLAG_ITEMS.forEach(({ key, patternKey, label }) => {
-    if (flagValue(asgn, pattern, key, patternKey)) items.push(label)
-  })
-  return items
+// A category's real booking window: the pattern's "From start" offset
+// applied to the event's start time, and "Until end" applied to its end
+// time. Most events here have no recorded end time, so it falls back to
+// the start time — the window then just reflects the Until offset alone.
+function timeWindow(event, fromOffset, untilOffset) {
+  const isTimed = !!event.start && event.start.length >= 16
+  if (!isTimed) return { label: '—', sortMin: -Infinity }
+
+  const startTime = event.start.slice(11, 16)
+  const endTime = (event.end && event.end.length >= 16) ? event.end.slice(11, 16) : startTime
+
+  const from = addHours(startTime, fromOffset)
+  const until = addHours(endTime, untilOffset)
+
+  const tag = off => off ? ` (${off > 0 ? '+' : ''}${off}d)` : ''
+  const sameInstant = from.time === until.time && from.dayOffset === until.dayOffset
+  const label = sameInstant
+    ? `${from.time}${tag(from.dayOffset)}`
+    : `${from.time}${tag(from.dayOffset)} – ${until.time}${tag(until.dayOffset)}`
+
+  const [fh, fm] = from.time.split(':').map(Number)
+  const sortMin = from.dayOffset * 1440 + fh * 60 + fm
+
+  return { label, sortMin }
 }
+
+// Every category the page can show, in display order. Quantity categories
+// (isFlag: false) show a booked count; flag categories show a badge only.
+// fromKey/untilKey point at the pattern's hour-offset fields for that
+// category's window — categories with no such fields just show the
+// event's own start (and end, if known).
+const CATEGORY_DEFS = [
+  { group: 'Video Lines',      key: 'techIncomingVideoLines',    patternKey: 'incomingVideoLines',    fromKey: 'videoFrom', untilKey: 'videoUntil', label: 'Video Lines In',  isFlag: false },
+  { group: 'Video Lines',      key: 'techOutgoingVideoLines',    patternKey: 'outgoingVideoLines',    fromKey: 'videoFrom', untilKey: 'videoUntil', label: 'Video Lines Out', isFlag: false },
+  { group: 'Audio & Talkback', key: 'techIncomingAudioLines',    patternKey: 'incomingAudioLines',    fromKey: 'audioFrom', untilKey: 'audioUntil', label: 'Audio Lines In',  isFlag: false },
+  { group: 'Audio & Talkback', key: 'techOutgoingAudioLines',    patternKey: null,                    fromKey: 'audioFrom', untilKey: 'audioUntil', label: 'Audio Lines Out', isFlag: false },
+  { group: 'Audio & Talkback', key: 'techIncomingTalkbackLines', patternKey: 'incomingTalkbackLines', fromKey: 'audioFrom', untilKey: 'audioUntil', label: 'Talkback In',     isFlag: false },
+  { group: 'Audio & Talkback', key: 'techOutgoingTalkbackLines', patternKey: 'outgoingTalkbackLines', fromKey: 'audioFrom', untilKey: 'audioUntil', label: 'Talkback Out',    isFlag: false },
+  { group: 'Equipment',        key: 'techEncoders',              patternKey: null, fromKey: null, untilKey: null, label: 'Encoders',              isFlag: false },
+  { group: 'Equipment',        key: 'techDecoders',              patternKey: null, fromKey: null, untilKey: null, label: 'Decoders',              isFlag: false },
+  { group: 'Equipment',        key: 'techFrameRateConverters',   patternKey: null, fromKey: null, untilKey: null, label: 'Frame Rate Converters', isFlag: false },
+  { group: 'Equipment',        key: 'techAudioOffset',           patternKey: null, fromKey: null, untilKey: null, label: 'Audio Offset',          isFlag: false },
+  { group: 'Equipment',        key: 'techOutgoingIdents',        patternKey: null, fromKey: null, untilKey: null, label: 'Outgoing Idents',       isFlag: false },
+  { group: 'Equipment',        key: 'techRecordPorts',           patternKey: null, fromKey: null, untilKey: null, label: 'Record Ports',          isFlag: false },
+  { group: 'Production',       key: 'techProductionBooth',       patternKey: 'productionBooth', fromKey: null, untilKey: null, label: 'Production Booth', isFlag: true },
+  { group: 'Production',       key: 'techStudio',                patternKey: 'studio',          fromKey: null, untilKey: null, label: 'Studio',            isFlag: true },
+  { group: 'Production',       key: 'techObUnit',                patternKey: 'obUnit',           fromKey: null, untilKey: null, label: 'OB Unit',           isFlag: true },
+  { group: 'Production',       key: 'techPassthrough',           patternKey: 'passthrough',      fromKey: null, untilKey: null, label: 'Passthrough',       isFlag: true },
+]
+
+const GROUPS = ['Video Lines', 'Audio & Talkback', 'Equipment', 'Production']
 
 function TechnicalBookedView({ events }) {
   const [decisions]       = useState(loadDecisions)
@@ -99,6 +115,7 @@ function TechnicalBookedView({ events }) {
     return patId ? (patternMap[patId] || null) : null
   }
 
+  // dateStr -> { [categoryLabel]: [ { timeLabel, sortMin, qty, event, status } ] }
   const dayMap = {}
 
   events.forEach(event => {
@@ -111,14 +128,31 @@ function TechnicalBookedView({ events }) {
     const dateStr = event.start?.slice(0, 10)
     if (!dateStr) return
 
-    if (!dayMap[dateStr]) dayMap[dateStr] = []
-
     const asgn = assignments[event.id] || {}
     const pattern = getPattern(event)
-    dayMap[dateStr].push({
-      event,
-      status: hasY ? 'confirmed' : 'possible',
-      items: bookedItems(asgn, pattern),
+    const status = hasY ? 'confirmed' : 'possible'
+
+    CATEGORY_DEFS.forEach(def => {
+      const value = def.isFlag
+        ? flagValue(asgn, pattern, def.key, def.patternKey)
+        : tv(asgn, pattern, def.key, def.patternKey)
+      if (!value) return
+
+      const fromOffset = def.fromKey ? ((pattern?.[def.fromKey]) || 0) : 0
+      const untilOffset = def.untilKey ? ((pattern?.[def.untilKey]) || 0) : 0
+      const { label: timeLabel, sortMin } = timeWindow(event, fromOffset, untilOffset)
+
+      if (!dayMap[dateStr]) dayMap[dateStr] = {}
+      if (!dayMap[dateStr][def.label]) dayMap[dateStr][def.label] = []
+      dayMap[dateStr][def.label].push({
+        timeLabel, sortMin, qty: def.isFlag ? null : value, event, status,
+      })
+    })
+  })
+
+  Object.values(dayMap).forEach(categories => {
+    Object.values(categories).forEach(list => {
+      list.sort((a, b) => a.sortMin - b.sortMin || a.event.title.localeCompare(b.event.title))
     })
   })
 
@@ -175,36 +209,46 @@ function TechnicalBookedView({ events }) {
 
       <div className="tv-scroll">
         {sortedDays.map(dateStr => {
-          const dayEvents = dayMap[dateStr]
+          const categories = dayMap[dateStr]
           const date = new Date(dateStr + 'T12:00:00')
           const dateLabel = date.toLocaleDateString('en-GB', {
             weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
           })
+
+          const groupsWithData = GROUPS.filter(g =>
+            CATEGORY_DEFS.some(def => def.group === g && categories[def.label]?.length)
+          )
 
           return (
             <div key={dateStr} ref={el => { if (el) dayRefs.current[dateStr] = el; else delete dayRefs.current[dateStr] }} className="tv-day">
 
               <div className="tv-day-header">{dateLabel}</div>
 
-              <ul className="tv2-booking-list">
-                {dayEvents.map(({ event, status, items }) => (
-                  <li key={event.id} className="tv2-booking-item">
-                    <div className="tv2-booking-head">
-                      <span className="tv-dot" style={{ background: event.backgroundColor }} />
-                      <span className="tv-event-name">{event.title}</span>
-                      <span className={`tv-pill tv-pill--${status}`}>{status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>
-                    </div>
-                    {items.length === 0
-                      ? <p className="tv-none tv2-booking-none">No technical equipment booked</p>
-                      : (
-                        <div className="tv2-chip-row">
-                          {items.map(item => <span key={item} className="tv2-chip">{item}</span>)}
-                        </div>
-                      )
-                    }
-                  </li>
-                ))}
-              </ul>
+              {groupsWithData.length === 0 ? (
+                <p className="tv-none tv2-booking-none">No technical equipment booked</p>
+              ) : (
+                groupsWithData.map(group => (
+                  <Fragment key={group}>
+                    <div className="tv2-group-header">{group}</div>
+                    {CATEGORY_DEFS.filter(def => def.group === group && categories[def.label]?.length).map(def => (
+                      <div key={def.label} className="tv2-cat-block">
+                        <div className="tv2-cat-title">{def.label}</div>
+                        <ul className="tv2-cat-list">
+                          {categories[def.label].map((b, i) => (
+                            <li key={i} className="tv2-cat-item">
+                              <span className="tv2-time-badge">{b.timeLabel}</span>
+                              {b.qty != null && <span className="tv2-qty">{b.qty}</span>}
+                              <span className="tv-dot" style={{ background: b.event.backgroundColor }} />
+                              <span className="tv-event-name">{b.event.title}</span>
+                              <span className={`tv-pill tv-pill--${b.status}`}>{b.status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </Fragment>
+                ))
+              )}
 
             </div>
           )
