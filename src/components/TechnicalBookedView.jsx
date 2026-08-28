@@ -141,7 +141,11 @@ function TechnicalBookedView({ events }) {
     const pattern = getPattern(event)
     const status = hasY ? 'confirmed' : 'possible'
     const timing = defaultTimings[event.extendedProps.competitionId]
-    const controlTimes = computeControlTimes(event, timing, asgn.preMatchShowDuration, asgn.postMatchShowDuration)
+    // An "Extend Timings" press on the Inspector adds an extra hour on top
+    // of the post-match show duration — it pushes every technical
+    // resource's booking window later, same as a longer post-match show.
+    const postMatchTotal = (asgn.postMatchShowDuration || 0) + (asgn.extendedMinutes || 0)
+    const controlTimes = computeControlTimes(event, timing, asgn.preMatchShowDuration, postMatchTotal)
     const allocation = allocationLabel(event)
 
     CATEGORY_DEFS.forEach(def => {
@@ -153,7 +157,7 @@ function TechnicalBookedView({ events }) {
       const fromOffset = def.fromKey ? ((pattern?.[def.fromKey]) || 0) : 0
       const untilOffset = def.untilKey ? ((pattern?.[def.untilKey]) || 0) : 0
       const { label: timeLabel, sortMin } = timeWindow(
-        event, fromOffset, untilOffset, asgn.preMatchShowDuration, asgn.postMatchShowDuration
+        event, fromOffset, untilOffset, asgn.preMatchShowDuration, postMatchTotal
       )
 
       if (!dayMap[dateStr]) dayMap[dateStr] = {}
@@ -270,13 +274,13 @@ function TechnicalBookedView({ events }) {
                                   <span className="tv2-control-badge">Lines up {b.controlTimes.lineup}</span>
                                 </span>
                                 <span className="tv2-cell tv2-cell--livefeed">
-                                  <span className="tv2-control-badge">Live Feed {b.controlTimes.liveFeed}</span>
+                                  <span className="tv2-control-badge">Production available {b.controlTimes.liveFeed}</span>
                                 </span>
                                 <span className="tv2-cell tv2-cell--start">
-                                  <span className="tv2-control-badge tv2-control-badge--start">Start {b.controlTimes.start}</span>
+                                  <span className="tv2-control-badge tv2-control-badge--start">Match start {b.controlTimes.start}</span>
                                 </span>
                                 <span className="tv2-cell tv2-cell--teardown">
-                                  <span className="tv2-control-badge">Teardown {b.controlTimes.teardown}</span>
+                                  <span className="tv2-control-badge">Lines Down {b.controlTimes.teardown}</span>
                                 </span>
                                 <span className="tv2-cell tv2-cell--status">
                                   <span className={`tv-pill tv-pill--${b.status}`}>{b.status === 'confirmed' ? 'Confirmed' : 'Possible'}</span>

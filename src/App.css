@@ -1011,6 +1011,41 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   color: #fff;
 }
 
+.ep-extend-timings-btn {
+  display: block;
+  width: 100%;
+  margin: 4px 0 8px;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #e65100;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.ep-extend-timings-btn:hover {
+  background: #bf360c;
+}
+
+.ep-extend-timings-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ep-extend-timings-note {
+  margin: 0 0 4px;
+  padding: 10px 12px;
+  background: #fff3e0;
+  border: 1px solid #ffcc80;
+  border-radius: 6px;
+  color: #bf360c;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
 .ep-asset-bookings {
   display: flex;
   flex-direction: column;
@@ -4116,7 +4151,7 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 
 .tv2-row {
   display: grid;
-  grid-template-columns: 118px 30px 160px minmax(0, 240px) 160px 90px 90px 108px 84px 148px 78px;
+  grid-template-columns: 118px 30px 160px minmax(0, 240px) 160px 90px 90px 190px 120px 148px 78px;
   justify-content: start;
   align-items: center;
   column-gap: 10px;
