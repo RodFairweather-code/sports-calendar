@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import { buildImportedEventFromRow, colorForName } from '../services/excelImport'
 import ImportExcelModal from './ImportExcelModal'
+import ImportOptaModal from './ImportOptaModal'
+import ImportCompetitionOrganiserModal from './ImportCompetitionOrganiserModal'
 import { hasPermission } from '../services/roles'
 
 const NEW_COMPETITION = '__new_competition__'
@@ -288,6 +290,8 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, r
   const [staff] = useState(loadStaff)
   const [patterns] = useState(loadPatterns)
   const [showExcelModal, setShowExcelModal] = useState(false)
+  const [showOptaModal, setShowOptaModal] = useState(false)
+  const [showCompOrgModal, setShowCompOrgModal] = useState(false)
 
   const sports = [...new Set(competitions.map(c => c.sport))].sort()
   const isNewCompetition = form.competitionId === NEW_COMPETITION
@@ -477,6 +481,18 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, r
 
     setShowExcelModal(false)
     setSuccessMsg(`Imported ${events.length} event(s) into ${competition.name}. Toggle ${competition.name} on in the competition bar to see them on the calendar.`)
+  }
+
+  function handleOptaConnect({ accountId }) {
+    setShowOptaModal(false)
+    setSuccessMsg(`Opta account "${accountId}" saved. Opta sync isn't wired up yet, so nothing has been imported.`)
+  }
+
+  function handleCompOrgSelect(competition) {
+    setShowCompOrgModal(false)
+    setForm({ ...EMPTY_FORM, eventType: 'sport', competitionId: competition.id })
+    setErrors({})
+    setSuccessMsg(`${competition.name} (${competition.governingBody}) selected. Fill in the event details below to import from ${competition.name}.`)
   }
 
   return (
@@ -935,6 +951,14 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, r
 
       <div className="import-bottom-bar">
         <button
+          className="import-excel-btn import-opta-btn"
+          disabled={!canCreate}
+          title={!canCreate ? "Your role doesn't have permission to create events" : undefined}
+          onClick={() => setShowOptaModal(true)}
+        >
+          Import from Opta
+        </button>
+        <button
           className="import-excel-btn"
           disabled={!canCreate}
           title={!canCreate ? "Your role doesn't have permission to create events" : undefined}
@@ -942,12 +966,35 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, r
         >
           Import from Excel
         </button>
+        <button
+          className="import-excel-btn import-comporg-btn"
+          disabled={!canCreate}
+          title={!canCreate ? "Your role doesn't have permission to create events" : undefined}
+          onClick={() => setShowCompOrgModal(true)}
+        >
+          Import from Competition Organiser
+        </button>
       </div>
 
       {showExcelModal && (
         <ImportExcelModal
           onAccept={handleExcelAccept}
           onClose={() => setShowExcelModal(false)}
+        />
+      )}
+
+      {showOptaModal && (
+        <ImportOptaModal
+          onConnect={handleOptaConnect}
+          onClose={() => setShowOptaModal(false)}
+        />
+      )}
+
+      {showCompOrgModal && (
+        <ImportCompetitionOrganiserModal
+          competitions={competitions}
+          onSelect={handleCompOrgSelect}
+          onClose={() => setShowCompOrgModal(false)}
         />
       )}
     </div>

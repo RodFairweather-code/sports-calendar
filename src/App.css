@@ -4472,6 +4472,7 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 .import-bottom-bar {
   display: flex;
   align-items: center;
+  gap: 12px;
   padding: 10px 20px;
   background: var(--brand-primary);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -4492,6 +4493,81 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 
 .import-excel-btn:hover {
   background: #43a047;
+}
+
+.import-excel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.import-opta-btn {
+  background: #1565c0;
+}
+
+.import-opta-btn:hover {
+  background: #0d47a1;
+}
+
+.import-comporg-btn {
+  background: #6a1b9a;
+}
+
+.import-comporg-btn:hover {
+  background: #4a148c;
+}
+
+/* ── Import from Competition Organiser modal ─────────────────── */
+.comporg-scroll {
+  padding: 4px 2px;
+}
+
+.comporg-group {
+  padding: 10px 14px;
+  border-bottom: 1px solid #eef0f4;
+}
+
+.comporg-group:last-child {
+  border-bottom: none;
+}
+
+.comporg-org-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b7a8f;
+  margin-bottom: 6px;
+}
+
+.comporg-competition-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 9px 12px;
+  margin-bottom: 4px;
+  border: 1px solid #e3e6ec;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #1a1a2e;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.comporg-competition-btn:hover {
+  background: #f4f6fa;
+  border-color: var(--brand-primary);
+}
+
+.comporg-competition-name {
+  font-weight: 600;
+}
+
+.comporg-competition-sport {
+  font-size: 0.75rem;
+  color: #6b7a8f;
 }
 
 /* ── Import from Excel modal ─────────────────────────────────── */
