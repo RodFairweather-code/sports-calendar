@@ -4,6 +4,8 @@ import { loadTechStack } from '../services/techStack'
 import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
 import { bookingDuration, formatDateLabel, formatRange } from '../services/bookingTime'
 import { hasPermission } from '../services/roles'
+import { loadDefaultTimings } from '../services/defaultTimings'
+import { computeControlTimes } from '../services/mcrTiming'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -224,6 +226,48 @@ function CostView({ asgn, tv, techBooth, techStudio, techObUnit, staffCosts, tec
   )
 }
 
+// ── Timings view ─────────────────────────────────────────────────────────────
+
+function TimingsView({ event, timing, asgn, onChange, readOnly }) {
+  const controlTimes = computeControlTimes(event, timing, asgn.preMatchShowDuration, asgn.postMatchShowDuration)
+
+  return (
+    <div className="ep-timings-view">
+      <div className="ep-section">
+        <span className="ep-section-title">Timings</span>
+      </div>
+      <dl className="ep-details">
+        <dt>Lines Booking</dt><dd>{controlTimes.linesBooking}</dd>
+        <dt>Lineup</dt><dd>{controlTimes.lineup}</dd>
+        <dt>Available for Production</dt><dd>{controlTimes.availableForProduction}</dd>
+        <dt>Match Start</dt><dd>{controlTimes.start}</dd>
+        <dt>Match End</dt><dd>{controlTimes.matchEnd}</dd>
+        <dt>Lines Down</dt><dd>{controlTimes.linesDown}</dd>
+      </dl>
+
+      <div className="ep-section">
+        <span className="ep-section-title">Surrounding Programming</span>
+      </div>
+      <div className="ep-fields">
+        <TechNumField
+          label="Pre-match show duration (mins)"
+          value={asgn.preMatchShowDuration || 0}
+          field="preMatchShowDuration"
+          onChange={onChange}
+          readOnly={readOnly}
+        />
+        <TechNumField
+          label="Post-match show duration (mins)"
+          value={asgn.postMatchShowDuration || 0}
+          field="postMatchShowDuration"
+          onChange={onChange}
+          readOnly={readOnly}
+        />
+      </div>
+    </div>
+  )
+}
+
 // ── Resource view sub-components ─────────────────────────────────────────────
 
 function StaffSelect({ label, value, options, field, onChange, status, onStatusChange, locked, onToggleLock, readOnly }) {
@@ -325,6 +369,7 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role }
   const [locks, setLocks]       = useState(loadLocks)
   const [bookableAssets]        = useState(loadBookableAssets)
   const [assetBookings, setAssetBookings] = useState(loadAssetBookings)
+  const [defaultTimings]  = useState(loadDefaultTimings)
   const [view, setView]   = useState('resources')
   const [notice, setNotice] = useState(null)
   const noticeTimerRef = useRef(null)
@@ -550,9 +595,21 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role }
               className={`ep-view-btn${view === 'costs' ? ' ep-view-btn--active' : ''}`}
               onClick={() => setView('costs')}
             >Costs</button>
+            <button
+              className={`ep-view-btn${view === 'timings' ? ' ep-view-btn--active' : ''}`}
+              onClick={() => setView('timings')}
+            >Timings</button>
           </div>
 
-          {view === 'costs' ? (
+          {view === 'timings' ? (
+            <TimingsView
+              event={event}
+              timing={defaultTimings[p.competitionId]}
+              asgn={asgn}
+              onChange={setField}
+              readOnly={!canUpdate}
+            />
+          ) : view === 'costs' ? (
             <CostView
               asgn={asgn}
               tv={tv}

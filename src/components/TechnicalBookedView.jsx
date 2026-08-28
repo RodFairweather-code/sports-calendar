@@ -1,8 +1,7 @@
 import { useEffect, useState, useRef, Fragment } from 'react'
-import { addHours } from '../services/bookingTime'
-import { addMinutesToLocalDatetime } from '../services/excelImport'
 import { loadDefaultTimings } from '../services/defaultTimings'
 import { needsBooth, needsStudio } from './BoothsView'
+import { timeWindow, computeControlTimes } from '../services/mcrTiming'
 
 function loadDecisions() {
   try { return JSON.parse(localStorage.getItem('editorial_decisions') || '{}') }
@@ -36,32 +35,6 @@ function flagValue(asgn, pattern, techKey, patternKey) {
   return (patternKey && pattern?.[patternKey]) || false
 }
 
-// A category's real booking window: the pattern's "From start" offset
-// applied to the event's start time, and "Until end" applied to its end
-// time. Most events here have no recorded end time, so it falls back to
-// the start time — the window then just reflects the Until offset alone.
-function timeWindow(event, fromOffset, untilOffset) {
-  const isTimed = !!event.start && event.start.length >= 16
-  if (!isTimed) return { label: '—', sortMin: -Infinity }
-
-  const startTime = event.start.slice(11, 16)
-  const endTime = (event.end && event.end.length >= 16) ? event.end.slice(11, 16) : startTime
-
-  const from = addHours(startTime, fromOffset)
-  const until = addHours(endTime, untilOffset)
-
-  const tag = off => off ? ` (${off > 0 ? '+' : ''}${off}d)` : ''
-  const sameInstant = from.time === until.time && from.dayOffset === until.dayOffset
-  const label = sameInstant
-    ? `${from.time}${tag(from.dayOffset)}`
-    : `${from.time}${tag(from.dayOffset)} – ${until.time}${tag(until.dayOffset)}`
-
-  const [fh, fm] = from.time.split(':').map(Number)
-  const sortMin = from.dayOffset * 1440 + fh * 60 + fm
-
-  return { label, sortMin }
-}
-
 // Every category the page can show, in display order. Quantity categories
 // (isFlag: false) show a booked count; flag categories show a badge only.
 // fromKey/untilKey point at the pattern's hour-offset fields for that
@@ -87,44 +60,6 @@ const CATEGORY_DEFS = [
 ]
 
 const GROUPS = ['Video Lines', 'Audio & Talkback', 'Equipment', 'Production']
-
-function splitDateTime(value) {
-  if (!value || value.length < 16) return null
-  return { date: value.slice(0, 10), time: value.slice(11, 16) }
-}
-
-function formatOffsetResult(resultDatetime, baseDate) {
-  const resultDate = resultDatetime.slice(0, 10)
-  const resultTime = resultDatetime.slice(11, 16)
-  const dayTag = resultDate === baseDate ? '' : (resultDate > baseDate ? ' (+1d)' : ' (-1d)')
-  return `${resultTime}${dayTag}`
-}
-
-// MCR control-room timings for an event, from the competition's default
-// offsets (minutes): Lineup and Live Feed count back from the event's
-// start. Auto Teardown counts forward from the event's end, which is
-// worked out as start + the competition's default duration (minutes,
-// including half time) — not any recorded event.end, since most fixtures
-// don't have one.
-function computeControlTimes(event, timing) {
-  const startDT = splitDateTime(event.start)
-  if (!startDT) return { start: '—', lineup: '—', liveFeed: '—', teardown: '—' }
-
-  const lineupMin = timing?.lineup || 0
-  const liveFeedMin = timing?.liveFeed || 0
-  const teardownMin = timing?.autoTeardown || 0
-  const durationMin = timing?.duration || 0
-
-  const endDatetime = addMinutesToLocalDatetime(startDT.date, startDT.time, durationMin)
-  const teardownDatetime = addMinutesToLocalDatetime(endDatetime.slice(0, 10), endDatetime.slice(11, 16), teardownMin)
-
-  return {
-    start: startDT.time,
-    lineup: formatOffsetResult(addMinutesToLocalDatetime(startDT.date, startDT.time, -lineupMin), startDT.date),
-    liveFeed: formatOffsetResult(addMinutesToLocalDatetime(startDT.date, startDT.time, -liveFeedMin), startDT.date),
-    teardown: formatOffsetResult(teardownDatetime, startDT.date),
-  }
-}
 
 function TechnicalBookedView({ events }) {
   const [decisions]       = useState(loadDecisions)
@@ -206,7 +141,7 @@ function TechnicalBookedView({ events }) {
     const pattern = getPattern(event)
     const status = hasY ? 'confirmed' : 'possible'
     const timing = defaultTimings[event.extendedProps.competitionId]
-    const controlTimes = computeControlTimes(event, timing)
+    const controlTimes = computeControlTimes(event, timing, asgn.preMatchShowDuration, asgn.postMatchShowDuration)
     const allocation = allocationLabel(event)
 
     CATEGORY_DEFS.forEach(def => {
@@ -217,7 +152,9 @@ function TechnicalBookedView({ events }) {
 
       const fromOffset = def.fromKey ? ((pattern?.[def.fromKey]) || 0) : 0
       const untilOffset = def.untilKey ? ((pattern?.[def.untilKey]) || 0) : 0
-      const { label: timeLabel, sortMin } = timeWindow(event, fromOffset, untilOffset)
+      const { label: timeLabel, sortMin } = timeWindow(
+        event, fromOffset, untilOffset, asgn.preMatchShowDuration, asgn.postMatchShowDuration
+      )
 
       if (!dayMap[dateStr]) dayMap[dateStr] = {}
       if (!dayMap[dateStr][def.label]) dayMap[dateStr][def.label] = []
@@ -330,7 +267,7 @@ function TechnicalBookedView({ events }) {
                                   )}
                                 </span>
                                 <span className="tv2-cell tv2-cell--lineup">
-                                  <span className="tv2-control-badge">Lineup {b.controlTimes.lineup}</span>
+                                  <span className="tv2-control-badge">Lines up {b.controlTimes.lineup}</span>
                                 </span>
                                 <span className="tv2-cell tv2-cell--livefeed">
                                   <span className="tv2-control-badge">Live Feed {b.controlTimes.liveFeed}</span>

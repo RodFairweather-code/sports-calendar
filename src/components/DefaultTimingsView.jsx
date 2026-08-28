@@ -3,10 +3,10 @@ import { COMPETITIONS } from '../data/competitions'
 import { loadDefaultTimings, persistDefaultTimings } from '../services/defaultTimings'
 
 const FIELDS = [
-  { key: 'lineup',        label: 'Lineup',                          unit: 'mins', step: '1', min: '0' },
-  { key: 'liveFeed',      label: 'Live Feed',                       unit: 'mins', step: '1', min: '0' },
+  { key: 'lineup',        label: 'Lines up',                        unit: 'mins before match start', step: '1', min: '0' },
+  { key: 'liveFeed',      label: 'Lineup duration',                 unit: 'mins',                     step: '1', min: '0' },
   { key: 'duration',      label: 'Event Duration (incl. half time)', unit: 'mins', step: '1', min: '0' },
-  { key: 'autoTeardown',  label: 'Auto Teardown',                   unit: 'mins', step: '1', min: '0' },
+  { key: 'autoTeardown',  label: 'Lines down',                      unit: 'post match mins',          step: '1', min: '0' },
 ]
 
 function DefaultTimingsView() {
@@ -24,7 +24,7 @@ function DefaultTimingsView() {
     <div className="rights-view">
       <div className="rights-legend">
         <span className="rights-legend-hint">
-          Minutes to offset from an event's start (Lineup, Live Feed) or end (Auto Teardown), and the
+          Minutes to offset from an event's start (Lines up, Lineup duration) or end (Lines down), and the
           competition's typical duration in minutes, including half time (used to work out that end time).
           Used by the MCR page to work out each event's control-room timings.
         </span>
