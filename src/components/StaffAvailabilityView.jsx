@@ -52,6 +52,7 @@ function loadAvailability(staff) {
   } catch { /* regenerate below */ }
   const seed = generateAvailability(staff, new Date(), SEED_DAYS)
   saveToStorage('staff_availability', seed)
+  window.dispatchEvent(new CustomEvent('availability-updated'))
   return seed
 }
 
@@ -137,6 +138,7 @@ function StaffAvailabilityView({ role }) {
       unavailable[dept] = deptMap
       const next = { ...prev, unavailable }
       saveToStorage('staff_availability', next)
+      window.dispatchEvent(new CustomEvent('availability-updated'))
       return next
     })
   }

@@ -7,6 +7,7 @@ import {
   GALLERY_ROLES, GALLERY_LOCATIONS, galleryField,
   needsBooth, needsStudio, needsObUnit, galleryLocationsForEvent,
 } from '../services/galleryRoles'
+import { loadStaffAvailability, isAvailableOn } from '../services/staffAvailability'
 
 // Re-exported for TechnicalBookedView, which imports them from here.
 export { needsBooth, needsStudio }
@@ -148,7 +149,7 @@ function roleLoad(assignments, roleFields) {
 // Events are processed in priority tiers: definite (Y) → possible (P) → unscheduled.
 // Each tier's existing assignments are locked in before that tier's TBA slots are filled,
 // so possible-event staff never block definite events from getting first pick.
-function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatterns, profiles, decisions = {}, locks = {}) {
+function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatterns, profiles, decisions = {}, locks = {}, availability = { unavailable: {} }) {
   const next = { ...assignments }
   // One person = one job per day, across every role and every facility.
   const dayUsed = new Set()
@@ -179,6 +180,7 @@ function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatt
       const pattern  = getPatternFor(event, next, patternMap, defaultPatterns)
       const evsCount = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
       const reqCap   = deriveRequiredCap(pattern)
+      const evDate   = event.start?.slice(0, 10)
       const locations = galleryLocationsForEvent(event, next, patternMap, defaultPatterns)
       let changed = false
 
@@ -189,7 +191,7 @@ function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatt
           if (asgn[field] || isRoleLocked(locks, event.id, field)) continue
 
           const pool   = orderByLoad(capable(staff[staffKey], profiles, staffKey, reqCap), profiles, staffKey, load[role])
-          const person = pool.find(n => !dayUsed.has(n))
+          const person = pool.find(n => !dayUsed.has(n) && isAvailableOn(availability, staffKey, n, evDate))
           asgn[field] = person ?? 'Freelance required'
           if (person) { dayUsed.add(person); load[role].set(person, (load[role].get(person) || 0) + 1) }
           changed = true
@@ -322,6 +324,7 @@ function BoothsView({ events, onEventClick }) {
   const [bookings, setBookings] = useState(loadBookings)
   const [locks, setLocks]       = useState(loadLocks)
   const [decisions]       = useState(loadDecisions)
+  const [availability, setAvailability] = useState(loadStaffAvailability)
   const [selectedDate, setSelectedDate] = useState('')
   const [clearNotice, setClearNotice]   = useState(null)
   const groupRefs    = useRef({})
@@ -343,6 +346,12 @@ function BoothsView({ events, onEventClick }) {
     function onUpdate() { setLocks(loadLocks()) }
     window.addEventListener('locks-updated', onUpdate)
     return () => window.removeEventListener('locks-updated', onUpdate)
+  }, [])
+
+  useEffect(() => {
+    function onUpdate() { setAvailability(loadStaffAvailability()) }
+    window.addEventListener('availability-updated', onUpdate)
+    return () => window.removeEventListener('availability-updated', onUpdate)
   }, [])
 
   useEffect(() => {
@@ -543,7 +552,7 @@ function BoothsView({ events, onEventClick }) {
             onClick={() => {
               let next = { ...assignments }
               for (const date of sortedDates) {
-                next = autoAllocateDay(byDateAll[date], next, staff, patternMap, defaultPatterns, profiles, decisions, locks)
+                next = autoAllocateDay(byDateAll[date], next, staff, patternMap, defaultPatterns, profiles, decisions, locks, availability)
               }
               saveAssignments(next)
             }}
@@ -612,7 +621,7 @@ function BoothsView({ events, onEventClick }) {
                   <button
                     className="booths-auto-btn"
                     onClick={() => saveAssignments(
-                      autoAllocateDay(byDateAll[date], assignments, staff, patternMap, defaultPatterns, profiles, decisions, locks)
+                      autoAllocateDay(byDateAll[date], assignments, staff, patternMap, defaultPatterns, profiles, decisions, locks, availability)
                     )}
                   >
                     Auto allocate this day
@@ -643,7 +652,7 @@ function BoothsView({ events, onEventClick }) {
                       const forwardDates = sortedDates.filter(d => d >= date)
                       let next = { ...assignments }
                       for (const d of forwardDates) {
-                        next = autoAllocateDay(byDateAll[d], next, staff, patternMap, defaultPatterns, profiles, decisions, locks)
+                        next = autoAllocateDay(byDateAll[d], next, staff, patternMap, defaultPatterns, profiles, decisions, locks, availability)
                       }
                       saveAssignments(next)
                     }}

@@ -4777,6 +4777,14 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 .sa-grid tbody tr:hover td,
 .sa-grid tbody tr:hover .sa-name-col { background: #ddeaf6; }
 
+/* Thin blue outline around the hovered row (mirrors the column highlight). */
+.sa-grid tbody tr:hover td {
+  border-top: 2px solid #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+.sa-grid tbody tr:hover td:first-child { border-left: 2px solid #2563eb; }
+.sa-grid tbody tr:hover td:last-child  { border-right: 2px solid #2563eb; }
+
 .sa-person-name { font-weight: 600; margin-right: 8px; }
 
 .sa-cell {

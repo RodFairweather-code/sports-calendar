@@ -7,6 +7,7 @@ import { hasPermission } from '../services/roles'
 import { loadDefaultTimings } from '../services/defaultTimings'
 import { computeControlTimes } from '../services/mcrTiming'
 import { GALLERY_ROLES, GALLERY_LOCATIONS, galleryField, allGalleryFields } from '../services/galleryRoles'
+import { loadStaffAvailability, isAvailableOn } from '../services/staffAvailability'
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -403,7 +404,7 @@ function TimingsView({ event, timing, asgn, onChange, readOnly }) {
 
 // ── Resource view sub-components ─────────────────────────────────────────────
 
-function StaffSelect({ label, value, options, field, onChange, status, onStatusChange, locked, onToggleLock, readOnly, unavailable, profiles }) {
+function StaffSelect({ label, value, options, field, onChange, status, onStatusChange, locked, onToggleLock, readOnly, unavailable, profiles, availability, eventDate }) {
   const statusCls = status === 'confirmed' ? ' ep-field--confirmed'
                   : status === 'offered'   ? ' ep-field--offered'
                   : status === 'unbooked'  ? ' ep-field--unbooked'
@@ -411,11 +412,12 @@ function StaffSelect({ label, value, options, field, onChange, status, onStatusC
   // Green for permanent staff, red for freelancers — mirrors the Operations page.
   const staffKey = FIELD_STAFF_KEY[field]
   const isStaffName = o => profiles?.[staffKey]?.[o]?.isStaff ?? false
-  // Hide anyone already booked (offered/confirmed) on an overlapping event, but
-  // always keep the current pick selectable. Permanent staff listed before
-  // freelancers (stable sort keeps each group's original order).
+  // Hide anyone already booked (offered/confirmed) on an overlapping event, or
+  // marked unavailable that day on the Staff Availability screen — but always
+  // keep the current pick selectable. Permanent staff listed before freelancers
+  // (stable sort keeps each group's original order).
   const shown = options
-    .filter(o => o === value || !unavailable?.has(o))
+    .filter(o => o === value || (!unavailable?.has(o) && isAvailableOn(availability, staffKey, o, eventDate)))
     .sort((a, b) => (isStaffName(b) ? 1 : 0) - (isStaffName(a) ? 1 : 0))
   return (
     <div className={`ep-field${statusCls}${locked ? ' ep-field--locked' : ''}`}>
@@ -520,6 +522,7 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role, 
   const [bookableAssets]        = useState(loadBookableAssets)
   const [assetBookings, setAssetBookings] = useState(loadAssetBookings)
   const [defaultTimings]  = useState(loadDefaultTimings)
+  const [availability, setAvailability] = useState(loadStaffAvailability)
   const [view, setView]   = useState('resources')
   const [notice, setNotice] = useState(null)
   const noticeTimerRef = useRef(null)
@@ -542,6 +545,12 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role, 
     function onUpdate() { setAssetBookings(loadAssetBookings()) }
     window.addEventListener('asset-bookings-updated', onUpdate)
     return () => window.removeEventListener('asset-bookings-updated', onUpdate)
+  }, [])
+
+  useEffect(() => {
+    function onUpdate() { setAvailability(loadStaffAvailability()) }
+    window.addEventListener('availability-updated', onUpdate)
+    return () => window.removeEventListener('availability-updated', onUpdate)
   }, [])
 
   const asgn = assignments[event.id] || {}
@@ -808,11 +817,11 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role, 
                     {patterns.map(pat => <option key={pat.id} value={pat.id}>{pat.name}</option>)}
                   </select>
                 </div>
-                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('productionManager',  s, asgn.productionManager)} locked={isRoleLocked(locks, event.id, 'productionManager')} onToggleLock={() => toggleLock('productionManager')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} />
-                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('producer',          s, asgn.producer)} locked={isRoleLocked(locks, event.id, 'producer')}          onToggleLock={() => toggleLock('producer')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} />
-                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('commentator',       s, asgn.commentator)} locked={isRoleLocked(locks, event.id, 'commentator')}       onToggleLock={() => toggleLock('commentator')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} />
-                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('cameraman',         s, asgn.cameraman)} locked={isRoleLocked(locks, event.id, 'cameraman')}         onToggleLock={() => toggleLock('cameraman')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} />
-                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s, asgn.onsiteAudio)} locked={isRoleLocked(locks, event.id, 'onsiteAudio')}       onToggleLock={() => toggleLock('onsiteAudio')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} />
+                <StaffSelect label="Prod. Mgr"   value={asgn.productionManager} options={staff.onsiteProductionManager} field="productionManager"  onChange={setField} status={bookingStatus(asgn.productionManager, 'productionManager',  event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('productionManager',  s, asgn.productionManager)} locked={isRoleLocked(locks, event.id, 'productionManager')} onToggleLock={() => toggleLock('productionManager')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} availability={availability} eventDate={datePart} />
+                <StaffSelect label="Producer"    value={asgn.producer}          options={staff.producer}                field="producer"          onChange={setField} status={bookingStatus(asgn.producer,          'producer',          event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('producer',          s, asgn.producer)} locked={isRoleLocked(locks, event.id, 'producer')}          onToggleLock={() => toggleLock('producer')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} availability={availability} eventDate={datePart} />
+                <StaffSelect label="Commentator" value={asgn.commentator}       options={staff.commentator}             field="commentator"       onChange={setField} status={bookingStatus(asgn.commentator,       'commentator',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('commentator',       s, asgn.commentator)} locked={isRoleLocked(locks, event.id, 'commentator')}       onToggleLock={() => toggleLock('commentator')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} availability={availability} eventDate={datePart} />
+                <StaffSelect label="Cameraman"   value={asgn.cameraman}         options={staff.cameramen}               field="cameraman"         onChange={setField} status={bookingStatus(asgn.cameraman,         'cameraman',         event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('cameraman',         s, asgn.cameraman)} locked={isRoleLocked(locks, event.id, 'cameraman')}         onToggleLock={() => toggleLock('cameraman')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} availability={availability} eventDate={datePart} />
+                <StaffSelect label="Audio"       value={asgn.onsiteAudio}       options={staff.onsiteAudio}             field="onsiteAudio"       onChange={setField} status={bookingStatus(asgn.onsiteAudio,       'onsiteAudio',       event.id, profiles, bookings)} onStatusChange={s => setBookingStatus('onsiteAudio',       s, asgn.onsiteAudio)} locked={isRoleLocked(locks, event.id, 'onsiteAudio')}       onToggleLock={() => toggleLock('onsiteAudio')} readOnly={!canUpdate} unavailable={unavailableStaff} profiles={profiles} availability={availability} eventDate={datePart} />
               </div>
 
               {/* ── Gallery crews — one per facility this event uses ── */}
@@ -841,6 +850,8 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role, 
                             readOnly={!canUpdate}
                             unavailable={unavailableStaff}
                             profiles={profiles}
+                            availability={availability}
+                            eventDate={datePart}
                           />
                         )
                       })}

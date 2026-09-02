@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { deriveRequiredCap, capable, staffFirst } from '../services/staffCapabilities'
 import { saveToStorage } from '../services/storage'
+import { loadStaffAvailability, isAvailableOn } from '../services/staffAvailability'
 
 function formatDateRange(start, end) {
   if (!start) return '—'
@@ -86,6 +87,13 @@ function ProductionView({ events, onEventClick }) {
   const [assignments, setAssignments] = useState(loadAssignments)
   const [defaultPatterns]  = useState(loadDefaultPatterns)
   const [profiles]         = useState(loadProfiles)
+  const [availability, setAvailability] = useState(loadStaffAvailability)
+
+  useEffect(() => {
+    function onUpdate() { setAvailability(loadStaffAvailability()) }
+    window.addEventListener('availability-updated', onUpdate)
+    return () => window.removeEventListener('availability-updated', onUpdate)
+  }, [])
 
   useEffect(() => {
     function onUpdate() { setAssignments(loadAssignments()) }
@@ -209,9 +217,12 @@ function ProductionView({ events, onEventClick }) {
                     .filter(Boolean)
                 )
                 const filteredDirectors = staffFirst(
-                  capable(allDirectors, profiles, 'director', requiredCap).filter(n => !directorsBusyToday.has(n)),
+                  capable(allDirectors, profiles, 'director', requiredCap)
+                    .filter(n => !directorsBusyToday.has(n))
+                    .filter(n => isAvailableOn(availability, 'director', n, eventDate)),
                   profiles, 'director'
                 )
+                const pmOptionsForDate = pmOptions.filter(o => isAvailableOn(availability, 'onsiteProductionManager', o.value, eventDate))
                 const freelanceRequired = allDirectors.length > 0 && filteredDirectors.length === 0 && !!patternId
 
                 return (
@@ -253,8 +264,8 @@ function ProductionView({ events, onEventClick }) {
                     <td className="prod-assign-td">
                       <AssignSelect
                         value={asgn.productionManager}
-                        options={pmOptions}
-                        emptyLabel={pmOptions.length ? '— select PM —' : '(no PMs set up)'}
+                        options={pmOptionsForDate}
+                        emptyLabel={pmOptionsForDate.length ? '— select PM —' : '(no PMs available)'}
                         onChange={v => setAssignment(event.id, 'productionManager', v)}
                       />
                     </td>

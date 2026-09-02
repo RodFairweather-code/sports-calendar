@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { saveToStorage } from '../services/storage'
+import { loadStaffAvailability, isAvailableOn } from '../services/staffAvailability'
 import { buildImportedEventFromRow, colorForName, addMinutesToLocalDatetime } from '../services/excelImport'
 import ImportExcelModal from './ImportExcelModal'
 import ImportOptaModal from './ImportOptaModal'
@@ -292,6 +293,13 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, r
   const [successMsg, setSuccessMsg] = useState('')
   const [staff] = useState(loadStaff)
   const [patterns] = useState(loadPatterns)
+  const [availability, setAvailability] = useState(loadStaffAvailability)
+
+  useEffect(() => {
+    function onUpdate() { setAvailability(loadStaffAvailability()) }
+    window.addEventListener('availability-updated', onUpdate)
+    return () => window.removeEventListener('availability-updated', onUpdate)
+  }, [])
   const [showExcelModal, setShowExcelModal] = useState(false)
   const [showOptaModal, setShowOptaModal] = useState(false)
   const [showCompOrgModal, setShowCompOrgModal] = useState(false)
@@ -303,6 +311,12 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, r
 
   function setField(field, value) {
     setForm(prev => ({ ...prev, [field]: value }))
+  }
+
+  // Staff pickers show only people available on the event's start date, plus
+  // whoever is already selected in that field.
+  function availFor(staffKey, value) {
+    return (staff[staffKey] || []).filter(o => o === value || isAvailableOn(availability, staffKey, o, form.startDate))
   }
 
   function patternDefaults(pattern) {
@@ -702,14 +716,14 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, r
             <span className="import-field-hint">Selecting a type pre-fills the technical resources below.</span>
           </div>
 
-          <StaffField label="Director"          value={form.director}          options={staff.director}                onChange={v => setField('director', v)} />
-          <StaffField label="Production Manager" value={form.productionManager} options={staff.onsiteProductionManager} onChange={v => setField('productionManager', v)} />
-          <StaffField label="Producer"          value={form.producer}          options={staff.producer}                onChange={v => setField('producer', v)} />
-          <StaffField label="Commentator"       value={form.commentator}       options={staff.commentator}             onChange={v => setField('commentator', v)} />
-          <StaffField label="Cameraman"         value={form.cameraman}         options={staff.cameramen}               onChange={v => setField('cameraman', v)} />
-          <StaffField label="EVS Operator"      value={form.evsOperator}       options={staff.evsOperator}             onChange={v => setField('evsOperator', v)} />
-          <StaffField label="Audio"             value={form.onsiteAudio}       options={staff.onsiteAudio}             onChange={v => setField('onsiteAudio', v)} />
-          <StaffField label="Graphics Operator" value={form.graphicsOperator}  options={staff.graphicsOperator}        onChange={v => setField('graphicsOperator', v)} />
+          <StaffField label="Director"          value={form.director}          options={availFor('director', form.director)}                       onChange={v => setField('director', v)} />
+          <StaffField label="Production Manager" value={form.productionManager} options={availFor('onsiteProductionManager', form.productionManager)} onChange={v => setField('productionManager', v)} />
+          <StaffField label="Producer"          value={form.producer}          options={availFor('producer', form.producer)}                       onChange={v => setField('producer', v)} />
+          <StaffField label="Commentator"       value={form.commentator}       options={availFor('commentator', form.commentator)}                 onChange={v => setField('commentator', v)} />
+          <StaffField label="Cameraman"         value={form.cameraman}         options={availFor('cameramen', form.cameraman)}                     onChange={v => setField('cameraman', v)} />
+          <StaffField label="EVS Operator"      value={form.evsOperator}       options={availFor('evsOperator', form.evsOperator)}                 onChange={v => setField('evsOperator', v)} />
+          <StaffField label="Audio"             value={form.onsiteAudio}       options={availFor('onsiteAudio', form.onsiteAudio)}                 onChange={v => setField('onsiteAudio', v)} />
+          <StaffField label="Graphics Operator" value={form.graphicsOperator}  options={availFor('graphicsOperator', form.graphicsOperator)}       onChange={v => setField('graphicsOperator', v)} />
         </div>
 
         <div className="import-section-title">Technical Resources <span className="import-section-hint">(optional)</span></div>
@@ -913,9 +927,9 @@ function ImportEventsView({ competitions, onAdd, onAddBatch, onAddCompetition, r
             </select>
             <span className="import-field-hint">Defaults to Studio Show; selecting a type pre-fills the technical resources below.</span>
           </div>
-          <StaffField label="Director"          value={form.director}          options={staff.director}                onChange={v => setField('director', v)} />
-          <StaffField label="Production Manager" value={form.productionManager} options={staff.onsiteProductionManager} onChange={v => setField('productionManager', v)} />
-          <StaffField label="Producer"          value={form.producer}          options={staff.producer}                onChange={v => setField('producer', v)} />
+          <StaffField label="Director"          value={form.director}          options={availFor('director', form.director)}                       onChange={v => setField('director', v)} />
+          <StaffField label="Production Manager" value={form.productionManager} options={availFor('onsiteProductionManager', form.productionManager)} onChange={v => setField('productionManager', v)} />
+          <StaffField label="Producer"          value={form.producer}          options={availFor('producer', form.producer)}                       onChange={v => setField('producer', v)} />
         </div>
 
         <div className="import-section-title">Technical Resources <span className="import-section-hint">(optional)</span></div>
