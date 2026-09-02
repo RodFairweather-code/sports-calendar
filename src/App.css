@@ -3075,6 +3075,11 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   min-width: 180px;
 }
 
+.srt-th.srt-phone {
+  text-align: left;
+  min-width: 130px;
+}
+
 .srt-th.srt-stafffl {
   min-width: 110px;
 }
@@ -3101,7 +3106,8 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   white-space: nowrap;
 }
 
-.srt-td.srt-email {
+.srt-td.srt-email,
+.srt-td.srt-phone {
   text-align: left;
 }
 
@@ -3141,7 +3147,8 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   padding: 2px 7px;
 }
 
-.srt-email-input {
+.srt-email-input,
+.srt-phone-input {
   width: 100%;
   min-width: 150px;
   padding: 5px 8px;
@@ -3153,7 +3160,10 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   box-sizing: border-box;
 }
 
-.srt-email-input:focus {
+.srt-phone-input { min-width: 110px; }
+
+.srt-email-input:focus,
+.srt-phone-input:focus {
   outline: none;
   border-color: var(--brand-primary);
   background: #fff;

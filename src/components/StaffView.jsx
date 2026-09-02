@@ -32,6 +32,7 @@ function defaultProfile() {
   return {
     isStaff: true,
     email: '',
+    phone: '',
     seniority: 1,
     caps: Object.fromEntries(CAPS.map(c => [c.key, false])),
   }
@@ -188,6 +189,7 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
                 <th className="srt-th srt-name">Name</th>
                 <th className="srt-th srt-stafffl">Staff / FL</th>
                 <th className="srt-th srt-email">Email</th>
+                <th className="srt-th srt-phone">Phone</th>
                 {CAPS.map(c => (
                   <th key={c.key} className="srt-th srt-cap">{c.label}</th>
                 ))}
@@ -229,6 +231,17 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
                         placeholder="email@example.com"
                         disabled={!canUpdate}
                         onChange={e => onUpdate(role.key, name, 'email', e.target.value)}
+                      />
+                    </td>
+
+                    <td className="srt-td srt-phone" onClick={e => e.stopPropagation()}>
+                      <input
+                        type="tel"
+                        className="srt-phone-input"
+                        value={p.phone || ''}
+                        placeholder="07700 000000"
+                        disabled={!canUpdate}
+                        onChange={e => onUpdate(role.key, name, 'phone', e.target.value)}
                       />
                     </td>
 

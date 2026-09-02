@@ -7,6 +7,9 @@ const FIELDS = [
   { key: 'liveFeed',      label: 'Lineup duration',                 unit: 'mins',                     step: '1', min: '0' },
   { key: 'duration',      label: 'Event Duration (incl. half time)', unit: 'mins', step: '1', min: '0' },
   { key: 'autoTeardown',  label: 'Lines down',                      unit: 'post match mins',          step: '1', min: '0' },
+  { key: 'obStaff',       label: 'OB staff',                        unit: 'mins before match start', step: '1', min: '0' },
+  { key: 'studioStaff',   label: 'Studio staff',                    unit: 'mins before match start', step: '1', min: '0' },
+  { key: 'boothStaff',    label: 'Booth staff',                     unit: 'mins before match start', step: '1', min: '0' },
 ]
 
 function DefaultTimingsView() {
@@ -26,7 +29,8 @@ function DefaultTimingsView() {
         <span className="rights-legend-hint">
           Minutes to offset from an event's start (Lines up, Lineup duration) or end (Lines down), and the
           competition's typical duration in minutes, including half time (used to work out that end time).
-          Used by the MCR page to work out each event's control-room timings.
+          Used by the MCR page to work out each event's control-room timings. OB / Studio / Booth staff are
+          the call times, in minutes before match start, for each gallery's crew.
         </span>
       </div>
 

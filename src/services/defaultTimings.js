@@ -1,7 +1,8 @@
 import { saveToStorage } from './storage'
 
 // Per-competition MCR timing offsets, in minutes. Shape:
-// { [competitionId]: { lineup: number, liveFeed: number, autoTeardown: number } }
+// { [competitionId]: { lineup, liveFeed, duration, autoTeardown,
+//                      obStaff, studioStaff, boothStaff: number } }
 const KEY = 'admin_default_timings'
 
 export function loadDefaultTimings() {

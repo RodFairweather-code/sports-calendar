@@ -58,8 +58,9 @@ function buildSnapshot() {
       const capStr  = CAP_KEYS.map(c => `${c}: ${caps[c] ? 'true' : 'false'}`).join(', ')
       const isStaff   = p.isStaff !== false ? 'true' : 'false'
       const email     = (p.email || '').replace(/'/g, "\\'")
+      const phone     = (p.phone || '').replace(/'/g, "\\'")
       const seniority = p.seniority || 1
-      lines.push(`    '${name.replace(/'/g, "\\'")}': { isStaff: ${isStaff}, email: '${email}', seniority: ${seniority}, caps: { ${capStr} } },`)
+      lines.push(`    '${name.replace(/'/g, "\\'")}': { isStaff: ${isStaff}, email: '${email}', phone: '${phone}', seniority: ${seniority}, caps: { ${capStr} } },`)
     }
     lines.push(`  },`)
   }
