@@ -1,8 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
-import { deriveRequiredCap, capable, staffFirst } from '../services/staffCapabilities'
+import { deriveRequiredCap, capable, orderByLoad } from '../services/staffCapabilities'
 import { saveToStorage } from '../services/storage'
 import { loadTechStack } from '../services/techStack'
 import { loadLocks, persistLocks, isRoleLocked, withRoleLock, withEventLock, isEventFullyLocked } from '../services/staffLocks'
+import {
+  GALLERY_ROLES, GALLERY_LOCATIONS, galleryField,
+  needsBooth, needsStudio, needsObUnit, galleryLocationsForEvent,
+} from '../services/galleryRoles'
+
+// Re-exported for TechnicalBookedView, which imports them from here.
+export { needsBooth, needsStudio }
 
 function loadAssignments() {
   try { return JSON.parse(localStorage.getItem('production_assignments') || '{}') }
@@ -52,11 +59,16 @@ function eventStatus(eventId, decisions) {
 }
 
 
-const BOOTH_ROLES = [
-  { asgnKey: 'director',         staffKey: 'director' },
-  { asgnKey: 'evsOperator',      staffKey: 'evsOperator' },
-  { asgnKey: 'graphicsOperator', staffKey: 'graphicsOperator' },
-]
+// Every (location, role) pair that gets its own person, as
+// { field, staffKey, role, location } — field is the assignment/booking/lock key.
+const GALLERY_SLOTS = GALLERY_LOCATIONS.flatMap(loc =>
+  GALLERY_ROLES.map(r => ({
+    field:    galleryField(loc.key, r.role),
+    staffKey: r.staffKey,
+    role:     r.role,
+    location: loc.key,
+  }))
+)
 
 // For the given event IDs, counts accepted/offered freelancers being cleared
 // and returns updated bookings with those statuses wiped. Locked roles are
@@ -71,17 +83,17 @@ function computeClear(eventIds, assignments, profiles, bookings, locks) {
     const evtBookings = { ...(nextBookings[id] || {}) }
     let changed = false
 
-    for (const { asgnKey, staffKey } of BOOTH_ROLES) {
-      if (isRoleLocked(locks, id, asgnKey)) continue
-      const name = asgn[asgnKey]
+    for (const { field, staffKey } of GALLERY_SLOTS) {
+      if (isRoleLocked(locks, id, field)) continue
+      const name = asgn[field]
       if (!name || name === 'Freelance required') continue
       if (profiles[staffKey]?.[name]?.isStaff ?? false) continue
 
-      const status = evtBookings[asgnKey] || ''
+      const status = evtBookings[field] || ''
       if (status === 'confirmed') accepted++
       else if (status === 'offered') offered++
 
-      if (evtBookings[asgnKey]) { delete evtBookings[asgnKey]; changed = true }
+      if (evtBookings[field]) { delete evtBookings[field]; changed = true }
     }
 
     if (changed) nextBookings[id] = evtBookings
@@ -90,38 +102,14 @@ function computeClear(eventIds, assignments, profiles, bookings, locks) {
   return { accepted, offered, nextBookings }
 }
 
-// Strips the three auto-allocated roles from an assignment, but leaves any
-// that are locked in place.
+// Strips the auto-allocated gallery roles (every location) from an assignment,
+// but leaves any that are locked in place.
 function stripUnlockedRoles(asgn, id, locks) {
   const next = { ...asgn }
-  for (const { asgnKey } of BOOTH_ROLES) {
-    if (!isRoleLocked(locks, id, asgnKey)) delete next[asgnKey]
+  for (const { field } of GALLERY_SLOTS) {
+    if (!isRoleLocked(locks, id, field)) delete next[field]
   }
   return next
-}
-
-export function needsBooth(event, assignments, patternMap, defaultPatterns) {
-  const asgn = assignments[event.id] || {}
-  if (asgn.techProductionBooth !== undefined) return asgn.techProductionBooth
-  const patternId = asgn.patternId ?? defaultPatterns[event.extendedProps.competitionId]
-  if (!patternId) return false
-  return patternMap[patternId]?.productionBooth ?? false
-}
-
-export function needsStudio(event, assignments, patternMap, defaultPatterns) {
-  const asgn = assignments[event.id] || {}
-  if (asgn.techStudio !== undefined) return asgn.techStudio
-  const patternId = asgn.patternId ?? defaultPatterns[event.extendedProps.competitionId]
-  if (!patternId) return false
-  return patternMap[patternId]?.studio ?? false
-}
-
-function needsObUnit(event, assignments, patternMap, defaultPatterns) {
-  const asgn = assignments[event.id] || {}
-  if (asgn.techObUnit !== undefined) return asgn.techObUnit
-  const patternId = asgn.patternId ?? defaultPatterns[event.extendedProps.competitionId]
-  if (!patternId) return false
-  return patternMap[patternId]?.obUnit ?? false
 }
 
 function getPatternFor(event, assignments, patternMap, defaultPatterns) {
@@ -135,18 +123,41 @@ function tv(asgn, pattern, techKey, patternKey) {
   return pattern?.[patternKey] ?? 0
 }
 
-// Allocate TBA director/EVS/graphics across a single day's booth events.
-// One person = one job per day, and they must have the pattern's required capability.
-// Falls back to 'Freelance required' when the qualified pool is exhausted.
+// How many jobs each person already holds in a role across the whole working
+// set of assignments, counting every location variant of that role together.
+// Drives even spreading in auto-allocation.
+function roleLoad(assignments, roleFields) {
+  const m = new Map()
+  for (const id in assignments) {
+    for (const f of roleFields) {
+      const n = assignments[id]?.[f]
+      if (n && n !== 'Freelance required') m.set(n, (m.get(n) || 0) + 1)
+    }
+  }
+  return m
+}
+
+// Allocate TBA gallery roles (director/EVS/graphics) across a single day's
+// booth, studio and OB-unit events. Each facility an event uses gets its own
+// crew. An operational staff member can only do one job a day, so once a person
+// is booked for any gallery slot that day — in any facility, on any event — they
+// are unavailable for every other slot that day. They must also have the
+// pattern's required capability. Within each capability tier the least-loaded
+// person is picked first so the work rotates evenly. Falls back to
+// 'Freelance required' when the qualified pool is exhausted.
 // Events are processed in priority tiers: definite (Y) → possible (P) → unscheduled.
 // Each tier's existing assignments are locked in before that tier's TBA slots are filled,
 // so possible-event staff never block definite events from getting first pick.
 function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatterns, profiles, decisions = {}, locks = {}) {
   const next = { ...assignments }
-  const dayUsed = {
-    director:         new Set(),
-    evsOperator:      new Set(),
-    graphicsOperator: new Set(),
+  // One person = one job per day, across every role and every facility.
+  const dayUsed = new Set()
+  // Running job counts per role (all facilities pooled), seeded from every
+  // existing assignment and bumped as we allocate, so balance carries across
+  // events, facilities, tiers and days.
+  const load = {}
+  for (const r of GALLERY_ROLES) {
+    load[r.role] = roleLoad(next, GALLERY_LOCATIONS.map(l => galleryField(l.key, r.role)))
   }
 
   const tiers = ['definite', 'possible', 'unscheduled'].map(status =>
@@ -157,9 +168,9 @@ function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatt
     // Lock existing assignments for this tier before filling any TBA in it
     tier.forEach(event => {
       const asgn = next[event.id] || {}
-      if (asgn.director         && asgn.director         !== 'Freelance required') dayUsed.director.add(asgn.director)
-      if (asgn.evsOperator      && asgn.evsOperator      !== 'Freelance required') dayUsed.evsOperator.add(asgn.evsOperator)
-      if (asgn.graphicsOperator && asgn.graphicsOperator !== 'Freelance required') dayUsed.graphicsOperator.add(asgn.graphicsOperator)
+      for (const { field } of GALLERY_SLOTS) {
+        if (asgn[field] && asgn[field] !== 'Freelance required') dayUsed.add(asgn[field])
+      }
     })
 
     // Fill TBA slots for this tier
@@ -168,30 +179,21 @@ function autoAllocateDay(dateEvents, assignments, staff, patternMap, defaultPatt
       const pattern  = getPatternFor(event, next, patternMap, defaultPatterns)
       const evsCount = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
       const reqCap   = deriveRequiredCap(pattern)
+      const locations = galleryLocationsForEvent(event, next, patternMap, defaultPatterns)
       let changed = false
 
-      if (!asgn.director && !isRoleLocked(locks, event.id, 'director')) {
-        const pool   = staffFirst(capable(staff.director, profiles, 'director', reqCap), profiles, 'director')
-        const person = pool.find(n => !dayUsed.director.has(n))
-        asgn.director = person ?? 'Freelance required'
-        if (person) dayUsed.director.add(person)
-        changed = true
-      }
+      for (const location of locations) {
+        for (const { role, staffKey } of GALLERY_ROLES) {
+          if (role === 'evsOperator' && !(evsCount > 0)) continue
+          const field = galleryField(location, role)
+          if (asgn[field] || isRoleLocked(locks, event.id, field)) continue
 
-      if (evsCount > 0 && !asgn.evsOperator && !isRoleLocked(locks, event.id, 'evsOperator')) {
-        const pool   = staffFirst(capable(staff.evsOperator, profiles, 'evsOperator', reqCap), profiles, 'evsOperator')
-        const person = pool.find(n => !dayUsed.evsOperator.has(n))
-        asgn.evsOperator = person ?? 'Freelance required'
-        if (person) dayUsed.evsOperator.add(person)
-        changed = true
-      }
-
-      if (!asgn.graphicsOperator && !isRoleLocked(locks, event.id, 'graphicsOperator')) {
-        const pool   = staffFirst(capable(staff.graphicsOperator, profiles, 'graphicsOperator', reqCap), profiles, 'graphicsOperator')
-        const person = pool.find(n => !dayUsed.graphicsOperator.has(n))
-        asgn.graphicsOperator = person ?? 'Freelance required'
-        if (person) dayUsed.graphicsOperator.add(person)
-        changed = true
+          const pool   = orderByLoad(capable(staff[staffKey], profiles, staffKey, reqCap), profiles, staffKey, load[role])
+          const person = pool.find(n => !dayUsed.has(n))
+          asgn[field] = person ?? 'Freelance required'
+          if (person) { dayUsed.add(person); load[role].set(person, (load[role].get(person) || 0) + 1) }
+          changed = true
+        }
       }
 
       if (changed) next[event.id] = asgn
@@ -242,6 +244,72 @@ function staffDisplay(name, eventId, roleKey, staffKey, profiles, bookings, lock
             : effectiveStatus === 'offered'   ? 'booth-staff-name--offered'
             :                                   'booth-staff-name--unbooked'
   return { text: name, cls, rowCls: rowLockCls }
+}
+
+// One card in the Booths / Studios / OB Units section. `location` picks which
+// gallery crew (via galleryField) it reads and locks — each facility an event
+// uses gets its own director/EVS/graphics.
+function BoothCard({ event, idx, location, numberLabel, overCapacity = false, ctx }) {
+  const { assignments, patternMap, defaultPatterns, decisions, profiles, bookings, locks,
+          onEventClick, toggleRoleLock, toggleEventLock } = ctx
+  const p          = event.extendedProps
+  const asgn       = assignments[event.id] || {}
+  const pattern    = getPatternFor(event, assignments, patternMap, defaultPatterns)
+  const timePart   = !event.allDay && event.start.length > 10 ? event.start.slice(11, 16) : null
+  const evsCount   = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
+  const isPossible  = eventStatus(event.id, decisions) === 'possible'
+
+  const slots = GALLERY_ROLES
+    .filter(r => r.role !== 'evsOperator' || evsCount > 0)
+    .map(r => ({ ...r, field: galleryField(location, r.role) }))
+  const roleKeys    = slots.map(s => s.field)
+  const fullyLocked = isEventFullyLocked(locks, event.id, roleKeys)
+
+  return (
+    <div
+      className={`booth-card${overCapacity ? ' booth-card--over-capacity' : ''}`}
+      onClick={() => onEventClick?.(event)}
+      style={{ cursor: 'pointer' }}
+    >
+      <div className="booth-card-header" style={{ background: event.backgroundColor }}>
+        <span className="booth-number">{numberLabel}</span>
+        {overCapacity && <span className="booth-over-label">Over capacity</span>}
+        <EventLockButton locked={fullyLocked} onClick={() => toggleEventLock(event.id, roleKeys)} />
+      </div>
+      {isPossible && <div className="booth-possible-label">Possible event</div>}
+      <div className="booth-card-body">
+        <div className="booth-comp">
+          <span className="booth-comp-dot" style={{ background: event.backgroundColor }} />
+          <span className="booth-comp-name">{p.competitionName}</span>
+        </div>
+        <div className="booth-event-title">{event.title}</div>
+        {timePart && <div className="booth-time">{timePart}</div>}
+        {p.venue  && <div className="booth-venue">{p.venue}</div>}
+        {p.sport  && <div className="booth-sport">{p.sport}</div>}
+        {pattern  && <div className="booth-pattern">{pattern.name}</div>}
+        <div className="booth-staff">
+          {slots.map(s => {
+            const d = staffDisplay(
+              asgn[s.field], event.id, s.field, s.staffKey, profiles, bookings,
+              isRoleLocked(locks, event.id, s.field),
+            )
+            return (
+              <div key={s.field} className={`booth-staff-row ${d.rowCls}`}>
+                <span className="booth-staff-role">{s.label}</span>
+                <span className={`booth-staff-name ${d.cls}`}>{d.text}</span>
+                {isNamedAllocation(d.text) && (
+                  <RoleLockBadge
+                    locked={isRoleLocked(locks, event.id, s.field)}
+                    onClick={() => toggleRoleLock(event.id, s.field)}
+                  />
+                )}
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 function BoothsView({ events, onEventClick }) {
@@ -318,11 +386,78 @@ function BoothsView({ events, onEventClick }) {
     setLocks(next)
   }
 
+  // Every named gallery allocation (real person, not TBA / Freelance required)
+  // across a day's booth, studio and OB events.
+  function dayLockTargets(date) {
+    return (byDateAll[date] || []).flatMap(e => {
+      const asgn = assignments[e.id] || {}
+      return GALLERY_SLOTS
+        .filter(s => isNamedAllocation(asgn[s.field] ?? 'TBA'))
+        .map(s => ({ id: e.id, field: s.field }))
+    })
+  }
+
+  function toggleDayLock(date) {
+    const targets = dayLockTargets(date)
+    if (targets.length === 0) return
+    const lock = !targets.every(t => isRoleLocked(locks, t.id, t.field))
+    let next = locks
+    for (const t of targets) next = withRoleLock(next, t.id, t.field, lock)
+    persistLocks(next)
+    setLocks(next)
+  }
+
   function showClearNotice(accepted, offered) {
     if (accepted === 0 && offered === 0) return
     if (clearTimerRef.current) clearTimeout(clearTimerRef.current)
     setClearNotice({ accepted, offered })
     clearTimerRef.current = setTimeout(() => setClearNotice(null), 5000)
+  }
+
+  // One-time move of legacy flat gallery allocations to their real facility.
+  // Before per-location crews, a studio-only / OB-only event kept its crew in
+  // the bare director/evsOperator/graphicsOperator fields; those now mean "the
+  // booth crew", so relocate them for events that don't use a booth.
+  useEffect(() => {
+    if (localStorage.getItem('assignments_gallery_locations_v1')) return
+    try {
+      const asg = JSON.parse(localStorage.getItem('production_assignments') || '{}')
+      const bk  = JSON.parse(localStorage.getItem('staff_bookings') || '{}')
+      const lk  = JSON.parse(localStorage.getItem('staff_locks') || '{}')
+      const pm  = Object.fromEntries(JSON.parse(localStorage.getItem('admin_patterns') || '[]').map(p => [p.id, p]))
+      const dp  = JSON.parse(localStorage.getItem('rights_default_patterns') || '{}')
+      const evById = Object.fromEntries(events.map(e => [e.id, e]))
+      let changed = false
+      for (const [id, a] of Object.entries(asg)) {
+        const ev = evById[id]
+        if (!ev) continue
+        const locs = galleryLocationsForEvent(ev, asg, pm, dp)
+        if (locs.includes('booth') || locs.length === 0) continue  // booth keeps the bare fields
+        const target = locs[0]
+        for (const r of GALLERY_ROLES) {
+          const dest = galleryField(target, r.role)
+          if (a[r.role] !== undefined && a[dest] === undefined) {
+            a[dest] = a[r.role]; delete a[r.role]; changed = true
+            if (bk[id]?.[r.role] !== undefined) { bk[id][dest] = bk[id][r.role]; delete bk[id][r.role] }
+            if (lk[id]?.[r.role] !== undefined) { lk[id][dest] = lk[id][r.role]; delete lk[id][r.role] }
+          }
+        }
+      }
+      localStorage.setItem('assignments_gallery_locations_v1', '1')
+      if (changed) {
+        saveToStorage('production_assignments', asg)
+        saveToStorage('staff_bookings', bk)
+        saveToStorage('staff_locks', lk)
+        setAssignmentsRaw(asg)
+        setBookings(bk)
+        setLocks(lk)
+      }
+    } catch { /* leave existing data untouched */ }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const cardCtx = {
+    assignments, patternMap, defaultPatterns, decisions, profiles, bookings, locks,
+    onEventClick, toggleRoleLock, toggleEventLock,
   }
 
   const initEvents = events.filter(e => decisions[e.id]?.initProduction)
@@ -441,10 +576,20 @@ function BoothsView({ events, onEventClick }) {
         const dateLabel = new Date(date + 'T12:00:00').toLocaleDateString('en-GB', {
           weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
         })
+        const dayTargets = dayLockTargets(date)
+        const dayFullyLocked = dayTargets.length > 0 &&
+          dayTargets.every(t => isRoleLocked(locks, t.id, t.field))
         return (
           <div key={date} ref={el => { groupRefs.current[date] = el }} className="booths-date-group">
             <div className="booths-date-header-row">
               <h2 className="booths-date-header">{dateLabel}</h2>
+              <button
+                className={`booths-lock-day-btn${dayFullyLocked ? ' booths-lock-day-btn--locked' : ''}`}
+                disabled={dayTargets.length === 0}
+                onClick={() => toggleDayLock(date)}
+              >
+                {dayFullyLocked ? 'Unlock day' : 'Lock day'}
+              </button>
               <div className="booths-header-buttons">
                 <div className="booths-btn-group">
                   <button
@@ -511,68 +656,17 @@ function BoothsView({ events, onEventClick }) {
 
             {byDate[date] && (
             <div className="booths-row">
-              {byDate[date].map((event, idx) => {
-                const p            = event.extendedProps
-                const asgn         = assignments[event.id] || {}
-                const pattern      = getPatternFor(event, assignments, patternMap, defaultPatterns)
-                const timePart     = !event.allDay && event.start.length > 10
-                  ? event.start.slice(11, 16) : null
-                const evsCount     = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
-                const overCapacity = maxBooths > 0 && (idx + 1) > maxBooths
-                const isPossible   = eventStatus(event.id, decisions) === 'possible'
-
-                const roleKeys = ['director', ...(evsCount > 0 ? ['evsOperator'] : []), 'graphicsOperator']
-                const fullyLocked = isEventFullyLocked(locks, event.id, roleKeys)
-                const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings, isRoleLocked(locks, event.id, 'director'))
-                const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings, isRoleLocked(locks, event.id, 'evsOperator')) : null
-                const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings, isRoleLocked(locks, event.id, 'graphicsOperator'))
-
-                return (
-                  <div
-                    key={event.id}
-                    className={`booth-card${overCapacity ? ' booth-card--over-capacity' : ''}`}
-                    onClick={() => onEventClick?.(event)}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <div className="booth-card-header" style={{ background: event.backgroundColor }}>
-                      <span className="booth-number">Booth {idx + 1}</span>
-                      {overCapacity && <span className="booth-over-label">Over capacity</span>}
-                      <EventLockButton locked={fullyLocked} onClick={() => toggleEventLock(event.id, roleKeys)} />
-                    </div>
-                    {isPossible && <div className="booth-possible-label">Possible event</div>}
-                    <div className="booth-card-body">
-                      <div className="booth-comp">
-                        <span className="booth-comp-dot" style={{ background: event.backgroundColor }} />
-                        <span className="booth-comp-name">{p.competitionName}</span>
-                      </div>
-                      <div className="booth-event-title">{event.title}</div>
-                      {timePart && <div className="booth-time">{timePart}</div>}
-                      {p.venue  && <div className="booth-venue">{p.venue}</div>}
-                      {p.sport  && <div className="booth-sport">{p.sport}</div>}
-                      {pattern  && <div className="booth-pattern">{pattern.name}</div>}
-                      <div className="booth-staff">
-                        <div className={`booth-staff-row ${dir.rowCls}`}>
-                          <span className="booth-staff-role">Director</span>
-                          <span className={`booth-staff-name ${dir.cls}`}>{dir.text}</span>
-                          {isNamedAllocation(dir.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'director')} onClick={() => toggleRoleLock(event.id, 'director')} />}
-                        </div>
-                        {evs && (
-                          <div className={`booth-staff-row ${evs.rowCls}`}>
-                            <span className="booth-staff-role">EVS</span>
-                            <span className={`booth-staff-name ${evs.cls}`}>{evs.text}</span>
-                            {isNamedAllocation(evs.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'evsOperator')} onClick={() => toggleRoleLock(event.id, 'evsOperator')} />}
-                          </div>
-                        )}
-                        <div className={`booth-staff-row ${gfx.rowCls}`}>
-                          <span className="booth-staff-role">Graphics</span>
-                          <span className={`booth-staff-name ${gfx.cls}`}>{gfx.text}</span>
-                          {isNamedAllocation(gfx.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'graphicsOperator')} onClick={() => toggleRoleLock(event.id, 'graphicsOperator')} />}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
+              {byDate[date].map((event, idx) => (
+                <BoothCard
+                  key={event.id}
+                  event={event}
+                  idx={idx}
+                  location="booth"
+                  numberLabel={`Booth ${idx + 1}`}
+                  overCapacity={maxBooths > 0 && (idx + 1) > maxBooths}
+                  ctx={cardCtx}
+                />
+              ))}
             </div>
             )}
 
@@ -580,66 +674,16 @@ function BoothsView({ events, onEventClick }) {
             <>
               <div className="studios-section-label">Studios</div>
               <div className="booths-row studios-row">
-                {byDateStudio[date].map((event, idx) => {
-                  const p          = event.extendedProps
-                  const asgn       = assignments[event.id] || {}
-                  const pattern    = getPatternFor(event, assignments, patternMap, defaultPatterns)
-                  const timePart   = !event.allDay && event.start.length > 10
-                    ? event.start.slice(11, 16) : null
-                  const evsCount   = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
-                  const isPossible = eventStatus(event.id, decisions) === 'possible'
-
-                  const roleKeys = ['director', ...(evsCount > 0 ? ['evsOperator'] : []), 'graphicsOperator']
-                  const fullyLocked = isEventFullyLocked(locks, event.id, roleKeys)
-                  const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings, isRoleLocked(locks, event.id, 'director'))
-                  const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings, isRoleLocked(locks, event.id, 'evsOperator')) : null
-                  const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings, isRoleLocked(locks, event.id, 'graphicsOperator'))
-
-                  return (
-                    <div
-                      key={event.id}
-                      className="booth-card"
-                      onClick={() => onEventClick?.(event)}
-                      style={{ cursor: 'pointer' }}
-                    >
-                      <div className="booth-card-header" style={{ background: event.backgroundColor }}>
-                        <span className="booth-number">Studio {idx + 1}</span>
-                        <EventLockButton locked={fullyLocked} onClick={() => toggleEventLock(event.id, roleKeys)} />
-                      </div>
-                      {isPossible && <div className="booth-possible-label">Possible event</div>}
-                      <div className="booth-card-body">
-                        <div className="booth-comp">
-                          <span className="booth-comp-dot" style={{ background: event.backgroundColor }} />
-                          <span className="booth-comp-name">{p.competitionName}</span>
-                        </div>
-                        <div className="booth-event-title">{event.title}</div>
-                        {timePart && <div className="booth-time">{timePart}</div>}
-                        {p.venue  && <div className="booth-venue">{p.venue}</div>}
-                        {p.sport  && <div className="booth-sport">{p.sport}</div>}
-                        {pattern  && <div className="booth-pattern">{pattern.name}</div>}
-                        <div className="booth-staff">
-                          <div className={`booth-staff-row ${dir.rowCls}`}>
-                            <span className="booth-staff-role">Director</span>
-                            <span className={`booth-staff-name ${dir.cls}`}>{dir.text}</span>
-                            {isNamedAllocation(dir.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'director')} onClick={() => toggleRoleLock(event.id, 'director')} />}
-                          </div>
-                          {evs && (
-                            <div className={`booth-staff-row ${evs.rowCls}`}>
-                              <span className="booth-staff-role">EVS</span>
-                              <span className={`booth-staff-name ${evs.cls}`}>{evs.text}</span>
-                              {isNamedAllocation(evs.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'evsOperator')} onClick={() => toggleRoleLock(event.id, 'evsOperator')} />}
-                            </div>
-                          )}
-                          <div className={`booth-staff-row ${gfx.rowCls}`}>
-                            <span className="booth-staff-role">Graphics</span>
-                            <span className={`booth-staff-name ${gfx.cls}`}>{gfx.text}</span>
-                            {isNamedAllocation(gfx.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'graphicsOperator')} onClick={() => toggleRoleLock(event.id, 'graphicsOperator')} />}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })}
+                {byDateStudio[date].map((event, idx) => (
+                  <BoothCard
+                    key={event.id}
+                    event={event}
+                    idx={idx}
+                    location="studio"
+                    numberLabel={`Studio ${idx + 1}`}
+                    ctx={cardCtx}
+                  />
+                ))}
               </div>
             </>
             )}
@@ -648,66 +692,16 @@ function BoothsView({ events, onEventClick }) {
             <>
               <div className="studios-section-label">OB Units</div>
               <div className="booths-row studios-row">
-                {byDateObUnit[date].map((event, idx) => {
-                  const p          = event.extendedProps
-                  const asgn       = assignments[event.id] || {}
-                  const pattern    = getPatternFor(event, assignments, patternMap, defaultPatterns)
-                  const timePart   = !event.allDay && event.start.length > 10
-                    ? event.start.slice(11, 16) : null
-                  const evsCount   = tv(asgn, pattern, 'techEvsOperator', 'evsOperator')
-                  const isPossible = eventStatus(event.id, decisions) === 'possible'
-
-                  const roleKeys = ['director', ...(evsCount > 0 ? ['evsOperator'] : []), 'graphicsOperator']
-                  const fullyLocked = isEventFullyLocked(locks, event.id, roleKeys)
-                  const dir = staffDisplay(asgn.director,         event.id, 'director',         'director',         profiles, bookings, isRoleLocked(locks, event.id, 'director'))
-                  const evs = evsCount > 0 ? staffDisplay(asgn.evsOperator,      event.id, 'evsOperator',      'evsOperator',      profiles, bookings, isRoleLocked(locks, event.id, 'evsOperator')) : null
-                  const gfx = staffDisplay(asgn.graphicsOperator, event.id, 'graphicsOperator', 'graphicsOperator', profiles, bookings, isRoleLocked(locks, event.id, 'graphicsOperator'))
-
-                  return (
-                    <div
-                      key={event.id}
-                      className="booth-card"
-                      onClick={() => onEventClick?.(event)}
-                      style={{ cursor: 'pointer' }}
-                    >
-                      <div className="booth-card-header" style={{ background: event.backgroundColor }}>
-                        <span className="booth-number">OB Unit {idx + 1}</span>
-                        <EventLockButton locked={fullyLocked} onClick={() => toggleEventLock(event.id, roleKeys)} />
-                      </div>
-                      {isPossible && <div className="booth-possible-label">Possible event</div>}
-                      <div className="booth-card-body">
-                        <div className="booth-comp">
-                          <span className="booth-comp-dot" style={{ background: event.backgroundColor }} />
-                          <span className="booth-comp-name">{p.competitionName}</span>
-                        </div>
-                        <div className="booth-event-title">{event.title}</div>
-                        {timePart && <div className="booth-time">{timePart}</div>}
-                        {p.venue  && <div className="booth-venue">{p.venue}</div>}
-                        {p.sport  && <div className="booth-sport">{p.sport}</div>}
-                        {pattern  && <div className="booth-pattern">{pattern.name}</div>}
-                        <div className="booth-staff">
-                          <div className={`booth-staff-row ${dir.rowCls}`}>
-                            <span className="booth-staff-role">Director</span>
-                            <span className={`booth-staff-name ${dir.cls}`}>{dir.text}</span>
-                            {isNamedAllocation(dir.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'director')} onClick={() => toggleRoleLock(event.id, 'director')} />}
-                          </div>
-                          {evs && (
-                            <div className={`booth-staff-row ${evs.rowCls}`}>
-                              <span className="booth-staff-role">EVS</span>
-                              <span className={`booth-staff-name ${evs.cls}`}>{evs.text}</span>
-                              {isNamedAllocation(evs.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'evsOperator')} onClick={() => toggleRoleLock(event.id, 'evsOperator')} />}
-                            </div>
-                          )}
-                          <div className={`booth-staff-row ${gfx.rowCls}`}>
-                            <span className="booth-staff-role">Graphics</span>
-                            <span className={`booth-staff-name ${gfx.cls}`}>{gfx.text}</span>
-                            {isNamedAllocation(gfx.text) && <RoleLockBadge locked={isRoleLocked(locks, event.id, 'graphicsOperator')} onClick={() => toggleRoleLock(event.id, 'graphicsOperator')} />}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })}
+                {byDateObUnit[date].map((event, idx) => (
+                  <BoothCard
+                    key={event.id}
+                    event={event}
+                    idx={idx}
+                    location="ob"
+                    numberLabel={`OB Unit ${idx + 1}`}
+                    ctx={cardCtx}
+                  />
+                ))}
               </div>
             </>
             )}

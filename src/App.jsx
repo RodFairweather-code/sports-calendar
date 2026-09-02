@@ -331,7 +331,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.48</span>
+        <span className="header-version">v3.57</span>
       </header>
 
       {showAssumeRole && (
@@ -440,6 +440,7 @@ function App() {
       {selectedEvent && (
         <EventPanel
           event={selectedEvent}
+          allEvents={combinedEvents}
           onClose={() => setSelectedEvent(null)}
           onDeleteEvent={handleDeleteEvent}
           onAddBookableAssets={handleAddBookableAssets}

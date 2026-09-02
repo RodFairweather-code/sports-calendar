@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { saveToStorage } from '../services/storage'
 import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
 import { hasPermission } from '../services/roles'
+import { GALLERY_ROLES, GALLERY_LOCATIONS, galleryField } from '../services/galleryRoles'
+
+const GALLERY_ROLE_KEYS = new Set(GALLERY_ROLES.map(r => r.role))
 
 function formatDate(start) {
   if (!start) return '—'
@@ -61,6 +64,12 @@ function BookStaffView({ events, role }) {
   const todayStr = new Date().toISOString().slice(0, 10)
   const roleTab = ROLE_TABS.find(r => r.key === selectedRole)
 
+  // Gallery roles are staffed once per facility, so a single event yields one
+  // row per location it uses; every other role is a single event-level field.
+  const roleFields = GALLERY_ROLE_KEYS.has(selectedRole)
+    ? GALLERY_LOCATIONS.map(l => ({ field: galleryField(l.key, selectedRole), locLabel: l.label }))
+    : [{ field: selectedRole, locLabel: null }]
+
   const sorted = [...events].sort((a, b) => {
     if (!a.start) return 1
     if (!b.start) return -1
@@ -69,52 +78,54 @@ function BookStaffView({ events, role }) {
 
   const rows = sorted.flatMap(event => {
     const asgn = assignments[event.id] || {}
-    const person = asgn[selectedRole]
-    if (!person || person === 'Freelance required') return []
+    return roleFields.flatMap(({ field, locLabel }) => {
+      const person = asgn[field]
+      if (!person || person === 'Freelance required') return []
 
-    const profileEntry = profiles[roleTab.staffKey]?.[person]
-    const isStaff = profileEntry?.isStaff ?? false
-    const storedStatus = bookings[event.id]?.[selectedRole] || ''
-    const effectiveStatus = isStaff ? 'confirmed' : storedStatus
-    const locked = isRoleLocked(locks, event.id, selectedRole)
+      const isStaff = profiles[roleTab.staffKey]?.[person]?.isStaff ?? false
+      const storedStatus = bookings[event.id]?.[field] || ''
+      const effectiveStatus = isStaff ? 'confirmed' : storedStatus
+      const locked = isRoleLocked(locks, event.id, field)
 
-    return [{ event, person, isStaff, effectiveStatus, locked }]
+      return [{ event, field, locLabel, person, isStaff, effectiveStatus, locked }]
+    })
   })
 
   const filtered = filter === 'unconfirmed'
     ? rows.filter(r => r.effectiveStatus !== 'confirmed')
     : rows
 
-  function setBookingStatus(eventId, status) {
+  function setBookingStatus(eventId, field, status) {
     if (!canUpdate) return
     setBookings(prev => {
-      const next = { ...prev, [eventId]: { ...prev[eventId], [selectedRole]: status } }
+      const next = { ...prev, [eventId]: { ...prev[eventId], [field]: status } }
       persistBookings(next)
       return next
     })
     // A confirmed freelancer is booking-final — pencil becomes locked automatically.
     if (status === 'confirmed') {
       setLocks(prev => {
-        const next = withRoleLock(prev, eventId, selectedRole, true)
+        const next = withRoleLock(prev, eventId, field, true)
         persistLocks(next)
         return next
       })
     }
   }
 
-  function offerJob(event, person) {
+  function offerJob(event, field, locLabel, person) {
     if (!canUpdate) return
-    setBookingStatus(event.id, 'offered')
+    setBookingStatus(event.id, field, 'offered')
     const timeStr = event.start?.length > 10 ? ` at ${event.start.slice(11, 16)}` : ''
+    const roleName = locLabel ? `${roleTab.label} (${locLabel})` : roleTab.label
     clearTimeout(noticeTimerRef.current)
-    setNotice(`${person} has been offered ${roleTab.label} for ${event.title} on ${formatDate(event.start)}${timeStr}. A calendar invite has also been sent out.`)
+    setNotice(`${person} has been offered ${roleName} for ${event.title} on ${formatDate(event.start)}${timeStr}. A calendar invite has also been sent out.`)
     noticeTimerRef.current = setTimeout(() => setNotice(null), 8000)
   }
 
-  function toggleLock(eventId) {
+  function toggleLock(eventId, field) {
     if (!canUpdate) return
     setLocks(prev => {
-      const next = withRoleLock(prev, eventId, selectedRole, !isRoleLocked(prev, eventId, selectedRole))
+      const next = withRoleLock(prev, eventId, field, !isRoleLocked(prev, eventId, field))
       persistLocks(next)
       return next
     })
@@ -146,17 +157,17 @@ function BookStaffView({ events, role }) {
               </tr>
             </thead>
             <tbody>
-              {filtered.map(({ event, person, isStaff, effectiveStatus, locked }) => {
+              {filtered.map(({ event, field, locLabel, person, isStaff, effectiveStatus, locked }) => {
                 const ep = event.extendedProps
                 return (
-                  <tr key={event.id}>
+                  <tr key={`${event.id}|${field}`}>
                     <td className="bs-date">{formatDate(event.start)}</td>
                     <td className="bs-event">{event.title}</td>
                     <td className="bs-comp">
                       <span className="ed-dot" style={{ background: event.backgroundColor }} />
                       {ep.competitionName}
                     </td>
-                    <td className="bs-role">{roleTab.label}</td>
+                    <td className="bs-role">{locLabel ? `${roleTab.label} (${locLabel})` : roleTab.label}</td>
                     <td className="bs-name">{person}</td>
                     <td>
                       <span className={`bs-badge bs-badge--${isStaff ? 'staff' : 'freelance'}`}>
@@ -181,7 +192,7 @@ function BookStaffView({ events, role }) {
                           className="bs-action-btn bs-action-btn--offer"
                           disabled={!canUpdate}
                           title={!canUpdate ? "Your role doesn't have permission to edit staff bookings" : undefined}
-                          onClick={() => offerJob(event, person)}
+                          onClick={() => offerJob(event, field, locLabel, person)}
                         >
                           Offer job
                         </button>
@@ -191,7 +202,7 @@ function BookStaffView({ events, role }) {
                           className="bs-action-btn bs-action-btn--accept"
                           disabled={!canUpdate}
                           title={!canUpdate ? "Your role doesn't have permission to edit staff bookings" : undefined}
-                          onClick={() => setBookingStatus(event.id, 'confirmed')}
+                          onClick={() => setBookingStatus(event.id, field, 'confirmed')}
                         >
                           Accepted
                         </button>
@@ -200,7 +211,7 @@ function BookStaffView({ events, role }) {
                         className={`bs-action-btn${locked ? ' bs-action-btn--accept' : ''}`}
                         disabled={!canUpdate}
                         title={!canUpdate ? "Your role doesn't have permission to edit staff bookings" : undefined}
-                        onClick={() => toggleLock(event.id)}
+                        onClick={() => toggleLock(event.id, field)}
                       >
                         {locked ? 'Unlock' : 'Lock'}
                       </button>

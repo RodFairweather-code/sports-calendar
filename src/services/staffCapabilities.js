@@ -37,3 +37,22 @@ export function staffFirst(names, profiles, roleKey) {
     return bStaff - aStaff
   })
 }
+
+// Order a capable pool for auto-allocation so work spreads evenly instead of
+// always starting from the top of the list. Priority:
+//   1. contracted staff before freelancers (same tiering as staffFirst)
+//   2. fewest existing assignments first — this is what rotates people through
+//   3. original list order, as a stable tie-break
+// `loadMap` is name -> count of jobs already held in this role.
+export function orderByLoad(names, profiles, roleKey, loadMap) {
+  const rp = profiles[roleKey] || {}
+  return names
+    .map((n, i) => ({
+      n,
+      i,
+      staffRank: rp[n]?.isStaff !== false ? 0 : 1,
+      load: loadMap.get(n) || 0,
+    }))
+    .sort((a, b) => a.staffRank - b.staffRank || a.load - b.load || a.i - b.i)
+    .map(x => x.n)
+}

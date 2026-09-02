@@ -1153,6 +1153,18 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   background: #fff;
 }
 
+/* Option colour coding — green for permanent staff, red for freelancers,
+   matching the Operations page. */
+.ep-opt--staff {
+  background: #bbf7d0;
+  color: #14532d;
+}
+
+.ep-opt--freelance {
+  background: #fecaca;
+  color: #7f1d1d;
+}
+
 .ep-field--overridden {
   background: #edf7ee;
   border-radius: 5px;
@@ -1430,12 +1442,48 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 }
 
 .booths-date-header-row {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
   border-bottom: 2px solid var(--brand-primary);
   padding-bottom: 8px;
   margin-bottom: 14px;
+}
+
+.booths-lock-day-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 16px;
+  border: 1px solid #d9a017;
+  border-radius: 6px;
+  background: #fff;
+  color: #a6790f;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.booths-lock-day-btn:hover:not(:disabled) {
+  background: #ffc850;
+  color: var(--brand-primary);
+}
+
+.booths-lock-day-btn--locked {
+  background: #ffc850;
+  border-color: #ffc850;
+  color: var(--brand-primary);
+}
+
+.booths-lock-day-btn--locked:hover:not(:disabled) {
+  background: #ffbc2e;
+}
+
+.booths-lock-day-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .booths-header-buttons {

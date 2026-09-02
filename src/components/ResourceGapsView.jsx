@@ -1,24 +1,31 @@
 import { useEffect, useRef, useState } from 'react'
 import { deriveRequiredCap, capable } from '../services/staffCapabilities'
+import { GALLERY_ROLES, GALLERY_LOCATIONS, galleryField, galleryLocationsForEvent } from '../services/galleryRoles'
 
 const FREELANCE_STORED = 'Freelance required'
 
-const BOOTH_ROLES = [
-  { field: 'director',         label: 'Director' },
-  { field: 'evsOperator',      label: 'EVS Operator' },
-  { field: 'graphicsOperator', label: 'Graphics Operator' },
-]
+const GALLERY_ROLE_LABEL = { director: 'Director', evsOperator: 'EVS Operator', graphicsOperator: 'Graphics Operator' }
+const LOC_LABEL = Object.fromEntries(GALLERY_LOCATIONS.map(l => [l.key, l.label]))
+
+// Every per-location gallery slot: { field, staffKey, role, location, label }.
+const GALLERY_SLOTS = GALLERY_LOCATIONS.flatMap(loc =>
+  GALLERY_ROLES.map(r => ({
+    field:    galleryField(loc.key, r.role),
+    staffKey: r.staffKey,
+    role:     r.role,
+    location: loc.key,
+    label:    `${GALLERY_ROLE_LABEL[r.role]} (${loc.label})`,
+  }))
+)
 
 const ASSIGNED_ROLES = [
-  { field: 'director',          staffKey: 'director' },
   { field: 'productionManager', staffKey: 'onsiteProductionManager' },
-  { field: 'evsOperator',       staffKey: 'evsOperator' },
-  { field: 'graphicsOperator',  staffKey: 'graphicsOperator' },
   { field: 'cameraman',         staffKey: 'cameramen' },
   { field: 'onsiteAudio',       staffKey: 'onsiteAudio' },
   { field: 'producer',          staffKey: 'producer' },
   { field: 'commentator',       staffKey: 'commentator' },
   { field: 'mamChecker',        staffKey: 'mamCheckers' },
+  ...GALLERY_SLOTS.map(({ field, staffKey }) => ({ field, staffKey })),
 ]
 
 function load(key, fallback) {
@@ -94,24 +101,34 @@ function computeDayStatus(allEvents, assignments, decisions, patterns, staff, pr
     const patternId    = asgn.patternId ?? defaultPatterns[event.extendedProps?.competitionId] ?? ''
     const patternName  = patternMap[patternId]?.name ?? null
     const missingRoles = []
+    const usedLocs     = galleryLocationsForEvent(event, assignments, patternMap, defaultPatterns)
 
-    for (const { field, label } of BOOTH_ROLES) {
-      if (asgn[field] === FREELANCE_STORED) missingRoles.push(label)
+    for (const loc of usedLocs) {
+      for (const r of GALLERY_ROLES) {
+        if (asgn[galleryField(loc, r.role)] === FREELANCE_STORED) {
+          missingRoles.push(`${GALLERY_ROLE_LABEL[r.role]} (${LOC_LABEL[loc]})`)
+        }
+      }
     }
 
-    if (decisions[event.id]?.initProduction && !missingRoles.includes('Director')) {
+    if (decisions[event.id]?.initProduction) {
       const pattern = patternMap[patternId]
-      if (pattern && allDirectors.length > 0 && !asgn.director) {
+      if (pattern && allDirectors.length > 0) {
         const reqCap    = deriveRequiredCap(pattern)
         const busyToday = new Set(
           (eventsByDate[eventDate] || [])
             .filter(e => e.id !== event.id)
-            .map(e => assignments[e.id]?.director)
+            .flatMap(e => GALLERY_LOCATIONS.map(l => assignments[e.id]?.[galleryField(l.key, 'director')]))
             .filter(Boolean)
         )
         const available = capable(allDirectors, profiles, 'director', reqCap)
           .filter(n => !busyToday.has(n))
-        if (available.length === 0) missingRoles.push('Director')
+        for (const loc of usedLocs) {
+          const locLabel = `Director (${LOC_LABEL[loc]})`
+          if (!asgn[galleryField(loc, 'director')] && !missingRoles.includes(locLabel) && available.length === 0) {
+            missingRoles.push(locLabel)
+          }
+        }
       }
     }
 

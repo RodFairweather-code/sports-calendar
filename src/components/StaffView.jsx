@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { saveToStorage } from '../services/storage'
 import { hasPermission } from '../services/roles'
+import { GALLERY_ROLES, GALLERY_LOCATIONS, galleryField } from '../services/galleryRoles'
 
 const ROLES = [
   { key: 'cameramen',               label: 'Cameramen' },
@@ -99,11 +100,17 @@ function nameToEmail(name) {
     : `${parts[0]}@fakeemail.com`
 }
 
+const GALLERY_ROLE_LABELS = { director: 'Director', evsOperator: 'EVS Operator', graphicsOperator: 'Graphics Operator' }
+
 const ASSIGN_ROLES = [
-  { field: 'director',         label: 'Director' },
-  { field: 'evsOperator',      label: 'EVS Operator' },
-  { field: 'graphicsOperator', label: 'Graphics Operator' },
-  { field: 'productionManager',label: 'Production Manager' },
+  { field: 'productionManager', label: 'Production Manager' },
+  // Gallery roles — one field per physical location.
+  ...GALLERY_LOCATIONS.flatMap(loc =>
+    GALLERY_ROLES.map(r => ({
+      field: galleryField(loc.key, r.role),
+      label: `${GALLERY_ROLE_LABELS[r.role]} (${loc.label})`,
+    }))
+  ),
 ]
 
 function getPersonSchedule(name, allEvents) {
@@ -128,11 +135,20 @@ function formatDate(start) {
 
 function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack, canUpdate }) {
   const roleProfiles = allProfiles[role.key] || {}
-  const [selectedPerson, setSelectedPerson] = useState(null)
 
   function getProfile(name) {
     return mergedProfile(roleProfiles[name])
   }
+
+  const sortedNames = [...names].sort((a, b) => {
+    const aStaff = mergedProfile(roleProfiles[a]).isStaff !== false ? 1 : 0
+    const bStaff = mergedProfile(roleProfiles[b]).isStaff !== false ? 1 : 0
+    if (bStaff !== aStaff) return bStaff - aStaff
+    return a.localeCompare(b)
+  })
+
+  // The allocations panel is always on screen — start it on the first person.
+  const [selectedPerson, setSelectedPerson] = useState(() => sortedNames[0] || null)
 
   useEffect(() => {
     names.forEach(name => {
@@ -142,14 +158,14 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
     })
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const schedule = selectedPerson ? getPersonSchedule(selectedPerson, allEvents) : []
+  // Keep a valid selection if the roster changes (person removed).
+  useEffect(() => {
+    if (names.length && !names.includes(selectedPerson)) {
+      setSelectedPerson(sortedNames[0] || null)
+    }
+  }, [names]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const sortedNames = [...names].sort((a, b) => {
-    const aStaff = mergedProfile(roleProfiles[a]).isStaff !== false ? 1 : 0
-    const bStaff = mergedProfile(roleProfiles[b]).isStaff !== false ? 1 : 0
-    if (bStaff !== aStaff) return bStaff - aStaff
-    return a.localeCompare(b)
-  })
+  const schedule = selectedPerson ? getPersonSchedule(selectedPerson, allEvents) : []
 
   return (
     <div className="staff-role-detail">
@@ -186,7 +202,7 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
                   <tr
                     key={name}
                     className={`${i % 2 === 0 ? 'srt-row-even' : 'srt-row-odd'}${isSelected ? ' srt-row-selected' : ''}`}
-                    onClick={() => setSelectedPerson(isSelected ? null : name)}
+                    onClick={() => setSelectedPerson(name)}
                     style={{ cursor: 'pointer' }}
                   >
                     <td className="srt-td srt-name">{name}</td>
@@ -249,27 +265,26 @@ function StaffRoleDetail({ role, names, allProfiles, allEvents, onUpdate, onBack
           </table>
           </div>
 
-          {selectedPerson && (
-            <div className="srt-sidebar">
-              <div className="srt-sidebar-header">
-                <span className="srt-sidebar-title">{selectedPerson}</span>
-                <button className="srt-sidebar-close" onClick={() => setSelectedPerson(null)}>✕</button>
-              </div>
-              <div className="srt-sidebar-body">
-                {schedule.length === 0 ? (
-                  <p className="srt-sidebar-empty">No allocations found in the schedule.</p>
-                ) : (
-                  schedule.map(({ event, roles }, i) => (
-                    <div key={i} className="srt-sidebar-item">
-                      <div className="srt-sidebar-date">{formatDate(event.start)}</div>
-                      <div className="srt-sidebar-event">{event.title}</div>
-                      <div className="srt-sidebar-roles">{roles.join(', ')}</div>
-                    </div>
-                  ))
-                )}
-              </div>
+          <div className="srt-sidebar">
+            <div className="srt-sidebar-header">
+              <span className="srt-sidebar-title">{selectedPerson || 'Allocations'}</span>
             </div>
-          )}
+            <div className="srt-sidebar-body">
+              {!selectedPerson ? (
+                <p className="srt-sidebar-empty">Select a person to see their allocations.</p>
+              ) : schedule.length === 0 ? (
+                <p className="srt-sidebar-empty">No allocations found in the schedule.</p>
+              ) : (
+                schedule.map(({ event, roles }, i) => (
+                  <div key={i} className="srt-sidebar-item">
+                    <div className="srt-sidebar-date">{formatDate(event.start)}</div>
+                    <div className="srt-sidebar-event">{event.title}</div>
+                    <div className="srt-sidebar-roles">{roles.join(', ')}</div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
         </div>
       )}
     </div>
