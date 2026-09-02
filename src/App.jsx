@@ -146,12 +146,15 @@ function App() {
 
   // If the assumed role changes (or its own view access was edited) while
   // sitting on a now-forbidden tab, fall back to the first tab it can see.
+  // The secret Ctrl+Calendar / Ctrl+Admin gesture (snapshotUnlocked) is exempt —
+  // it's a deliberate backdoor into the Admin area regardless of role.
   useEffect(() => {
+    if (view === 'admin' && snapshotUnlocked) return
     if (!canSeeView(activeRole, view)) {
       const fallback = VIEWS.find(v => canSeeView(activeRole, v.id))
       setView(fallback ? fallback.id : 'calendar')
     }
-  }, [activeRole, view])
+  }, [activeRole, view, snapshotUnlocked])
 
   useEffect(() => {
     function onQuotaExceeded(e) {
@@ -316,24 +319,26 @@ function App() {
               className={`nav-tab${view === v.id ? ' active' : ''}`}
               onClick={e => {
                 if ((v.id === 'admin' || v.id === 'calendar') && e.ctrlKey) {
-                  // Reveals the power-tools bar only — it no longer also
-                  // pops the Assume Role picker; that stays reachable via
-                  // Ctrl+click on the header title, or the bar's own button.
+                  // Secret gesture: Ctrl+click on Admin OR Calendar opens the
+                  // Admin area with the power-tools (Snapshot) bar revealed.
+                  // The Assume Role picker stays on Ctrl+click of the header
+                  // title, or the bar's own button.
                   setSnapshotUnlocked(true)
+                  setView('admin')
                 } else {
                   // Plain click on any tab re-hides the power-tools bar —
                   // it should only ever be visible right after the
                   // deliberate Ctrl+Admin / Ctrl+Calendar gesture.
                   setSnapshotUnlocked(false)
+                  setView(v.id)
                 }
-                setView(v.id)
               }}
             >
               {v.label}
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.66</span>
+        <span className="header-version">v3.67</span>
       </header>
 
       {showAssumeRole && (
@@ -403,7 +408,7 @@ function App() {
         <BookAssetsView eventContext={bookingContextEvent} onDone={handleDoneBookingAssets} role={activeRole} />
       )}
       {view === 'resource-gaps' && canSeeView(activeRole, 'resource-gaps') && <ResourceGapsView allEvents={combinedEvents} onEventClick={setSelectedEvent} />}
-      {view === 'admin' && canSeeView(activeRole, 'admin') && (
+      {view === 'admin' && (canSeeView(activeRole, 'admin') || snapshotUnlocked) && (
         <AdminView
           snapshotUnlocked={snapshotUnlocked}
           allEvents={combinedEvents}
