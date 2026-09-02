@@ -9,6 +9,7 @@ import TechnicalView from './components/TechnicalView'
 import TechnicalBookedView from './components/TechnicalBookedView'
 import BoothsView from './components/BoothsView'
 import BookStaffView from './components/BookStaffView'
+import StaffAvailabilityView from './components/StaffAvailabilityView'
 import ResourceGapsView from './components/ResourceGapsView'
 import AssetsView from './components/AssetsView'
 import BookAssetsView from './components/BookAssetsView'
@@ -65,6 +66,7 @@ const VIEWS = [
   { id: 'technical2', label: 'MCR' },
   { id: 'booths',      label: 'Operations' },
   { id: 'book-staff', label: 'Book Staff' },
+  { id: 'staff-availability', label: 'Staff Availability' },
   { id: 'resource-gaps',  label: 'Resource Gaps' },
   { id: 'assets',          label: 'Asset Management' },
   { id: 'book-assets',     label: 'Bookable Assets' },
@@ -331,7 +333,7 @@ function App() {
             </button>
           ))}
         </nav>
-        <span className="header-version">v3.57</span>
+        <span className="header-version">v3.63</span>
       </header>
 
       {showAssumeRole && (
@@ -395,6 +397,7 @@ function App() {
       {view === 'technical2' && canSeeView(activeRole, 'technical2') && <TechnicalBookedView events={visibleEvents} />}
       {view === 'booths' && canSeeView(activeRole, 'booths') && <BoothsView events={visibleEvents} onEventClick={setSelectedEvent} />}
       {view === 'book-staff' && canSeeView(activeRole, 'book-staff') && <BookStaffView events={visibleEvents} role={activeRole} />}
+      {view === 'staff-availability' && canSeeView(activeRole, 'staff-availability') && <StaffAvailabilityView role={activeRole} />}
       {view === 'assets' && canSeeView(activeRole, 'assets') && <AssetsView events={combinedEvents} />}
       {view === 'book-assets' && canSeeView(activeRole, 'book-assets') && (
         <BookAssetsView eventContext={bookingContextEvent} onDone={handleDoneBookingAssets} role={activeRole} />
@@ -425,7 +428,7 @@ function App() {
         />
       )}
 
-      {view !== 'admin' && view !== 'resource-gaps' && view !== 'book-staff' && view !== 'import' && view !== 'book-assets' && (
+      {view !== 'admin' && view !== 'resource-gaps' && view !== 'book-staff' && view !== 'staff-availability' && view !== 'import' && view !== 'book-assets' && (
         <CompetitionToggles
           competitions={allCompetitions}
           governingBodies={governingBodies}

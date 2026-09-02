@@ -4640,6 +4640,185 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 .bs-filter-btn:hover { background: rgba(255, 255, 255, 0.16); color: #fff; }
 .bs-filter-btn.active { background: #e97c17; color: #fff; }
 
+/* ── Staff Availability grid ─────────────────────────────────── */
+.sa-header-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 16px 8px;
+  flex-wrap: wrap;
+}
+
+.sa-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+.sa-hint {
+  font-size: 0.78rem;
+  color: #555;
+}
+
+.sa-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sa-nav-btn {
+  padding: 4px 12px;
+  border: 1px solid var(--brand-primary);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--brand-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sa-nav-btn:hover:not(:disabled) {
+  background: var(--brand-primary);
+  color: #fff;
+}
+
+.sa-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.sa-range {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-left: 4px;
+}
+
+.sa-grid-wrap {
+  overflow-x: auto;
+  padding: 0 16px 16px;
+}
+
+.sa-grid {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  color: #000;
+  background: #fff;
+}
+
+.sa-grid th,
+.sa-grid td {
+  border: 1px solid #c3d3e6;
+  text-align: center;
+}
+
+.sa-grid thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--brand-primary);
+  color: #e8edf4;
+  padding: 4px 0;
+  font-weight: 700;
+}
+
+.sa-month-col {
+  text-align: left;
+  padding: 3px 8px;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-right: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Second header row (dates) sits just below the month row. */
+.sa-grid thead .sa-day-col {
+  top: 20px;
+}
+
+.sa-day-col {
+  width: 30px;
+  min-width: 30px;
+}
+
+.sa-dow {
+  display: block;
+  font-size: 0.62rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+}
+
+.sa-dom {
+  display: block;
+  font-size: 0.8rem;
+}
+
+.sa-grid .sa-name-col {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: #fff;
+  text-align: left;
+  padding: 6px 12px;
+  white-space: nowrap;
+  min-width: 190px;
+}
+
+.sa-grid thead .sa-name-col {
+  z-index: 3;
+  background: var(--brand-primary);
+}
+
+.sa-grid tbody tr:nth-child(even) .sa-name-col { background: #f0f6ff; }
+.sa-grid tbody tr:nth-child(even) td { background: #f0f6ff; }
+.sa-grid tbody tr:hover td,
+.sa-grid tbody tr:hover .sa-name-col { background: #ddeaf6; }
+
+.sa-person-name { font-weight: 600; margin-right: 8px; }
+
+.sa-cell {
+  padding: 3px 0;
+}
+
+.sa-cell input {
+  cursor: pointer;
+  margin: 0;
+}
+
+.sa-cell input:disabled { cursor: default; }
+
+.sa-weekend { background: #eef1f4; }
+.sa-grid tbody tr:nth-child(even) td.sa-weekend { background: #e4e9ef; }
+
+.sa-cell--off { background: #fde2e1 !important; }
+
+/* Click a date header to highlight the whole column. */
+.sa-day-head { cursor: pointer; }
+.sa-day-head:hover { background: rgba(255, 255, 255, 0.14); }
+
+.sa-col-highlight {
+  border-left: 2px solid #f08c00 !important;
+  border-right: 2px solid #f08c00 !important;
+}
+
+.sa-grid thead .sa-day-head.sa-col-highlight {
+  background: #f08c00;
+}
+.sa-grid thead .sa-day-head.sa-col-highlight .sa-dow,
+.sa-grid thead .sa-day-head.sa-col-highlight .sa-dom { color: #fff; opacity: 1; }
+
+.sa-grid tbody tr td.sa-col-highlight:not(.sa-cell--off) { background: #ffe8a3; }
+.sa-grid tbody tr:hover td.sa-col-highlight:not(.sa-cell--off) { background: #ffdf85; }
+
+.sa-empty {
+  padding: 24px;
+  text-align: center;
+  color: #555;
+}
+
 /* Import Events form */
 .import-view {
   flex: 1;

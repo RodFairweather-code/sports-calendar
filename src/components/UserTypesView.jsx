@@ -10,6 +10,7 @@ const VIEW_ROWS = [
   { id: 'technical2',    label: 'MCR' },
   { id: 'booths',        label: 'Operations' },
   { id: 'book-staff',    label: 'Book Staff' },
+  { id: 'staff-availability', label: 'Staff Availability' },
   { id: 'resource-gaps', label: 'Resource Gaps' },
   { id: 'assets',        label: 'Asset Management' },
   { id: 'book-assets',   label: 'Bookable Assets' },

@@ -5,7 +5,7 @@
 function views(overrides) {
   const all = {
     calendar: false, editorial: false, production: false, technical: false, technical2: false,
-    booths: false, 'book-staff': false, 'resource-gaps': false, assets: false,
+    booths: false, 'book-staff': false, 'staff-availability': false, 'resource-gaps': false, assets: false,
     'book-assets': false, import: false, admin: false,
   }
   return { ...all, ...overrides }
@@ -26,7 +26,7 @@ export const SEED_ROLES = [
     name: 'Administrator',
     views: views({
       calendar: true, editorial: true, production: true, technical: true, technical2: true,
-      booths: true, 'book-staff': true, 'resource-gaps': true, assets: true,
+      booths: true, 'book-staff': true, 'staff-availability': true, 'resource-gaps': true, assets: true,
       'book-assets': true, import: true, admin: true,
     }),
     permissions: perms(
@@ -40,7 +40,7 @@ export const SEED_ROLES = [
     name: 'Senior Manager',
     views: views({
       calendar: true, editorial: true, production: true, technical: true, technical2: true,
-      booths: true, 'book-staff': true, 'resource-gaps': true, assets: true,
+      booths: true, 'book-staff': true, 'staff-availability': true, 'resource-gaps': true, assets: true,
       'book-assets': true, import: true, admin: false,
     }),
     permissions: perms(
@@ -54,7 +54,7 @@ export const SEED_ROLES = [
     name: 'Standard Operator',
     views: views({
       calendar: true, editorial: true, production: true, technical: true, technical2: true,
-      booths: true, 'book-staff': true, 'resource-gaps': true, 'book-assets': true,
+      booths: true, 'book-staff': true, 'staff-availability': true, 'resource-gaps': true, 'book-assets': true,
     }),
     permissions: perms(
       [false, true, true, false],

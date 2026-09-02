@@ -10,7 +10,7 @@ const FALLBACK_ROLE = {
   name: 'Everyone (fallback)',
   views: {
     calendar: true, editorial: true, production: true, technical: true, technical2: true,
-    booths: true, 'book-staff': true, 'resource-gaps': true, assets: true,
+    booths: true, 'book-staff': true, 'staff-availability': true, 'resource-gaps': true, assets: true,
     'book-assets': true, import: true, admin: true,
   },
   permissions: {
@@ -20,13 +20,18 @@ const FALLBACK_ROLE = {
   },
 }
 
-// Roles persisted before a new nav view existed won't have a key for it,
-// which canSeeView reads as hidden — default it to whatever "technical"
-// was set to, since it's a sibling view, rather than silently disappearing
-// for every role already saved in someone's browser.
+// Roles persisted before a new nav view existed won't have a key for it, which
+// canSeeView reads as hidden. Default each new view to whatever a sibling view
+// was set to, rather than silently disappearing for every already-saved role.
 function backfillViews(role) {
-  if (role.views?.technical2 !== undefined) return role
-  return { ...role, views: { ...role.views, technical2: !!role.views?.technical } }
+  let views = role.views
+  if (views?.technical2 === undefined) {
+    views = { ...views, technical2: !!views?.technical }
+  }
+  if (views?.['staff-availability'] === undefined) {
+    views = { ...views, 'staff-availability': !!views?.['book-staff'] }
+  }
+  return views === role.views ? role : { ...role, views }
 }
 
 export function loadRoles() {

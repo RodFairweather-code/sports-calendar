@@ -187,7 +187,9 @@ function BookStaffView({ events, role }) {
                       </span>
                     </td>
                     <td className="bs-actions">
-                      {!isStaff && !locked && effectiveStatus === '' && (
+                      {/* Freelancers can still be offered / confirmed while the
+                          allocation is locked — locking only pins who the person is. */}
+                      {!isStaff && effectiveStatus === '' && (
                         <button
                           className="bs-action-btn bs-action-btn--offer"
                           disabled={!canUpdate}
@@ -197,7 +199,7 @@ function BookStaffView({ events, role }) {
                           Offer job
                         </button>
                       )}
-                      {!isStaff && !locked && effectiveStatus === 'offered' && (
+                      {!isStaff && effectiveStatus === 'offered' && (
                         <button
                           className="bs-action-btn bs-action-btn--accept"
                           disabled={!canUpdate}
