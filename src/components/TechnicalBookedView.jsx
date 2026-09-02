@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, Fragment } from 'react'
 import { saveToStorage } from '../services/storage'
-import { loadDefaultTimings } from '../services/defaultTimings'
+import { loadDefaultTimings, resolveTimings } from '../services/defaultTimings'
 import { needsBooth, needsStudio } from './BoothsView'
 import { timeWindow, computeControlTimes } from '../services/mcrTiming'
 
@@ -174,7 +174,7 @@ function TechnicalBookedView({ events }) {
     const asgn = assignments[event.id] || {}
     const pattern = getPattern(event)
     const status = hasY ? 'confirmed' : 'possible'
-    const timing = defaultTimings[event.extendedProps.competitionId]
+    const timing = resolveTimings(defaultTimings, event.extendedProps.competitionId)
     // An "Extend Timings" press on the Inspector adds an extra hour on top
     // of the post-match show duration — it pushes every technical
     // resource's booking window later, same as a longer post-match show.

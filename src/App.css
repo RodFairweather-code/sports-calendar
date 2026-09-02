@@ -3688,6 +3688,27 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   font-size: 0.85rem;
 }
 
+.dt-section + .dt-section {
+  margin-top: 28px;
+}
+
+.dt-section-title {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+.dt-row--default td {
+  background: #eef3fa;
+  border-bottom: 2px solid var(--brand-primary);
+}
+
+.dt-default-label {
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
 .rights-th-comp {
   background: var(--brand-primary);
   color: rgba(255, 255, 255, 0.85);

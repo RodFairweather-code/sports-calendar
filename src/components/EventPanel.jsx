@@ -4,7 +4,7 @@ import { loadTechStack } from '../services/techStack'
 import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services/staffLocks'
 import { bookingDuration, formatDateLabel, formatRange } from '../services/bookingTime'
 import { hasPermission } from '../services/roles'
-import { loadDefaultTimings } from '../services/defaultTimings'
+import { loadDefaultTimings, resolveTimings } from '../services/defaultTimings'
 import { computeControlTimes } from '../services/mcrTiming'
 import { GALLERY_ROLES, GALLERY_LOCATIONS, galleryField, allGalleryFields } from '../services/galleryRoles'
 import { loadStaffAvailability, isAvailableOn } from '../services/staffAvailability'
@@ -780,7 +780,7 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role, 
           {view === 'timings' ? (
             <TimingsView
               event={event}
-              timing={defaultTimings[p.competitionId]}
+              timing={resolveTimings(defaultTimings, p.competitionId)}
               asgn={asgn}
               onChange={setField}
               readOnly={!canUpdate}
