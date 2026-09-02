@@ -56,6 +56,34 @@ export function timeWindow(event, fromOffset, untilOffset, preMatchMin = 0, post
 // - Lines Booking spans Lines up through Lines Down (the full booked window).
 // - Available for Production spans Live Feed through Lines Down minus 5
 //   minutes (the last 5 minutes of the booking are teardown, not usable).
+// OB crew milestone times for an event, from the competition's default OB
+// offsets (minutes). Rig-related steps count back from the Lineup time (which
+// already includes any pre-match show); the rest count back from Match Start.
+export function computeObCrewTimes(event, timing, preMatchMin = 0) {
+  const startDT = splitDateTime(event.start)
+  if (!startDT) return null
+
+  const lineupMin = (timing?.lineup || 0) + (preMatchMin || 0)
+  const lineupDT  = addMinutesToLocalDatetime(startDT.date, startDT.time, -lineupMin)
+  const lineupDate = lineupDT.slice(0, 10)
+  const lineupTime = lineupDT.slice(11, 16)
+
+  const beforeLineup = mins =>
+    formatOffsetResult(addMinutesToLocalDatetime(lineupDate, lineupTime, -(mins || 0)), startDT.date)
+  const beforeStart = mins =>
+    formatOffsetResult(addMinutesToLocalDatetime(startDT.date, startDT.time, -(mins || 0)), startDT.date)
+
+  return {
+    rigCrew:              beforeLineup(timing?.obRigCrewCall),
+    productionCrewCall:   beforeStart(timing?.obStaff),
+    obPoweredUp:          beforeLineup(timing?.obTruckPoweredUp),
+    engineeringRigCheck:  beforeLineup(timing?.obEngineeringRigCheck),
+    technicalRehearsal:   beforeStart(timing?.obTechnicalRehearsal),
+    evsReplayCheck:       beforeStart(timing?.obEvsReplayCheck),
+    commsCheck:           beforeStart(timing?.obCommsCheck),
+  }
+}
+
 export function computeControlTimes(event, timing, preMatchMin = 0, postMatchMin = 0) {
   const startDT = splitDateTime(event.start)
   if (!startDT) {

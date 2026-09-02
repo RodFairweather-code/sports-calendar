@@ -71,6 +71,16 @@ const GALLERY_SLOTS = GALLERY_LOCATIONS.flatMap(loc =>
   }))
 )
 
+// Event-level roles that aren't allocated here but are worth showing on the card
+// when someone has been assigned to them elsewhere (Production view / Inspector).
+const EXTRA_ROLES = [
+  { field: 'productionManager', staffKey: 'onsiteProductionManager', label: 'Prod Mgr' },
+  { field: 'producer',          staffKey: 'producer',                label: 'Producer' },
+  { field: 'commentator',       staffKey: 'commentator',             label: 'Commentator' },
+  { field: 'cameraman',         staffKey: 'cameramen',               label: 'Cameraman' },
+  { field: 'onsiteAudio',       staffKey: 'onsiteAudio',             label: 'Audio' },
+]
+
 // For the given event IDs, counts accepted/offered freelancers being cleared
 // and returns updated bookings with those statuses wiped. Locked roles are
 // left untouched entirely — locking means "don't clear this".
@@ -267,6 +277,10 @@ function BoothCard({ event, idx, location, numberLabel, overCapacity = false, ct
   const roleKeys    = slots.map(s => s.field)
   const fullyLocked = isEventFullyLocked(locks, event.id, roleKeys)
 
+  const extras = EXTRA_ROLES
+    .map(r => ({ ...r, name: asgn[r.field] }))
+    .filter(r => r.name && r.name !== 'Freelance required')
+
   return (
     <div
       className={`booth-card${overCapacity ? ' booth-card--over-capacity' : ''}`}
@@ -308,6 +322,19 @@ function BoothCard({ event, idx, location, numberLabel, overCapacity = false, ct
               </div>
             )
           })}
+          {extras.length > 0 && (
+            <div className="booth-staff-extra">
+              {extras.map(r => {
+                const d = staffDisplay(r.name, event.id, r.field, r.staffKey, profiles, bookings, false)
+                return (
+                  <div key={r.field} className="booth-staff-row">
+                    <span className="booth-staff-role">{r.label}</span>
+                    <span className={`booth-staff-name ${d.cls}`}>{d.text}</span>
+                  </div>
+                )
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>

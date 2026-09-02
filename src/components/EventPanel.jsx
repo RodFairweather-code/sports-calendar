@@ -5,7 +5,7 @@ import { loadLocks, persistLocks, isRoleLocked, withRoleLock } from '../services
 import { bookingDuration, formatDateLabel, formatRange } from '../services/bookingTime'
 import { hasPermission } from '../services/roles'
 import { loadDefaultTimings, resolveTimings } from '../services/defaultTimings'
-import { computeControlTimes } from '../services/mcrTiming'
+import { computeControlTimes, computeObCrewTimes } from '../services/mcrTiming'
 import { GALLERY_ROLES, GALLERY_LOCATIONS, galleryField, allGalleryFields } from '../services/galleryRoles'
 import { loadStaffAvailability, isAvailableOn } from '../services/staffAvailability'
 
@@ -295,10 +295,13 @@ function CostView({ asgn, tv, techBooth, techStudio, techObUnit, staffCosts, tec
 
 // ── Timings view ─────────────────────────────────────────────────────────────
 
-function TimingsView({ event, timing, asgn, onChange, readOnly }) {
+function TimingsView({ event, timing, asgn, onChange, readOnly, showOb, showBooth, showStudio, profiles }) {
   const extendedMinutes = asgn.extendedMinutes || 0
   const postMatchTotal = (asgn.postMatchShowDuration || 0) + extendedMinutes
   const controlTimes = computeControlTimes(event, timing, asgn.preMatchShowDuration, postMatchTotal)
+  const obCrewTimes = showOb ? computeObCrewTimes(event, timing, asgn.preMatchShowDuration) : null
+  // A call sheet can be printed for any event that goes to a gallery.
+  const canPrintCallSheet = showOb || showBooth || showStudio
   const extendedHours = extendedMinutes / 60
   const [showExtensionModal, setShowExtensionModal] = useState(false)
 
@@ -323,6 +326,107 @@ function TimingsView({ event, timing, asgn, onChange, readOnly }) {
     setShowExtensionModal(false)
   }
 
+  function printObCallSheet() {
+    const p = event.extendedProps
+    const dateStr = event.start
+      ? new Date(event.start.slice(0, 10) + 'T12:00:00').toLocaleDateString('en-GB', {
+          weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+        })
+      : ''
+    const rows = (pairs) => pairs
+      .filter(([, v]) => v && v !== '—')
+      .map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')
+    const phoneFor = (staffKey, name) => profiles?.[staffKey]?.[name]?.phone || ''
+
+    // A crew table: [label, assignment field] → row of label / name / phone,
+    // dropping anyone unassigned or flagged 'Freelance required'.
+    const crewSection = (title, entries) => {
+      const filled = entries
+        .map(([label, field]) => [label, asgn[field], FIELD_STAFF_KEY[field]])
+        .filter(([, name]) => name && name !== 'Freelance required')
+      if (!filled.length) return ''
+      return `<h2>${title}</h2><table>${filled
+        .map(([l, n, sk]) => `<tr><th>${l}</th><td>${n}</td><td>${phoneFor(sk, n)}</td></tr>`)
+        .join('')}</table>`
+    }
+
+    const galleryEntries = loc => [
+      ['Director', galleryField(loc, 'director')],
+      ['EVS Operator', galleryField(loc, 'evsOperator')],
+      ['Graphics Operator', galleryField(loc, 'graphicsOperator')],
+    ]
+
+    const sheetTitle = localStorage.getItem('ui_skin') === 'img'
+      ? 'IMG call sheet'
+      : (obCrewTimes ? 'OB Call Sheet' : 'Call Sheet')
+    const createdStr = new Date().toLocaleString('en-GB', {
+      day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit',
+    })
+
+    const html = `<!doctype html><html><head><meta charset="utf-8">
+      <title>${sheetTitle} — ${p.competitionName || ''} ${event.title || ''}</title>
+      <style>
+        body { font: 13px/1.5 -apple-system, Segoe UI, Arial, sans-serif; color: #111; margin: 32px; }
+        h1 { font-size: 18px; margin: 0 0 4px; }
+        .created { font-size: 11px; color: #777; margin-bottom: 12px; }
+        .sub { color: #555; margin-bottom: 18px; }
+        h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #444;
+             border-bottom: 2px solid #111; padding-bottom: 3px; margin: 22px 0 8px; }
+        table { border-collapse: collapse; width: 100%; max-width: 460px; }
+        th, td { text-align: left; padding: 4px 10px; border-bottom: 1px solid #ddd; }
+        th { width: 200px; font-weight: 600; }
+        @media print { body { margin: 12mm; } }
+      </style></head><body>
+      <h1>${sheetTitle}</h1>
+      <div class="created">Call sheet created ${createdStr}</div>
+      <div class="sub">${[p.competitionName, p.sport].filter(Boolean).join(' · ')}</div>
+      <h2>Event</h2>
+      <table>${rows([
+        ['Fixture', event.title],
+        ['Teams', p.homeTeam && p.awayTeam ? `${p.homeTeam} v ${p.awayTeam}` : ''],
+        ['Date', dateStr],
+        ['Kick-off', controlTimes.start],
+        ['Venue', p.venue],
+      ])}</table>
+      <h2>Control Times</h2>
+      <table>${rows([
+        ['Lines Booking', controlTimes.linesBooking],
+        ['Lineup', controlTimes.lineup],
+        ['Available for Production', controlTimes.availableForProduction],
+        ['Match Start', controlTimes.start],
+        ['Match End', controlTimes.matchEnd],
+        ['Lines Down', controlTimes.linesDown],
+      ])}</table>
+      ${obCrewTimes ? `<h2>OB Crew Timings</h2>
+      <table>${rows([
+        ['Rig crew', obCrewTimes.rigCrew],
+        ['OB powered up', obCrewTimes.obPoweredUp],
+        ['Engineering rig check', obCrewTimes.engineeringRigCheck],
+        ['Production crew call', obCrewTimes.productionCrewCall],
+        ['Technical rehearsal', obCrewTimes.technicalRehearsal],
+        ['Comms check', obCrewTimes.commsCheck],
+        ['EVS replay check', obCrewTimes.evsReplayCheck],
+      ])}</table>` : ''}
+      ${showOb ? crewSection('OB Gallery Crew', galleryEntries('ob')) : ''}
+      ${showBooth ? crewSection('Booth Gallery Crew', galleryEntries('booth')) : ''}
+      ${showStudio ? crewSection('Studio Gallery Crew', galleryEntries('studio')) : ''}
+      ${crewSection('Production Team', [
+        ['Production Manager', 'productionManager'],
+        ['Producer', 'producer'],
+        ['Commentator', 'commentator'],
+        ['Cameraman', 'cameraman'],
+        ['Audio', 'onsiteAudio'],
+      ])}
+      </body></html>`
+
+    const w = window.open('', '_blank')
+    if (!w) return
+    w.document.write(html)
+    w.document.close()
+    w.focus()
+    w.print()
+  }
+
   return (
     <div className="ep-timings-view">
       <div className="ep-section">
@@ -336,6 +440,23 @@ function TimingsView({ event, timing, asgn, onChange, readOnly }) {
         <dt>Match End</dt><dd>{controlTimes.matchEnd}</dd>
         <dt>Lines Down</dt><dd>{controlTimes.linesDown}</dd>
       </dl>
+
+      {obCrewTimes && (
+        <>
+          <div className="ep-section">
+            <span className="ep-section-title">OB Crew Timings</span>
+          </div>
+          <dl className="ep-details">
+            <dt>Rig crew</dt><dd>{obCrewTimes.rigCrew}</dd>
+            <dt>OB powered up</dt><dd>{obCrewTimes.obPoweredUp}</dd>
+            <dt>Engineering rig check</dt><dd>{obCrewTimes.engineeringRigCheck}</dd>
+            <dt>Production crew call</dt><dd>{obCrewTimes.productionCrewCall}</dd>
+            <dt>Technical rehearsal</dt><dd>{obCrewTimes.technicalRehearsal}</dd>
+            <dt>Comms check</dt><dd>{obCrewTimes.commsCheck}</dd>
+            <dt>EVS replay check</dt><dd>{obCrewTimes.evsReplayCheck}</dd>
+          </dl>
+        </>
+      )}
 
       <div className="ep-section">
         <span className="ep-section-title">Surrounding Programming</span>
@@ -356,6 +477,16 @@ function TimingsView({ event, timing, asgn, onChange, readOnly }) {
           readOnly={readOnly}
         />
       </div>
+
+      {canPrintCallSheet && (
+        <button
+          type="button"
+          className="ep-print-callsheet-btn"
+          onClick={printObCallSheet}
+        >
+          {obCrewTimes ? 'Print OB Call Sheet' : 'Print Call Sheet'}
+        </button>
+      )}
 
       <button
         type="button"
@@ -784,6 +915,10 @@ function EventPanel({ event, onClose, onDeleteEvent, onAddBookableAssets, role, 
               asgn={asgn}
               onChange={setField}
               readOnly={!canUpdate}
+              showOb={techObUnit}
+              showBooth={techBooth}
+              showStudio={techStudio}
+              profiles={profiles}
             />
           ) : view === 'costs' ? (
             <CostView

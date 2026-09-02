@@ -1026,6 +1026,26 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   transition: background 0.15s ease;
 }
 
+.ep-print-callsheet-btn {
+  display: block;
+  width: 100%;
+  margin: 20px 0 0;
+  padding: 11px 16px;
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--brand-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ep-print-callsheet-btn:hover {
+  background: var(--brand-primary);
+  color: #fff;
+}
+
 .ep-extend-timings-btn:hover {
   background: #8e0000;
 }
@@ -1786,6 +1806,15 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   align-items: baseline;
   gap: 6px;
   font-size: 0.76rem;
+}
+
+.booth-staff-extra {
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px dashed #d5dbe3;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .booth-staff-role {
